@@ -1,15 +1,21 @@
 {% assign section_id = section.id | replace: "_", "" | replace: "-", "" %}
 
-<div class="wrap wrap--x-large wrap--{{ section_id }}">
+<div class="wrap wrap--xx-large wrap--{{ section_id }}">
 
     <div class="header-main__inner">
 
-        <div class="header-main__branding">
-            <a href="{{ routes.root_url }}" aria-label="{{ shop.name }}">{{ shop.name }}</a>
+        <div class="header-main__menu">
+            <button class="toggle-drawer-menu">{% render "icon-mobile-menu.svg" %}</button>
+            {% render "menu-desktop", section: section %}
         </div>
 
-        <div class="header-main__menu">
-            {% render "menu-main", menu: section.settings.menu %}
+        <div class="header-main__branding">
+            <a href="{{ routes.root_url }}" aria-label="{{ shop.name }}">
+                {% if template == "index" %}
+                    <h1 style="display:none;">{{ shop.name }}</h1>
+                {% endif %}
+                <img src="{{ "logo-phix.png" | asset_url }}" alt="{{ shop.name }}" width="432" height="125">
+            </a>
         </div>
 
         <div class="header-main__tools">
@@ -25,6 +31,145 @@
     "name": "Header",
     "tag": "header",
     "class": "header-main",
+    "blocks": [
+        {
+            "type": "menu",
+            "name": "Menu",
+            "settings": [
+                {
+                    "type": "text",
+                    "id": "label",
+                    "label": "Label",
+                    "default" : "Menu Label"
+                },
+                {
+                    "type": "url",
+                    "id": "url",
+                    "label": "Target"
+                },
+                {
+                    "type": "header",
+                    "content": "Feature 1"
+                },
+                {
+                    "type": "text",
+                    "id": "feature_1_label",
+                    "label": "Label",
+                    "default" : "Feature"
+                },
+                {
+                    "type": "url",
+                    "id": "feature_1_url",
+                    "label": "Target"
+                },
+                {
+                    "type": "image_picker",
+                    "id": "feature_1_image",
+                    "label": "Image"
+                },
+                {
+                    "type": "header",
+                    "content": "Feature 2"
+                },
+                {
+                    "type": "text",
+                    "id": "feature_2_label",
+                    "label": "Label",
+                    "default" : "Feature"
+                },
+                {
+                    "type": "url",
+                    "id": "feature_2_url",
+                    "label": "Target"
+                },
+                {
+                    "type": "image_picker",
+                    "id": "feature_2_image",
+                    "label": "Image"
+                },
+                {
+                    "type": "header",
+                    "content": "Feature 3"
+                },
+                {
+                    "type": "text",
+                    "id": "feature_3_label",
+                    "label": "Label",
+                    "default" : "Feature"
+                },
+                {
+                    "type": "url",
+                    "id": "feature_3_url",
+                    "label": "Target"
+                },
+                {
+                    "type": "image_picker",
+                    "id": "feature_3_image",
+                    "label": "Image"
+                },
+                {
+                    "type": "header",
+                    "content": "Feature 4"
+                },
+                {
+                    "type": "text",
+                    "id": "feature_4_label",
+                    "label": "Label",
+                    "default" : "Feature"
+                },
+                {
+                    "type": "url",
+                    "id": "feature_4_url",
+                    "label": "Target"
+                },
+                {
+                    "type": "image_picker",
+                    "id": "feature_4_image",
+                    "label": "Image"
+                },
+                {
+                    "type": "header",
+                    "content": "Feature 5"
+                },
+                {
+                    "type": "text",
+                    "id": "feature_5_label",
+                    "label": "Label",
+                    "default" : "Feature"
+                },
+                {
+                    "type": "url",
+                    "id": "feature_5_url",
+                    "label": "Target"
+                },
+                {
+                    "type": "image_picker",
+                    "id": "feature_5_image",
+                    "label": "Image"
+                },
+                {
+                    "type": "header",
+                    "content": "Feature 6"
+                },
+                {
+                    "type": "text",
+                    "id": "feature_6_label",
+                    "label": "Label",
+                    "default" : "Feature"
+                },
+                {
+                    "type": "url",
+                    "id": "feature_6_url",
+                    "label": "Target"
+                },
+                {
+                    "type": "image_picker",
+                    "id": "feature_6_image",
+                    "label": "Image"
+                }
+            ]
+        }
+    ],
     "settings": [
         {
             "type": "link_list",

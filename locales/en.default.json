@@ -7,7 +7,8 @@
 		"tools_menu": {
 			"search_label": "Search",
 			"account_label": "Account",
-			"cart_label": "Cart"
+			"cart_label": "Cart",
+			"wishlist_label": "Wishlist"
 		},
 		"breadcrumbs": {
 			"home_label": "Home"

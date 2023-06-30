@@ -1,0 +1,22 @@
+<link href="{{ "menu-mobile.css" | asset_url }}" rel="stylesheet">
+
+<nav>
+    <ul class="menu menu-mobile">
+        {% for link in menu.links %}
+        <li class="menu-mobile__item{% if link.links.size > 0 %} has-children{% endif %}">
+            <a href="{{ link.url }}" aria-label="{{ link.title }}" class="menu-mobile__link{% if link.links.size > 0 %} menu-mobile__link--toggle{% endif %}"><span>{{ link.title }}</span>{% if link.links.size > 0 %}{% render "icon-mobile-arrow.svg" %}{% endif %}</a>
+            {% if link.links.size > 0 %}
+                <div class="menu-mobile__child">
+                    <ul class="menu-child">
+                        {% for child_link in link.links %}
+                        <li class="menu-mobile__item{% if child_link.links.size > 0 %} has-grandchildren{% endif %}">
+                            <a href="{{ child_link.url }}" aria-label="{{ child_link.title }}">{{ child_link.title }}</a>
+                        </li>
+                        {% endfor %}
+                    </ul>
+                </div>
+            {% endif %}
+        </li>
+        {% endfor %}
+    </ul>
+</nav>

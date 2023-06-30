@@ -1,0 +1,40 @@
+.drawer {
+	position: fixed;
+	right: -$w-s;
+	top: 0;
+	width: 100%;
+	max-width: $w-s;
+	background-color: $color-white;
+	z-index: 300000;
+	height: 100%;
+	transition: right 0.25s linear;
+	overflow: hidden;
+	.inner {
+		height: 100%;
+		position: relative;
+	}
+}
+
+.drawer-mask {
+	position: fixed;
+	left: 0;
+	top: 0;
+	width: 100%;
+	height: 100%;
+	z-index: 299999;
+	background-color: $overlay;
+	visibility: hidden;
+	opacity: 0;
+	transition: all linear 0.25s;
+}
+
+.drawer-open {
+	.drawer-mask {
+		visibility: visible;
+	}
+}
+.mask-visible {
+	.drawer-mask {
+		opacity: 1;
+	}
+}

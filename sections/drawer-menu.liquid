@@ -1,0 +1,93 @@
+<link href="{{ "drawer-menu.css" | asset_url }}" rel="stylesheet">
+
+<div class="drawer drawer-menu" id="drawer-menu">
+    <div class="inner">
+        <div class="drawer__header drawer-menu__header">
+            <button class="toggle-drawer-menu">{% render "icon-close.svg" %}</button>
+            {% for block in section.blocks %}
+                {% if block.type == "header-menu" %}
+                <ul>
+                    {% for link in block.settings.menu.links %}
+                    <li><a href="{{ link.url }}" aria-label="{{ link.title }}">{{ link.title }}</a></li>
+                    {% endfor %}
+                </ul>
+                {% endif %}
+            {% endfor %}
+        </div>
+        <div class="drawer__content drawer-menu__content">
+            <div class="drawer__menus drawer-menu__menus">
+                {% for block in section.blocks %}
+                    {% if block.type == "main-menu" %}
+                        {% render "menu-mobile", menu: block.settings.menu %}
+                    {% endif %}
+                {% endfor %}
+            </div>
+            <div class="drawer__footer drawer-menu__footer">
+                <p>Footer Content</p>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script src="{{ "drawer-menu.js" | asset_url }}" defer></script>
+
+{% schema %}
+{
+    "name": "Mobile Menu",
+    "tag": "div",
+    "class": "drawer drawer-menu",
+    "blocks": [
+        {
+            "type": "header-menu",
+            "name": "Header Menu",
+            "limit": 1,
+            "settings": [
+                {
+                    "type": "link_list",
+                    "id": "menu",
+                    "label": "Menu"
+                }
+            ]
+        },
+        {
+            "type": "main-menu",
+            "name": "Main Menu",
+            "settings": [
+                {
+                    "type": "link_list",
+                    "id": "menu",
+                    "label": "Menu"
+                }
+            ]
+        },
+        {
+            "type": "feature",
+            "name": "Feature",
+            "settings": [
+                {
+                    "type": "image_picker",
+                    "id": "image",
+                    "label": "Image"
+                }
+            ]
+        },
+        {
+            "type": "footer-menu",
+            "name": "Footer Menu",
+            "limit": 1,
+            "settings": [
+                {
+                    "type": "text",
+                    "id": "title",
+                    "label": "Title"
+                },
+                {
+                    "type": "link_list",
+                    "id": "menu",
+                    "label": "Menu"
+                }
+            ]
+        }
+    ]
+}
+{% endschema %}

@@ -1,0 +1,35 @@
+@import '../abstracts/variables';
+
+.section-featured-items {
+	position: relative;
+	&__inner {
+		display: flex;
+		flex-direction: column;
+		gap: 3em;
+		@media (max-width: $w-m) {
+			gap: 2em;
+		}
+	}
+	&__header {
+		text-align: center;
+		h3 {
+			font-size: 3em;
+			margin-bottom: 0;
+		}
+		p {
+			margin: 0;
+		}
+	}
+	&__products {
+		&:not(.is-draggable) {
+			display: flex;
+			overflow-x: hidden;
+		}
+		.product-slide {
+			width: 30em;
+			min-width: 30em;
+			min-height: 45em;
+			margin-right: 0.5em;
+		}
+	}
+}

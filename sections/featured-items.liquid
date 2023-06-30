@@ -1,0 +1,173 @@
+{% assign section_id = section.id | replace: "_", "" | replace: "-", "" %}
+{% render "section-styles", section_id: section_id, section: section %}
+
+<link href="{{ "flickity.css" | asset_url }}" rel="stylesheet">
+<link href="{{ "featured-items.css" | asset_url }}" rel="stylesheet">
+
+<div class="wrap wrap--full wrap--{{section_id }} wrap--no-padding">
+
+    <div class="section-featured-items__inner">
+
+        <div class="section-featured-items__header">
+            {% if section.settings.title != blank %}
+            <h3>{{ section.settings.title }}</h3>
+            {% endif %}
+            {% if section.settings.subtitle != blank %}
+            <p>{{ section.settings.subtitle }}</p>
+            {% endif %}
+        </div>
+
+        <div class="section-featured-items__products product-slider-{{ section_id }}">
+            {% for product in section.settings.products %}
+                {% if product.available %}
+                <div class="product-slide">{% render "card-product", product: product %}</div>
+                {% endif %}
+            {% endfor %}
+        </div>
+        
+    </div>
+
+</div>
+
+<script src="{{ "flickity.js" | asset_url }}"></script>
+<script defer>
+    const flickity_{{ section_id }} = function() {
+        
+        let tickerSpeed = 0.75;
+
+        if (window.innerWidth <= 768) {
+            tickerSpeed = 1.5;
+        }
+
+        let flickity = null;
+        let isPaused = false;
+        const slideshowEl = document.querySelector('.product-slider-{{ section_id }}');
+
+        const update = () => {
+            if (isPaused) return;
+            if (flickity.slides) {
+                flickity.x = (flickity.x - tickerSpeed) % flickity.slideableWidth;
+                flickity.selectedIndex = flickity.dragEndRestingSelect();
+                flickity.updateSelectedSlide();
+                flickity.settle(flickity.x);
+            }
+            window.requestAnimationFrame(update);
+        };
+
+        const pause = () => {
+            isPaused = true;
+        };
+
+        const play = () => {
+            if (isPaused) {
+                isPaused = false;
+                window.requestAnimationFrame(update);
+            }
+        };
+
+        flickity = new Flickity(slideshowEl, {
+            autoPlay: false,
+            prevNextButtons: false,
+            pageDots: false,
+            draggable: true,
+            wrapAround: true,
+            selectedAttraction: 0.015,
+            friction: 0.25
+        });
+
+        flickity.x = 0;
+
+        slideshowEl.addEventListener('mouseenter', pause, false);
+        slideshowEl.addEventListener('focusin', pause, false);
+        slideshowEl.addEventListener('mouseleave', play, false);
+        slideshowEl.addEventListener('focusout', play, false);
+
+        flickity.on('dragStart', () => {
+            isPaused = true;
+        });
+
+        update();
+
+    }
+    flickity_{{section_id}}();
+</script>
+
+{% schema %}
+{
+    "name": "Featured Items",
+    "tag": "section",
+    "class": "section-featured-items",
+    "settings": [
+        {
+            "type": "text",
+            "id": "title",
+            "label": "Title",
+            "default": "Featured Items"
+        },
+        {
+            "type": "text",
+            "id": "subtitle",
+            "label": "Subtitle",
+            "default": "Discover the latest arrivals"
+        },
+        {
+            "type": "product_list",
+            "id": "products",
+            "label": "Products"
+        },
+        {
+            "type": "header",
+            "content": "Desktop padding"
+        },
+        {
+            "type": "range",
+            "id": "padding_top",
+            "min": 0,
+            "max": 128,
+            "step": 2,
+            "unit": "px",
+            "label": "Padding top",
+            "default": 48
+        },
+        {
+            "type": "range",
+            "id": "padding_bottom",
+            "min": 0,
+            "max": 128,
+            "step": 2,
+            "unit": "px",
+            "label": "Padding bottom",
+            "default": 48
+        },
+        {
+            "type": "header",
+            "content": "Mobile padding"
+        },
+        {
+            "type": "range",
+            "id": "mobile_padding_top",
+            "min": 0,
+            "max": 128,
+            "step": 2,
+            "unit": "px",
+            "label": "Padding top",
+            "default": 32
+        },
+        {
+            "type": "range",
+            "id": "mobile_padding_bottom",
+            "min": 0,
+            "max": 128,
+            "step": 2,
+            "unit": "px",
+            "label": "Padding bottom",
+            "default": 32
+        }
+    ],
+    "presets":[
+        {
+            "name": "Featured Items"
+        }
+    ]
+}
+{% endschema %}

@@ -1,0 +1,95 @@
+@import '../abstracts/variables';
+
+.menu-desktop {
+	height: $height-header;
+	display: flex;
+	gap: 2em;
+	&__item {
+		height: $height-header;
+		&.open {
+			.menu-desktop__mega-menu {
+				visibility: visible;
+				opacity: 1;
+			}
+		}
+		&.leveled {
+			.menu-desktop__mega-menu {
+				z-index: 9;
+			}
+		}
+	}
+	&__link {
+		display: flex;
+		height: $height-header;
+		align-items: center;
+		text-decoration: none;
+		position: relative;
+		z-index: 1;
+		&:hover,
+		&:focus {
+			text-decoration: none;
+		}
+	}
+	&__mega-menu {
+		display: block;
+		visibility: hidden;
+		opacity: 0;
+		width: 100%;
+		min-height: 10em;
+		background-color: $color-white;
+		position: absolute;
+		left: 0;
+		top: 100%;
+		transition-property: visibility, opacity;
+		transition-duration: 0.25s;
+		transition-timing-function: ease-out;
+		z-index: -99999;
+		padding: 1em 0 2em 0;
+		&__inner {
+			display: grid;
+			grid-template-columns: repeat(6, 1fr);
+			gap: 1em;
+			@media (max-width: $w-xl) {
+				gap: 0.5em;
+			}
+		}
+		a {
+			display: flex;
+			flex-direction: column;
+			gap: 0.25em;
+			text-decoration: none;
+			&:hover,
+			&:focus {
+				text-decoration: none;
+			}
+		}
+	}
+}
+.menu-desktop-device {
+	display: none;
+	width: 0;
+	height: 2px;
+	background-color: $color-black;
+	position: absolute;
+	left: 0;
+	top: calc(3.5em);
+	z-index: 0;
+	transition: all 0.25s linear;
+	&.visible {
+		display: block;
+	}
+}
+.menu-desktop-mask {
+	display: none;
+	position: fixed;
+	left: 0;
+	top: 0;
+	width: 100%;
+	height: 100vh;
+	background-color: $overlay;
+	z-index: 8;
+	// backdrop-filter: blur(2px);
+	&.show {
+		display: block;
+	}
+}

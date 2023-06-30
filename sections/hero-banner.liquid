@@ -1,20 +1,135 @@
 {% assign section_id = section.id | replace: "_", "" | replace: "-", "" %}
 
+{% if section.blocks.size > 1 %}
+<link href="{{ "swiper.css" | asset_url }}" rel="stylesheet">
+{% endif %}
 <link href="{{ "hero-banner.css" | asset_url }}" rel="stylesheet">
 
 <div class="wrap wrap--no-padding wrap--{{ section_id }}">
 
-    <div class="section-hero-banner__inner">
-        <p>Hero Banner</p>
+    <div class="section-hero-banner__inner{% if section.blocks.size > 1 %} has-slides{% endif %}">
+        <div class="swiper swiper__{{ section_id }}">
+            <div class="swiper-wrapper">
+                {% for block in section.blocks %}
+                <div 
+                    class="section-hero-banner__slide swiper-slide" 
+                    style="background: url({{ block.settings.image.src | img_url: "master" }}) 50% 50% / cover;" 
+                    data-title="{{ block.settings.title }}"
+                >
+                    <a href="{{ block.settings.url }}" aria-label="{{ block.settings.title }}">&nbsp;</a>
+                </div>
+                {% endfor %}
+            </div>
+        </div>
+        {% if section.blocks.size > 1 %}
+        <div class="swiper__controls">
+            <button class="swiper__controls__button swiper__controls__button--play-pause pause-slider" aria-label="Pause slider">
+                <span class="pause">{% render "icon-pause.svg" %}</span>
+                <span class="play">{% render "icon-play.svg" %}</span>
+            </button>
+            <div class="swiper__controls__pagination">
+                <div class="swiper__controls__pagination__count"></div>
+            </div>
+            <div class="swiper__controls__title">
+                <button class="swiper__controls__button swiper__controls__button--prev">{% render "icon-arrow-left.svg" %}</button>
+                <span class="slide-title"></span>
+                <button class="swiper__controls__button swiper__controls__button--next">{% render "icon-arrow-right.svg" %}</button>
+            </div>
+        </div>
+        {% endif %}
     </div>
     
 </div>
+
+{% if section.blocks.size > 1 %}
+<script src="{{ "swiper.js" | asset_url }}"></script>
+<script defer>
+
+    const swiper_{{ section_id }} = new Swiper('.swiper__{{ section_id }}', {
+        speed: 1000,
+        spaceBetween: 0,
+        loop: true,
+        slidesPerView: 1,
+        effect: 'fade',
+        autoplay: {
+            delay: 5000,
+            disableOnInteraction: false,
+        },
+        pagination: {
+            el: ".swiper__controls__pagination__count",
+            type: "fraction",
+        },
+        navigation: {
+            nextEl: '.swiper__controls__button--next',
+            prevEl: '.swiper__controls__button--prev',
+        },
+        init: false,
+    });
+
+    const swiperElement_{{ section_id }} = document.querySelector('.swiper__{{ section_id }}');
+    const slideTitleElement_{{ section_id }} = document.querySelector('.slide-title');
+    const wrapperElement_{{ section_id }} = document.querySelector('.wrap--{{ section_id }}')
+
+    const getActiveSlideTitle_{{ section_id }} = () => {
+        const activeSlide = swiperElement_{{ section_id }}.querySelector('.swiper-slide-active');
+        const slideTitle = activeSlide.dataset.title;
+        slideTitleElement_{{ section_id }}.innerHTML = slideTitle;
+    }
+
+    swiper_{{ section_id }}.on('init', function () {
+        getActiveSlideTitle_{{ section_id }}()
+    });
+    swiper_{{ section_id }}.init();
+
+    swiper_{{ section_id }}.on('slideChangeTransitionStart', function () {
+        getActiveSlideTitle_{{ section_id }}()
+    });
+
+    const playPauseButton_{{ section_id }} = wrapperElement_{{ section_id }}.querySelector('.swiper__controls__button--play-pause');
+    playPauseButton_{{ section_id }}.addEventListener('click', e => {
+        e.preventDefault();
+        if (playPauseButton_{{ section_id }}.classList.contains('pause-slider')) {
+            swiper_{{ section_id }}.autoplay.stop();
+            playPauseButton_{{ section_id }}.classList.remove('pause-slider');
+            playPauseButton_{{ section_id }}.classList.add('play-slider');
+        } else {
+            swiper_{{ section_id }}.autoplay.start();
+            playPauseButton_{{ section_id }}.classList.add('pause-slider');
+            playPauseButton_{{ section_id }}.classList.remove('play-slider');
+        }
+    });
+    
+</script>
+{% endif %}
 
 {% schema %}
 {
     "name": "Hero Banner",
     "tag": "section",
     "class": "section-hero-banner",
+    "blocks": [
+        {
+            "type": "slide",
+            "name": "Slide",
+            "settings": [
+                {
+                    "type": "text",
+                    "id": "title",
+                    "label": "Title"
+                },
+                {
+                    "type": "url",
+                    "id": "url",
+                    "label": "Link"
+                },
+                {
+                    "type": "image_picker",
+                    "id": "image",
+                    "label": "Image"
+                }
+            ]
+        }
+    ],
     "presets": [
         {
             "name":"Hero Banner"

@@ -1,5 +1,37 @@
 @import '../abstracts/variables';
 
 .card-product {
-	position: relative;
+	@include preload;
+	&__media {
+		margin-bottom: 1em;
+		a {
+			display: block;
+		}
+		video {
+			width: 100%;
+			height: auto;
+		}
+	}
+	&__details {
+		display: flex;
+		flex-direction: column;
+		gap: 0.25em;
+		a {
+			text-decoration: none;
+			&:hover,
+			&:focus {
+				text-decoration: none;
+			}
+		}
+		.price {
+			display: flex;
+			gap: 0.5em;
+		}
+	}
+	&__title {
+		h4 {
+			font-size: 1em;
+			margin-bottom: 0;
+		}
+	}
 }

@@ -1,21 +1,44 @@
 <link href="{{ "card-product.css" | asset_url }}" rel="stylesheet">
 
-<div class="card-product">
+{% assign show_video = product.metafields.product.show_product_card_video.value %}
+
+<div class="card-product{% unless request.design_mode or show_video == "True" %} preload{% endunless %}">
 
     <div class="card-product__media">
-        <a href="{{ product.url | within: collection }}">
-            {{ product | image_url: width: 768 | image_tag: widths: '320, 480, 640', loading: "lazy" }}
+        <a href="{{ product.url | within: collection }}" aria-label="{{ product.title }}">
+            {% if show_video == 'True' %}
+                {% assign video_count = 0 %}
+                {% for media in product.media %}
+                    {% if media.media_type == 'video' %}
+                    <video muted="" loop="" playsinline="" autoplay="" poster="">
+                        <source src="{{ media.sources[1].url }}" type="video/mp4">
+                    </video>
+                    {% assign video_count = video_count | plus: 1 %}
+                    {% endif %}
+                    {% if video_count == 1 %}{% break %}{% endif %}
+                {% endfor %}
+            {% else %}
+            <img 
+                {% if request.design_mode %}
+                src="{{ product.featured_image.src | img_url: '900x1228', crop: "center" }}" 
+                {% else %}
+                src="{{ "preload.gif" | asset_url }}" 
+                data-src="{{ product.featured_image.src | img_url: '900x1228', crop: "center" }}" 
+                {% endif %}
+                alt="{{ product.title }}" 
+                width="900" 
+                height="1228" 
+            >
+            {% endif %}
         </a>
     </div>
-
-    <div class="card-product__title">
-        <h4>
-            <a href="{{ product.url | within: collection }}">{{ product.title }}</a>
-        </h4>
-    </div>
-
-    <div class="card-product__price">
-        {% render "product-price", product: product %}
+    <div class="card-product__details">
+        <div class="card-product__title">
+            <h4><a href="{{ product.url | within: collection }}" aria-label="{{ product.title }}">{{ product.title }}</a></h4>
+        </div>
+        <div class="card-product__price">
+            {% render "product-price", product: product %}
+        </div>
     </div>
 
 </div>

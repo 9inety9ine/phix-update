@@ -30,7 +30,12 @@ select {
 }
 button,
 input[type='submit'] {
+	font: 1em $font-base;
+	appearance: none;
+	border: none;
+	background-color: transparent;
 	color: $color-black;
+	border-radius: 0;
 	&:focus {
 		outline: none;
 	}

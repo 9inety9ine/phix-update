@@ -3,24 +3,22 @@
 
 <link href="{{ "main-collection.css" | asset_url }}" rel="stylesheet">
 
-<div class="wrap wrap--x-large wrap--{{section_id }}">
+<div class="wrap wrap--xx-large wrap--{{section_id }} wrap--no-padding-s-mobile">
 
-    <h1>{{ collection.title }}</h1>
-
-{% paginate collection.products by 3 %}
-    <ul class="products">
-    {% for product in collection.products %}
-        <li class="products__product">{% render "card-product", product: product %}</li>
-    {% else %}
-        <li class="products__no-product"><p>{{ 'collection.no_products' | t }}</p></li>
-    {% endfor %}
-    </ul>
-    {% if paginate.pages > 1 %}
-    <div class="pagination section-collection__pagination">
-        {{ paginate | default_pagination: next: '>', previous: '<' }}
-    </div>
-    {% endif %}
-{% endpaginate %}
+    {% paginate collection.products by 999 %}
+        <ul class="products">
+        {% for product in collection.products %}
+            <li class="products__product">{% render "card-product", product: product %}</li>
+        {% else %}
+            <li class="products__no-product"><p>{{ 'collection.no_products' | t }}</p></li>
+        {% endfor %}
+        </ul>
+        {% if paginate.pages > 1 %}
+        <div class="pagination section-collection__pagination">
+            {{ paginate | default_pagination: next: '>', previous: '<' }}
+        </div>
+        {% endif %}
+    {% endpaginate %}
 
 </div>
 

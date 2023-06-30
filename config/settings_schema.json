@@ -24,7 +24,25 @@
 				"type": "color",
 				"id": "color_black",
 				"label": "Black",
-				"default": "#101010"
+				"default": "#000000"
+			},
+			{
+				"type": "color",
+				"id": "color_grey_light",
+				"label": "Grey - Light",
+				"default": "#fafafa"
+			},
+			{
+				"type": "color",
+				"id": "color_grey_medium",
+				"label": "Grey - Medium",
+				"default": "#cccccc"
+			},
+			{
+				"type": "color",
+				"id": "color_grey_dark",
+				"label": "Grey - Dark",
+				"default": "#555555"
 			},
 			{
 				"type": "header",

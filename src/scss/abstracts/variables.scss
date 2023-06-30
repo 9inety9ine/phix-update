@@ -1,14 +1,16 @@
 // font families
-$font-base: 'poppins', arial, sans-serif;
+$font-base: 'helvetica-web', 'HelveticaNeue-Light', 'Helvetica Neue Light', 'Helvetica Neue', Helvetica, Arial, 'Lucida Grande', sans-serif;
 
 // font-weights
-$weight-regular: 300;
-$weight-bold: 500;
-$weight-heavy: 700;
+$weight-regular: normal;
+$weight-bold: bold;
 
 // theme colours
 $color-white: var(--color-white);
 $color-black: var(--color-black);
+$color-grey-light: var(--color-grey-light);
+$color-grey-medium: var(--color-grey-medium);
+$color-grey-dark: var(--color-grey-dark);
 
 // additional colours
 $color-success: var(--color-success);
@@ -19,15 +21,30 @@ $color-warning: var(--color-warning);
 $border-black: 1px solid $color-black;
 
 // layout
-$height-header: 4em;
+$height-header: 5.33333333333em;
+
+// overlays
+$overlay: rgba(0, 0, 0, 0.5);
 
 // drop-shadows
 $drop: 1px 1px 3px rgba(0, 0, 0, 0.2);
 
 // breakpoints
-$w-xxl: 1600px;
+$w-xxl: 1920px;
 $w-xl: 1440px;
 $w-l: 1024px;
 $w-m: 768px;
 $w-s: 480px;
 $w-xs: 320px;
+
+// preload
+@mixin preload {
+	position: relative;
+	opacity: 1;
+	transition-property: opacity;
+	transition-duration: 0.5s;
+	transition-timing-function: ease-out;
+	&.preload {
+		opacity: 0;
+	}
+}

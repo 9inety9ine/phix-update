@@ -3,7 +3,132 @@
 .section-hero-banner {
 	&__inner {
 		position: relative;
-		padding: 4em 0;
 		text-align: center;
+		background-color: $color-white;
+		height: 75vh;
+		min-height: 62.5em;
+		display: flex;
+		&.has-slides {
+			margin-bottom: 3em;
+			@media (max-width: $w-m) {
+				margin-bottom: 2em;
+			}
+		}
+	}
+	&__slide {
+		height: 100%;
+		width: 100%;
+		a {
+			display: block;
+			width: 100%;
+			height: 100%;
+		}
+	}
+	.swiper {
+		width: 100%;
+		min-width: 100%;
+		height: inherit;
+		min-height: inherit;
+		position: relative;
+		.swiper-wrapper {
+			height: 100%;
+		}
+		&__controls {
+			position: absolute;
+			left: 50%;
+			top: 100%;
+			display: flex;
+			flex-direction: column;
+			gap: 1em;
+			transform: translate(-50%, -50%);
+			background-color: $color-white;
+			width: 30em;
+			padding: 1em;
+			z-index: 2;
+			@media (max-width: $w-m) {
+				width: 100%;
+				background-color: transparent;
+				gap: 2em;
+			}
+			&__pagination {
+				font-size: 0.91666666666em;
+				@media (max-width: $w-m) {
+					color: $color-white;
+				}
+				&__count {
+					display: flex;
+					justify-content: center;
+					align-items: center;
+					height: 2.25em;
+					line-height: 1;
+				}
+			}
+			&__title {
+				display: flex;
+				justify-content: space-between;
+				align-items: center;
+				text-align: center;
+				.slide-title {
+					font-size: 0.91666666666em;
+					font-weight: $weight-bold;
+				}
+			}
+			&__button {
+				appearance: none;
+				font: 1em $font-base;
+				width: 1.25em;
+				height: 2em;
+				background-color: transparent;
+				border: none;
+				display: flex;
+				justify-content: center;
+				align-items: center;
+				cursor: pointer;
+				svg {
+					width: 1.25em;
+					height: 1.25em;
+					polyline {
+						fill: none;
+						stroke: $color-black;
+						stroke-linecap: round;
+						stroke-miterlimit: 10;
+						stroke-width: 2px;
+					}
+				}
+				&--play-pause {
+					width: 3.25em;
+					height: 3.25em;
+					position: absolute;
+					left: 0;
+					top: 0;
+					@media (max-width: $w-m) {
+						width: 3.25em;
+						height: 4em;
+					}
+					svg {
+						fill: $color-black;
+						@media (max-width: $w-m) {
+							fill: $color-white;
+						}
+					}
+					&.pause-slider {
+						.pause {
+							display: block;
+						}
+						.play {
+							display: none;
+						}
+					}
+					&.play-slider {
+						.pause {
+							display: none;
+						}
+						.play {
+							display: block;
+						}
+					}
+				}
+			}
+		}
 	}
 }

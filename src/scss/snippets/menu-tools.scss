@@ -1,0 +1,37 @@
+@import '../abstracts/variables';
+
+.menu-tools {
+	display: flex;
+	margin-left: auto;
+	gap: 0.25em;
+	&__link {
+		span {
+			display: none;
+		}
+		a {
+			display: flex;
+			width: 2.5em;
+			height: 2.5em;
+			justify-content: center;
+			align-items: center;
+		}
+		svg {
+			width: 1.66666666667em;
+			height: 1.66666666667em;
+			path,
+			circle {
+				fill: none;
+				stroke: $color-black;
+				stroke-width: 2;
+				stroke-linecap: round;
+				stroke-linejoin: round;
+			}
+		}
+		&--account,
+		&--wishlist {
+			@media (max-width: $w-l) {
+				display: none;
+			}
+		}
+	}
+}
