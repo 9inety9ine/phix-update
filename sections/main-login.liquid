@@ -1,0 +1,109 @@
+{% assign section_id = section.id | replace: "_", "" | replace: "-", "" %}
+{% render "section-styles", section_id: section_id, section: section %}
+
+<link href="{{ "main-login.css" | asset_url }}" rel="stylesheet">
+
+<div class="wrap wrap--medium wrap--{{section_id }}">
+
+    <h2>{{ 'account.login.title' | t }}</h2>
+
+    {% form 'customer_login', class: "form form--login" %}
+
+        {{ form.errors | default_errors }}
+
+        <div class="form-row form-row--full">
+            <label for="customer_email" class="required">{{ 'account.login.email_label' | t }}</label>
+            <input type="email" name="customer[email]" placeholder="{{ 'account.login.email_placeholder' | t }}" required="required">
+        </div>
+        <div class="form-row form-row--full">
+            <label for="customer_password" class="required">{{ 'account.login.password_label' | t }}</label>
+            <input type="password" name="customer[password]" placeholder="{{ 'account.login.password_placeholder' | t }}" required="required">
+        </div>
+        <div class="form-row form-row--full form-row--actions">
+            <button type="submit" class="button" aria-label="{{ 'account.login.login_button' | t }}">{{ 'account.login.login_button' | t }}</button>
+        </div>
+        <div class="form-row form-row--full form-row--actions">
+            <a href="#" aria-label="{{ 'account.login.forgot_password_link' | t }}">{{ 'account.login.forgot_password_link' | t }}</a>
+            <a href="{{ routes.account_reguster_url }}" aria-label="{{ 'account.login.create_account_link' | t }}">{{ 'account.login.create_account_link' | t }}</a>
+        </div>
+
+    {% endform %}
+
+    <h2>{{ 'account.forgot_password.title' | t }}</h2>
+
+    {% form 'recover_customer_password', class: "form form--forgot-password" %}
+
+        {{ form.errors | default_errors }}
+        
+        <div class="form-row form-row--full">
+            <label for="customer_email" class="required">{{ 'account.forgot_password.email_label' | t }}</label>
+            <input type="email" name="email" placeholder="{{ 'account.forgot_password.email_placeholder' | t }}" required="required">
+        </div>
+        <div class="form-row form-row--full form-row--actions">
+            <button type="submit" class="button" aria-label="{{ 'account.forgot_password.submit_button' | t }}">{{ 'account.forgot_password.submit_button' | t }}</button>
+        </div>
+        <div class="form-row form-row--full form-row--actions">
+            <a href="#" aria-label="{{ 'account.forgot_password.cancel_link' | t }}">{{ 'account.forgot_password.cancel_link' | t }}</a>
+        </div>
+
+    {% endform %}
+
+</div>
+
+{% schema %}
+{
+    "name": "Login",
+    "tag": "section",
+    "class": "section-login",
+    "settings": [
+        {
+            "type": "header",
+            "content": "Desktop padding"
+        },
+        {
+            "type": "range",
+            "id": "padding_top",
+            "min": 0,
+            "max": 128,
+            "step": 2,
+            "unit": "px",
+            "label": "Padding top",
+            "default": 64
+        },
+        {
+            "type": "range",
+            "id": "padding_bottom",
+            "min": 0,
+            "max": 128,
+            "step": 2,
+            "unit": "px",
+            "label": "Padding bottom",
+            "default": 64
+        },
+        {
+            "type": "header",
+            "content": "Mobile padding"
+        },
+        {
+            "type": "range",
+            "id": "mobile_padding_top",
+            "min": 0,
+            "max": 128,
+            "step": 2,
+            "unit": "px",
+            "label": "Padding top",
+            "default": 32
+        },
+        {
+            "type": "range",
+            "id": "mobile_padding_bottom",
+            "min": 0,
+            "max": 128,
+            "step": 2,
+            "unit": "px",
+            "label": "Padding bottom",
+            "default": 32
+        }
+    ]
+}
+{% endschema %}

@@ -1,0 +1,142 @@
+{
+	"general": {
+		"404": {
+			"title": "404: Page not found",
+			"subtext_html": "The page you were looking for does not exist."
+		},
+		"tools_menu": {
+			"search_label": "Search",
+			"account_label": "Account",
+			"cart_label": "Cart"
+		},
+		"breadcrumbs": {
+			"home_label": "Home"
+		}
+	},
+	"products": {
+		"product": {
+			"add_to_cart": "Add to cart",
+			"sold_out": "Sold out",
+			"quantity_label": "Quantity"
+		}
+	},
+	"collection": {
+		"no_products": "No matches."
+	},
+	"search": {
+		"search_label": "Search",
+		"search_placeholder": "Enter your search term...",
+		"search_submit": "Search",
+		"no_results": "No results."
+	},
+	"cart": {
+		"title": "Your Cart",
+		"cart_empty": "Your cart is empty.",
+		"sub_total": "Sub-total",
+		"update_cart": "Update",
+		"checkout": "Checkout securely",
+		"remove_item": "Remove"
+	},
+	"contact_form": {
+		"name_label": "Name",
+		"name_placeholder": "Your name",
+		"email_label": "Email address",
+		"email_placeholder": "Your email address",
+		"phone_label": "Phone number",
+		"phone_placeholder": "Your phone number",
+		"message_label": "Message",
+		"message_placeholder": "Your message",
+		"submit_button": "Send message",
+		"success_message": "Thank you for your contact."
+	},
+	"account": {
+		"reset_password": {
+			"title": "Reset password",
+			"enter_password": "Password",
+			"confirm_password": "Confirm password",
+			"reset_button": "Reset password"
+		},
+		"activate_account": {
+			"title": "Activate Account",
+			"password_label": "Password",
+			"password_placeholder": "Enter your password",
+			"confirm_password_label": "Confirm password",
+			"confirm_password_placeholder": "Confirm your password",
+			"accept_button": "Activate Account",
+			"decline_button": "Decline"
+		},
+		"login": {
+			"title": "Login",
+			"login_button": "Sign in",
+			"email_label": "Email address",
+			"email_placeholder": "Your email address",
+			"password_label": "Password",
+			"password_placeholder": "Your password",
+			"forgot_password_link": "Forgot password?",
+			"create_account_link": "Create account"
+		},
+		"forgot_password": {
+			"title": "Forgot password",
+			"submit_button": "Submit",
+			"email_label": "Email address",
+			"email_placeholder": "Your email address",
+			"cancel_link": "Cancel"
+		},
+		"register": {
+			"title": "Create account",
+			"first_name_label": "First name",
+			"first_name_placeholder": "Your first name",
+			"last_name_label": "Last name",
+			"last_name_placeholder": "Your last name",
+			"email_label": "Email address",
+			"email_placeholder": "Your email address",
+			"password_label": "Password",
+			"password_placeholder": "Your password",
+			"confirm_password_label": "Confirm password",
+			"confirm_password_placeholder": "Confirm your password",
+			"register_button": "Create account"
+		},
+		"addresses": {
+			"default_address_title": "Your address",
+			"new_address_title": "New address",
+			"edit_address_title": "Edit address",
+			"first_name": "First name",
+			"last_name": "Last name",
+			"company": "Company",
+			"address1": "Address 1",
+			"address2": "Address 2",
+			"country": "Country",
+			"province": "Province",
+			"city": "City",
+			"zip": "Postcode",
+			"phone": "Phone number",
+			"default": "Default address",
+			"set_as_default": "Set as default address?",
+			"add_address_button": "Add address",
+			"update_address_button": "Update address"
+		},
+		"menu": {
+			"orders": "My orders",
+			"addresses": "My addresses",
+			"logout": "Sign out",
+			"continue_shopping": "Continue shopping"
+		},
+		"orders": {
+			"orders_title": "Your orders",
+			"no_orders": "You haven't placed any orders yet.",
+			"order_date": "Date:",
+			"order_summary": "Summary:",
+			"order_summary_items": "items",
+			"order_status": "Status:",
+			"order_total": "Total:",
+			"view_order": "View Order"
+		},
+		"order": {
+			"billing_address": "Billing Address",
+			"shipping_address": "Shipping Address",
+			"payment_status": "Payment Status:",
+			"fulfillment_status": "Fulfillment Status:",
+			"order_items": "Order Items:"
+		}
+	}
+}

@@ -1,0 +1,36 @@
+{% assign section_id = section.id | replace: "_", "" | replace: "-", "" %}
+
+<div class="wrap wrap--x-large wrap--{{ section_id }}">
+
+    <div class="header-main__inner">
+
+        <div class="header-main__branding">
+            <a href="{{ routes.root_url }}" aria-label="{{ shop.name }}">{{ shop.name }}</a>
+        </div>
+
+        <div class="header-main__menu">
+            {% render "menu-main", menu: section.settings.menu %}
+        </div>
+
+        <div class="header-main__tools">
+            {% render "menu-tools" %}
+        </div>
+
+    </div>
+    
+</div>
+
+{% schema %}
+{
+    "name": "Header",
+    "tag": "header",
+    "class": "header-main",
+    "settings": [
+        {
+            "type": "link_list",
+            "id": "menu",
+            "label": "Menu" 
+        }
+    ]
+}
+{% endschema %}

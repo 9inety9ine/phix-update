@@ -1,0 +1,64 @@
+<!doctype html>
+<html>
+  <head>
+    
+    {%- render 'meta-tags' %}
+    {%- render 'meta-social' %}
+    {%- render "meta-favicon" %}
+    {%- render "meta-fonts" %}
+    
+    <!-- content for header -->
+    {{ content_for_header }}
+
+    <!-- core css -->
+    <link href="{{ "application.css" | asset_url }}" rel="stylesheet">
+
+    <!-- global variables -->
+    <script>
+      Shopify.money_format = '{{ shop.money_format }}';
+      const label_add_to_cart = "{{ 'products.product.add_to_cart' | t }}";
+      const label_sold_out = "{{ 'products.product.sold_out' | t }}";
+      {%- if request.page_type == "product" %}
+      const variant_stock = [
+        {%- for variant in product.variants -%}
+          {"id":{{ variant.id }},"quantity":{{ variant.inventory_quantity }}},
+        {%- endfor -%}
+      ]
+      {%- endif %}
+    </script>
+
+    <!-- global colours -->
+    <style>
+      :root {
+        --color-white: {{ settings.color_white }};
+        --color-black: {{ settings.color_black }};
+        --color-success: {{ settings.color_success }};
+        --color-failure: {{ settings.color_failure }};
+        --color-warning: {{ settings.color_warning }};
+      }
+    </style>
+
+  </head>
+
+  <body class="template-{{ template | handleize }}">
+
+    {% section "header" %}
+
+    <main>
+
+      {{ content_for_layout }}
+
+    </main>
+    
+    {% section "footer" %}
+
+    <!-- core js -->
+    <script src="{{ 'application.js' | asset_url }}" defer></script>
+    
+    {% if template contains "customers" %}
+    <!-- country selector -->
+    <script src="{{ 'theme-addresses.js' | asset_url }}" defer></script>
+    {% endif %}
+
+  </body>
+</html>

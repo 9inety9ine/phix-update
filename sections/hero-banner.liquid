@@ -1,0 +1,24 @@
+{% assign section_id = section.id | replace: "_", "" | replace: "-", "" %}
+
+<link href="{{ "hero-banner.css" | asset_url }}" rel="stylesheet">
+
+<div class="wrap wrap--no-padding wrap--{{ section_id }}">
+
+    <div class="section-hero-banner__inner">
+        <p>Hero Banner</p>
+    </div>
+    
+</div>
+
+{% schema %}
+{
+    "name": "Hero Banner",
+    "tag": "section",
+    "class": "section-hero-banner",
+    "presets": [
+        {
+            "name":"Hero Banner"
+        }
+    ]
+}
+{% endschema %}

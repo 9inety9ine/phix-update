@@ -1,0 +1,20 @@
+<link href="{{ "account-aside.css" | asset_url }}" rel="stylesheet">
+
+<aside class="account-aside">
+    <nav>
+        <ul class="menu menu-account">
+            <li class="menu-account__link">
+                <a href="{{ routes.account_url }}" aria-label="{{ 'account.menu.orders' | t }}">{{ 'account.menu.orders' | t }}</a>
+            </li>
+            <li class="menu-account__link">
+                <a href="{{ routes.account_addresses_url }}" aria-label="{{ 'account.menu.addresses' | t }}">{{ 'account.menu.addresses' | t }}</a>
+            </li>
+            <li class="menu-account__link">
+                <a href="{{ routes.root_url }}" aria-label="{{ 'account.menu.continue_shopping' | t }}">{{ 'account.menu.continue_shopping' | t }}</a>
+            </li>
+            <li class="menu-account__link">
+                <a href="{{ routes.account_logout_url }}" aria-label="{{ 'account.menu.logout' | t }}">{{ 'account.menu.logout' | t }}</a>
+            </li>
+        </ul>
+    </nav>
+</aside>

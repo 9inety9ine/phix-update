@@ -1,0 +1,11 @@
+<link href="{{ "cart-quantity.css" | asset_url }}" rel="stylesheet">
+
+<div class="cart-quantity" data-id="{{ item.variant_id }}">
+    <button class="increment down button button--secondary" type="button">
+        <span>-</span>
+    </button>
+    <input type="number" name="updates[]" id="updates_{{ item.key }}" value="{{ item.quantity }}" min="0" readonly>
+    <button class="increment up button button--secondary" type="button">
+        <span>+</span>
+    </button>
+</div>

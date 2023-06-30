@@ -1,0 +1,102 @@
+{% assign section_id = section.id | replace: "_", "" | replace: "-", "" %}
+{% render "section-styles", section_id: section_id, section: section %}
+
+<div class="wrap wrap--x-large wrap--{{section_id }}">
+
+    <p>Footer</p>
+
+</div>
+
+{% schema %}
+{
+    "name": "Footer",
+    "tag": "footer",
+    "class": "footer-main",
+    "settings": [
+        {
+            "type": "header",
+            "content": "Colour scheme"
+        },
+        {
+            "type": "select",
+            "id": "background_color",
+            "label": "Background",
+            "options": [
+                {
+                    "value": "var(--color-white)",
+                    "label": "White"
+                },
+                {
+                    "value": "var(--color-black)",
+                    "label": "Black"
+                }
+            ],
+            "default": "var(--color-black)"
+        },
+        {
+            "type": "select",
+            "id": "text_color",
+            "label": "Text",
+            "options": [
+                {
+                    "value": "var(--color-white)",
+                    "label": "White"
+                },
+                {
+                    "value": "var(--color-black)",
+                    "label": "Black"
+                }
+            ],
+            "default": "var(--color-white)"
+        },
+        {
+            "type": "header",
+            "content": "Desktop padding"
+        },
+        {
+            "type": "range",
+            "id": "padding_top",
+            "min": 0,
+            "max": 128,
+            "step": 2,
+            "unit": "px",
+            "label": "Padding top",
+            "default": 64
+        },
+        {
+            "type": "range",
+            "id": "padding_bottom",
+            "min": 0,
+            "max": 128,
+            "step": 2,
+            "unit": "px",
+            "label": "Padding bottom",
+            "default": 64
+        },
+        {
+            "type": "header",
+            "content": "Mobile padding"
+        },
+        {
+            "type": "range",
+            "id": "mobile_padding_top",
+            "min": 0,
+            "max": 128,
+            "step": 2,
+            "unit": "px",
+            "label": "Padding top",
+            "default": 32
+        },
+        {
+            "type": "range",
+            "id": "mobile_padding_bottom",
+            "min": 0,
+            "max": 128,
+            "step": 2,
+            "unit": "px",
+            "label": "Padding bottom",
+            "default": 32
+        }
+    ]
+}
+{% endschema %}

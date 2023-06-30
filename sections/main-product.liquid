@@ -1,0 +1,122 @@
+{% assign section_id = section.id | replace: "_", "" | replace: "-", "" %}
+{% render "section-styles", section_id: section_id, section: section %}
+
+<link href="{{ "main-product.css" | asset_url }}" rel="stylesheet">
+
+{% assign current_variant = product.selected_or_first_available_variant %}
+
+<div class="wrap wrap--x-large wrap--{{section_id }}">
+
+  <div class="section-product__product">
+
+    <div class="section-product__media">
+
+        {% for image in product.images %}
+        {% if forloop.first %}
+            {{ image | image_url: width: 768 | image_tag: widths: '320, 480, 640' }}
+        {% else %}
+            {{ image | image_url: width: 768 | image_tag: widths: '320, 480, 640', loading: "lazy" }}
+        {% endif %}
+        {% endfor %}
+
+    </div>
+
+    <div class="section-product__details">
+
+        {% render "breadcrumbs" %}
+
+        {% form 'product', product %}
+        
+            <h1>{{ product.title }}</h1>
+
+            {% render "product-price", product: product %}
+        
+            <div class="section-product__details--description">{{ product.description }}</div>
+
+            <select name="id" id="productSelect">
+                {% for variant in product.variants %}
+                {% if variant.available %}
+                    <option value="{{ variant.id }}">
+                    {{ variant.title }} - {{ variant.price | money_with_currency }}
+                    </option>
+                {% else %}
+                    <option disabled="disabled">
+                    {{ variant.title }} - {{ 'products.product.sold_out' | t }}
+                    </option>
+                {% endif %}
+                {% endfor %}
+            </select>
+
+            {% render "product-quantity" , product: product %}
+
+            {% if product.available %}
+            <button type="submit" name="add" class="button button-add-to-cart">{{ 'products.product.add_to_cart' | t }}</button>
+            {% else %}
+            <button type="submit" name="add" class="button button-add-to-cart" disabled>{{ 'products.product.sold_out' | t }}</button>
+            {% endif %}
+
+        {% endform %}
+
+    </div>
+
+  </div>
+    
+</div>
+
+{% schema %}
+{
+    "name": "Product",
+    "tag": "section",
+    "class": "section-product",
+    "settings": [
+        {
+            "type": "header",
+            "content": "Desktop padding"
+        },
+        {
+            "type": "range",
+            "id": "padding_top",
+            "min": 0,
+            "max": 128,
+            "step": 2,
+            "unit": "px",
+            "label": "Padding top",
+            "default": 64
+        },
+        {
+            "type": "range",
+            "id": "padding_bottom",
+            "min": 0,
+            "max": 128,
+            "step": 2,
+            "unit": "px",
+            "label": "Padding bottom",
+            "default": 64
+        },
+        {
+            "type": "header",
+            "content": "Mobile padding"
+        },
+        {
+            "type": "range",
+            "id": "mobile_padding_top",
+            "min": 0,
+            "max": 128,
+            "step": 2,
+            "unit": "px",
+            "label": "Padding top",
+            "default": 32
+        },
+        {
+            "type": "range",
+            "id": "mobile_padding_bottom",
+            "min": 0,
+            "max": 128,
+            "step": 2,
+            "unit": "px",
+            "label": "Padding bottom",
+            "default": 32
+        }
+    ]
+}
+{% endschema %}

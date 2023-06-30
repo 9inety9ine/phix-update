@@ -1,0 +1,21 @@
+<link href="{{ "card-product.css" | asset_url }}" rel="stylesheet">
+
+<div class="card-product">
+
+    <div class="card-product__media">
+        <a href="{{ product.url | within: collection }}">
+            {{ product | image_url: width: 768 | image_tag: widths: '320, 480, 640', loading: "lazy" }}
+        </a>
+    </div>
+
+    <div class="card-product__title">
+        <h4>
+            <a href="{{ product.url | within: collection }}">{{ product.title }}</a>
+        </h4>
+    </div>
+
+    <div class="card-product__price">
+        {% render "product-price", product: product %}
+    </div>
+
+</div>

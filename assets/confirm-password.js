@@ -1,0 +1,1 @@
+const passwordField=document.getElementById("password"),passwordConfirmField=document.getElementById("password-confirm"),submitButton=document.getElementById("register-submit");submitButton.addEventListener("click",function(e){passwordField.value!==passwordConfirmField.value&&(e.preventDefault(),alert("Passwords do not match"))});
