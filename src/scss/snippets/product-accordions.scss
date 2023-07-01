@@ -1,0 +1,32 @@
+@import '../abstracts/variables';
+
+.product-accordions {
+	display: block;
+	border-bottom: 1px solid $color-grey-medium;
+	.accordion {
+		padding: 0 1.5em;
+		border-top: 1px solid $color-grey-medium;
+		button {
+			display: flex;
+			height: 5em;
+			text-transform: uppercase;
+			font-weight: $weight-bold;
+			width: 100%;
+			align-items: center;
+			justify-content: space-between;
+			span {
+				font-size: 1.16666666667em;
+			}
+		}
+		&.open {
+			.accordion-content {
+				display: block;
+			}
+		}
+	}
+	.accordion-content {
+		display: none;
+		padding-bottom: 1.25em;
+		text-transform: none;
+	}
+}

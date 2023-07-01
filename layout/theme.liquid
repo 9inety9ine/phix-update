@@ -22,6 +22,7 @@
       Shopify.money_format = '{{ shop.money_format }}';
       const label_add_to_cart = "{{ 'products.product.add_to_cart' | t }}";
       const label_sold_out = "{{ 'products.product.sold_out' | t }}";
+      const label_preorder = "{{ 'products.product.preorder' | t }}";
       {%- if request.page_type == "product" %}
       const variant_stock = [
         {%- for variant in product.variants -%}
@@ -48,6 +49,22 @@
   </head>
 
   <body class="template-{{ template | handleize }}">
+
+    <script>
+      window.KlarnaThemeGlobals={};
+      {% case template.name %}
+        {% when"product" %}
+          {% if product.first_available_variant.price %}
+            window.KlarnaThemeGlobals.data_purchase_amount = {{ product.first_available_variant.price }};
+          {% endif %}
+          window.KlarnaThemeGlobals.productVariants = {{ product.variants | json }};
+          window.KlarnaThemeGlobals.documentCopy = document.cloneNode(true);
+        {% when"cart" %}
+          window.KlarnaThemeGlobals.data_purchase_amount = {{ cart.total_price }};
+          window.KlarnaThemeGlobals.documentCopy = document.cloneNode(true);
+      {%endcase%}
+    </script>
+    <script src="https://eu-library.klarnaservices.com/lib.js" data-client-id="1d10b0e6-8eab-5948-beff-a4af483f6384"></script>
 
     {% section "header" %}
 

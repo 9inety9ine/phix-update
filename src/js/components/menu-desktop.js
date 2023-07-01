@@ -41,6 +41,6 @@ if (menuItems && menuLinks && menuDevice)
 				item.classList.remove('open');
 				menuDevice.classList.remove('visible');
 				menuMask.classList.remove('show');
-			}, 1000);
+			}, 500);
 		});
 	}

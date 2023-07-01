@@ -1,12 +1,1 @@
-<link href="{{ "product-quantity.css" | asset_url }}" rel="stylesheet">
-
-<div class="product-quantity">
-    <label for="quantity">{{ 'products.product.quantity_label' | t }}</label>
-    <button class="increment down button button--secondary" type="button"{% unless product.available %} disabled{% endunless %}>
-        <span>-</span>
-    </button>
-    <input type="number" name="quantity" value="1" readonly{% unless product.available %} class="disabled" disabled{% endunless %}>
-    <button class="increment up button button--secondary" type="button"{% unless product.available %} disabled{% endunless %}>
-        <span>+</span>
-    </button>
-</div>
+<input type="hidden" name="quantity" value="1" readonly{% unless product.available %} class="disabled" disabled{% endunless %}>

@@ -2,36 +2,129 @@
 
 .section-product {
 	&__product {
-		display: flex;
-		gap: 2em;
+		display: grid;
+		grid-template-columns: 52.5% 1fr;
+		gap: 10em;
+		@media (max-width: $w-l) {
+			gap: 3em;
+		}
 		@media (max-width: $w-m) {
-			flex-wrap: wrap;
+			grid-template-columns: 1fr;
+			grid-template-rows: auto;
 		}
 	}
 	&__media {
-		width: 50%;
-		min-width: 50%;
-		display: flex;
-		flex-direction: column;
-		@media (max-width: $w-m) {
-			width: 100%;
-			min-width: 100%;
-		}
+		width: 100%;
+		min-width: 100%;
+		max-width: 100%;
+		display: grid;
+		grid-template-columns: repeat(2, 1fr);
+		gap: 0.25em;
 	}
 	&__details {
-		display: flex;
-		flex-direction: column;
-		gap: 1em;
 		width: 100%;
-		h1 {
-			margin: 0;
+		padding-right: 10em;
+		padding-bottom: 2em;
+		padding-top: 2em;
+		height: fit-content;
+		align-self: flex-start;
+		position: sticky;
+		top: 0;
+		@media (max-width: $w-l) {
+			padding-right: 0;
 		}
 		form {
+			align-self: flex-start;
 			display: flex;
 			flex-direction: column;
-			gap: 1em;
 		}
-		&--description {
+		&__availability {
+			margin-bottom: 2em;
+			.alert {
+				display: flex;
+				align-items: center;
+				gap: 0.5em;
+			}
+			.marker {
+				width: 1.5em;
+				height: 1.5em;
+				background-color: #e1f0e2;
+				border-radius: 50%;
+				display: flex;
+				align-items: center;
+				justify-content: center;
+				span {
+					display: block;
+					width: 0.83333333333em;
+					height: 0.83333333333em;
+					border-radius: 50%;
+					background-color: $color-success;
+					border: 2px solid $color-white;
+				}
+			}
+			.label {
+				font-size: 0.91666666666em;
+				line-height: 1;
+			}
+		}
+		&__title {
+			margin-bottom: 0.75em;
+			h1 {
+				font-size: 1.16666666667em;
+				margin: 0;
+			}
+		}
+		&__colour {
+			margin-bottom: 0.75em;
+		}
+		&__price {
+			margin-bottom: 2em;
+			line-height: 1;
+			span {
+				font-size: 1.16666666667em;
+				font-weight: $weight-bold;
+			}
+		}
+		&__variants {
+			margin-bottom: 1.5em;
+			&__name {
+				display: flex;
+				justify-content: space-between;
+				align-items: center;
+				font-weight: $weight-bold;
+				margin-bottom: 0.75em;
+				button {
+					font-weight: $weight-bold;
+					text-transform: uppercase;
+					text-decoration: underline;
+				}
+			}
+		}
+		&__actions {
+			margin-bottom: 1em;
+		}
+		&__klarna {
+			margin-top: 2em;
+			klarna-placement {
+				display: block;
+				margin-bottom: 2em;
+			}
+		}
+		&__messages {
+			display: flex;
+			flex-direction: column;
+			gap: 0.25em;
+			.country-message,
+			.continent-message {
+				text-align: center;
+				font-weight: $weight-bold;
+				font-size: 0.91666666666em;
+				&.hidden {
+					display: none;
+				}
+			}
+		}
+		&__description {
 			ul,
 			ol {
 				margin: 0 0 1em 0;

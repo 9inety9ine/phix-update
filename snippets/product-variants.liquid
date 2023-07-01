@@ -1,0 +1,39 @@
+<link href="{{ "product-variants.css" | asset_url }}" rel="stylesheet">
+
+<div id="product-variant-output"></div>
+
+{% for option in product.options_with_values %}
+    <span class="variant-name-{% increment %}" style="display:none;">{{ option.name }}</span>
+{% endfor %}
+
+<select name="id" id="product-variant-select">
+
+ {% for variant in product.variants %}
+
+        {% assign variant_stock_count = variant.inventory_quantity %}
+
+        {% if variant_stock_count == 0 %}
+            {% if product.tags contains "preorder" or product.tags contains "Preorder" or product.tags contains "PREORDER" %}
+            {% assign variant_output = "Preorder" %}
+        {% else %}
+            {% assign variant_output = "Out of Stock" %}
+            {% endif %}
+        {% endif %}
+        {% if variant_stock_count >= 1 and variant_stock_count <= 5 %}{% assign variant_output = variant_stock_count | append: " available" %}{% endif %}
+        {% if variant_stock_count > 5 %}{% assign variant_output = "In stock" %}{% endif %}
+
+        <option 
+            value="{{ variant.id }}" 
+            data-inventory="{{ variant_output }}" 
+            data-price="{{ variant.price }}" 
+            data-title="{{ variant.title }}" 
+            {% unless product.available %} disabled="disabled"{% endunless %}
+        >
+            {{ variant.title }}
+        </option>
+
+{% endfor %}
+
+</select>
+
+<script src="{{ "product-variants.js" | asset_url }}" defer></script>

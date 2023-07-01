@@ -1,0 +1,22 @@
+<link href="{{ "product-accordions.css" | asset_url }}" rel="stylesheet">
+
+<div class="product-accordions">
+    <div class="accordion accordion--description open">
+        <button aria-label="Description"><span>Description</span></button>
+        <div class="accordion-content">
+            {{ product.description }}
+        </div>
+    </div>
+    <div class="accordion accordion--care">
+        <button aria-label="Details &amp; Care"><span>Details &amp; Care</span></button>
+        <div class="accordion-content">
+            <p>Details &amp; Care Content</p>
+        </div>
+    </div>
+    <div class="accordion accordion--delivery">
+        <button aria-label="Delivery &amp; Returns"><span>Delivery &amp; Returns</span></button>
+        <div class="accordion-content">
+            <p>Delivery &amp; Returns</p>
+        </div>
+    </div>
+</div>

@@ -7,67 +7,206 @@
 
 <div class="wrap wrap--xx-large wrap--{{section_id }}">
 
-  <div class="section-product__product">
+    {% render "breadcrumbs" %}
 
-    <div class="section-product__media">
+    <div class="section-product__product">
 
-        {% for image in product.images %}
-        {% if forloop.first %}
-            {{ image | image_url: width: 768 | image_tag: widths: '320, 480, 640' }}
-        {% else %}
-            {{ image | image_url: width: 768 | image_tag: widths: '320, 480, 640', loading: "lazy" }}
-        {% endif %}
-        {% endfor %}
+        <div class="section-product__media">
 
-    </div>
+            {% for image in product.images %}
+                <a href="{{ image | img_url: 'master' }}">
+                    <img 
+                        data-src="{{ image.src | img_url: 'master' }}" 
+                        src="{{ 'preload.gif' | asset_url }}" 
+                        alt="{{ product.title }}" 
+                        width="{{ image.width }}" 
+                        height="{{ image.height }}" 
+                    >
+                </a>
+            {% endfor %}
 
-    <div class="section-product__details">
+        </div>
 
-        {% render "breadcrumbs" %}
+        <div class="section-product__details">
 
-        {% form 'product', product %}
-        
-            <h1>{{ product.title }}</h1>
+            {% form 'product', product %}
 
-            {% render "product-price", product: product %}
-        
-            <div class="section-product__details--description">{{ product.description }}</div>
+                <input type="hidden" name="properties[_MID_Name]" value="{{ product.metafields.mid_info.mid_name.value }}" />
+                <input type="hidden" name="properties[_MID_Code]" value="{{ product.metafields.mid_info.mid_code.value }}" />
+                <input type="hidden" name="properties[_MID_Address]" value="{{ product.metafields.mid_info.mid_address.value }}" />
 
-            <select name="id" id="productSelect">
-                {% for variant in product.variants %}
-                {% if variant.available %}
-                    <option value="{{ variant.id }}">
-                    {{ variant.title }} - {{ variant.price | money_with_currency }}
-                    </option>
-                {% else %}
-                    <option disabled="disabled">
-                    {{ variant.title }} - {{ 'products.product.sold_out' | t }}
-                    </option>
+                {% if product.available %}
+                <div class="section-product__details__availability">
+                    <span class="alert">
+                        <span class="marker"><span></span></span>
+                        <span class="label">In stock</span>
+                    </span>
+                </div>
                 {% endif %}
-                {% endfor %}
-            </select>
+            
+                <div class="section-product__details__title">
+                    <h1>{{ product.title }}</h1>
+                </div>
 
-            {% render "product-quantity" , product: product %}
+                {% assign product_colour = product.metafields.product.colour.value %}
+                {% if product_colour != blank %}
+                <div class="section-product__details__colour">
+                    <span>Colour: {{ product_colour }}</span>
+                </div>
+                {% endif %}
 
-            {% if product.available %}
-            <button type="submit" name="add" class="button button-add-to-cart">{{ 'products.product.add_to_cart' | t }}</button>
-            {% else %}
-            <button type="submit" name="add" class="button button-add-to-cart" disabled>{{ 'products.product.sold_out' | t }}</button>
-            {% endif %}
+                <div class="section-product__details__price">
+                    {% render "product-price", product: product %}
+                </div>
 
-        {% endform %}
+                <div class="section-product__details__variants">
+                    <div class="section-product__details__variants__name">
+                        <span>Size</span>
+                        <button>Size Guide</button>
+                    </div>
+                    {% render "product-variants", product: product %}
+                </div>
+
+                {% render "product-quantity" , product: product %}
+
+                <div class="section-product__details__actions">
+                    {% if product.available %}
+                    <button type="submit" name="add" class="button button--add-to-cart button--full-width"><span>{{ 'products.product.add_to_cart' | t }}</span></button>
+                    {% else %}
+                    <button type="submit" name="add" class="button button--add-to-cart button--full-width" disabled>{{ 'products.product.sold_out' | t }}</button>
+                    {% endif %}
+                </div>
+
+                <div class="section-product__details__messages">
+                    {% for block in section.blocks %}
+                        {% case block.type %}
+                            {% when "country_text" %}
+                            <div class="country-message hidden" data-code="{{ block.settings.code }}" data-condition="{{ block.settings.condition }}">
+                                {{ block.settings.title }}
+                            </div>
+                            {% when "continent_text" %}
+                            <div class="continent-message hidden" data-code="{{ block.settings.code }}" data-condition="{{ block.settings.condition }}">
+                                {{ block.settings.title }}
+                            </div>
+                        {% endcase %}
+                    {% endfor %}
+                </div>
+
+                <div class="section-product__details__klarna">
+                    <!-- Placement v1 -->
+                    <klarna-placement
+                        data-id1="f4d06adf-37ef-4a99-b176-184905040ee0"
+                        data-key="credit-promotion-badge"
+                        data-locale="en-GB"
+                        data-purchase_amount="{{ product.selected_or_first_available_variant.price }}"
+                        data-theme="custom"
+                    ></klarna-placement>
+                    <!-- end Placement -->
+                </div>
+
+                <div class="section-product__details__accordions">
+                    {% render "product-accordions", product: product %}
+                </div>
+
+            {% endform %}
+
+        </div>
 
     </div>
-
-  </div>
     
 </div>
+
+<script src="{{ "main-product.js" | asset_url }}"></script>
 
 {% schema %}
 {
     "name": "Product",
     "tag": "section",
     "class": "section-product",
+    "blocks": [
+        {
+            "type": "country_text",
+            "name": "Country Message",
+            "settings": [
+                {
+                    "type": "header",
+                    "content": "Display condition"
+                },
+                {
+                    "type": "select",
+                    "id": "condition",
+                    "label": "Show if country code",
+                    "options": [
+                        {
+                            "value": "equals",
+                            "label": "Equals"
+                        },
+                        {
+                            "value": "does_not_equal",
+                            "label": "Does not equal"
+                        }
+                    ],
+                    "default": "equals"
+                },
+                {
+                    "type": "text",
+                    "id": "code",
+                    "label": "Country Code",
+                    "default": "GB"
+                },
+                {
+                    "type": "header",
+                    "content": "Content"
+                },
+                {
+                    "type": "textarea",
+                    "id": "title",
+                    "label": "Message"
+                }
+            ]
+        },
+        {
+            "type": "continent_text",
+            "name": "Continent Message",
+            "settings": [
+                {
+                    "type": "header",
+                    "content": "Display condition"
+                },
+                {
+                    "type": "select",
+                    "id": "condition",
+                    "label": "Show if continent code",
+                    "options": [
+                        {
+                            "value": "equals",
+                            "label": "Equals"
+                        },
+                        {
+                            "value": "does_not_equal",
+                            "label": "Does not equal"
+                        }
+                    ],
+                    "default": "equals"
+                },
+                {
+                    "type": "text",
+                    "id": "code",
+                    "label": "Continent Code",
+                    "default": "EU"
+                },
+                {
+                    "type": "header",
+                    "content": "Content"
+                },
+                {
+                    "type": "textarea",
+                    "id": "title",
+                    "label": "Message"
+                }
+            ]
+        }
+    ],
     "settings": [
         {
             "type": "header",
@@ -81,7 +220,7 @@
             "step": 2,
             "unit": "px",
             "label": "Padding top",
-            "default": 64
+            "default": 32
         },
         {
             "type": "range",

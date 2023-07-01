@@ -1,0 +1,35 @@
+@import '../abstracts/variables';
+
+.breadcrumbs {
+	ol {
+		padding-bottom: 3em;
+		display: flex;
+		gap: 1.5em;
+		li {
+			display: flex;
+			gap: 1.5em;
+			&::after {
+				content: '';
+				display: block;
+				width: 6px;
+				height: 16px;
+				background: url(icon-breadcrumbs-arrow.svg) no-repeat 50% 50% / 100%;
+				position: relative;
+			}
+			&:last-child {
+				&::after {
+					display: none;
+				}
+			}
+			a {
+				font-weight: $weight-bold;
+				text-decoration: none;
+			}
+			&:last-child {
+				a {
+					font-weight: $weight-regular;
+				}
+			}
+		}
+	}
+}

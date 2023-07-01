@@ -7,8 +7,8 @@
 	font-weight: $weight-bold;
 	display: flex;
 	width: fit-content;
-	min-width: 2.75em;
-	min-height: 2.75em;
+	min-width: 3em;
+	min-height: 3em;
 	text-decoration: none;
 	height: fit-content;
 	align-items: center;
@@ -18,7 +18,7 @@
 	outline: none;
 	box-shadow: none;
 	white-space: nowrap;
-	text-transform: none;
+	text-transform: uppercase;
 	border-radius: 0;
 	&:hover,
 	&:focus {
@@ -37,6 +37,23 @@
 		&:focus {
 			background-color: $color-white;
 			color: $color-black;
+		}
+	}
+	&--full-width {
+		width: 100%;
+	}
+	&--add-to-cart {
+		height: 3.5em;
+		min-height: 3.5em;
+		background-color: $color-success;
+		border-color: $color-success;
+		&:hover,
+		&:focus {
+			background-color: $color-success;
+			border-color: $color-success;
+		}
+		span {
+			font-size: 1.25em;
 		}
 	}
 }
