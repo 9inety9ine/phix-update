@@ -20,7 +20,6 @@ window.updateCartDrawer = function () {
 			cartDrawerContentElement.innerHTML = cartItems;
 			cartDrawerTotal.innerHTML = cartTotal;
 			//window.initCartDrawerRemove();
-			//window.initCartDrawerQuantity();
 			window.initializeImageLoad();
 			//window.countCartItems();
 		})
@@ -32,7 +31,7 @@ window.updateCartDrawer = function () {
 		});
 };
 
-const openCartDrawer = function () {
+window.openCartDrawer = function () {
 	const documentBody = document.querySelector('body');
 	const cartDrawer = document.querySelector('.drawer-cart');
 	if (documentBody && cartDrawer) {
@@ -46,7 +45,7 @@ const openCartDrawer = function () {
 			window.setTimeout(function () {
 				documentBody.classList.add('mask-visible');
 			}, 150);
-			updateCartDrawer();
+			window.updateCartDrawer();
 		}
 	}
 };

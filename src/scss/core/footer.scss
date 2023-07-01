@@ -23,17 +23,36 @@
 		display: grid;
 		grid-template-columns: 1fr auto;
 		gap: 5em;
+		@media (max-width: $w-l) {
+			grid-template-columns: 1fr;
+			grid-template-rows: auto;
+		}
 	}
 	&__aside {
 		width: 30em;
 		display: flex;
 		flex-direction: column;
 		gap: 3em;
+		@media (max-width: $w-l) {
+			width: 100%;
+			max-width: 30em;
+			margin: 0 auto;
+		}
+		@media (max-width: $w-s) {
+			width: 100%;
+			max-width: 100%;
+			margin: 0 auto;
+		}
 		form {
 			padding: 0 !important;
 		}
 		div.needsclick {
 			padding: 0 !important;
+		}
+		&__heading {
+			@media (max-width: $w-l) {
+				text-align: center;
+			}
 		}
 		&__newsletter {
 			display: flex;
@@ -44,6 +63,9 @@
 			img {
 				width: 100%;
 				max-width: 21em;
+				@media (max-width: $w-l) {
+					margin: 0 auto;
+				}
 			}
 		}
 	}
@@ -51,6 +73,12 @@
 		display: grid;
 		grid-template-columns: repeat(4, 1fr);
 		gap: 5em;
+		@media (max-width: $w-m) {
+			gap: 2em;
+		}
+		@media (max-width: $w-s) {
+			grid-template-columns: repeat(1, 1fr);
+		}
 	}
 	&__menu {
 		display: flex;

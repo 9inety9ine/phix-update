@@ -1,0 +1,57 @@
+<link href="{{ "swiper.css" | asset_url }}" rel="stylesheet">
+<link href="{{ "product-media.css" | asset_url }}" rel="stylesheet">
+
+<div class="section-product__media product-media">
+    <div class="swiper swiper-product-media">
+        <div class="swiper-wrapper">
+            {% for image in product.images %}
+            <div class="section-product__image swiper-slide">
+                <a href="{{ image | img_url: 'master' }}">
+                    <img 
+                        data-src="{{ image.src | img_url: 'master' }}" 
+                        src="{{ 'preload.gif' | asset_url }}" 
+                        alt="{{ product.title }}" 
+                        width="{{ image.width }}" 
+                        height="{{ image.height }}" 
+                    >
+                </a>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+    <div class="media-pagination"></div>
+</div>
+
+<script src="{{ "swiper.js" | asset_url }}"></script>
+<script defer>
+
+    const productMedia = document.querySelector('.product-media');
+
+    const swiper_product_media = new Swiper('.swiper-product-media', {
+        speed: 250,
+        spaceBetween: 0,
+        loop: false,
+        slidesPerView: 1,
+        init: false,
+        pagination: {
+            el: '.media-pagination',
+            type: 'bullets',
+        },
+    });
+
+    const eventHandler = event => {
+        if (window.innerWidth <= 768) {
+            if (productMedia.classList.contains('slider-initialized')) return;
+            swiper_product_media.init();
+            productMedia.classList.add('slider-initialized');
+        } else {
+            if (!productMedia.classList.contains('slider-initialized')) return;
+            swiper_product_media.destroy();
+            productMedia.classList.remove('slider-initialized');
+        }
+    }
+
+    window.addEventListener('DOMContentLoaded', eventHandler, false)
+    window.addEventListener('resize', eventHandler, false)
+    
+</script>

@@ -5,31 +5,17 @@
 
 {% assign current_variant = product.selected_or_first_available_variant %}
 
-<div class="wrap wrap--xx-large wrap--{{section_id }}">
+<div class="wrap wrap--xx-large wrap--{{section_id }} wrap--no-padding-mobile">
 
     {% render "breadcrumbs" %}
 
     <div class="section-product__product">
 
-        <div class="section-product__media">
-
-            {% for image in product.images %}
-                <a href="{{ image | img_url: 'master' }}">
-                    <img 
-                        data-src="{{ image.src | img_url: 'master' }}" 
-                        src="{{ 'preload.gif' | asset_url }}" 
-                        alt="{{ product.title }}" 
-                        width="{{ image.width }}" 
-                        height="{{ image.height }}" 
-                    >
-                </a>
-            {% endfor %}
-
-        </div>
+        {% render "product-media", product: product %}
 
         <div class="section-product__details">
 
-            {% form 'product', product %}
+            {% form 'product', product, class: "product-form" %}
 
                 <input type="hidden" name="properties[_MID_Name]" value="{{ product.metafields.mid_info.mid_name.value }}" />
                 <input type="hidden" name="properties[_MID_Code]" value="{{ product.metafields.mid_info.mid_code.value }}" />
@@ -61,7 +47,8 @@
 
                 <div class="section-product__details__variants">
                     <div class="section-product__details__variants__name">
-                        <span>Size</span>
+                        <span class="variant-name">Size</span>
+                        <span class="variant-warning hidden">Please select a size</span>
                         <button>Size Guide</button>
                     </div>
                     {% render "product-variants", product: product %}

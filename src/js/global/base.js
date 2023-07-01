@@ -30,3 +30,25 @@ if (drawerToggles)
 			e.preventDefault();
 			window.closeAllDrawers();
 		});
+
+window.countCartItems = function () {
+	const cartCounter = document.getElementById('cart-counter');
+	if (cartCounter) {
+		fetch('/cart.js')
+			.then(response => {
+				return response.json();
+			})
+			.then(cart => {
+				let cartItemCount = cart.item_count;
+				const cartCounterDisplay = cartCounter.querySelector('span');
+				if (cartItemCount >= 1) {
+					cartCounterDisplay.classList.remove('hidden');
+					cartCounterDisplay.textContent = cartItemCount;
+				} else {
+					cartCounterDisplay.classList.add('hidden');
+					cartCounterDisplay.textContent = '';
+				}
+			});
+	}
+};
+window.countCartItems();

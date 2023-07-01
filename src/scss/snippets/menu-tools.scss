@@ -33,5 +33,33 @@
 				display: none;
 			}
 		}
+		&--cart {
+			position: relative;
+			#cart-counter {
+				position: absolute;
+				right: -0.25em;
+				bottom: -0.25em;
+				display: flex;
+				justify-content: center;
+				align-items: center;
+				line-height: 1;
+				.count {
+					background-color: $color-black;
+					color: $color-white;
+					font-size: 0.85em;
+					font-weight: $weight-bold;
+					width: fit-content;
+					padding: 0.35em 0.5em 0.25em 0.5em;
+					border-radius: 3px;
+					display: flex;
+					justify-content: center;
+					align-items: center;
+					text-align: center;
+					&.hidden {
+						display: none;
+					}
+				}
+			}
+		}
 	}
 }

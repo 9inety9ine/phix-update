@@ -5,21 +5,21 @@
 		display: grid;
 		grid-template-columns: 52.5% 1fr;
 		gap: 10em;
+		@media (max-width: $w-xl) {
+			gap: 5em;
+		}
 		@media (max-width: $w-l) {
 			gap: 3em;
 		}
 		@media (max-width: $w-m) {
-			grid-template-columns: 1fr;
-			grid-template-rows: auto;
+			display: flex;
+			flex-direction: column;
+			gap: 1em;
 		}
 	}
 	&__media {
 		width: 100%;
-		min-width: 100%;
 		max-width: 100%;
-		display: grid;
-		grid-template-columns: repeat(2, 1fr);
-		gap: 0.25em;
 	}
 	&__details {
 		width: 100%;
@@ -30,8 +30,19 @@
 		align-self: flex-start;
 		position: sticky;
 		top: 0;
+		@media (max-width: $w-xl) {
+			padding-right: 5em;
+		}
 		@media (max-width: $w-l) {
-			padding-right: 0;
+			padding-right: 1em;
+		}
+		@media (max-width: $w-m) {
+			padding-left: 1.5em;
+			padding-right: 1.5em;
+		}
+		@media (max-width: $w-s) {
+			padding-left: 1em;
+			padding-right: 1em;
 		}
 		form {
 			align-self: flex-start;
@@ -93,10 +104,21 @@
 				align-items: center;
 				font-weight: $weight-bold;
 				margin-bottom: 0.75em;
+				gap: 1em;
 				button {
 					font-weight: $weight-bold;
 					text-transform: uppercase;
 					text-decoration: underline;
+				}
+				.variant-warning {
+					margin-right: auto;
+					color: $color-failure;
+					opacity: 1;
+					transition: opacity 0 linear;
+					&.hidden {
+						opacity: 0;
+						transition: opacity 0.5s linear;
+					}
 				}
 			}
 		}

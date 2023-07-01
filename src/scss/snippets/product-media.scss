@@ -1,0 +1,68 @@
+@import '../abstracts/variables';
+
+.product-media {
+	position: relative;
+	.swiper,
+	.swiper-wrapper,
+	.swiper-slide,
+	.swiper-pagination-bullets,
+	.pagination-bullet {
+		@media (min-width: 769px) {
+			all: unset;
+		}
+	}
+	.swiper-wrapper {
+		@media (min-width: 769px) {
+			width: 100%;
+			min-width: 100%;
+			max-width: 100%;
+			display: grid;
+			grid-template-columns: repeat(2, 1fr);
+			gap: 0.25em;
+			@media (max-width: $w-l) {
+				grid-template-columns: repeat(1, 1fr);
+			}
+		}
+	}
+	.swiper {
+		@media (max-width: $w-m) {
+			width: 100%;
+			min-width: 100%;
+			max-width: 100%;
+			height: inherit;
+			min-height: inherit;
+			position: relative;
+		}
+	}
+	.swiper-wrapper {
+		@media (max-width: $w-m) {
+			height: 100%;
+		}
+	}
+	.swiper-pagination-bullets {
+		@media (max-width: $w-m) {
+			position: absolute;
+			left: 50%;
+			transform: translateX(-50%);
+			bottom: 2em;
+			width: 100%;
+			display: flex;
+			gap: 0.25em;
+			z-index: 3;
+			justify-content: center;
+		}
+		.swiper-pagination-bullet {
+			@media (max-width: $w-m) {
+				background-color: $color-white;
+				opacity: 0.35;
+				width: 1em;
+				height: 1em;
+			}
+		}
+		.swiper-pagination-bullet-active {
+			@media (max-width: $w-m) {
+				opacity: 1;
+			}
+		}
+	}
+}
