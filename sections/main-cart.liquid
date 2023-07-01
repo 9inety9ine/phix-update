@@ -2,8 +2,9 @@
 {% render "section-styles", section_id: section_id, section: section %}
 
 <link href="{{ "main-cart.css" | asset_url }}" rel="stylesheet">
+<link href="{{ "cart-items.css" | asset_url }}" rel="stylesheet">
 
-<div class="wrap wrap--xx-large wrap--{{section_id }}">
+<div class="wrap wrap--large wrap--{{section_id }}">
   
     <div class="section-cart__header{% unless cart.item_count > 0 %} cart-empty{% endunless%}">
         <h1>{{ 'cart.title' | t }}</h1>
@@ -13,50 +14,78 @@
 
     {% if cart.item_count > 0 %}
         <div class="cart-items">
+            <!--[cart-items]-->
             {% for item in cart.items %}
             <div class="cart-item">
                 <div class="cart-item__media">
                     <a href="{{ item.url | within: collections.all }}" aria-label="{{ item.product.title }}">
-                        <img src="{{ item | img_url: 'medium' }}" alt="{{ item.product.title }}">
+                        <img 
+                            {% if request.design_mode %}
+                                src="{{ item | img_url: '176x240' }}"
+                            {% else %}
+                                src="{{ "preload.gif" | asset_url }}"
+                                data-src="{{ item | img_url: '176x240' }}"
+                                class="preload"
+                            {% endif %} 
+                            alt="{{ item.product.title }}"
+                        >
                     </a>
                 </div>
                 <div class="cart-item__details">
-                    <a href="{{ item.url }}" aria-label="{{ item.product.title }}">{{ item.product.title }}</a>
+                    <div class="cart-item__header">
+                        <a href="{{ item.url }}" aria-label="{{ item.product.title }}" class="title">{{ item.product.title }}</a>
+                        <a href="/cart/change?line={{ forloop.index }}&amp;quantity=0" aria-label="{{ 'cart.remove_item' | t }}" class="cart-remove">
+                            {% render "icon-close.svg" %}
+                            <span>{{ 'cart.remove_item' | t }}</span>
+                        </a>
+                    </div>
                     <div class="cart-item__variant">
                         <span>{{ item.variant.title }}</span>
                     </div>
-                    <div class="cart-item__price">
-                        <span>{{ item.price | money }}</span>
-                    </div>
+                    {% if item.quantity >= 2 %}
                     <div class="cart-item__quantity">
-                        <span data-quantity="{{ item.quantity }}" style="display:none"></span>
-                        {% render "cart-quantity", item: item %}
+                        <span>Quantity: {{ item.quantity }}</span>
                     </div>
-                    <div class="cart-item__line-price">
-                    {% if item.original_line_price != item.line_price %}<span>{{ item.original_line_price | money }}</span> {% endif %}
-                        <span>{{ item.line_price | money }}</span>
-                    {% for discount in item.discounts %}<span>{{ discount.title }}</span>{% endfor %}
+                    {% endif %}
+                    <div class="cart-item__price">
+                    {% if item.product.compare_at_price %}
+                        <span class="price">
+                            <del>{{ item.product.compare_at_price | money }}</del>
+                            <ins>{{ item.product.price | money }}</ins>
+                        </span>
+                    {% else %}
+                        <span class="price">{{ item.product.price | money }}</span>
+                    {% endif %}
                     </div>
-                    <div class="cart-item__remove">
-                        <a href="/cart/change?line={{ forloop.index }}&amp;quantity=0" aria-label="{{ 'cart.remove_item' | t }}">{{ 'cart.remove_item' | t }}</a>
-                    </div>
+                    {% if item.discounts != blank %}
+                        <div class="cart-item__discount">
+                        {% for discount in item.discounts %}
+                            <span>{{ discount.title }}</span>
+                        {% endfor %}
+                        </div>
+                    {% endif %}
                 </div>
             </div>
             {% endfor %}
+            <!--[/cart-items]-->
         </div>
         <div class="cart-totals">
+            <!--[cart-total]-->
             <div class="cart-totals__sub-total">
                 <span>{{ 'cart.sub_total' | t }}:</span> <span>{{ cart.total_price | money }}</span>
             </div>
+            <!--[/cart-total]-->
             <div class="cart-totals__actions">
                 {% form 'cart', cart %}
-                    <button type="submit" name="checkout" class="button" aria-label="{{ 'cart.checkout' | t }}">{{ 'cart.checkout' | t }}</button>
-                    <button type="submit" name="update" class="button button--secondary" aria-label="{{ 'cart.update_cart' | t }}">{{ 'cart.update_cart' | t }}</button>
+                    <button type="submit" name="checkout" class="button button--highlight" aria-label="{{ 'cart.checkout' | t }}">{{ 'cart.checkout' | t }}</button>
+                    <button type="submit" name="update" class="button button--secondary" aria-label="{{ 'cart.update_cart' | t }}" style="display: none;">{{ 'cart.update_cart' | t }}</button>
                 {% endform %}
             </div>
         </div>
     {% else %}
+        <!--[cart-empty]-->
         <p>{{ 'cart.cart_empty' | t }}</p>
+        <!--[/cart-empty]-->
     {% endif %}
 
     </div>

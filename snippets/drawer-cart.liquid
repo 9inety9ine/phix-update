@@ -1,0 +1,21 @@
+<link href="{{ "drawer-cart.css" | asset_url }}" rel="stylesheet">
+<link href="{{ "cart-items.css" | asset_url }}" rel="stylesheet">
+
+<div class="drawer drawer-cart" id="drawer-cart">
+    <div class="inner">
+        <div class="drawer__header drawer-cart__header">
+            <div class="drawer__header__text drawer-cart__header__text">{{ "cart_drawer.title" | t }}</div>
+            <button class="toggle-drawer">{% render "icon-close.svg" %}</button>
+        </div>
+        <div class="drawer__content drawer-cart__content">
+            <span class="loading-icon">{% render "icon-loading.svg" %}</span>
+            <div class="cart-items" id="cart-items"></div>
+        </div>
+        <div class="drawer__footer drawer-cart__footer">
+            <div class="cart-totals" id="cart-totals"></div>
+            {% form 'cart', cart %}
+            <button name="checkout" class="button button--full-width button--tall">{{ 'cart_drawer.checkout' | t }}</button>
+            {% endform %}
+        </div>
+    </div>
+</div>

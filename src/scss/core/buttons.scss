@@ -42,9 +42,11 @@
 	&--full-width {
 		width: 100%;
 	}
-	&--add-to-cart {
+	&--tall {
 		height: 3.5em;
 		min-height: 3.5em;
+	}
+	&--highlight {
 		background-color: $color-success;
 		border-color: $color-success;
 		&:hover,

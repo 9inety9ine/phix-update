@@ -20,11 +20,13 @@
                 {% render "icon-search.svg" %}
             </a>
         </li>
+        {% unless template == "cart" %}
         <li class="menu-tools__link menu-tools__link--cart">
             <a href="{{ routes.cart_url }}" aria-label="{{ 'general.tools_menu.cart_label' | t }}">
                 <span>{{ 'general.tools_menu.cart_label' | t }}</span>
                 {% render "icon-bag.svg" %}
             </a>
         </li>
+        {% endunless %}
     </ul>
 <nav>

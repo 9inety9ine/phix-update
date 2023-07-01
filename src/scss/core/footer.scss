@@ -1,4 +1,69 @@
 .footer-main {
 	background-color: $color-black;
 	color: $color-white;
+	&__inner {
+		display: flex;
+		flex-direction: column;
+	}
+	&__branding {
+		display: flex;
+		justify-content: center;
+		align-items: center;
+		margin-bottom: 5em;
+		a {
+			width: 7em;
+			display: block;
+			img {
+				width: 100%;
+				height: auto;
+			}
+		}
+	}
+	&__rows {
+		display: grid;
+		grid-template-columns: 1fr auto;
+		gap: 5em;
+	}
+	&__aside {
+		width: 30em;
+		display: flex;
+		flex-direction: column;
+		gap: 3em;
+		form {
+			padding: 0 !important;
+		}
+		div.needsclick {
+			padding: 0 !important;
+		}
+		&__newsletter {
+			display: flex;
+			flex-direction: column;
+			gap: 1em;
+		}
+		&__trustpilot {
+			img {
+				width: 100%;
+				max-width: 21em;
+			}
+		}
+	}
+	&__menus {
+		display: grid;
+		grid-template-columns: repeat(4, 1fr);
+		gap: 5em;
+	}
+	&__menu {
+		display: flex;
+		flex-direction: column;
+		gap: 1em;
+		.menu-footer {
+			&__title {
+				opacity: 0.5;
+			}
+			a {
+				color: $color-white;
+				text-decoration: none;
+			}
+		}
+	}
 }

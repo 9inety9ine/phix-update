@@ -71,7 +71,7 @@
 
                 <div class="section-product__details__actions">
                     {% if product.available %}
-                    <button type="submit" name="add" class="button button--add-to-cart button--full-width"><span>{{ 'products.product.add_to_cart' | t }}</span></button>
+                    <button type="submit" name="add" class="button button--add-to-cart button--highlight button--full-width button--tall"><span>{{ 'products.product.add_to_cart' | t }}</span></button>
                     {% else %}
                     <button type="submit" name="add" class="button button--add-to-cart button--full-width" disabled>{{ 'products.product.sold_out' | t }}</button>
                     {% endif %}

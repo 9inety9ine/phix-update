@@ -76,6 +76,10 @@
     
     {% section "footer" %}
     {% section "drawer-menu" %}
+    
+    {% unless template == "cart" %}
+    {% render "drawer-cart" %}
+    {% endunless %}
 
     <!-- core js -->
     <script src="{{ 'application.js' | asset_url }}" defer></script>
@@ -84,6 +88,8 @@
     <!-- country selector -->
     <script src="{{ 'theme-addresses.js' | asset_url }}" defer></script>
     {% endif %}
+
+    <script src="https://static.klaviyo.com/onsite/js/klaviyo.js?company_id=PYvQUW" defer async></script>
 
     <span class="menu-desktop-mask"></span>
     <span class="drawer-mask"></span>

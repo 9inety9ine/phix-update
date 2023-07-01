@@ -39,6 +39,10 @@
 		"checkout": "Checkout securely",
 		"remove_item": "Remove"
 	},
+	"cart_drawer": {
+		"title": "Your Cart",
+		"checkout": "Checkout securely"
+	},
 	"contact_form": {
 		"name_label": "Name",
 		"name_placeholder": "Your name",

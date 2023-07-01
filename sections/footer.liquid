@@ -3,7 +3,45 @@
 
 <div class="wrap wrap--xx-large wrap--{{section_id }}">
 
-    <p>Footer</p>
+    <div class="footer-main__inner">
+
+        <div class="footer-main__branding">
+            <a href="{{ routes.root_url }}" aria-label="{{ shop.name }}">
+                <img src="{{ "logo-phix-white.png" | asset_url }}" alt="{{ shop.name }}" width="432" height="125">
+            </a>
+        </div>
+
+        <div class="footer-main__rows">
+            <div class="footer-main__menus">
+                {% for block in section.blocks %}
+                    <div class="footer-main__menu">
+                        <div class="menu-footer__title">{{ block.settings.title }}</div>
+                        <nav class="menu-footer">
+                            <ul>
+                            {% for link in block.settings.menu.links %}
+                                <li><a href="{{ link.url }}" aria-label="{{ link.title }}">{{ link.title }}</a></li>
+                            {% endfor %}
+                            </ul>
+                        </nav>
+                    </div>
+                {% endfor %}
+            </div>
+            <div class="footer-main__aside">
+                <div class="footer-main__aside__newsletter">
+                    <div class="footer-main__aside__heading">
+                        <span>{{ section.settings.heading }}</span>
+                    </div>
+                    <div class="footer-main__aside__sign-up">
+                        {{ section.settings.code }}
+                    </div>
+                </div>
+                <div class="footer-main__aside__trustpilot">
+                    <img src="{{ "trustpilot-footer.png" | asset_url }}">
+                </div>
+            </div>
+        </div>
+
+    </div>
 
 </div>
 
@@ -12,42 +50,41 @@
     "name": "Footer",
     "tag": "footer",
     "class": "footer-main",
+    "blocks":[
+        {
+            "type": "menu",
+            "name": "Menu",
+            "settings": [
+                {
+                    "type": "text",
+                    "id": "title",
+                    "label": "Title",
+                    "default": "Menu Title"
+                },
+                {
+                    "type": "link_list",
+                    "id": "menu",
+                    "label": "Menu"
+                }
+            ]
+        }
+    ],
     "settings": [
         {
             "type": "header",
-            "content": "Colour scheme"
+            "content": "Newsletter"
         },
         {
-            "type": "select",
-            "id": "background_color",
-            "label": "Background",
-            "options": [
-                {
-                    "value": "var(--color-white)",
-                    "label": "White"
-                },
-                {
-                    "value": "var(--color-black)",
-                    "label": "Black"
-                }
-            ],
-            "default": "var(--color-black)"
+            "type": "text",
+            "id": "heading",
+            "label": "Heading",
+            "default": "Get notified of exclusive first drops"
         },
         {
-            "type": "select",
-            "id": "text_color",
-            "label": "Text",
-            "options": [
-                {
-                    "value": "var(--color-white)",
-                    "label": "White"
-                },
-                {
-                    "value": "var(--color-black)",
-                    "label": "Black"
-                }
-            ],
-            "default": "var(--color-white)"
+            "type": "textarea",
+            "id": "code",
+            "label": "Klaviyo Code",
+            "default": "<div class='klaviyo-form-TUWADC k1'></div>"
         },
         {
             "type": "header",
