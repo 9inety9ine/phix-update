@@ -2,4 +2,60 @@
 
 .section-addresses {
 	position: relative;
+	.address {
+		display: block;
+		padding: 2em;
+		border: 1px solid $color-black;
+		position: relative;
+		margin-bottom: 2em;
+		&--hidden {
+			display: none;
+		}
+	}
+	&__list {
+		display: grid;
+		grid-template-columns: repeat(1, 1fr);
+		gap: 1em;
+		margin-bottom: 2em;
+		&__address {
+			display: flex;
+			flex-direction: column;
+			padding: 2em;
+			border: 1px solid $color-black;
+			position: relative;
+			gap: 0.5em;
+			.default {
+				position: absolute;
+				top: 1em;
+				right: 1em;
+				background-color: $color-black;
+				color: $color-white;
+				line-height: 1;
+				padding: 0.25em 0.5em;
+				span {
+					font-size: 0.85em;
+				}
+			}
+			&__details {
+				display: flex;
+				flex-direction: column;
+				.name {
+					margin-bottom: 0.5em;
+				}
+			}
+			&__actions {
+				display: flex;
+				gap: 1em;
+				button {
+					height: fit-content;
+					min-height: auto;
+					text-decoration: underline;
+				}
+				form {
+					border-left: 1px solid $color-black;
+					padding-left: 1em;
+				}
+			}
+		}
+	}
 }

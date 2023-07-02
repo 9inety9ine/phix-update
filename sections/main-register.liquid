@@ -5,34 +5,34 @@
 
 <div class="wrap wrap--medium wrap--{{section_id }}">
 
-    <h1>{{ 'account.register.title' | t }}</h1>
+    <h1>{{ 'customer.register.title' | t }}</h1>
 
     {% form 'create_customer', class: "form form--create-account" %}
 
         {{ form.errors | default_errors }}
 
         <div class="form-row form-row--full">
-            <label for="first_name" class="required">{{ 'account.register.first_name_label' | t }}</label>
-            <input type="text" value="" name="customer[first_name]" size="30" placeholder="{{ 'account.register.first_name_placeholder' | t }}" required="required">
+            <label for="first_name" class="required">{{ 'customer.register.first_name_label' | t }}</label>
+            <input type="text" value="" name="customer[first_name]" size="30" placeholder="{{ 'customer.register.first_name_placeholder' | t }}" required="required">
         </div>
         <div class="form-row form-row--full">
-            <label for="last_name" class="required">{{ 'account.register.last_name_label' | t }}</label>
-            <input type="text" value="" name="customer[last_name]" size="30" placeholder="{{ 'account.register.last_name_placeholder' | t }}" required="required">
+            <label for="last_name" class="required">{{ 'customer.register.last_name_label' | t }}</label>
+            <input type="text" value="" name="customer[last_name]" size="30" placeholder="{{ 'customer.register.last_name_placeholder' | t }}" required="required">
         </div>
         <div class="form-row form-row--full">
-            <label for="email" class="required">{{ 'account.register.email_label' | t }}</label>
-            <input type="email" value="" name="customer[email]" size="30" placeholder="{{ 'account.register.email_placeholder' | t }}" required="required">
+            <label for="email" class="required">{{ 'customer.register.email_label' | t }}</label>
+            <input type="email" value="" name="customer[email]" size="30" placeholder="{{ 'customer.register.email_placeholder' | t }}" required="required">
         </div>
         <div class="form-row form-row--full">
-            <label for="password" class="required">{{ 'account.register.password_label' | t }}</label>
-            <input type="password" value="" name="customer[password]" size="30" placeholder="{{ 'account.register.password_placeholder' | t }}" id="password" required="required">
+            <label for="password" class="required">{{ 'customer.register.password_label' | t }}</label>
+            <input type="password" value="" name="customer[password]" size="30" placeholder="{{ 'customer.register.password_placeholder' | t }}" id="password" required="required">
         </div>
         <div class="form-row form-row--full">
-            <label for="password" class="required">{{ 'account.register.confirm_password_label' | t }}</label>
-            <input type="password" value="" name="customer[password_confirmation]" size="30" placeholder="{{ 'account.register.confirm_password_placeholder' | t }}" id="password-confirm" required="required">
+            <label for="password" class="required">{{ 'customer.register.confirm_password_label' | t }}</label>
+            <input type="password" value="" name="customer[password_confirmation]" size="30" placeholder="{{ 'customer.register.confirm_password_placeholder' | t }}" id="password-confirm" required="required">
         </div>
         <div class="form-row form-row--full form-row--actions">
-            <button type="submit" class="button" aria-label="{{ 'account.register.register_button' | t }}">{{ 'account.register.register_button' | t }}</button>
+            <button type="submit" class="button" aria-label="{{ 'customer.register.register_button' | t }}">{{ 'customer.register.register_button' | t }}</button>
         </div>
     
     {% endform %}

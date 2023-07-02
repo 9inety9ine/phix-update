@@ -55,7 +55,7 @@
 		"submit_button": "Send message",
 		"success_message": "Thank you for your contact."
 	},
-	"account": {
+	"customer": {
 		"reset_password": {
 			"title": "Reset password",
 			"enter_password": "Password",
@@ -82,8 +82,8 @@
 			"create_account_link": "Create account"
 		},
 		"forgot_password": {
-			"title": "Forgot password",
-			"submit_button": "Submit",
+			"title": "Reset password",
+			"submit_button": "Reset password",
 			"email_label": "Email address",
 			"email_placeholder": "Your email address",
 			"cancel_link": "Cancel"
@@ -100,10 +100,12 @@
 			"password_placeholder": "Your password",
 			"confirm_password_label": "Confirm password",
 			"confirm_password_placeholder": "Confirm your password",
-			"register_button": "Create account"
+			"register_button": "Create account",
+			"marketing_message_html": "Please tick here if you DO NOT want us to use your personal data to email you about our product launches, events, news, promotions, discount and offers. As a PHIX member we'd like to email you about our product launches, news, promotions and exclusive offers. You can opt-out at any time. For more information on how we use you personal data, please see our <a href='/pages/privacy-policy'>Privacy Policy.</a>",
+			"terms_and_conditions_html": "By submitting this form you agree to our <a href='/pages/terms-conditions'>Terms &amp; Conditions</a>."
 		},
 		"addresses": {
-			"default_address_title": "Your address",
+			"addresses_title": "Your Addresses",
 			"new_address_title": "New address",
 			"edit_address_title": "Edit address",
 			"first_name": "First name",
@@ -116,16 +118,20 @@
 			"city": "City",
 			"zip": "Postcode",
 			"phone": "Phone number",
-			"default": "Default address",
-			"set_as_default": "Set as default address?",
+			"default": "Default",
+			"set_default": "Set as default address?",
 			"add_address_button": "Add address",
-			"update_address_button": "Update address"
+			"add_new_address_button": "Add new address",
+			"update_address_button": "Update address",
+			"cancel_button": "Cancel",
+			"delete_button": "Delete",
+			"edit_button": "Edit",
+			"confirm_delete": "Are you sure you wish to delete this address?"
 		},
 		"menu": {
-			"orders": "My orders",
-			"addresses": "My addresses",
-			"logout": "Sign out",
-			"continue_shopping": "Continue shopping"
+			"orders": "Your orders",
+			"addresses": "Your addresses",
+			"logout": "Logout"
 		},
 		"orders": {
 			"orders_title": "Your orders",
@@ -135,7 +141,8 @@
 			"order_summary_items": "items",
 			"order_status": "Status:",
 			"order_total": "Total:",
-			"view_order": "View Order"
+			"view_order": "View Order",
+			"welcome_message": "Thank you for registering. We have sent an account confirmation email to {{ email }}."
 		},
 		"order": {
 			"billing_address": "Billing Address",

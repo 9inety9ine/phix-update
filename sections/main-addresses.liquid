@@ -1,143 +1,72 @@
 {% assign section_id = section.id | replace: "_", "" | replace: "-", "" %}
 {% render "section-styles", section_id: section_id, section: section %}
 
+<link href="{{ "main-account.css" | asset_url }}" rel="stylesheet">
 <link href="{{ "main-addresses.css" | asset_url }}" rel="stylesheet">
 
-<div class="wrap wrap--xx-large wrap--{{section_id }}">
+<div class="wrap wrap--large wrap--{{section_id }}">
 
-    {% render "account-aside" %}
+    <div class="section-account__inner">
 
-    {% if customer.default_address %}
-        <h2>{{ 'account.addresses.default_address_title' | t }}</h2>
-        <p>
-            {{ customer.default_address.address1 }}
-            {% if customer.default_address.address2 != "" %}
-            <br>{{ customer.default_address.address2 }}
-            {% endif %}
-            <br>{{ customer.default_address.city}}
-            <br>{{ customer.default_address.country }}
-            <br>{{ customer.default_address.zip }}
-            {% if customer.default_address.phone != "" %}
-            <br>{{ customer.default_address.phone }}
-            {% endif %}
-        </p>
-    {% endif %}
+        {% render "account-aside" %}
 
-    <div class="address address--new">
-        <h3>{{ 'account.addresses.new_address_title' | t }}</h3>
-        {% form 'customer_address', customer.new_address, data-address: "root", class: "form form--new-address" %}
-            <div class="form-row form-row--1 form-row--split">
-                <label for="AddressFirstName" class="required">{{ 'account.addresses.first_name' | t }}</label>
-                <input type="text" id="AddressFirstName" name="address[first_name]" value="{{ form.first_name }}" required="required">
+        <div class="section-account__container section-addresses__content" id="customer-addresses">
+            
+            {% render "account-address-new", customer: customer %}
+            {% render "account-address-edit", customer: customer %}
+
+            <div class="section-account__header">
+                <h2>{{ 'customer.addresses.addresses_title' | t }}</h2>
             </div>
-            <div class="form-row form-row--2 form-row--split">
-                <label for="AddressLastName" class="required">{{ 'account.addresses.last_name' | t }}</label>
-                <input type="text" id="AddressLastName" name="address[last_name]" value="{{ form.last_name }}" required="required">
+
+            <div class="section-addresses__list">
+
+                {% for address in customer.addresses %}
+                    <div class="section-addresses__list__address{% if address == customer.default_address %} section-addresses__list__address--default{% endif %}" data-address-id="{{ address.id }}">
+                        {% if address == customer.default_address %}<span class="default"><span>{{ 'customer.addresses.default' | t }}</span></span>{% endif %}
+                        <div class="section-addresses__list__address__details">
+                          {% if address.first_name != blank and address.last_name != blank %}<span class="name"><strong>{{ address.first_name }} {{ address.last_name }}</strong></span>{% endif %}
+                          {% if address.address1.size > 0 %}<span>{{ address.address1 }}</span>{% endif %}
+                          {% if address.address2.size > 0 %}<span>{{ address.address2 }}</span>{% endif %}
+                          {% if address.city.size > 0 %}<span>{{ address.city }}</span>{% endif %}
+                          {% if address.province.size > 0 %}<span>{{ address.province }}</span>{% endif %}
+                          {% if address.country.size > 0 %}<span>{{ address.country }}</span>{% endif %}
+                          {% if address.zip.size > 0 %}<span>{{ address.zip }}</span>{% endif %}
+                          {% if address.phone.size > 0 %}<span>{{ address.phone }}</span>{% endif %}
+                        </div>
+                        <div class="section-addresses__list__address__actions">
+                            <button data-address="{{address.id}}" class="button-edit-address" type="button">{{ 'customer.addresses.edit_button' | t }}</button>
+                            {% unless address == customer.default_address %}
+                            <form class="section-addresses__list__address__delete" method="post" action="/account/addresses/{{ address.id }}">
+                                <input type="hidden" name="_method" value="delete">
+                                <button type="submit" class="button-delete-address">{{ 'customer.addresses.delete_button' | t }}</button>
+                            </form>
+                            {% endunless %}
+                        </div>
+                    </div>
+                {% endfor %}
+
             </div>
-            <div class="form-row form-row--3 form-row--split" style="display:none;">
-                <label for="AddressCompany">{{ 'account.addresses.company' | t }}</label>
-                <input type="text" id="AddressCompany" name="address[company]" value="{{ form.company }}">
+
+            <div class="section-addresses__actions">
+                <button class="button button--new-address">
+                    <span>{{ 'customer.addresses.add_new_address_button' | t }}</span>
+                </button>
             </div>
-            <div class="form-row form-row--4 form-row--split">
-                <label for="AddressAddress1" class="required">{{ 'account.addresses.address1' | t }}</label>
-                <input type="text" id="AddressAddress1" name="address[address1]" value="{{ form.address1 }}" required="required">
-            </div>
-            <div class="form-row form-row--5 form-row--split">
-                <label for="AddressAddress2">{{ 'account.addresses.address2' | t }}</label>
-                <input type="text" id="AddressAddress2" name="address[address2]" value="{{ form.address2 }}">
-            </div>
-            <div class="form-row form-row--6 form-row--split">
-                <label for="AddressCountry">{{ 'account.addresses.country' | t }}</label>
-                <select id="AddressCountry" name="address[country]" data-default="{{ form.country }}"></select>
-            </div>
-            <div class="form-row form-row--7 form-row--split" style="display:none;">
-                <label for="AddressProvince">{{ 'account.addresses.province' | t }}</label>
-                <select id="AddressProvince" name="address[province]" data-default="{{ form.province }}"></select>
-            </div>
-            <div class="form-row form-row--8 form-row--split">
-                <label for="AddressCity" class="required">{{ 'account.addresses.city' | t }}</label>
-                <input type="text" id="AddressCity" name="address[city]" value="{{ form.city }}" required="required">
-            </div>
-            <div class="form-row form-row--9 form-row--split">
-                <label for="AddressZip" class="required">{{ 'account.addresses.zip' | t }}</label>
-                <input type="text" id="AddressZip" name="address[zip]" value="{{ form.zip }}" autocapitalize="characters" required="required">
-            </div>
-            <div class="form-row form-row--10 form-row--split">
-                <label for="AddressPhone">{{ 'account.addresses.phone' | t }}</label>
-                <input type="tel" id="AddressPhone" name="address[phone]" value="{{ form.phone }}">
-            </div>
-            <div class="form-row form-row--11 form-row--full"><label class="checkbox">{{ form.set_as_default_checkbox }} <span>{{ 'account.addresses.set_as_default' | t }}</span></label></div>
-            <div class="form-row form-row--12 form-row--full form-row--actions">
-                <button class="button button--black" type="submit" aria-label="{{ 'account.addresses.add_address_button' | t }}">{{ 'account.addresses.add_address_button' | t }}</button>
-            </div> 
-        {% endform %}
+
+        </div>
+
     </div>
-
-    {% for address in customer.addresses %}
-    <div class="address address--edit" id="{{address.id}}">
-        <h3>{{ 'account.addresses.edit_address_title' | t }}</h3>
-        {% form 'customer_address', address, data-address: "root", class: "form form--edit-address" %}
-            <div class="form-row form-row--1 form-row--split">
-                <label for="AddressFirstName-{{address.id}}" class="required">{{ 'account.addresses.first_name' | t }}</label>
-                <input type="text" id="AddressFirstName-{{address.id}}" name="address[first_name]" value="{{ form.first_name }}" required="required">
-            </div>
-            <div class="form-row form-row--2 form-row--split">
-                <label for="AddressLastName-{{address.id}}" class="required">{{ 'account.addresses.last_name' | t }}</label>
-                <input type="text" id="AddressLastName-{{address.id}}" name="address[last_name]" value="{{ form.last_name }}" required="required">
-            </div>
-            <div class="form-row form-row--3 form-row--split" style="display:none;">
-                <label for="AddressCompany-{{address.id}}">{{ 'account.addresses.company' | t }}</label>
-                <input type="text" id="AddressCompany-{{address.id}}" name="address[company]" value="{{ form.company }}">
-            </div>
-            <div class="form-row form-row--4 form-row--split">
-                <label for="AddressAddress1-{{address.id}}" class="required">{{ 'account.addresses.address1' | t }}</label>
-                <input type="text" id="AddressAddress1-{{address.id}}" name="address[address1]" value="{{ form.address1 }}" required="required">
-            </div>    
-            <div class="form-row form-row--5 form-row--split">
-                <label for="AddressAddress2-{{address.id}}">{{ 'account.addresses.address2' | t }}</label>
-                <input type="text" id="AddressAddress2-{{address.id}}" name="address[address2]" value="{{ form.address2 }}">
-            </div>       
-            <div class="form-row form-row--6 form-row--split">
-                <label for="AddressCountry-{{address.id}}">{{ 'account.addresses.country' | t }}</label>
-                <select id="AddressCountry-{{address.id}}" name="address[country]" data-default="{{ form.country }}"></select>
-            </div>         
-            <div class="form-row form-row--7 form-row--split" style="display:none;">
-                <label for="AddressProvince-{{address.id}}">{{ 'account.addresses.province' | t }}</label>
-                <select id="AddressProvince-{{address.id}}" name="address[province]" data-default="{{ form.province }}"></select>
-            </div>   
-            <div class="form-row form-row--8 form-row--split">
-                <label for="AddressCity-{{address.id}}" class="required">{{ 'account.addresses.city' | t }}</label>
-                <input type="text" id="AddressCity-{{address.id}}" name="address[city]" value="{{ form.city }}" required="required">
-            </div>
-            <div class="form-row form-row--9 form-row--split">
-                <label for="AddressZip-{{address.id}}" class="required">{{ 'account.addresses.zip' | t }}</label>
-                <input type="text" id="AddressZip-{{address.id}}" name="address[zip]" value="{{ form.zip }}" autocapitalize="characters" required="required">
-            </div>    
-            <div class="form-row form-row--10 form-row--split">
-                <label for="AddressPhone-{{address.id}}">{{ 'account.addresses.phone' | t }}</label>
-                <input type="tel" id="AddressPhone-{{address.id}}" name="address[phone]" value="{{ form.phone }}">
-            </div>  
-            <div class="form-row form-row--11 form-row--full">
-            {% if address == customer.default_address %}
-                <span>{{ 'account.addresses.default' | t }}</span>
-            {% else %}
-                <label class="checkbox">{{ form.set_as_default_checkbox }} <span>{{ 'account.addresses.set_as_default' | t }}</span></label>
-            {% endif %}
-            </div>
-            <div class="form-row form-row--12 form-row--full form-row--actions">
-                <button class="button button--black" type="submit" aria-label="{{ 'account.addresses.update_address_button' | t }}">{{ 'account.addresses.update_address_button' | t }}</button>
-            </div>
-        {% endform %}
-    </div>
-    {% endfor %}
 
 </div>
+<script>const confirm_delete = "{{ "customer.addresses.confirm_delete" | t }}";</script>
+<script src="{{ "main-addresses.js" | asset_url }}" defer></script>
 
 {% schema %}
 {
     "name": "Addresses",
     "tag": "section",
-    "class": "section-addresses",
+    "class": "section-account section-addresses",
     "settings": [
         {
             "type": "header",

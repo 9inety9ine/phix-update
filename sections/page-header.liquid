@@ -1,38 +1,36 @@
+{% if section.settings.display_title == true %}
+
 {% assign section_id = section.id | replace: "_", "" | replace: "-", "" %}
 {% render "section-styles", section_id: section_id, section: section %}
 
-<link href="{{ "main-reset-password.css" | asset_url }}" rel="stylesheet">
+<link href="{{ "page-header.css" | asset_url }}" rel="stylesheet">
 
-<div class="wrap wrap--medium wrap--{{section_id }}">
+<div class="wrap wrap--xx-large wrap--{{section_id }}">
 
-    <h3>{{ 'customer.reset_password.title' | t }}</h3>
+    <h1>{{ section.settings.title }}</h1>
 
-    {% form 'reset_customer_password', class: "form form--reset-password" %}
-
-        {{ form.errors | default_errors }}
-
-        <div class="form-row form-row--full">
-            <label for="password" class="required">{{ 'customer.reset_password.enter_password' | t }}</label>
-            <input type="password" value="" name="customer[password]" size="16" required="required">
-        </div>
-        <div class="form-row form-row--full">
-            <label for="password_confirmation" class="required">{{ 'customer.reset_password.confirm_password' | t }}</label>
-            <input type="password" value="" name="customer[password_confirmation]" size="16" required="required">
-        </div>
-        <div class="form-row form-row--full form-row--actions">
-            <button type="submit" class="button" aria-label="{{ 'customer.reset_password.reset_button' | t }}">{{ 'customer.reset_password.reset_button' | t }}</button>
-        </div>
-
-    {% endform %}
-    
 </div>
+
+{% endif %}
 
 {% schema %}
 {
-    "name": "Reset Password",
+    "name": "Page Header",
     "tag": "section",
-    "class": "section-reset-password",
+    "class": "section-page-header",
     "settings": [
+        {
+            "type": "checkbox",
+            "id": "display_title",
+            "label": "Display title",
+            "default": true
+        },
+        {
+            "type": "text",
+            "id": "title",
+            "label": "Page title",
+            "default": "{{ page.title }}"
+        },
         {
             "type": "header",
             "content": "Desktop padding"

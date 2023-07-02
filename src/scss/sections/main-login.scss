@@ -2,4 +2,36 @@
 
 .section-login {
 	position: relative;
+	&__header {
+		display: grid;
+		grid-template-columns: 1fr 1fr;
+		margin-bottom: 3em;
+		button {
+			width: 100%;
+			border-bottom: 1px solid $color-grey-medium;
+			text-transform: uppercase;
+			color: $color-grey-medium;
+			&.active {
+				border-color: $color-black;
+				color: $color-black;
+			}
+		}
+	}
+	&__container {
+		overflow: hidden;
+	}
+	&__account-login,
+	&__account-register {
+		width: 100%;
+		display: none;
+		&.active {
+			display: block;
+		}
+	}
+	&__form {
+		display: none;
+		&.show {
+			display: block;
+		}
+	}
 }

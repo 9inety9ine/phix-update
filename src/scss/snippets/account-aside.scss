@@ -1,7 +1,51 @@
+@import '../abstracts/variables';
+
 .account-aside {
-	margin-bottom: 2em;
+	width: 100%;
+	min-width: 20em;
+	&__inner {
+		border-right: 1px solid $color-grey-medium;
+		padding-right: 7em;
+		height: 100%;
+		@media (max-width: $w-l) {
+			padding-bottom: 1.5em;
+			border-bottom: 1px solid $color-grey-medium;
+			padding-right: 0;
+			border-right: none;
+		}
+	}
+	&__widget {
+		position: relative;
+		border-bottom: 1px solid $color-black;
+		padding-bottom: 2em;
+		margin-bottom: 2em;
+		&--customer {
+			@media (max-width: $w-l) {
+				display: none;
+			}
+		}
+		&:last-child {
+			padding-bottom: 0;
+			margin-bottom: 0;
+			border-bottom: none;
+		}
+	}
 	ul {
 		display: flex;
+		flex-direction: column;
 		gap: 1em;
+		white-space: nowrap;
+		@media (max-width: $w-l) {
+			flex-direction: row;
+			justify-content: center;
+			gap: 5%;
+		}
+		a {
+			text-decoration: none;
+			display: block;
+			&.active {
+				font-weight: $weight-bold;
+			}
+		}
 	}
 }

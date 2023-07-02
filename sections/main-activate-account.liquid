@@ -5,23 +5,23 @@
 
 <div class="wrap wrap--medium wrap--{{section_id }}">
 
-    <h1>{{ 'account.activate_account.title' | t }}</h1>
+    <h1>{{ 'customer.activate_account.title' | t }}</h1>
 
     {% form 'activate_customer_password', class: "form form--activate-account" %}
 
         {{ form.errors | default_errors }}
 
         <div class="form-row form-row--full">
-            <label for="password" class="required">{{ "account.activate_account.password_label" | t }}</label>
-            <input type="password" name="customer[password]" placeholder="{{ "account.activate_account.password_placeholder" | t }}" required="required">
+            <label for="password" class="required">{{ "customer.activate_account.password_label" | t }}</label>
+            <input type="password" name="customer[password]" placeholder="{{ "customer.activate_account.password_placeholder" | t }}" required="required">
         </div>
         <div class="form-row form-row--full">
-            <label for="password_confirmation" class="required">{{ "account.activate_account.confirm_password_label" | t }}</label>
-            <input type="password" name="customer[password_confirmation]" placeholder="{{ "account.activate_account.confirm_password_placeholder" | t }}" required="required">
+            <label for="password_confirmation" class="required">{{ "customer.activate_account.confirm_password_label" | t }}</label>
+            <input type="password" name="customer[password_confirmation]" placeholder="{{ "customer.activate_account.confirm_password_placeholder" | t }}" required="required">
         </div>
         <div class="form-row form-row--full form-row--actions">
-            <button type="submit" class="button" aria-label="{{ 'account.activate_account.accept_button' | t }}">{{ 'account.activate_account.accept_button' | t }}</button>
-            <button type="submit" name="decline" class="button" aria-label="{{ 'account.activate_account.decline_button' | t }}">{{ 'account.activate_account.decline_button' | t }}</button>
+            <button type="submit" class="button" aria-label="{{ 'customer.activate_account.accept_button' | t }}">{{ 'customer.activate_account.accept_button' | t }}</button>
+            <button type="submit" name="decline" class="button" aria-label="{{ 'customer.activate_account.decline_button' | t }}">{{ 'customer.activate_account.decline_button' | t }}</button>
         </div>
 
     {% endform %}

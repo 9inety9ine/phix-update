@@ -1,20 +1,29 @@
 <link href="{{ "account-aside.css" | asset_url }}" rel="stylesheet">
 
 <aside class="account-aside">
-    <nav>
-        <ul class="menu menu-account">
-            <li class="menu-account__link">
-                <a href="{{ routes.account_url }}" aria-label="{{ 'account.menu.orders' | t }}">{{ 'account.menu.orders' | t }}</a>
-            </li>
-            <li class="menu-account__link">
-                <a href="{{ routes.account_addresses_url }}" aria-label="{{ 'account.menu.addresses' | t }}">{{ 'account.menu.addresses' | t }}</a>
-            </li>
-            <li class="menu-account__link">
-                <a href="{{ routes.root_url }}" aria-label="{{ 'account.menu.continue_shopping' | t }}">{{ 'account.menu.continue_shopping' | t }}</a>
-            </li>
-            <li class="menu-account__link">
-                <a href="{{ routes.account_logout_url }}" aria-label="{{ 'account.menu.logout' | t }}">{{ 'account.menu.logout' | t }}</a>
-            </li>
-        </ul>
-    </nav>
+    <div class="account-aside__inner">
+        <div class="account-aside__widget account-aside__widget--customer">
+            <div class="customer_name"><strong>{{ customer.name }}</strong></div>
+            <div class="customer_email">{{ customer.email }}</div>
+        </div>
+        <div class="account-aside__widget">
+            <nav>
+                <ul class="menu menu-account">
+                    <li class="menu-account__link">
+                        <a href="{{ routes.account_url }}" aria-label="{{ 'customer.menu.orders' | t }}"{% if template == "customers/account" %} class="active"{% endif %}>
+                            <span>{{ 'customer.menu.orders' | t }}</span>
+                        </a>
+                    </li>
+                    <li class="menu-account__link">
+                        <a href="{{ routes.account_addresses_url }}" aria-label="{{ 'customer.menu.addresses' | t }}"{% if template == "customers/addresses" %} class="active"{% endif %}>
+                            <span>{{ 'customer.menu.addresses' | t }}</span>
+                        </a>
+                    </li>
+                    <li class="menu-account__link">
+                        <a href="{{ routes.account_logout_url }}" aria-label="{{ 'customer.menu.logout' | t }}">{{ 'customer.menu.logout' | t }}</a>
+                    </li>
+                </ul>
+            </nav>
+        </div>
+    </div>
 </aside>

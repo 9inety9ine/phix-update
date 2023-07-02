@@ -1,0 +1,38 @@
+{% form 'create_customer', class: "form form--create-account" %}
+    {{ form.errors | default_errors }}
+    <div class="form-row form-row--split">
+        <label for="first_name" class="required">{{ 'customer.register.first_name_label' | t }}</label>
+        <input type="text" value="" name="customer[first_name]" size="30" placeholder="{{ 'customer.register.first_name_placeholder' | t }}" required="required">
+    </div>
+    <div class="form-row form-row--split">
+        <label for="last_name" class="required">{{ 'customer.register.last_name_label' | t }}</label>
+        <input type="text" value="" name="customer[last_name]" size="30" placeholder="{{ 'customer.register.last_name_placeholder' | t }}" required="required">
+    </div>
+    <div class="form-row form-row--full">
+        <label for="email" class="required">{{ 'customer.register.email_label' | t }}</label>
+        <input type="email" value="" name="customer[email]" size="30" placeholder="{{ 'customer.register.email_placeholder' | t }}" required="required">
+    </div>
+    <div class="form-row form-row--full">
+        <label for="password" class="required">{{ 'customer.register.password_label' | t }}</label>
+        <input type="password" value="" name="customer[password]" size="30" placeholder="{{ 'customer.register.password_placeholder' | t }}" id="password" required="required">
+    </div>
+    <div class="form-row form-row--full">
+        <label for="password" class="required">{{ 'customer.register.confirm_password_label' | t }}</label>
+        <input type="password" value="" name="customer[password_confirmation]" size="30" placeholder="{{ 'customer.register.confirm_password_placeholder' | t }}" id="password-confirm" required="required">
+    </div>
+    <div class="form-row form-row--full form-row--actions">
+        <button type="submit" class="button button--full-width" id="register-submit">{{ 'customer.register.register_button' | t }}</button>
+    </div>
+    <div class="form-row form-row--full">
+        <label for="marketing" class="checkbox">
+            <input type="hidden" name="customer[accepts_marketing]" value="true" />
+            <input type="checkbox" name="customer[accepts_marketing]" value="false" id="marketing">
+            <span class="grey-dark">{{ 'customer.register.marketing_message_html' | t }}</span>
+        </label>
+    </div>
+    <div class="form-row form-row--full">
+        <p class="lowercase grey-dark">{{ 'customer.register.terms_and_conditions_html' | t }}</p>
+    </div>
+    <input type="hidden" name="customer[tags]" value="newsletter">
+    <input type="hidden" name="return_to" value="/account/#new-account">
+{% endform %}

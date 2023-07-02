@@ -9,7 +9,7 @@ select {
 	font: 1em $font-base;
 	font-weight: $weight-regular;
 	display: flex;
-	height: 2.75em;
+	height: 3em;
 	padding: 0 1em;
 	align-items: center;
 	background-color: $color-white;
@@ -18,6 +18,7 @@ select {
 	appearance: none;
 	color: $color-black;
 	border-radius: 0;
+	text-transform: none;
 	&:focus {
 		outline: none;
 		border-color: $color-black;
@@ -36,6 +37,11 @@ input[type='submit'] {
 	background-color: transparent;
 	color: $color-black;
 	border-radius: 0;
+	display: flex;
+	height: 3em;
+	align-items: center;
+	justify-content: center;
+	cursor: pointer;
 	&:focus {
 		outline: none;
 	}
@@ -78,15 +84,23 @@ input[type='checkbox'] {
 label {
 	display: block;
 	white-space: nowrap;
-}
-label.disabled {
-	opacity: 0.5;
-}
-label.required {
-	&:after {
-		content: '*';
-		color: $color-failure;
-		margin-left: 0.25em;
+	text-transform: none;
+	&.checkbox {
+		display: flex;
+		gap: 1em;
+		span {
+			white-space: wrap;
+		}
+	}
+	&.disabled {
+		opacity: 0.5;
+	}
+	&.required {
+		&:after {
+			content: '*';
+			color: $color-failure;
+			margin-left: 0.25em;
+		}
 	}
 }
 input:-webkit-autofill,
@@ -136,7 +150,7 @@ input[type='search']::-webkit-search-results-decoration {
 	display: flex;
 	flex-wrap: wrap;
 	justify-content: space-between;
-	gap: 1em 0;
+	gap: 1.5em 0;
 	.form-row {
 		display: flex;
 		flex-direction: column;
@@ -150,7 +164,7 @@ input[type='search']::-webkit-search-results-decoration {
 		&--actions {
 			display: flex;
 			flex-direction: row;
-			gap: 2em;
+			gap: 1em;
 		}
 		&--1 {
 			order: 1 !important;

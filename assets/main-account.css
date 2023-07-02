@@ -1,1 +1,1 @@
-.section-account{position:relative}
+.section-account{position:relative}.section-account__new-customer{text-align:center;font-weight:700;margin-bottom:5em}@media (max-width:1024px){.section-account__new-customer{margin-bottom:2em}}.section-account__new-customer.hidden{display:none}.section-account__inner{display:grid;grid-template-columns:auto 1fr;gap:7em}@media (max-width:1024px){.section-account__inner{grid-template-columns:1fr;grid-template-rows:auto;gap:3em}}

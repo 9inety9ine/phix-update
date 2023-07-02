@@ -2,47 +2,64 @@
 {% render "section-styles", section_id: section_id, section: section %}
 
 <link href="{{ "main-account.css" | asset_url }}" rel="stylesheet">
+<link href="{{ "account-orders.css" | asset_url }}" rel="stylesheet">
 
-<div class="wrap wrap--xx-large wrap--{{section_id }}">
+<div class="wrap wrap--large wrap--{{section_id }}">
 
-    {% render "account-aside" %}
-    
-    <div id="customer_orders">
-        <h3>{{ 'account.orders.orders_title' | t }}</h3>
-        {% paginate customer.orders by 10 %}
-        {% if customer.orders.size != 0 %}
-        <ul class="orders">
-            {% for order in customer.orders %}
-                {% assign count = 0 %}
-                {% for line_item in order.line_items %}
-                    {% assign count = count | plus: 1 %}
-                {% endfor %}
-                <li class="orders__order">
-                    <h4 class="orders__order--name">{{ order.name | link_to: order.customer_url }}</h4>
-                    <div class="orders_order--media">
+    <div class="section-account__new-customer hidden">
+        <span>{{ "customer.orders.welcome_message" | t: email: customer.email }}</span>
+    </div>
+
+    <div class="section-account__inner">
+
+        {% render "account-aside" %}
+        
+        <div class="section-account__container section-orders__content" id="customer-orders">
+
+            <div class="section-account__header">
+                <h2>{{ 'customer.orders.orders_title' | t }}</h2>
+            </div>
+
+            {% paginate customer.orders by 999 %}
+            {% if customer.orders.size != 0 %}
+            <ul class="orders">
+                {% for order in customer.orders %}
+                    {% assign count = 0 %}
                     {% for line_item in order.line_items %}
-                        {% if forloop.first == true %}
-                        <p><a href="{{ order.customer_url }}"><img src="{{ line_item.image.src | img_url: "compact" }}"></a></p>
-                        {% endif %}
+                        {% assign count = count | plus: 1 %}
                     {% endfor %}
-                    </div>
-                    <div class="orders__order--details">
-                        <div class="orders__order--meta">
-                            <p class="orders__order--date">{{ 'account.orders.order_date' | t }} <span>{{ order.created_at | date: "%b %d, %Y" }}</span></p>
-                            <p class="orders__order--summary">{{ 'account.orders.order_summary' | t }} <span>{{ count }} {{ 'account.orders.order_summary_items' | t }}</span></p>
-                            <p class="orders__order--status">{{ 'account.orders.order_status' | t }} <span>{{ order.financial_status | capitalize }}</span></p>
-                            <p class="orders__order--total">{{ 'account.orders.order_total' | t }} <span>{{ order.total_price | money }}</span></p>
+                    <li class="orders__order">
+                        <div class="orders__order-info">
+                            <div class="orders__order-media">
+                            {% for line_item in order.line_items %}
+                                {% if forloop.first == true %}
+                                <a href="{{ order.customer_url }}">
+                                    <img src="{{ line_item.image.src | img_url: "180x180", crop: "center" }}">
+                                </a>
+                                {% endif %}
+                            {% endfor %}
+                            </div>
+                            <div class="orders__order-details">
+                                <h4 class="orders__order-name"><a href="{{ order.customer_url }}">Order: {{ order.name }}</a></h4>
+                                <div class="orders__order-meta">
+                                    <p class="orders__order-date">{{ 'customer.orders.order_date' | t }} <span>{{ order.created_at | date: "%b %d, %Y" }}</span></p>
+                                    <p class="orders__order-summary">{{ 'customer.orders.order_summary' | t }} <span>{{ count }} {{ 'customer.orders.order_summary_items' | t }}</span></p>
+                                    <p class="orders__order-status">{{ 'customer.orders.order_status' | t }} <span>{{ order.financial_status | capitalize }}</span></p>
+                                    <p class="orders__order-total">{{ 'customer.orders.order_total' | t }} <span>{{ order.total_price | money }}</span></p>
+                                </div>
+                                <p class="orders__order-link"><a href="{{ order.customer_url }}" class="underline underline--orange underline--heavy">{{ 'customer.orders.view_order' | t }}</a></p>
+                            </div>
                         </div>
-                        <p class="orders__order--link"><a href="{{ order.customer_url }}">{{ 'account.orders.view_order' | t }}</a></p>
-                    </div>
-                </li>
-            {% endfor %}
-        </ul>
-        {% else %}
-        <p>{{ 'account.orders.no_orders' | t }}</p>
-        {% endif %}
-        {{ paginate | default_pagination }}
-        {% endpaginate %}
+                    </li>
+                {% endfor %}
+            </ul>
+            {% else %}
+            <span>{{ 'customer.orders.no_orders' | t }}</span>
+            {% endif %}
+            {{ paginate | default_pagination }}
+            {% endpaginate %}
+        </div>
+
     </div>
 
 </div>
@@ -51,7 +68,7 @@
 {
     "name": "Account",
     "tag": "section",
-    "class": "section-account",
+    "class": "section-account section-orders",
     "settings": [
         {
             "type": "header",

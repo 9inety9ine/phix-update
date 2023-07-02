@@ -132,7 +132,6 @@ this.Shopify.theme.addresses = (function (exports) {
 	 */
 	function handleCountryChange(rootEl, formElements, countryCode, countries) {
 		var country = getCountry(countryCode, countries);
-
 		setLabels(formElements, country);
 		reorderFields(rootEl, formElements, country);
 		populateZones(formElements, country);
@@ -182,7 +181,7 @@ this.Shopify.theme.addresses = (function (exports) {
 	function setLabels(formElements, country) {
 		Object.keys(formElements).forEach(function (formElementName) {
 			formElements[formElementName].labels.forEach(function (label) {
-				label.textContent = country.labels[formElementName];
+				// label.textContent = country.labels[formElementName];
 			});
 		});
 	}

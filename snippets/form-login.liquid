@@ -1,0 +1,17 @@
+{% form 'customer_login', class: "form form--login" %}
+    {{ form.errors | default_errors }}
+    <div class="form-row form-row--full">
+        <label for="customer_email" class="required">{{ 'customer.login.email_label' | t }}</label>
+        <input type="email" name="customer[email]" placeholder="{{ 'customer.login.email_placeholder' | t }}" required="required">
+    </div>
+    <div class="form-row form-row--full">
+        <label for="customer_password" class="required">{{ 'customer.login.password_label' | t }}</label>
+        <input type="password" name="customer[password]" placeholder="{{ 'customer.login.password_placeholder' | t }}" required="required">
+    </div>
+    <div class="form-row form-row--full form-row--actions">
+        <button type="submit" class="button button--full-width">{{ 'customer.login.login_button' | t }}</button>
+    </div>
+    <div class="form-row form-row--full form-row--links">
+        <a href="#" class="toggle-forgot-password lowercase">{{ 'customer.login.forgot_password_link' | t }}</a>
+    </div>
+{% endform %}

@@ -58,6 +58,18 @@ a {
 		outline: none;
 	}
 }
+.lowercase {
+	text-transform: none;
+}
+.grey-dark {
+	color: $color-grey-dark;
+}
+.grey-medium {
+	color: $color-grey-medium;
+}
+.grey-light {
+	color: $color-grey-light;
+}
 img,
 svg,
 video {
