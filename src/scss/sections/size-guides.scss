@@ -1,0 +1,65 @@
+@import '../abstracts/variables';
+
+.section-size-guides {
+	position: relative;
+	&__inner {
+		position: relative;
+		display: flex;
+		flex-direction: column;
+		gap: 3em;
+	}
+	&__entry {
+		&__header {
+			display: flex;
+			justify-content: space-between;
+			align-items: center;
+			line-height: 1;
+			margin-bottom: 1em;
+			h3 {
+				margin: 0;
+			}
+		}
+		&__actions {
+			display: flex;
+			gap: 1.5em;
+			button {
+				height: fit-content;
+				min-height: auto;
+				padding: 0;
+				&.active {
+					text-decoration: underline;
+				}
+				span {
+					font-size: 0.85em;
+					text-transform: uppercase;
+				}
+			}
+		}
+		table {
+			width: 100%;
+			border-collapse: collapse;
+			&.hidden {
+				display: none;
+			}
+		}
+		tr {
+			td {
+				border-collapse: collapse;
+				border: 1px solid $color-grey-medium;
+				padding: 0.5em 0.75em;
+				text-align: center;
+				span {
+					// font-size: 0.91666666666em;
+					font-size: 1em;
+				}
+				&.heading {
+					width: 13em;
+					text-align-last: left;
+					background-color: $color-black;
+					color: $color-white;
+					border-color: rgba(255, 255, 255, 0.2);
+				}
+			}
+		}
+	}
+}

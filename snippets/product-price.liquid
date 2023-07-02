@@ -1,4 +1,10 @@
+{% if product.compare_at_price %}
 <div class="price" itemprop="offers" itemscope itemtype="https://schema.org/Offer">
-    {% if product.compare_at_price %}<span><del>{{ product.compare_at_price | money }}</del></span>{% endif %}
+    <del>{{ product.compare_at_price | money }}</del>
+    <ins itemprop="price" content="{{ product.price | money_without_currency }}">{{ product.price | money }}</ins>
+</div>
+{% else %}
+<div class="price" itemprop="offers" itemscope itemtype="https://schema.org/Offer">
     <span itemprop="price" content="{{ product.price | money_without_currency }}">{{ product.price | money }}</span>
 </div>
+{% endif %}

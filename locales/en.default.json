@@ -24,6 +24,7 @@
 	},
 	"collection": {
 		"no_products": "No matches.",
+		"load_more": "Load more products",
 		"drawer": {
 			"title": "Filter & Sort"
 		}

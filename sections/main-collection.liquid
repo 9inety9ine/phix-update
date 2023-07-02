@@ -1,9 +1,13 @@
 {% assign section_id = section.id | replace: "_", "" | replace: "-", "" %}
 {% render "section-styles", section_id: section_id, section: section %}
 
+<span id="products-per-page" style="display:none">{{ section.settings.product_count }}</span>
+<span id="total-products" style="display:none;">{{ collection.products_count }}</span>
+
 <link href="{{ "main-collection.css" | asset_url }}" rel="stylesheet">
 <link href="{{ "product-collection-grid.css" | asset_url }}" rel="stylesheet">
 <link href="{{ "product-filters.css" | asset_url }}" rel="stylesheet">
+<link href="{{ "pagination.css" | asset_url }}" rel="stylesheet">
 
 {%- for filter in collection.filters -%}
     {%- if filter.type == "price_range" -%}
@@ -36,8 +40,9 @@
         </div>
     </div>
 
-    {% paginate collection.products by 999 %}
-        <ul class="products">
+    {% paginate collection.products by section.settings.product_count %}
+        <ul class="products" id="products">
+        <!--[product-cards]-->
         {% for product in collection.products %}
             {% assign available = false %}
             {% if product.available or product.tags contains "preorder" %}{% assign available = true %}{% endif %}
@@ -47,10 +52,12 @@
         {% else %}
             <li class="products__no-product"><p>{{ 'collection.no_products' | t }}</p></li>
         {% endfor %}
+        <!--[/product-cards]-->
         </ul>
         {% if paginate.pages > 1 %}
-        <div class="pagination section-collection__pagination">
-            {{ paginate | default_pagination: next: '>', previous: '<' }}
+        <div class="pagination">
+            {% render "icon-loading.svg" %}
+            <button id="load-more" class="button button--secondary">{{ "collection.load_more" | t }}</button>
         </div>
         {% endif %}
     {% endpaginate %}
@@ -65,6 +72,12 @@
     "tag": "section",
     "class": "section-collection",
     "settings": [
+        {
+            "type": "number",
+            "id": "product_count",
+            "label": "Products per page",
+            "default": 24
+        },
         {
             "type": "header",
             "content": "Desktop padding"

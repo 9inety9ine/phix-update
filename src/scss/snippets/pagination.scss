@@ -1,0 +1,44 @@
+@import '../abstracts/variables';
+
+.pagination {
+	display: flex;
+	justify-content: center;
+	padding-top: 3em;
+	@media (max-width: $w-l) {
+		padding-top: 2em;
+	}
+	&.loading {
+		svg {
+			display: block;
+		}
+		button {
+			display: none;
+		}
+	}
+	button {
+		&.hidden {
+			display: none;
+		}
+	}
+	svg {
+		display: none;
+		width: 2em;
+		height: 2em;
+		opacity: 1;
+		animation-name: spinner;
+		animation-duration: 1000ms;
+		animation-iteration-count: infinite;
+		animation-timing-function: linear;
+		path {
+			fill: $color-grey-medium;
+		}
+	}
+}
+@keyframes spinner {
+	from {
+		transform: rotate(0);
+	}
+	to {
+		transform: rotate(360deg);
+	}
+}

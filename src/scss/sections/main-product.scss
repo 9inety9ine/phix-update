@@ -93,9 +93,22 @@
 		&__price {
 			margin-bottom: 2em;
 			line-height: 1;
-			span {
+			.price {
+				display: flex;
+				gap: 0.75em;
+				align-items: center;
+			}
+			.money {
 				font-size: 1.16666666667em;
 				font-weight: $weight-bold;
+			}
+			ins {
+				border: none;
+			}
+			del {
+				span {
+					font-weight: $weight-regular;
+				}
 			}
 		}
 		&__variants {
@@ -111,6 +124,8 @@
 					font-weight: $weight-bold;
 					text-transform: uppercase;
 					text-decoration: underline;
+					height: fit-content;
+					min-height: auto;
 				}
 				.variant-warning {
 					margin-right: auto;

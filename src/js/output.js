@@ -4,3 +4,4 @@ require('./global/base');
 require('./global/drawer-cart');
 require('./global/cart-add');
 require('./global/predictive-search');
+require('./global/pagination');
