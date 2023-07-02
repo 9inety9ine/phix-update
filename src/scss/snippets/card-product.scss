@@ -4,6 +4,9 @@
 	@include preload;
 	&__media {
 		margin-bottom: 1em;
+		img {
+			width: 100%;
+		}
 		a {
 			display: block;
 		}

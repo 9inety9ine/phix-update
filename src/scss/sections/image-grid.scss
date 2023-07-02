@@ -1,0 +1,47 @@
+@import '../abstracts/variables';
+
+.section-image-grid {
+	&__inner {
+		display: grid;
+		gap: 1em;
+		&.columns-desktop-1 {
+			grid-template-columns: repeat(1, 1fr);
+		}
+		&.columns-desktop-2 {
+			grid-template-columns: repeat(2, 1fr);
+		}
+		&.columns-desktop-3 {
+			grid-template-columns: repeat(3, 1fr);
+		}
+		&.columns-desktop-4 {
+			grid-template-columns: repeat(4, 1fr);
+		}
+		&.columns-mobile-1 {
+			@media (max-width: $w-l) {
+				grid-template-columns: repeat(1, 1fr);
+			}
+		}
+		&.columns-mobile-2 {
+			@media (max-width: $w-l) {
+				grid-template-columns: repeat(2, 1fr);
+			}
+		}
+		&.columns-mobile-3 {
+			@media (max-width: $w-l) {
+				grid-template-columns: repeat(3, 1fr);
+			}
+		}
+		&.columns-mobile-4 {
+			@media (max-width: $w-l) {
+				grid-template-columns: repeat(4, 1fr);
+			}
+		}
+	}
+	a {
+		display: block;
+	}
+	img {
+		@include preload;
+		width: 100%;
+	}
+}

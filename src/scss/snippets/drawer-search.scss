@@ -19,6 +19,14 @@
 	transition: bottom 0.25s linear;
 	overflow: visible;
 	display: none;
+	@media (max-width: $w-m) {
+		right: -1.5em;
+		max-width: none;
+		width: 100vw;
+	}
+	@media (max-width: $w-s) {
+		right: -1em;
+	}
 	&__input {
 		input {
 			border: none;

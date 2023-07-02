@@ -3,6 +3,9 @@
 .product-filters {
 	display: block;
 	margin-bottom: 2em;
+	@media (max-width: $w-s) {
+		padding: 0 1em;
+	}
 	&__inner {
 		display: flex;
 		gap: 2em;

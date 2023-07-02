@@ -4,6 +4,7 @@
 	&__details {
 		display: flex;
 		justify-content: space-between;
+		align-items: center;
 		.price {
 			display: flex;
 			gap: 0.5em;

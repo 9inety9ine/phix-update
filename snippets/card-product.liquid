@@ -20,14 +20,14 @@
             {% else %}
             <img 
                 {% if request.design_mode %}
-                src="{{ product.featured_image.src | img_url: '900x1228', crop: "center" }}" 
+                src="{{ product.featured_image.src | img_url: '600x820', crop: "center" }}" 
                 {% else %}
-                src="{{ "preload.gif" | asset_url }}" 
-                data-src="{{ product.featured_image.src | img_url: '900x1228', crop: "center" }}" 
+                src="{{ "preload-product-card.gif" | asset_url }}" 
+                data-src="{{ product.featured_image.src | img_url: '600x820', crop: "center" }}" 
                 {% endif %}
                 alt="{{ product.title }}" 
-                width="900" 
-                height="1228" 
+                width="600" 
+                height="820" 
             >
             {% endif %}
         </a>

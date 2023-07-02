@@ -80,6 +80,9 @@ input[type='checkbox'] {
 		box-shadow: none;
 		background-color: $color-white;
 	}
+	&:disabled {
+		opacity: 0.5;
+	}
 }
 label {
 	display: block;

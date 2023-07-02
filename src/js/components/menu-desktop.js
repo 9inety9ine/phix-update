@@ -44,3 +44,14 @@ if (menuItems && menuLinks && menuDevice)
 			}, 500);
 		});
 	}
+
+if (menuMask)
+	menuMask.addEventListener('click', () => {
+		for (let item of menuItems) {
+			const link = item.querySelector('.menu-desktop__link');
+			link.classList.remove('active');
+			item.classList.remove('open');
+			menuDevice.classList.remove('visible');
+			menuMask.classList.remove('show');
+		}
+	});

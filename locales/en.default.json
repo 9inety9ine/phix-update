@@ -32,9 +32,10 @@
 		"title": "Filter & Sort",
 		"clear": "Clear All",
 		"close": "Close",
-		"apply": "Apply filters",
+		"apply": "Apply",
 		"price_from": "From:",
-		"price_to": "To:"
+		"price_to": "To:",
+		"sort": "Sort"
 	},
 	"search": {
 		"search_label": "Search",

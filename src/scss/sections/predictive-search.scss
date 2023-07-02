@@ -3,6 +3,7 @@
 .predictive-search {
 	&__inner {
 		padding: 1.5em;
+		overflow-y: auto;
 	}
 	&__title {
 		font-weight: $weight-bold;
@@ -18,6 +19,11 @@
 	}
 	&__button {
 		padding-top: 1em;
+	}
+	ul {
+		display: flex;
+		flex-direction: column;
+		gap: 0.25em;
 	}
 	a {
 		text-decoration: none;
