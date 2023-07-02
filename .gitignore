@@ -12,8 +12,9 @@ templates/*.json
 !templates/collection.json
 !templates/index.json
 !templates/list-collections.json
-!templates/page.contact.json
 !templates/page.json
+!templates/page.contact.json
+!templates/page.custom.json
 !templates/password.json
 !templates/product.json
 !templates/search.json
