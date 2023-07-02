@@ -2,8 +2,9 @@
 {% render "section-styles", section_id: section_id, section: section %}
 
 <link href="{{ "main-search.css" | asset_url }}" rel="stylesheet">
+<link href="{{ "product-collection-grid.css" | asset_url }}" rel="stylesheet">
 
-<div class="wrap wrap--xx-large wrap--{{section_id }}">
+<div class="wrap wrap--xx-large wrap--{{section_id }} wrap--no-padding-s-mobile">
 
     <form action="/search" method="get" role="search">
         <label>{{ 'search.search_label' | t }}</label>
@@ -11,18 +12,26 @@
         <button type="submit" class="button">{{ 'search.search_submit' | t }}</button>
     </form>
 
-    {% paginate search.results by 10 %}
+    {% paginate search.results by 999 %}
     {% if search.performed %}
-        {% for item in search.results %}
-        {% if item.object_type == 'product' %}
-            {% render "card-product", product: item %}
-        {% endif %}
-        {% else %}
-        <p>{{ 'search.no_results' | t }}</p>
-        {% endfor %}
+        <ul class="products">
+            {% for item in search.results %}
+            {% if item.object_type == 'product' %}
+                {% assign available = false %}
+                {% if item.available or item.tags contains "preorder" %}{% assign available = true %}{% endif %}
+                {% if available == true %}
+                <li class="products__product">{% render "card-product", product: item %}</p>
+                {% endif %}
+            {% endif %}
+            {% else %}
+                <li class="products__no-product"><p>{{ 'search.no_results' | t }}</p></li>
+            {% endfor %}
+        </ul>
     {% endif %}
     {% if paginate.pages > 1 %}
-        {{ paginate | default_pagination }}
+    <div class="pagination section-collection__pagination">
+        {{ paginate | default_pagination: next: '>', previous: '<' }}
+    </div>
     {% endif %}
     {% endpaginate %}
 

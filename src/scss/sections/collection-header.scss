@@ -1,5 +1,18 @@
 @import '../abstracts/variables';
 
 .section-collection-header {
-	text-align: center;
+	&__inner {
+		text-align: center;
+		display: flex;
+		flex-direction: column;
+		gap: 1em;
+	}
+	h1 {
+		margin-bottom: 0;
+	}
+	p {
+		&:last-child {
+			margin-bottom: 0;
+		}
+	}
 }

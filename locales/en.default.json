@@ -23,13 +23,45 @@
 		}
 	},
 	"collection": {
-		"no_products": "No matches."
+		"no_products": "No matches.",
+		"drawer": {
+			"title": "Filter & Sort"
+		}
+	},
+	"filters": {
+		"title": "Filter & Sort",
+		"clear": "Clear All",
+		"close": "Close",
+		"apply": "Apply filters",
+		"price_from": "From:",
+		"price_to": "To:"
 	},
 	"search": {
 		"search_label": "Search",
 		"search_placeholder": "Enter your search term...",
 		"search_submit": "Search",
-		"no_results": "No results."
+		"search_clear": "Clear",
+		"no_results": "No results for",
+		"one_result": "result for",
+		"many_results": "results for",
+		"filters_title": "Filters",
+		"clear_filters": "Clear all",
+		"apply_label": "Apply",
+		"price_from": "From:",
+		"price_to": "To:",
+		"sort_label": "Sort by",
+		"drawer": {
+			"search_label": "Search",
+			"clear_results": "Clear All",
+			"no_products_found": "No products found for",
+			"no_collections_found": "No collections found for",
+			"search_placeholder": "Search...",
+			"show_all": "View all search results",
+			"product_results_title": "Products",
+			"collection_results_title": "Collections",
+			"page_results_title": "Pages",
+			"no_pages_found": "No pages found for"
+		}
 	},
 	"cart": {
 		"title": "Your Cart",

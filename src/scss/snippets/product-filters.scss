@@ -1,0 +1,60 @@
+@import '../abstracts/variables';
+
+.product-filters {
+	display: block;
+	margin-bottom: 2em;
+	&__inner {
+		display: flex;
+		gap: 2em;
+		align-items: center;
+	}
+	&__toggle {
+		button {
+			height: fit-content;
+			min-height: auto;
+			text-transform: uppercase;
+			gap: 0.5em;
+			svg {
+				width: 2em;
+				height: 2em;
+				fill: $color-black;
+			}
+		}
+	}
+	&__active {
+		display: flex;
+	}
+	&__remove {
+		display: flex;
+		text-decoration: none;
+		align-items: center;
+		gap: 0.75em;
+		line-height: 1;
+		border-left: 1px solid $color-grey-medium;
+		padding: 0.25em 2em;
+		span {
+			font-size: 0.91666666666em;
+			display: flex;
+			gap: 0.25em;
+		}
+		svg {
+			width: 0.58333333333em;
+			height: 0.58333333333em;
+			position: relative;
+			line {
+				fill: none;
+				stroke: $color-black;
+				stroke-width: 3;
+				stroke-linecap: round;
+				stroke-linejoin: round;
+			}
+		}
+		&:hover,
+		&:focus {
+			text-decoration: none;
+		}
+	}
+	&__count {
+		margin-left: auto;
+	}
+}

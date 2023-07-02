@@ -1,0 +1,11 @@
+@import '../abstracts/variables';
+
+.section-image-banner {
+	a {
+		display: block;
+	}
+	img {
+		@include preload;
+		width: 100%;
+	}
+}

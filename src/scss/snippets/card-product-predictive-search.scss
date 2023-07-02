@@ -1,0 +1,12 @@
+@import '../abstracts/variables';
+
+.card-product-predictive-search {
+	&__details {
+		display: flex;
+		justify-content: space-between;
+		.price {
+			display: flex;
+			gap: 0.5em;
+		}
+	}
+}

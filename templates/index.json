@@ -1,9 +1,163 @@
 {
-	"sections": {
-		"hero": {
-			"type": "hero-banner",
-			"settings": {}
-		}
-	},
-	"order": ["hero"]
+  "sections": {
+    "hero": {
+      "type": "hero-banner",
+      "blocks": {
+        "5c763331-2f09-4770-9c48-353994d7e0c3": {
+          "type": "slide",
+          "settings": {
+            "title": "Slide Title",
+            "url": "shopify:\/\/collections\/shirting",
+            "image": "shopify:\/\/shop_images\/the-brand.jpg"
+          }
+        },
+        "e87cc0b2-7dde-4934-8d89-7a2629aecc19": {
+          "type": "slide",
+          "settings": {
+            "title": "Slide 2",
+            "url": "shopify:\/\/collections\/coats-jackets",
+            "image": "shopify:\/\/shop_images\/ss23-el-retiro.jpg"
+          }
+        }
+      },
+      "block_order": [
+        "5c763331-2f09-4770-9c48-353994d7e0c3",
+        "e87cc0b2-7dde-4934-8d89-7a2629aecc19"
+      ],
+      "settings": {}
+    },
+    "f5ce21a9-268e-45da-a2b5-347ad0d03f19": {
+      "type": "featured-items",
+      "settings": {
+        "title": "Featured Items",
+        "subtitle": "Discover the latest arrivals",
+        "products": [
+          "black-floral-shirt",
+          "60s-geometric-purple-long-sleeve-shirt",
+          "60s-geometric-green-cuban-shirt",
+          "pink-circle-shirt",
+          "70s-mint-ripple-shirt",
+          "60s-orange-green-polkadot-shirt",
+          "black-cotton-v-neck-polo-shirt",
+          "white-cotton-v-neck-polo",
+          "blue-chevron-shirt",
+          "beige-wool-gold-button-crop-shawl-blazer",
+          "beige-wool-gold-button-flare-trouser",
+          "black-70s-front-pocket-denim-flare-jeans",
+          "aw21-black-70s-geometric-shirt"
+        ],
+        "padding_top": 72,
+        "padding_bottom": 48,
+        "mobile_padding_top": 32,
+        "mobile_padding_bottom": 32
+      }
+    },
+    "b9dd76db-f4a5-45a1-a8b7-7c2f30ca9e63": {
+      "type": "collection-grid",
+      "blocks": {
+        "9539864c-a03a-4216-91f7-9395b0fe67d4": {
+          "type": "feature",
+          "settings": {
+            "color": "white",
+            "title": "Collection Title",
+            "image": "shopify:\/\/shop_images\/GMB07052.jpg",
+            "label": "Explore the collection",
+            "url": "#"
+          }
+        },
+        "b8a209fe-f650-4451-a638-437b52df2c04": {
+          "type": "feature",
+          "settings": {
+            "color": "white",
+            "title": "Collection Title",
+            "image": "shopify:\/\/shop_images\/DSC9275.jpg",
+            "label": "Explore the collection",
+            "url": "#"
+          }
+        }
+      },
+      "block_order": [
+        "9539864c-a03a-4216-91f7-9395b0fe67d4",
+        "b8a209fe-f650-4451-a638-437b52df2c04"
+      ],
+      "settings": {
+        "padding_top": 48,
+        "padding_bottom": 24,
+        "mobile_padding_top": 32,
+        "mobile_padding_bottom": 32
+      }
+    },
+    "0db5b478-1e34-42e0-a362-0dbaac672d17": {
+      "type": "product-grid",
+      "blocks": {
+        "18b56736-57d5-4473-a224-4d7eca249dc9": {
+          "type": "product",
+          "settings": {
+            "product": "60s-geometric-purple-long-sleeve-shirt"
+          }
+        },
+        "ebf6e2b6-ad07-4742-9f9c-4d15be6776f8": {
+          "type": "product",
+          "settings": {
+            "product": "pink-circle-shirt"
+          }
+        },
+        "1e7acad6-7208-40e8-8a10-fbd459c848af": {
+          "type": "product",
+          "settings": {
+            "product": "beige-wool-gold-button-flare-trouser"
+          }
+        }
+      },
+      "block_order": [
+        "18b56736-57d5-4473-a224-4d7eca249dc9",
+        "ebf6e2b6-ad07-4742-9f9c-4d15be6776f8",
+        "1e7acad6-7208-40e8-8a10-fbd459c848af"
+      ],
+      "settings": {
+        "padding_top": 0,
+        "padding_bottom": 48,
+        "mobile_padding_top": 0,
+        "mobile_padding_bottom": 32
+      }
+    },
+    "9b12f941-ba38-4054-8856-f9702b0a08f7": {
+      "type": "featured-items",
+      "settings": {
+        "title": "Featured Items",
+        "subtitle": "Discover the latest arrivals",
+        "products": [
+          "black-cropped-double-breasted-blazer",
+          "black-cropped-shawl-collar-blazer",
+          "black-crushed-velvet-shawl-collar-shirt",
+          "black-double-breasted-satin-shirt",
+          "black-floral-long-sleeve-crochet-shirt",
+          "black-leopard-low-trainers",
+          "black-satin-trouser",
+          "black-wool-pin-tuck-trousers"
+        ],
+        "padding_top": 48,
+        "padding_bottom": 48,
+        "mobile_padding_top": 32,
+        "mobile_padding_bottom": 32
+      }
+    },
+    "c85bacfa-90b0-4cd0-a8b3-bf9e789e8736": {
+      "type": "instagram-feed",
+      "settings": {
+        "padding_top": 48,
+        "padding_bottom": 0,
+        "mobile_padding_top": 32,
+        "mobile_padding_bottom": 0
+      }
+    }
+  },
+  "order": [
+    "hero",
+    "f5ce21a9-268e-45da-a2b5-347ad0d03f19",
+    "b9dd76db-f4a5-45a1-a8b7-7c2f30ca9e63",
+    "0db5b478-1e34-42e0-a362-0dbaac672d17",
+    "9b12f941-ba38-4054-8856-f9702b0a08f7",
+    "c85bacfa-90b0-4cd0-a8b3-bf9e789e8736"
+  ]
 }

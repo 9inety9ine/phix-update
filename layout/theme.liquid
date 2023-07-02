@@ -77,6 +77,10 @@
     {% section "footer" %}
     {% section "drawer-menu" %}
     
+    {% if template == "collection" %}
+    {% render "drawer-collection" %}
+    {% endif %}
+    
     {% unless template == "cart" %}
     {% render "drawer-cart" %}
     {% endunless %}

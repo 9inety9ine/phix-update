@@ -26,6 +26,9 @@
 	visibility: hidden;
 	opacity: 0;
 	transition: all linear 0.25s;
+	&.low {
+		z-index: 8;
+	}
 }
 
 .drawer-open {

@@ -1,0 +1,29 @@
+@import '../abstracts/variables';
+
+.predictive-search {
+	&__inner {
+		padding: 1.5em;
+	}
+	&__title {
+		font-weight: $weight-bold;
+		margin-bottom: 0.5em;
+	}
+	&__products {
+		margin-bottom: 1em;
+	}
+	&__other {
+		display: grid;
+		grid-template-columns: 1fr 1fr;
+		gap: 1em;
+	}
+	&__button {
+		padding-top: 1em;
+	}
+	a {
+		text-decoration: none;
+		&:hover,
+		&:focus {
+			text-decoration: underline;
+		}
+	}
+}

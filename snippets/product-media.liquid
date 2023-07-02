@@ -25,18 +25,18 @@
 <script src="{{ "swiper.js" | asset_url }}"></script>
 <script defer>
 
-    const productMedia = document.querySelector('product-media');
+    const productMedia = document.querySelector('.product-media');
 
-    const swiper_product_media = new Swiper('swiper-product-media', {
+    const swiper_product_media = new Swiper('.swiper-product-media', {
         speed: 250,
         spaceBetween: 0,
         loop: false,
         slidesPerView: 1,
-        init: false,
         pagination: {
-            el: 'media-pagination',
+            el: '.media-pagination',
             type: 'bullets',
         },
+        init: false,
     });
 
     const eventHandler = event => {

@@ -1,9 +1,47 @@
 {
-	"sections": {
-		"main": {
-			"type": "main-product",
-			"settings": {}
-		}
-	},
-	"order": ["main"]
+  "sections": {
+    "main": {
+      "type": "main-product",
+      "blocks": {
+        "e332d2c2-7826-464c-86da-d12acaa568fc": {
+          "type": "country_text",
+          "settings": {
+            "condition": "equals",
+            "code": "GB",
+            "title": "Message for GB only"
+          }
+        },
+        "38d830eb-ddc1-4e03-bc37-e1d7b52aa066": {
+          "type": "continent_text",
+          "settings": {
+            "condition": "does_not_equal",
+            "code": "EU",
+            "title": "Message for anyone in an EU country"
+          }
+        },
+        "57323523-48ff-4aa5-816e-516404b2b84b": {
+          "type": "country_text",
+          "settings": {
+            "condition": "does_not_equal",
+            "code": "GB",
+            "title": "Message for anywhere besides GB"
+          }
+        }
+      },
+      "block_order": [
+        "e332d2c2-7826-464c-86da-d12acaa568fc",
+        "38d830eb-ddc1-4e03-bc37-e1d7b52aa066",
+        "57323523-48ff-4aa5-816e-516404b2b84b"
+      ],
+      "settings": {
+        "padding_top": 32,
+        "padding_bottom": 64,
+        "mobile_padding_top": 0,
+        "mobile_padding_bottom": 32
+      }
+    }
+  },
+  "order": [
+    "main"
+  ]
 }

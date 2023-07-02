@@ -1,1 +1,1 @@
-.section-collection{position:relative}.section-collection .products{display:grid;grid-template-columns:repeat(4,1fr);gap:2em 1em}@media (max-width:1440px){.section-collection .products{grid-template-columns:repeat(3,1fr)}}@media (max-width:768px){.section-collection .products{grid-template-columns:repeat(2,1fr);gap:1.5em .5em}}@media (max-width:480px){.section-collection .products{gap:1.5em .25em}}@media (max-width:480px){.section-collection .products .card-product__details{padding:0 1em}}
+.section-collection{position:relative}

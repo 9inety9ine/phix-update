@@ -1,15 +1,17 @@
 window.closeAllDrawers = function () {
 	const documentBody = document.querySelector('body');
+	const mask = document.querySelector('.drawer-mask');
 	if (documentBody && documentBody.classList.contains('drawer-open')) {
 		documentBody.classList.remove('drawer-cart-open');
 		documentBody.classList.remove('drawer-search-open');
 		documentBody.classList.remove('drawer-menu-open');
-		documentBody.classList.remove('drawer-filters-open');
+		documentBody.classList.remove('drawer-collection-open');
 		documentBody.classList.remove('drawer-search-filters-open');
 		documentBody.classList.remove('no-overflow');
 		documentBody.classList.remove('drawer-open');
 		window.setTimeout(function () {
 			documentBody.classList.remove('mask-visible');
+			mask.classList.remove('low');
 		}, 250);
 	}
 };

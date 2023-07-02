@@ -1,1 +1,1 @@
-.section-collection-header{text-align:center}
+.section-collection-header__inner{text-align:center;display:flex;flex-direction:column;gap:1em}.section-collection-header h1{margin-bottom:0}.section-collection-header p:last-child{margin-bottom:0}

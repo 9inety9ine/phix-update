@@ -2,13 +2,48 @@
 {% render "section-styles", section_id: section_id, section: section %}
 
 <link href="{{ "main-collection.css" | asset_url }}" rel="stylesheet">
+<link href="{{ "product-collection-grid.css" | asset_url }}" rel="stylesheet">
+<link href="{{ "product-filters.css" | asset_url }}" rel="stylesheet">
+
+{%- for filter in collection.filters -%}
+    {%- if filter.type == "price_range" -%}
+        {%- if filter.min_value.value != nil or filter.max_value.value != nil -%}
+            {%- assign has_range = true -%}
+        {%- endif -%}
+    {%- else -%}
+        {%- for filter_value in filter.active_values -%}
+            {%- assign filter_count = filter_count | plus: 1 -%}
+        {%- endfor -%}
+    {%- endif -%}
+{%- endfor -%}
 
 <div class="wrap wrap--xx-large wrap--{{section_id }} wrap--no-padding-s-mobile">
+
+    <div class="section-collection__tray product-filters">
+        <div class="product-filters__inner">
+            <div class="product-filters__toggle">
+                <button class="toggle-collection-drawer" aria-label="Filter &amp; Sort">{% render "icon-filter-sort.svg" %}<span>Filter &amp; Sort</span></button>
+            </div>
+            {%- if filter_count >= 1 or has_range == true -%}
+                <div class="product-filters__active">{%- assign filter_count = 0 -%}{%- for filter in collection.filters -%}{%- if filter.type == "price_range" -%}{%- assign has_range = false -%}{%- if filter.min_value.value != nil or filter.max_value.value != nil -%}{%- assign has_range = true -%}<a class="product-filters__remove" href="{{ filter.url_to_remove }}"><span>{%- assign min_value = filter.min_value.value | default: 0 -%}{%- assign max_value = filter.max_value.value | default: filter.range_max -%}{{- min_value | money -}} - {{- max_value | money -}}</span>{% render "icon-close.svg" %}</a>{%- endif -%}{%- else -%}{%- for filter_value in filter.active_values -%}{%- assign filter_count = filter_count | plus: 1 -%}<a class="product-filters__remove filter-{{ filter_value.value | handleize}}" href="{{ filter_value.url_to_remove }}"><span>{{ filter_value.label }}</span>{% render "icon-close.svg" %}</a>{%- endfor -%}{%- endif- %}{%- endfor -%}{%- unless collection.products.size == 0 -%}{%- if filter_count >= 1 or has_range == true -%}<a href="{{ collection.url }}" class="product-filters__remove underline"><span>{{ "filters.clear" | t }}</span></a>{%- endif -%}{%- endunless -%}</div>
+            {%- endif -%}
+            <div class="product-filters__count">
+                <div class="product-filters__count__value">
+                    <span id="product-count-range"></span>
+                    <span>{{ collection.products_count }} {{ collection.products_count | pluralize: 'Item', 'Items' }}</span>
+                </div>
+            </div>
+        </div>
+    </div>
 
     {% paginate collection.products by 999 %}
         <ul class="products">
         {% for product in collection.products %}
+            {% assign available = false %}
+            {% if product.available or product.tags contains "preorder" %}{% assign available = true %}{% endif %}
+            {% if available == true %}
             <li class="products__product">{% render "card-product", product: product %}</li>
+            {% endif %}
         {% else %}
             <li class="products__no-product"><p>{{ 'collection.no_products' | t }}</p></li>
         {% endfor %}
@@ -21,6 +56,8 @@
     {% endpaginate %}
 
 </div>
+
+<script src="{{ "main-collection.js" | asset_url }}" defer></script>
 
 {% schema %}
 {

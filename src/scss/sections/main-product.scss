@@ -54,7 +54,7 @@
 			.alert {
 				display: flex;
 				align-items: center;
-				gap: 0.5em;
+				gap: 0.75em;
 			}
 			.marker {
 				width: 1.5em;
@@ -74,8 +74,10 @@
 				}
 			}
 			.label {
-				font-size: 0.91666666666em;
+				font-size: 0.85em;
 				line-height: 1;
+				position: relative;
+				top: 1px;
 			}
 		}
 		&__title {

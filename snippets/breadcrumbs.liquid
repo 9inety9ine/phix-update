@@ -1,10 +1,11 @@
 <link href="{{ "breadcrumbs.css" | asset_url }}" rel="stylesheet">
 
-{%- assign t = template | split: '' | first -%}
+{%- assign t = template | split: '-' | first -%}
+
 <nav class="breadcrumbs" aria-label="breadcrumbs">
     <ol class="breadcrumbs__list">
       <li class="breadcrumbs__item">
-        <a class="breadcrumbs__link" href="/">{{ 'general.breadcrumbs.home_label' | t }}</a>
+        <a class="breadcrumbs__link" href="{{ routes.root_url }}">{{ 'general.breadcrumbs.home_label' | t }}</a>
       </li>
       {%- case t -%}
         {%- when 'page' -%}

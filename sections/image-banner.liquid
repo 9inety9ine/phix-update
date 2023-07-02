@@ -1,0 +1,200 @@
+{% assign section_id = section.id | replace: "_", "" | replace: "-", "" %}
+{% render "section-styles", section_id: section_id, section: section %}
+
+<link href="{{ "image-banner.css" | asset_url }}" rel="stylesheet">
+
+<div class="wrap wrap--{{ section_id }} wrap--{{ section.settings.width }}{% if section.settings.width == "full-width" %} wrap--no-padding{% endif %}">
+
+    <div class="section-image-banner__inner">
+        {% if section.settings.url != blank %}<a href="{{ section.settings.url }}">{% endif %}
+        {% if section.settings.image != blank %}
+            {% if section.settings.width == "full-width" %}
+                <img 
+                    {% if request.design_mode %}
+                    src="{{ section.settings.image.src | img_url: 'master' }}" 
+                    {% else %}
+                    src="{{ "preload.gif" | asset_url }}" 
+                    data-src="{{ section.settings.image.src | img_url: 'master' }}" 
+                    class="preload" 
+                    {% endif %}
+                    alt="{{ section.settings.title }}" 
+                    width="{{ section.settings.image.width }}" 
+                    height="{{ section.settings.image.height }}"
+                >
+            {% elsif section.settings.width == "xx-large" %}
+                <img 
+                    {% if request.design_mode %}
+                    src="{{ section.settings.image.src | img_url: '19200x' }}" 
+                    {% else %}
+                    src="{{ "preload.gif" | asset_url }}" 
+                    data-src="{{ section.settings.image.src | img_url: '1920x' }}" 
+                    class="preload" 
+                    {% endif %}
+                    alt="{{ section.settings.title }}" 
+                    width="{{ section.settings.image.width }}" 
+                    height="{{ section.settings.image.height }}"
+                >
+            {% elsif section.settings.width == "x-large" %}
+                <img 
+                    {% if request.design_mode %}
+                    src="{{ section.settings.image.src | img_url: '1440x' }}" 
+                    {% else %}
+                    src="{{ "preload.gif" | asset_url }}" 
+                    data-src="{{ section.settings.image.src | img_url: '1440x' }}" 
+                    class="preload" 
+                    {% endif %}
+                    alt="{{ section.settings.title }}" 
+                    width="{{ section.settings.image.width }}" 
+                    height="{{ section.settings.image.height }}"
+                >
+            {% elsif section.settings.width == "large" %}
+                <img 
+                    {% if request.design_mode %}
+                    src="{{ section.settings.image.src | img_url: '1024x' }}" 
+                    {% else %}
+                    src="{{ "preload.gif" | asset_url }}" 
+                    data-src="{{ section.settings.image.src | img_url: '1024x' }}" 
+                    class="preload" 
+                    {% endif %}
+                    alt="{{ section.settings.title }}" 
+                    width="{{ section.settings.image.width }}" 
+                    height="{{ section.settings.image.height }}"
+                >
+            {% elsif section.settings.width == "medium" %}
+                <img 
+                    {% if request.design_mode %}
+                    src="{{ section.settings.image.src | img_url: '768x' }}" 
+                    {% else %}
+                    src="{{ "preload.gif" | asset_url }}" 
+                    data-src="{{ section.settings.image.src | img_url: '768x' }}" 
+                    class="preload" 
+                    {% endif %}
+                    alt="{{ section.settings.title }}" 
+                    width="{{ section.settings.image.width }}" 
+                    height="{{ section.settings.image.height }}"
+                >
+            {% elsif section.settings.width == "small" %}
+                <img 
+                    {% if request.design_mode %}
+                    src="{{ section.settings.image.src | img_url: '480x' }}" 
+                    {% else %}
+                    src="{{ "preload.gif" | asset_url }}" 
+                    data-src="{{ section.settings.image.src | img_url: '480x' }}" 
+                    class="preload" 
+                    {% endif %}
+                    alt="{{ section.settings.title }}" 
+                    width="{{ section.settings.image.width }}" 
+                    height="{{ section.settings.image.height }}"
+                >
+            {% endif%}
+        {% endif %}
+        {% if section.settings.url != blank %}</a>{% endif %}
+    </div>
+
+</div>
+
+{% schema %}
+{
+    "name": "Image Banner",
+    "tag": "section",
+    "class": "section-image-banner",
+    "settings": [
+        {
+            "type": "image_picker",
+            "id": "image",
+            "label": "Image"
+        },
+        {
+            "type": "url",
+            "id": "url",
+            "label": "Link",
+            "info": "Optional"
+        },
+        {
+            "type": "select",
+            "id": "width",
+            "label": "Width",
+            "options": [
+                {
+                    "value": "small",
+                    "label": "Small"
+                },
+                {
+                    "value": "medium",
+                    "label": "Medium"
+                },
+                {
+                    "value": "large",
+                    "label": "Large"
+                },
+                {
+                    "value": "x-large",
+                    "label": "X Large"
+                },
+                {
+                    "value": "xx-large",
+                    "label": "XX Large"
+                },
+                {
+                    "value": "full-width",
+                    "label": "Full Width"
+                }
+            ],
+            "default": "full-width"
+        },
+        {
+            "type": "header",
+            "content": "Desktop padding"
+        },
+        {
+            "type": "range",
+            "id": "padding_top",
+            "min": 0,
+            "max": 128,
+            "step": 2,
+            "unit": "px",
+            "label": "Padding top",
+            "default": 0
+        },
+        {
+            "type": "range",
+            "id": "padding_bottom",
+            "min": 0,
+            "max": 128,
+            "step": 2,
+            "unit": "px",
+            "label": "Padding bottom",
+            "default": 0
+        },
+        {
+            "type": "header",
+            "content": "Mobile padding"
+        },
+        {
+            "type": "range",
+            "id": "mobile_padding_top",
+            "min": 0,
+            "max": 128,
+            "step": 2,
+            "unit": "px",
+            "label": "Padding top",
+            "default": 0
+        },
+        {
+            "type": "range",
+            "id": "mobile_padding_bottom",
+            "min": 0,
+            "max": 128,
+            "step": 2,
+            "unit": "px",
+            "label": "Padding bottom",
+            "default": 0
+        }
+    ],
+    "presets":[
+        {
+            "name": "Image Banner"
+        }
+    ]
+}
+{% endschema %}

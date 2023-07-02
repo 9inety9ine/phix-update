@@ -1,0 +1,13 @@
+<link href="{{ "drawer-collection.css" | asset_url }}" rel="stylesheet">
+
+<div class="drawer drawer-collection" id="drawer-collection">
+    <div class="inner">
+        <div class="drawer__header drawer-collection__header">
+            <button class="toggle-drawer">{% render "icon-close.svg" %}</button>
+            <div class="drawer__header__text drawer-collection__header__text">{{ "collection.drawer.title" | t }}</div>
+        </div>
+        <div class="drawer__content drawer-collection__content">
+            {% render "filters-collection", collection: collection %}
+        </div>
+    </div>
+</div>

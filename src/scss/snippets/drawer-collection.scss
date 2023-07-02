@@ -1,0 +1,51 @@
+@import '../abstracts/variables';
+
+.drawer-collection-open {
+	.drawer-collection {
+		left: 0;
+	}
+}
+.drawer-collection {
+	left: -$w-s;
+	right: auto;
+	transition: left 0.25s linear;
+	.inner {
+		display: grid;
+		grid-template-rows: auto 1fr;
+	}
+	&__header {
+		padding: 2em 2em 0 2em;
+		display: flex;
+		gap: 2em;
+		align-items: center;
+		&__text {
+			font-size: 1.5em;
+			font-weight: $weight-bold;
+		}
+		button {
+			width: 3em;
+			height: 3em;
+			border-radius: 50%;
+			background-color: $color-black;
+			cursor: pointer;
+			display: flex;
+			align-items: center;
+			justify-content: center;
+			svg {
+				width: 1.25em;
+				height: 1.25em;
+				line {
+					fill: none;
+					stroke: $color-white;
+					stroke-width: 2;
+					stroke-linecap: round;
+					stroke-linejoin: round;
+				}
+			}
+		}
+	}
+	&__content {
+		padding: 2em;
+		overflow-y: auto;
+	}
+}

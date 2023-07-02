@@ -30,6 +30,10 @@
 			a {
 				font-weight: $weight-bold;
 				text-decoration: none;
+				&:hover,
+				&:focus {
+					text-decoration: underline;
+				}
 			}
 			&:last-child {
 				a {
