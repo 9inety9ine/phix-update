@@ -9,6 +9,12 @@
 	.pagination-bullet {
 		@media (min-width: 769px) {
 			all: unset;
+			margin: 0;
+			transform: none;
+			box-sizing: border-box;
+			transition-property: none;
+			height: auto;
+			overflow: visible;
 		}
 	}
 	.swiper-wrapper {

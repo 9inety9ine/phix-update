@@ -11,11 +11,12 @@
             <span class="loading-icon">{% render "icon-loading.svg" %}</span>
             <div class="cart-items" id="cart-items"></div>
         </div>
-        <div class="drawer__footer drawer-cart__footer">
+        <div class="drawer__footer drawer-cart__footer hidden">
             <div class="cart-totals" id="cart-totals"></div>
             {% form 'cart', cart %}
             <button name="checkout" class="button button--full-width button--tall">{{ 'cart_drawer.checkout' | t }}</button>
             {% endform %}
+            {% render "payment-icons" %}
         </div>
     </div>
 </div>

@@ -19,13 +19,15 @@ window.initializeImageLoad = function () {
 				}
 			});
 		});
-		imagesToLoad.forEach(img => {
-			observer.observe(img);
-		});
+		if (imagesToLoad)
+			imagesToLoad.forEach(img => {
+				observer.observe(img);
+			});
 	} else {
-		imagesToLoad.forEach(img => {
-			loadImages(img);
-		});
+		if (imagesToLoad)
+			imagesToLoad.forEach(img => {
+				loadImages(img);
+			});
 	}
 };
 window.initializeImageLoad();

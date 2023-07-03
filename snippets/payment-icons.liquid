@@ -1,0 +1,7 @@
+<link href="{{ "payment-icons.css" | asset_url }}" rel="stylesheet">
+
+<ul class="payment-icons">
+  {%- for type in shop.enabled_payment_types -%}
+  <li>{{ type | payment_type_svg_tag: class: 'icon' }}</li>
+  {%- endfor -%}
+</ul>

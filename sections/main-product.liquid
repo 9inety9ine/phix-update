@@ -13,90 +13,97 @@
 
         {% render "product-media", product: product %}
 
-        <div class="section-product__details">
+        <div class="section-product__container">
+            <div class="section-product__details">
 
-            {% form 'product', product, class: "product-form" %}
+                {% form 'product', product, class: "product-form" %}
 
-                <input type="hidden" name="properties[_MID_Name]" value="{{ product.metafields.mid_info.mid_name.value }}" />
-                <input type="hidden" name="properties[_MID_Code]" value="{{ product.metafields.mid_info.mid_code.value }}" />
-                <input type="hidden" name="properties[_MID_Address]" value="{{ product.metafields.mid_info.mid_address.value }}" />
+                    <input type="hidden" name="properties[_MID_Name]" value="{{ product.metafields.mid_info.mid_name.value }}" />
+                    <input type="hidden" name="properties[_MID_Code]" value="{{ product.metafields.mid_info.mid_code.value }}" />
+                    <input type="hidden" name="properties[_MID_Address]" value="{{ product.metafields.mid_info.mid_address.value }}" />
 
-                {% if product.available %}
-                <div class="section-product__details__availability">
-                    <span class="alert">
-                        <span class="marker"><span></span></span>
-                        <span class="label">In stock</span>
-                    </span>
-                </div>
-                {% endif %}
-            
-                <div class="section-product__details__title">
-                    <h1>{{ product.title }}</h1>
-                </div>
-
-                {% assign product_colour = product.metafields.product.colour.value %}
-                {% if product_colour != blank %}
-                <div class="section-product__details__colour">
-                    <span>Colour: {{ product_colour }}</span>
-                </div>
-                {% endif %}
-
-                <div class="section-product__details__price">
-                    {% render "product-price", product: product %}
-                </div>
-
-                <div class="section-product__details__variants">
-                    <div class="section-product__details__variants__name">
-                        <span class="variant-name">Size</span>
-                        <span class="variant-warning hidden">Please select a size</span>
-                        <button>Size Guide</button>
-                    </div>
-                    {% render "product-variants", product: product %}
-                </div>
-
-                {% render "product-quantity" , product: product %}
-
-                <div class="section-product__details__actions">
                     {% if product.available %}
-                    <button type="submit" name="add" class="button button--add-to-cart button--highlight button--full-width button--tall"><span>{{ 'products.product.add_to_cart' | t }}</span></button>
-                    {% else %}
-                    <button type="submit" name="add" class="button button--add-to-cart button--full-width" disabled>{{ 'products.product.sold_out' | t }}</button>
+                    <div class="section-product__details__availability">
+                        <span class="alert">
+                            <span class="marker"><span></span></span>
+                            <span class="label">In stock</span>
+                        </span>
+                    </div>
                     {% endif %}
-                </div>
+                
+                    <div class="section-product__details__title">
+                        <h1>{{ product.title }}</h1>
+                    </div>
 
-                <div class="section-product__details__messages">
-                    {% for block in section.blocks %}
-                        {% case block.type %}
-                            {% when "country_text" %}
-                            <div class="country-message hidden" data-code="{{ block.settings.code }}" data-condition="{{ block.settings.condition }}">
-                                {{ block.settings.title }}
-                            </div>
-                            {% when "continent_text" %}
-                            <div class="continent-message hidden" data-code="{{ block.settings.code }}" data-condition="{{ block.settings.condition }}">
-                                {{ block.settings.title }}
-                            </div>
-                        {% endcase %}
-                    {% endfor %}
-                </div>
+                    {% assign product_colour = product.metafields.product.colour.value %}
+                    {% if product_colour != blank %}
+                    <div class="section-product__details__colour">
+                        <span>Colour: {{ product_colour }}</span>
+                    </div>
+                    {% endif %}
 
-                <div class="section-product__details__klarna">
-                    <!-- Placement v1 -->
-                    <klarna-placement
-                        data-id1="f4d06adf-37ef-4a99-b176-184905040ee0"
-                        data-key="credit-promotion-badge"
-                        data-locale="en-GB"
-                        data-purchase_amount="{{ product.selected_or_first_available_variant.price }}"
-                        data-theme="custom"
-                    ></klarna-placement>
-                    <!-- end Placement -->
-                </div>
+                    <div class="section-product__details__price">
+                        {% render "product-price", product: product %}
+                    </div>
 
-                <div class="section-product__details__accordions">
-                    {% render "product-accordions", product: product %}
-                </div>
+                    <div class="section-product__details__variants">
+                        <div class="section-product__details__variants__name">
+                            <span class="variant-name">Size</span>
+                            <span class="variant-warning hidden">Please select a size</span>
+                            <button>Size Guide</button>
+                        </div>
+                        {% render "product-variants", product: product %}
+                    </div>
 
-            {% endform %}
+                    {% render "product-quantity" , product: product %}
 
+                    <div class="section-product__details__actions">
+                        {% if product.available %}
+                        <button type="submit" name="add" class="button button--add-to-cart button--highlight button--full-width button--tall"><span>{{ 'products.product.add_to_cart' | t }}</span></button>
+                        {% else %}
+                        <button type="submit" name="add" class="button button--add-to-cart button--full-width" disabled>{{ 'products.product.sold_out' | t }}</button>
+                        {% endif %}
+                    </div>
+
+                    <div class="section-product__details__messages">
+                        {% for block in section.blocks %}
+                            {% case block.type %}
+                                {% when "country_text" %}
+                                <div class="country-message hidden" data-code="{{ block.settings.code }}" data-condition="{{ block.settings.condition }}">
+                                    {{ block.settings.title }}
+                                </div>
+                                {% when "continent_text" %}
+                                <div class="continent-message hidden" data-code="{{ block.settings.code }}" data-condition="{{ block.settings.condition }}">
+                                    {{ block.settings.title }}
+                                </div>
+                            {% endcase %}
+                        {% endfor %}
+                    </div>
+
+                    <div class="section-product__details__klarna">
+                        <!-- Placement v1 -->
+                        <klarna-placement
+                            data-id1="f4d06adf-37ef-4a99-b176-184905040ee0"
+                            data-key="credit-promotion-badge"
+                            data-locale="en-GB"
+                            data-purchase_amount="{{ product.selected_or_first_available_variant.price }}"
+                            data-theme="custom"
+                        ></klarna-placement>
+                        <!-- end Placement -->
+                    </div>
+
+                    <div class="section-product__details__accordions">
+                        {% render "product-accordions", product: product, section: section %}
+                    </div>
+
+                    <div class="section-product__details__reviews">
+                        {% render "product-reviews" %}
+                    </div>
+
+                {% endform %}
+
+            </div>
+            
         </div>
 
     </div>
@@ -195,6 +202,37 @@
         }
     ],
     "settings": [
+        {
+            "type": "header",
+            "content": "Details & Care"
+        },
+        {
+            "type": "text",
+            "id": "care_title",
+            "label": "Title",
+            "default": "Details & Care"
+        },
+        {
+            "type": "richtext",
+            "id": "care_text",
+            "label": "Default Text",
+            "default": "<p>Shell: 100% velvet. Hand wash only.</p>"
+        },
+        {
+            "type": "header",
+            "content": "Delivery & Returns"
+        },
+        {
+            "type": "text",
+            "id": "delivery_title",
+            "label": "Title",
+            "default": "Delivery & Returns"
+        },
+        {
+            "type": "richtext",
+            "id": "delivery_text",
+            "label": "Text"
+        },
         {
             "type": "header",
             "content": "Desktop padding"

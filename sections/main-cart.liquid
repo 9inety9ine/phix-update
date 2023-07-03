@@ -39,6 +39,12 @@
                             <span>{{ 'cart.remove_item' | t }}</span>
                         </a>
                     </div>
+                    {% comment %} {% assign item_colour = item.product.metafields.product.colour %}
+                    {% if item_colour != blank %}
+                    <div class="cart-item__colour">
+                        <span>Colour: {{ item_colour }}</span>
+                    </div>
+                    {% endif %} {% endcomment %}
                     <div class="cart-item__variant">
                         <span>{{ item.variant.title }}</span>
                     </div>
@@ -64,6 +70,9 @@
                         {% endfor %}
                         </div>
                     {% endif %}
+                    <div class="cart-item__wishlist">
+                        <button>{% render "icon-wishlist.svg" %}<span>Move to wishlist</span></button>
+                    </div>
                 </div>
             </div>
             {% endfor %}

@@ -75,6 +75,25 @@
 	}
 	&__footer {
 		padding: 2em;
+		display: flex;
+		flex-direction: column;
+		gap: 1.5em;
+		&.hidden {
+			display: none;
+		}
+		.cart-totals {
+			&__sub-total {
+				display: flex;
+				justify-content: space-between;
+				span {
+					font-size: 1.25em;
+					font-weight: $weight-bold;
+					.money {
+						font-size: 1em;
+					}
+				}
+			}
+		}
 	}
 }
 

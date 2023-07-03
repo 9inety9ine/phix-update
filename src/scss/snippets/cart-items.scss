@@ -61,5 +61,26 @@
 				border: none;
 			}
 		}
+		&__wishlist {
+			button {
+				display: flex;
+				gap: 0.5em;
+				span {
+					text-decoration: underline;
+				}
+				svg {
+					width: 1.25em;
+					height: 1.25em;
+					path,
+					circle {
+						fill: none;
+						stroke: $color-black;
+						stroke-width: 2;
+						stroke-linecap: round;
+						stroke-linejoin: round;
+					}
+				}
+			}
+		}
 	}
 }

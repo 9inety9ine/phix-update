@@ -19,7 +19,8 @@
 			"add_to_cart": "Add to cart",
 			"sold_out": "Sold out",
 			"preorder": "Preorder",
-			"quantity_label": "Quantity"
+			"quantity_label": "Quantity",
+			"description": "Description"
 		}
 	},
 	"collection": {

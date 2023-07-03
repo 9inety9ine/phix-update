@@ -2,38 +2,69 @@ const siteHeader = document.getElementById('shopify-section-header');
 const productSection = document.querySelector('.section-product');
 const productWrapper = productSection.querySelector('.wrap');
 const breadcrumbs = productWrapper.querySelector('.breadcrumbs');
-const productDetails = document.querySelector('.section-product__details');
+const productDetails = document.querySelector('.section-product__container');
 
-const heightFromTop = function (width) {
+window.heightFromTop = function (width) {
 	if (width >= 768) {
-		let windowHeight = window.innerHeight;
-		let productDetailsHeight = productDetails.offsetHeight;
-		let headerHeight = siteHeader.offsetHeight;
-		let breadcrumbsHeight = breadcrumbs.offsetHeight;
-		let wrapperPadding = window.getComputedStyle(productWrapper, null).getPropertyValue('padding-top');
-		let wrapperPaddingValue = Number(wrapperPadding.replace('px', ''));
-		let totalValue = 0;
-		let combinedValue = headerHeight + breadcrumbsHeight + wrapperPaddingValue;
-		if (windowHeight - combinedValue > productDetailsHeight) {
-			totalValue = headerHeight + breadcrumbsHeight + wrapperPaddingValue;
-			productDetails.style.position = 'sticky';
-			productDetails.style.top = totalValue + 'px';
-		} else {
-			totalValue = productDetailsHeight + breadcrumbsHeight + wrapperPaddingValue - (headerHeight + windowHeight);
-			productDetails.style.position = 'sticky';
-			productDetails.style.top = '-' + totalValue + 'px';
-		}
+		// let windowHeight = window.innerHeight;
+		// // console.log('Window:', windowHeight);
+		// let productDetailsHeight = productDetails.offsetHeight;
+		// // console.log('Details:', productDetailsHeight);
+		// let headerHeight = siteHeader.offsetHeight;
+		// let breadcrumbsHeight = breadcrumbs.offsetHeight;
+		// let wrapperPadding = window.getComputedStyle(productWrapper, null).getPropertyValue('padding-top');
+		// let wrapperPaddingValue = Number(wrapperPadding.replace('px', ''));
+		// let combinedTopElementsTotal = headerHeight + breadcrumbsHeight + wrapperPaddingValue;
+		// let ViewableArea = windowHeight - combinedTopElementsTotal;
+		// // console.log('View:', ViewableArea);
+		// if (ViewableArea < productDetailsHeight) {
+		// 	let difference = productDetailsHeight - ViewableArea;
+		// 	console.log(difference);
+		// 	productDetails.style.top = 'sticky';
+		// 	productDetails.style.position = difference + 'px';
+		// } else {
+		// 	productDetails.style.top = combinedTopElementsTotal + 'px';
+		// 	productDetails.style.position = 'sticky';
+		// }
+		// 	let windowHeight = window.innerHeight;
+		// 	let productDetailsHeight = productDetails.offsetHeight;
+		// 	let headerHeight = siteHeader.offsetHeight;
+		// 	let breadcrumbsHeight = breadcrumbs.offsetHeight;
+		// 	let wrapperPadding = window.getComputedStyle(productWrapper, null).getPropertyValue('padding-top');
+		// 	let wrapperPaddingValue = Number(wrapperPadding.replace('px', ''));
+		// 	let totalValue = 0;
+		// 	let combinedValue = headerHeight + breadcrumbsHeight + wrapperPaddingValue;
+		// 	let difference = windowHeight - combinedValue;
+		// 	if (difference < productDetailsHeight) {
+		// 		console.log('details taller');
+		// 		console.log('Window:', windowHeight - combinedValue);
+		// 		console.log('Details:', productDetailsHeight);
+		// 		totalValue = productDetailsHeight - windowHeight;
+		// 		productDetails.style.top = `${totalValue}px`;
+		// 		console.log(`-${totalValue}px`);
+		// 		productDetails.style.position = 'sticky';
+		// 	}
+		// 	if (difference >= productDetailsHeight) {
+		// 		console.log('details shorter');
+		// 		totalValue = combinedValue;
+		// 		console.log(totalValue);
+		// 		productDetails.style.top = totalValue + 'px';
+		// 		productDetails.style.position = 'sticky';
+		// 	}
 	} else {
-		productDetails.style.position = 'relative';
-		productDetails.style.top = 'auto';
+		// 	productDetails.style.position = 'relative';
+		// 	productDetails.style.top = 'auto';
 	}
 };
 
 window.addEventListener('DOMContentLoaded', function () {
-	heightFromTop(window.innerWidth);
+	window.heightFromTop(window.innerWidth);
 });
 window.addEventListener('resize', function () {
-	heightFromTop(window.innerWidth);
+	window.heightFromTop(window.innerWidth);
+});
+window.addEventListener('scroll', function () {
+	window.heightFromTop(window.innerWidth);
 });
 
 window.addEventListener('DOMContentLoaded', () => {
@@ -42,10 +73,10 @@ window.addEventListener('DOMContentLoaded', () => {
 			return response.json();
 		})
 		.then(geo => {
-			console.log(geo);
+			// console.log(geo);
 			const country = geo.country_code2;
 			const continent = geo.continent_code;
-			console.log(country);
+			// console.log(country);
 			const country_messages = document.querySelectorAll('.country-message');
 			if (country_messages) {
 				for (let message of country_messages) {

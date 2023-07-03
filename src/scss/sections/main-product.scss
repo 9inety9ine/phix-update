@@ -3,7 +3,7 @@
 .section-product {
 	&__product {
 		display: grid;
-		grid-template-columns: 52.5% 1fr;
+		grid-template-columns: 1fr 42.5%;
 		gap: 10em;
 		@media (max-width: $w-xl) {
 			gap: 5em;
@@ -21,14 +21,18 @@
 		width: 100%;
 		max-width: 100%;
 	}
+	&__container {
+		height: fit-content;
+	}
 	&__details {
 		width: 100%;
+		max-width: 100%;
 		padding-right: 10em;
-		padding-bottom: 2em;
 		padding-top: 2em;
+		padding-bottom: 2em;
 		height: fit-content;
 		align-self: flex-start;
-		position: sticky;
+		position: relative;
 		top: 0;
 		@media (max-width: $w-xl) {
 			padding-right: 5em;
@@ -48,6 +52,8 @@
 			align-self: flex-start;
 			display: flex;
 			flex-direction: column;
+			width: 100%;
+			max-width: 100%;
 		}
 		&__availability {
 			margin-bottom: 2em;
@@ -174,6 +180,34 @@
 			}
 			ol {
 				list-style-type: decimal;
+			}
+		}
+		&__reviews {
+			padding-top: 2em;
+			width: 100%;
+			max-width: 100%;
+			position: relative;
+			&::before {
+				content: '';
+				position: absolute;
+				left: 0;
+				top: 0;
+				width: 25%;
+				height: 100%;
+				z-index: 2;
+				background: linear-gradient(to left, rgba(255, 255, 255, 0), rgba(255, 255, 255, 1));
+				pointer-events: none;
+			}
+			&::after {
+				content: '';
+				position: absolute;
+				right: 0;
+				top: 0;
+				width: 25%;
+				height: 100%;
+				z-index: 2;
+				background: linear-gradient(to right, rgba(255, 255, 255, 0), rgba(255, 255, 255, 1));
+				pointer-events: none;
 			}
 		}
 	}

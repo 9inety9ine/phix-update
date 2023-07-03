@@ -2,21 +2,47 @@
 
 <div class="product-accordions">
     <div class="accordion accordion--description open">
-        <button aria-label="Description"><span>Description</span></button>
+        <button class="toggle-accordion" aria-label="{{ "products.product.description" | t }}">
+            <span class="label">{{ "products.product.description" | t }}</span>
+            <span class="icon">
+                <span></span>
+                <span></span>
+            </span>
+        </button>
         <div class="accordion-content">
             {{ product.description }}
         </div>
     </div>
     <div class="accordion accordion--care">
-        <button aria-label="Details &amp; Care"><span>Details &amp; Care</span></button>
+        <button class="toggle-accordion" aria-label="{{ care_title }}">
+            <span class="label">{{ section.settings.care_title }}</span>
+            <span class="icon">
+                <span></span>
+                <span></span>
+            </span>
+        </button>
         <div class="accordion-content">
-            <p>Details &amp; Care Content</p>
+            {% if product.metafields.specifications.prodSpecifications %}
+                {% assign specifications = product.metafields.specifications %}
+                {% assign key = 'prodSpecifications' %}
+              <p>{{ specifications[key] }}</p>
+            {% else %}
+              {{ section.settings.care_text }}
+            {% endif %}
         </div>
     </div>
     <div class="accordion accordion--delivery">
-        <button aria-label="Delivery &amp; Returns"><span>Delivery &amp; Returns</span></button>
+        <button class="toggle-accordion" aria-label="{{ section.settings.delivery_title }}">
+            <span class="label">{{ section.settings.delivery_title }}</span>
+            <span class="icon">
+                <span></span>
+                <span></span>
+            </span>
+        </button>
         <div class="accordion-content">
-            <p>Delivery &amp; Returns</p>
+            {{ section.settings.delivery_text }}
         </div>
     </div>
 </div>
+
+<script src="{{ "product-accordions.js" | asset_url }}" defer></script>

@@ -1,0 +1,17 @@
+.payment-icons {
+	display: flex;
+	justify-content: center;
+	gap: 0.5em;
+	li {
+		width: 2.5em;
+		svg {
+			width: 100%;
+			height: auto;
+			display: block;
+			line-height: 1;
+			path {
+				opacity: 1;
+			}
+		}
+	}
+}

@@ -1,6 +1,8 @@
 window.updateCartDrawer = function () {
 	const cartDrawerContent = document.querySelector('.drawer-cart__content');
 	cartDrawerContent.classList.add('content-loading');
+	const cartFooter = document.querySelector('.drawer-cart__footer');
+	cartFooter.classList.add('hidden');
 	fetch(window.Shopify.routes.root + 'cart')
 		.then(function (response) {
 			return response.text();
@@ -10,12 +12,13 @@ window.updateCartDrawer = function () {
 			const cartDrawerTotal = document.getElementById('cart-totals');
 			let cartItems = '';
 			let cartTotal = '';
-			if (html.indexOf('<!--[empty-cart]-->') > 0) {
-				cartItems = html.split('<!--[empty-cart]-->').pop().split('<!--[/empty-cart]-->')[0];
+			if (html.indexOf('<!--[cart-empty]-->') > 0) {
+				cartItems = html.split('<!--[cart-empty]-->').pop().split('<!--[/cart-empty]-->')[0];
 				cartTotal = '';
 			} else {
 				cartItems = html.split('<!--[cart-items]-->').pop().split('<!--[/cart-items]-->')[0];
 				cartTotal = html.split('<!--[cart-total]-->').pop().split('<!--[/cart-total]-->')[0];
+				cartFooter.classList.remove('hidden');
 			}
 			cartDrawerContentElement.innerHTML = cartItems;
 			cartDrawerTotal.innerHTML = cartTotal;

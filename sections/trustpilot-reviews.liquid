@@ -1,0 +1,126 @@
+<link href="{{ "trustpilot-reviews.css" | asset_url }}" rel="stylesheet">
+
+<!--[reviews]-->
+{% for block in section.blocks %}
+<div class="swiper-slide">
+    <div class="trustpilot-reviews__review">
+        <a href="{{ section.settings.link }}" target="_blank">
+            <div class="trustpilot-reviews__review__stars">
+                {% if block.settings.stars == "1" %}
+                    {% render "icon-reviews-star.liquid" %}
+                {% elsif block.settings.stars == "2" %}
+                    {% render "icon-reviews-star.liquid" %}
+                    {% render "icon-reviews-star.liquid" %}
+                {% elsif block.settings.stars == "3" %}
+                    {% render "icon-reviews-star.liquid" %}
+                    {% render "icon-reviews-star.liquid" %}
+                    {% render "icon-reviews-star.liquid" %}
+                {% elsif block.settings.stars == "4" %}
+                    {% render "icon-reviews-star.liquid" %}
+                    {% render "icon-reviews-star.liquid" %}
+                    {% render "icon-reviews-star.liquid" %}
+                    {% render "icon-reviews-star.liquid" %}
+                {% else %}
+                    {% render "icon-reviews-star.liquid" %}
+                    {% render "icon-reviews-star.liquid" %}
+                    {% render "icon-reviews-star.liquid" %}
+                    {% render "icon-reviews-star.liquid" %}
+                    {% render "icon-reviews-star.liquid" %}
+                {% endif %}
+            </div>
+            {% if block.settings.title != blank %}
+            <div class="trustpilot-reviews__review__title">
+                <h3>{{ block.settings.title }}</h3>
+            </div>
+            {% endif %}
+            {% if block.settings.content != blank %}
+            <div class="trustpilot-reviews__review__content">
+                <p>"{{ block.settings.content }}"</p>
+            </div>
+            {% endif %}
+            {% if block.settings.name != blank or block.settings.location != blank %}
+            <div class="trustpilot-reviews__review__user">
+                <p>{% if block.settings.name != blank %}{{ block.settings.name }}{% endif %}{% if block.settings.name != blank and block.settings.location != blank %}, {% endif %}{% if block.settings.location != blank %}{{ block.settings.location }}{% endif %}</p>
+            </div>
+            {% endif %}
+        </a>
+    </div>
+</div>
+{% endfor %}
+<!--[/reviews]-->
+
+{% schema %}
+    {
+        "name": "Trustpilot Reviews",
+        "tag": "div",
+        "class": "trustpilot-reviews",
+        "settings":[
+            {
+                "type": "text",
+                "id": "link",
+                "label": "Link",
+                "default": "https://www.trustpilot.com/review/www.phixclothing.com"
+            }
+        ],
+        "blocks": [
+            {
+                "type": "review",
+                "name": "Review",
+                "settings": [
+                    {
+                        "type": "select",
+                        "id": "stars",
+                        "label": "Star Rating",
+                        "options": [
+                            {
+                                "value": "1",
+                                "label": "1"
+                            },
+                            {
+                                "value": "2",
+                                "label": "2"
+                            },
+                            {
+                                "value": "3",
+                                "label": "3"
+                            },
+                            {
+                                "value": "4",
+                                "label": "4"
+                            },
+                            {
+                                "value": "5",
+                                "label": "5"
+                            }
+                        ],
+                        "default": "5"
+                    },
+                    {
+                        "type": "text",
+                        "id": "title",
+                        "label": "Title",
+                        "default": "Review Title"
+                    },
+                    {
+                        "type": "textarea",
+                        "id": "content",
+                        "label": "Content",
+                        "default": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec tempor lobortis condimentum."
+                    },
+                    {
+                        "type": "text",
+                        "id": "name",
+                        "label": "Name",
+                        "default": "John"
+                    },
+                    {
+                        "type": "text",
+                        "id": "location",
+                        "label": "Location",
+                        "default": "London"
+                    }
+                ]
+            }
+        ]
+    }
+{% endschema %}
