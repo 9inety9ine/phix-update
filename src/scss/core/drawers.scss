@@ -25,7 +25,7 @@
 	background-color: $overlay;
 	visibility: hidden;
 	opacity: 0;
-	transition: all linear 0.25s;
+	transition: opacity linear 0.25s;
 	&.low {
 		z-index: 8;
 	}
@@ -36,7 +36,7 @@
 		visibility: visible;
 	}
 }
-.mask-visible {
+.drawer-mask-visible {
 	.drawer-mask {
 		opacity: 1;
 	}

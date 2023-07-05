@@ -34,7 +34,7 @@
                 <div class="cart-item__details">
                     <div class="cart-item__header">
                         <a href="{{ item.url }}" aria-label="{{ item.product.title }}" class="title">{{ item.product.title }}</a>
-                        <a href="/cart/change?line={{ forloop.index }}&amp;quantity=0" aria-label="{{ 'cart.remove_item' | t }}" class="cart-remove">
+                        <a href="/cart/change?line={{ forloop.index }}&amp;quantity=0" aria-label="{{ 'cart.remove_item' | t }}" data-product="{{ item.id }}" class="cart-remove">
                             {% render "icon-close.svg" %}
                             <span>{{ 'cart.remove_item' | t }}</span>
                         </a>

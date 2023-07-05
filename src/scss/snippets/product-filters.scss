@@ -10,8 +10,23 @@
 		display: flex;
 		gap: 2em;
 		align-items: center;
+		@media (max-width: $w-l) {
+			display: grid;
+			grid-template-columns: 1fr 1fr;
+			grid-template-rows: auto auto;
+			grid-template-areas: 'active active' 'filters count';
+		}
+	}
+	&__view {
+		display: none;
+		@media (max-width: $w-m) {
+			display: block;
+		}
 	}
 	&__toggle {
+		@media (max-width: $w-l) {
+			grid-area: filters;
+		}
 		button {
 			height: fit-content;
 			min-height: auto;
@@ -26,6 +41,13 @@
 	}
 	&__active {
 		display: flex;
+		@media (max-width: $w-l) {
+			padding-top: 2em;
+			grid-area: active;
+			flex-wrap: wrap;
+			justify-content: center;
+			gap: 1em 2em;
+		}
 	}
 	&__remove {
 		display: flex;
@@ -35,6 +57,11 @@
 		line-height: 1;
 		border-left: 1px solid $color-grey-medium;
 		padding: 0.25em 2em;
+		@media (max-width: $w-l) {
+			border-left: none;
+			border-bottom: 1px solid $color-grey-medium;
+			padding: 0 0 0.25em 0;
+		}
 		span {
 			font-size: 0.91666666666em;
 			display: flex;
@@ -58,6 +85,11 @@
 		}
 	}
 	&__count {
+		display: flex;
+		gap: 1em;
 		margin-left: auto;
+		@media (max-width: $w-l) {
+			grid-area: count;
+		}
 	}
 }

@@ -1,16 +1,11 @@
 <link href="{{ "card-product-recommended.css" | asset_url }}" rel="stylesheet">
 
-<div class="card-product-recommended{% unless request.design_mode %} preload{% endunless %}">
+<div class="card-product-recommended">
 
     <div class="card-product-recommended__media">
         <a href="{{ product.url | within: collection }}" aria-label="{{ product.title }}">
             <img 
-                {% if request.design_mode %}
                 src="{{ product.featured_image.src | img_url: '150x205', crop: "center" }}" 
-                {% else %}
-                src="{{ "preload.gif" | asset_url }}" 
-                data-src="{{ product.featured_image.src | img_url: '150x205', crop: "center" }}" 
-                {% endif %}
                 alt="{{ product.title }}" 
                 width="150" 
                 height="205" 

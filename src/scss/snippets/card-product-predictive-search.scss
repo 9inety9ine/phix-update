@@ -1,16 +1,46 @@
 @import '../abstracts/variables';
 
 .card-product-predictive-search {
+	@include preload;
+	display: grid;
+	grid-template-columns: 5em 1fr;
+	background-color: $color-grey-light;
+	&__media {
+		img {
+			width: 100%;
+		}
+		a {
+			display: block;
+		}
+		video {
+			width: 100%;
+			height: auto;
+		}
+	}
 	&__details {
 		display: flex;
-		justify-content: space-between;
-		align-items: center;
+		flex-direction: column;
+		gap: 0.25em;
+		padding: 1em;
+		a {
+			text-decoration: none;
+			&:hover,
+			&:focus {
+				text-decoration: none;
+			}
+		}
 		.price {
 			display: flex;
 			gap: 0.5em;
 			ins {
 				border: none;
 			}
+		}
+	}
+	&__title {
+		h4 {
+			font-size: 1em;
+			margin-bottom: 0;
 		}
 	}
 }

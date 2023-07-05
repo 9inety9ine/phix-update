@@ -2,4 +2,11 @@
 
 .section-search {
 	position: relative;
+	&__form {
+		display: grid;
+		grid-template-columns: 1fr auto;
+		label {
+			display: none;
+		}
+	}
 }

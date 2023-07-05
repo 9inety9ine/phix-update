@@ -2,6 +2,12 @@
 
 .drawer-cart-recommended {
 	padding: 2em 0;
+	&:not(.active) {
+		display: none;
+	}
+	&.hidden {
+		display: none;
+	}
 	&__header {
 		padding-bottom: 1em;
 		span {

@@ -1,29 +1,42 @@
 @import '../abstracts/variables';
 
+#predictive-search {
+	overflow-y: auto;
+}
 .predictive-search {
+	background-color: $color-white;
 	&__inner {
-		padding: 1.5em;
-		overflow-y: auto;
+		padding: 2em 0;
+		display: grid;
+		grid-template-columns: 1fr auto;
+		grid-template-areas: 'products collections';
+		gap: 2em;
+		@media (max-width: $w-s) {
+			grid-template-columns: 1fr;
+			grid-template-rows: auto auto;
+			grid-template-areas: 'products' 'collections';
+		}
 	}
 	&__title {
 		font-weight: $weight-bold;
 		margin-bottom: 0.5em;
 	}
 	&__products {
-		margin-bottom: 1em;
+		grid-area: products;
+	}
+	&__results {
+		display: grid;
+		grid-template-columns: repeat(5, 1fr);
+		gap: 1em;
+		@media (max-width: $w-l) {
+			grid-template-columns: repeat(2, 1fr);
+		}
 	}
 	&__other {
-		display: grid;
-		grid-template-columns: 1fr 1fr;
-		gap: 1em;
-	}
-	&__button {
-		padding-top: 1em;
-	}
-	ul {
+		grid-area: collections;
 		display: flex;
 		flex-direction: column;
-		gap: 0.25em;
+		gap: 1em;
 	}
 	a {
 		text-decoration: none;

@@ -1,1 +1,0 @@
-const swiper_cart=new Swiper(".swiper-recommended",{speed:1e3,spaceBetween:0,loop:!1,slidesPerView:1.5,centeredSlides:!0,init:!1});window.cart_drawer_recommendations=function(){swiper_cart.init()};

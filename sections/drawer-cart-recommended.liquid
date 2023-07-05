@@ -12,7 +12,6 @@
     };
 </script>
 
-{% if recommendations.performed %}
 
     <link href="{{ "swiper.css" | asset_url }}" rel="stylesheet">
     <link href="{{ "drawer-cart-recommended.css" | asset_url }}" rel="stylesheet">
@@ -37,27 +36,6 @@
 
     </div>
 
-{% endif %}
-{% unless recommendations.performed %}
-    {% if cart.items[0].product_id != blank %}
-    <script defer>
-        const drawerRecommendedContainer = document.querySelector('.drawer-cart-recommended');
-        fetch(window.Shopify.routes.root + "recommendations/products?product_id={{ cart.items[0].product_id }}&section_id=drawer-cart-recommended&intent=related")
-        .then(response => response.text()).then((text) => {
-            const html = document.createElement('div');
-            html.innerHTML = text;
-            const recommendations = html.querySelector('.drawer-cart-recommended');
-            if (recommendations && recommendations.innerHTML.trim().length) {
-                drawerRecommendedContainer.innerHTML = recommendations.innerHTML;
-            }
-        }).finally(function(){
-            window.setTimeout(function(){
-                window.cart_drawer_recommendations();
-            }, 250)
-        })      
-    </script>
-    {% endif %}
-{% endunless %}
 
 {% schema %}
 {

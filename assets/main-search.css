@@ -1,1 +1,1 @@
-.section-search{position:relative}
+.section-search{position:relative}.section-search__form{display:grid;grid-template-columns:1fr auto}.section-search__form label{display:none}

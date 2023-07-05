@@ -11,7 +11,7 @@ body {
 	scroll-behavior: smooth;
 	overflow-y: auto;
 	text-transform: uppercase;
-	&.no-overflow {
+	&.drawer-open {
 		overflow: hidden !important;
 	}
 	@media (max-width: $w-s) {

@@ -1,36 +1,65 @@
-window.closeAllDrawers = function () {
+window.toggleDrawer = (drawer, level) => {
 	const documentBody = document.querySelector('body');
 	const mask = document.querySelector('.drawer-mask');
-	if (documentBody && documentBody.classList.contains('drawer-open')) {
-		documentBody.classList.remove('drawer-cart-open');
-		documentBody.classList.remove('drawer-search-open');
-		documentBody.classList.remove('drawer-menu-open');
-		documentBody.classList.remove('drawer-collection-open');
-		documentBody.classList.remove('drawer-search-filters-open');
-		documentBody.classList.remove('no-overflow');
-		documentBody.classList.remove('drawer-open');
+	if (documentBody.classList.contains('drawer-open')) {
+		const bodyClasses = documentBody.className.split(' ');
+		let searchOpen = false;
+		if (documentBody.classList.contains('drawer-search-open')) searchOpen = true;
+		bodyClasses.forEach(bodyClass => {
+			if (bodyClass.match('drawer')) {
+				if (bodyClass.match('drawer-mask-visible')) {
+					window.setTimeout(function () {
+						documentBody.classList.remove(bodyClass);
+						mask.classList.remove('low');
+					}, 100);
+				} else {
+					documentBody.classList.remove(bodyClass);
+				}
+			}
+		});
+		if (searchOpen === true && drawer !== false) {
+			documentBody.classList.add('drawer-open', 'drawer-' + drawer + '-open', 'drawer-mask-visible');
+			if (level === 'low') mask.classList.add('low');
+			window.setTimeout(function () {
+				documentBody.classList.add('drawer-mask-visible');
+				if (drawer === 'cart') {
+					window.updateCartDrawer();
+				}
+				if (drawer === 'search') {
+					const searchInput = document.getElementById('drawer-search-input');
+					searchInput.focus();
+				}
+			}, 100);
+		}
+	} else {
+		documentBody.classList.add('drawer-open', 'drawer-' + drawer + '-open', 'drawer-mask-visible');
+		if (level === 'low') mask.classList.add('low');
 		window.setTimeout(function () {
-			documentBody.classList.remove('mask-visible');
-			mask.classList.remove('low');
-		}, 250);
+			documentBody.classList.add('drawer-mask-visible');
+			if (drawer === 'cart') {
+				window.updateCartDrawer();
+			}
+			if (drawer === 'search') {
+				const searchInput = document.getElementById('drawer-search-input');
+				searchInput.focus();
+			}
+		}, 100);
 	}
 };
 
 const drawerMask = document.querySelector('.drawer-mask');
 if (drawerMask)
 	drawerMask.addEventListener('click', e => {
-		console.log('click');
 		e.preventDefault();
-		window.closeAllDrawers();
+		window.toggleDrawer(false, false);
 	});
 
 const drawerToggles = document.querySelectorAll('.toggle-drawer');
 if (drawerToggles)
 	for (let toggle of drawerToggles)
 		toggle.addEventListener('click', e => {
-			console.log('click');
 			e.preventDefault();
-			window.closeAllDrawers();
+			window.toggleDrawer(false, false);
 		});
 
 window.countCartItems = function () {
@@ -54,3 +83,12 @@ window.countCartItems = function () {
 	}
 };
 window.countCartItems();
+
+const footerTitles = document.querySelectorAll('.menu-footer__title');
+if (footerTitles)
+	for (let title of footerTitles)
+		title.addEventListener('click', () => {
+			if (window.innerWidth <= 768) {
+				title.parentNode.classList.toggle('open');
+			}
+		});

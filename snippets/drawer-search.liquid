@@ -5,15 +5,10 @@
     <predictive-search>
         <form action="/search" method="get" role="search" id="searchbox" autocomplete="off">
             <div class="drawer-search__input">
-                <label class="drawer-search__input__label" for="drawer-search-input">{{ "search.drawer.search_label" | t }}</label>
-                <input class="drawer-search__input__input" maxlength="32" type="search" name="q" value="{{ search.terms | escape }}" placeholder="{{ "search.drawer.search_placeholder" | t }}" id="drawer-search-input" autocomplete="off">
-                {% comment %} <button class="drawer-search__input--clear" aria-label="{{ "search.drawer.clear_results" | t }}">
-                    <span>{{ "search.drawer.clear_results" | t }}</span>
-                </button>
-                <button class="drawer-search__input--close" aria-label="{{ "search.drawer.close_results" | t }}">
-                    <span>{{ "search.drawer.close_results" | t }}</span>
-                    {% render "icon-drawer-close.svg" %}
-                </button> {% endcomment %}
+                <div class="wrap wrap--xx-large">
+                    <label class="drawer-search__input__label" for="drawer-search-input">{{ "search.drawer.search_label" | t }}</label>
+                    <input class="drawer-search__input__input" maxlength="32" type="search" name="q" value="{{ search.terms | escape }}" placeholder="{{ "search.drawer.search_placeholder" | t }}" id="drawer-search-input" autocomplete="off">
+                </div>
             </div>
         </form>
         <div id="predictive-search" tabindex="-1"></div>

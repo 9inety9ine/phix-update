@@ -84,13 +84,36 @@
 		display: flex;
 		flex-direction: column;
 		gap: 1em;
+		&.open {
+			.menu-footer {
+				display: block;
+				&__title {
+					background: url(icon-up-light.svg) no-repeat 100% 50% / 1.25em;
+				}
+			}
+		}
 		.menu-footer {
+			@media (max-width: $w-s) {
+				display: none;
+			}
+			ul {
+				display: flex;
+				flex-direction: column;
+				gap: 0.5em;
+			}
 			&__title {
 				opacity: 0.5;
+				@media (max-width: $w-s) {
+					opacity: 1;
+					background: url(icon-drop-light.svg) no-repeat 100% 50% / 1.25em;
+				}
 			}
 			a {
 				color: $color-white;
 				text-decoration: none;
+				@media (max-width: $w-s) {
+					opacity: 0.5;
+				}
 			}
 		}
 	}

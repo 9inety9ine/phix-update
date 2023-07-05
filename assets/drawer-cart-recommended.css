@@ -1,1 +1,1 @@
-.drawer-cart-recommended{padding:2em 0}.drawer-cart-recommended__header{padding-bottom:1em}.drawer-cart-recommended__header span{font-size:1.5em;font-weight:700}
+.drawer-cart-recommended{padding:2em 0}.drawer-cart-recommended:not(.active){display:none}.drawer-cart-recommended.hidden{display:none}.drawer-cart-recommended__header{padding-bottom:1em}.drawer-cart-recommended__header span{font-size:1.5em;font-weight:700}

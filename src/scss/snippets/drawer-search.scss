@@ -8,35 +8,28 @@
 .drawer-search {
 	position: absolute;
 	right: 0;
-	left: auto;
+	left: 0;
 	top: 100%;
 	bottom: auto;
 	width: 100vw;
-	max-width: 40em;
 	background-color: $color-white;
 	z-index: 8;
 	height: fit-content;
 	transition: bottom 0.25s linear;
 	overflow: visible;
 	display: none;
-	@media (max-width: $w-m) {
-		right: -1.5em;
-		max-width: none;
-		width: 100vw;
-	}
-	@media (max-width: $w-s) {
-		right: -1em;
-	}
 	&__input {
+		background-color: $color-grey-light;
+		border-top: 1px solid $color-grey-medium;
 		input {
 			border: none;
-			background-color: $color-grey-light;
-			border-top: 1px solid $color-grey-medium;
 			font-size: 1.25em;
+			background-color: $color-grey-light;
+			padding: 0;
+			text-align: center;
 			&:focus {
 				border: none;
 				background-color: $color-grey-light;
-				border-top: 1px solid $color-grey-medium;
 			}
 		}
 		&__label {

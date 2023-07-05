@@ -21,8 +21,7 @@ window.initAddToCart = function () {
 								return response.json();
 							})
 							.finally(function () {
-								window.closeAllDrawers();
-								window.openCartDrawer();
+								window.toggleDrawer('cart', false);
 							})
 							.catch(function (error) {
 								console.log(error);

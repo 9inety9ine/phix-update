@@ -32,21 +32,7 @@ class PredictiveSearch extends HTMLElement {
 				const resultsMarkup = new DOMParser().parseFromString(text, 'text/html').querySelector('#shopify-section-predictive-search').innerHTML;
 				this.predictiveSearchResults.innerHTML = resultsMarkup;
 				this.open();
-				// window.createVariantRadios();
-				// window.activateVariantLabels();
-				// window.initQuickView();
 				window.initializeImageLoad();
-				// window.initAddToCart();
-				let predictiveSubmit = document.getElementById('searchbutton');
-				let predictiveField = document.getElementById('drawer-search-input');
-				if (predictiveSubmit) {
-					predictiveSubmit.addEventListener('click', function (e) {
-						let searchTerm = predictiveField.value;
-						let searchURL = '/search/?q=' + searchTerm + '&type=product';
-						window.location = searchURL;
-						e.preventDefault();
-					});
-				}
 				const displayHeight = function () {
 					let windowHeight = Number(window.innerHeight);
 					let siteHeader = document.querySelector('.header-main');
@@ -57,6 +43,16 @@ class PredictiveSearch extends HTMLElement {
 					let searchResultsDisplay = document.getElementById('predictive-search');
 					searchResultsDisplay.style.maxHeight = searchResultsHeight;
 				};
+				let predictiveSubmit = document.getElementById('searchbutton');
+				let predictiveField = document.getElementById('drawer-search-input');
+				if (predictiveSubmit) {
+					predictiveSubmit.addEventListener('click', function (e) {
+						let searchTerm = predictiveField.value;
+						let searchURL = '/search/?q=' + searchTerm + '&type=product';
+						window.location = searchURL;
+						e.preventDefault();
+					});
+				}
 				displayHeight();
 				window.addEventListener('resize', function () {
 					displayHeight();
