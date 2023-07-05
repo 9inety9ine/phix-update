@@ -4,17 +4,18 @@
 <div class="drawer drawer-cart" id="drawer-cart">
     <div class="inner">
         <div class="drawer__header drawer-cart__header">
-            <div class="drawer__header__text drawer-cart__header__text">{{ "cart_drawer.title" | t }}</div>
+            <div class="drawer__header__text drawer-cart__header__text">{{ "cart.drawer.title" | t }}</div>
             <button class="toggle-drawer" aria-label="Close Drawer">{% render "icon-close.svg" %}</button>
         </div>
         <div class="drawer__content drawer-cart__content">
             <span class="loading-icon">{% render "icon-loading.svg" %}</span>
             <div class="cart-items" id="cart-items"></div>
+            {% section "drawer-cart-recommended.liquid" %}
         </div>
         <div class="drawer__footer drawer-cart__footer hidden">
             <div class="cart-totals" id="cart-totals"></div>
             {% form 'cart', cart %}
-            <button name="checkout" class="button button--full-width button--tall">{{ 'cart_drawer.checkout' | t }}</button>
+            <button name="checkout" class="button button--full-width button--tall">{{ 'cart.drawer.checkout' | t }}</button>
             {% endform %}
             {% render "payment-icons" %}
         </div>

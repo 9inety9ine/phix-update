@@ -72,11 +72,12 @@
 		"sub_total": "Sub-total",
 		"update_cart": "Update",
 		"checkout": "Checkout securely",
-		"remove_item": "Remove"
-	},
-	"cart_drawer": {
-		"title": "Your Cart",
-		"checkout": "Checkout securely"
+		"remove_item": "Remove",
+		"drawer": {
+			"title": "Your Cart",
+			"checkout": "Checkout securely",
+			"related": "You may also like"
+		}
 	},
 	"contact_form": {
 		"name_label": "Name",

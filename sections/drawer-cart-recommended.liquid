@@ -1,0 +1,68 @@
+<script src="{{ "swiper.js" | asset_url }}"></script>
+<script>
+    const swiper_cart = new Swiper('.swiper-recommended', {
+        speed: 1000,
+        spaceBetween: 12,
+        loop: false,
+        slidesPerView: 1.5,
+        init: false,
+    });
+    window.cart_drawer_recommendations = function () {
+        swiper_cart.init();
+    };
+</script>
+
+{% if recommendations.performed %}
+
+    <link href="{{ "swiper.css" | asset_url }}" rel="stylesheet">
+    <link href="{{ "drawer-cart-recommended.css" | asset_url }}" rel="stylesheet">
+
+    <div class="drawer-cart-recommended__inner">
+
+        <div class="drawer-cart-recommended__header">
+            <span>{{ "cart.drawer.related" | t }}</span>
+        </div>
+
+        <div class="drawer-cart-recommended__content">
+            <div class="swiper swiper-recommended">
+                <div class="swiper-wrapper">
+                    {% for product in recommendations.products %}
+                    <div class="swiper-slide">
+                        {% render "card-product-recommended", product: product %}
+                    </div>
+                    {% endfor %}
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+{% endif %}
+{% unless recommendations.performed %}
+    {% if cart.items[0].product_id != blank %}
+    <script defer>
+        const drawerRecommendedContainer = document.querySelector('.drawer-cart-recommended');
+        fetch(window.Shopify.routes.root + "recommendations/products?product_id={{ cart.items[0].product_id }}&section_id=drawer-cart-recommended&intent=related")
+        .then(response => response.text()).then((text) => {
+            const html = document.createElement('div');
+            html.innerHTML = text;
+            const recommendations = html.querySelector('.drawer-cart-recommended');
+            if (recommendations && recommendations.innerHTML.trim().length) {
+                drawerRecommendedContainer.innerHTML = recommendations.innerHTML;
+            }
+        }).finally(function(){
+            window.setTimeout(function(){
+                window.cart_drawer_recommendations();
+            }, 250)
+        })      
+    </script>
+    {% endif %}
+{% endunless %}
+
+{% schema %}
+{
+"name": "Cart Recommendations",
+"tag": "div",
+"class": "drawer-cart-recommended hidden"
+}
+{% endschema %}

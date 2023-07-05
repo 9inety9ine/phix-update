@@ -1,3 +1,4 @@
+<link href="{{ "fancybox.css" | asset_url }}" rel="stylesheet">
 <link href="{{ "swiper.css" | asset_url }}" rel="stylesheet">
 <link href="{{ "product-media.css" | asset_url }}" rel="stylesheet">
 
@@ -6,10 +7,15 @@
         <div class="swiper-wrapper">
             {% for image in product.images %}
             <div class="section-product__image swiper-slide">
-                <a href="{{ image | img_url: 'master' }}">
+                <a href="{{ image | img_url: 'master' }}" data-fancybox="gallery">
                     <img 
-                        data-src="{{ image.src | img_url: 'master' }}" 
+                        {% if request.design_mode %}
+                        src="{{ image.src | img_url: '768x1046', crop: "center" }}" 
+                        {% else %}
+                        data-src="{{ image.src | img_url: '768x1046', crop: "center" }}" 
                         src="{{ 'preload.gif' | asset_url }}" 
+                        class="preload" 
+                        {% endif %}
                         alt="{{ product.title }}" 
                         width="{{ image.width }}" 
                         height="{{ image.height }}" 
@@ -22,6 +28,7 @@
     <div class="media-pagination"></div>
 </div>
 
+<script src="{{ "fancybox.js" | asset_url }}"></script>
 <script src="{{ "swiper.js" | asset_url }}"></script>
 <script defer>
 

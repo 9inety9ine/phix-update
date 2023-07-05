@@ -8,6 +8,9 @@
 		.price {
 			display: flex;
 			gap: 0.5em;
+			ins {
+				border: none;
+			}
 		}
 	}
 }
