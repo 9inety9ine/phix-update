@@ -41,3 +41,19 @@ window.addEventListener('resize', function () {
 window.addEventListener('scroll', function () {
 	window.heightFromTop(window.innerWidth);
 });
+
+const modalToggle = document.querySelector('.toggle-size-modal');
+if (modalToggle)
+	modalToggle.addEventListener('click', e => {
+		e.preventDefault();
+		const docBody = document.querySelector('body');
+		docBody.classList.toggle('size-modal-open');
+	});
+
+const sizeModal = document.querySelector('.section-product__modal__mask');
+if (sizeModal)
+	sizeModal.addEventListener('click', e => {
+		e.preventDefault();
+		const docBody = document.querySelector('body');
+		docBody.classList.toggle('size-modal-open');
+	});

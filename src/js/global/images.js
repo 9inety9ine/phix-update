@@ -2,14 +2,17 @@ window.initializeImageLoad = function () {
 	let imagesToLoad = document.querySelectorAll('img[data-src]');
 	if (imagesToLoad) {
 		const loadImages = image => {
-			image.setAttribute('src', image.getAttribute('data-src'));
-			image.onload = () => {
-				image.removeAttribute('data-src');
-				image.classList.remove('preload');
-				image.parentNode.classList.remove('preload');
-				image.parentNode.parentNode.classList.remove('preload');
-				image.parentNode.parentNode.parentNode.classList.remove('preload');
-			};
+			const imageSRC = image.getAttribute('data-src');
+			if (imageSRC) {
+				image.setAttribute('src', imageSRC);
+				image.onload = () => {
+					image.removeAttribute('data-src');
+					image.classList.remove('preload');
+					image.parentNode.classList.remove('preload');
+					image.parentNode.parentNode.classList.remove('preload');
+					image.parentNode.parentNode.parentNode.classList.remove('preload');
+				};
+			}
 		};
 		if ('IntersectionObserver' in window) {
 			const observer = new IntersectionObserver((items, observer) => {

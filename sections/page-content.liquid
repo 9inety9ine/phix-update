@@ -3,9 +3,8 @@
 
 <link href="{{ "page-content.css" | asset_url }}" rel="stylesheet">
 
-<div class="wrap wrap--xx-large wrap--{{section_id }}">
+<div class="wrap wrap--{{ section.settings.width }} wrap--{{section_id }}">
 
-    <h1>{{ page.title }}</h1>
     {{ page.content }}
 
 </div>
@@ -16,6 +15,38 @@
     "tag": "section",
     "class": "section-page-content",
     "settings": [
+        {
+            "type": "select",
+            "id": "width",
+            "label": "Width",
+            "options": [
+                {
+                    "value": "small",
+                    "label": "Small"
+                },
+                {
+                    "value": "medium",
+                    "label": "Medium"
+                },
+                {
+                    "value": "large",
+                    "label": "Large"
+                },
+                {
+                    "value": "x-large",
+                    "label": "X Large"
+                },
+                {
+                    "value": "xx-large",
+                    "label": "XX Large"
+                },
+                {
+                    "value": "full-width",
+                    "label": "Full Width"
+                }
+            ],
+            "default": "large"
+        },
         {
             "type": "header",
             "content": "Desktop padding"
@@ -28,7 +59,7 @@
             "step": 2,
             "unit": "px",
             "label": "Padding top",
-            "default": 64
+            "default": 0
         },
         {
             "type": "range",
@@ -52,7 +83,7 @@
             "step": 2,
             "unit": "px",
             "label": "Padding top",
-            "default": 32
+            "default": 0
         },
         {
             "type": "range",
@@ -64,6 +95,12 @@
             "label": "Padding bottom",
             "default": 32
         }
-    ]
+    ],
+    "presets":[
+        {
+            "name": "Page Content"
+        }
+    ],
+    "templates": ["page"]
 }
 {% endschema %}

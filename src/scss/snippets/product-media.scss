@@ -51,9 +51,9 @@
 	.swiper-pagination-bullets {
 		@media (max-width: $w-m) {
 			position: absolute;
-			left: 50%;
+			left: 50% !important;
 			transform: translateX(-50%);
-			bottom: 2em;
+			bottom: 2em !important;
 			width: 100%;
 			display: flex;
 			gap: 0.25em;

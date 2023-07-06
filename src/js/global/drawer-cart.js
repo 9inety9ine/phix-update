@@ -134,7 +134,7 @@ window.cart_drawer_recommendations = function () {
 			window.setTimeout(function () {
 				const swiper_cart = new Swiper('.swiper-recommended', {
 					speed: 1000,
-					spaceBetween: 12,
+					spaceBetween: 6,
 					loop: false,
 					slidesPerView: 1.5,
 				});

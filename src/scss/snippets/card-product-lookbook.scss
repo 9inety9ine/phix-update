@@ -1,0 +1,48 @@
+@import '../abstracts/variables';
+
+.card-product-lookbook {
+	@include preload;
+	&__media {
+		@media (max-width: $w-m) {
+			margin-bottom: 1em;
+		}
+		img {
+			width: 100%;
+		}
+		a {
+			display: block;
+		}
+		video {
+			width: 100%;
+			height: auto;
+		}
+	}
+	&__details {
+		display: none;
+		flex-direction: column;
+		gap: 0.25em;
+		@media (max-width: $w-m) {
+			display: flex;
+		}
+		a {
+			text-decoration: none;
+			&:hover,
+			&:focus {
+				text-decoration: none;
+			}
+		}
+		.price {
+			display: flex;
+			gap: 0.5em;
+			ins {
+				border: none;
+			}
+		}
+	}
+	&__title {
+		h4 {
+			font-size: 1em;
+			margin-bottom: 0;
+		}
+	}
+}

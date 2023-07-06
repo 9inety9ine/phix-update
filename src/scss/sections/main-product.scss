@@ -211,4 +211,56 @@
 			}
 		}
 	}
+	&__modal {
+		display: none;
+		position: fixed;
+		left: 0;
+		top: 0;
+		width: 100%;
+		height: 100%;
+		z-index: 9999999;
+		background-color: $overlay;
+		&__mask {
+			position: absolute;
+			left: 0;
+			top: 0;
+			width: 100%;
+			height: 100%;
+			display: flex;
+			align-items: center;
+			justify-content: center;
+			z-index: 1;
+		}
+		&__inner {
+			width: 90%;
+			max-width: $w-s;
+			background-color: $color-white;
+			padding: 2em;
+			overflow-y: auto;
+			height: fit-content;
+			max-height: 90vh;
+			z-index: 2;
+			position: absolute;
+			left: 50%;
+			top: 50%;
+			transform: translate(-50%, -50%);
+			.section-size-guides__entry {
+				margin-bottom: 2em;
+				&__header {
+					h3 {
+						font-size: 1.16666666667em;
+					}
+				}
+				&:last-of-type {
+					margin-bottom: 0;
+				}
+			}
+		}
+	}
+}
+.size-modal-open {
+	overflow-y: hidden;
+	.section-product__modal {
+		display: block;
+	}
 }

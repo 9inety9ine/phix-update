@@ -5,7 +5,7 @@
 
 <link href="{{ "page-header.css" | asset_url }}" rel="stylesheet">
 
-<div class="wrap wrap--xx-large wrap--{{section_id }}">
+<div class="wrap wrap--{{ section.settings.width }} wrap--{{section_id }}">
 
     <h1>{{ section.settings.title }}</h1>
 
@@ -19,6 +19,38 @@
     "tag": "section",
     "class": "section-page-header",
     "settings": [
+        {
+            "type": "select",
+            "id": "width",
+            "label": "Width",
+            "options": [
+                {
+                    "value": "small",
+                    "label": "Small"
+                },
+                {
+                    "value": "medium",
+                    "label": "Medium"
+                },
+                {
+                    "value": "large",
+                    "label": "Large"
+                },
+                {
+                    "value": "x-large",
+                    "label": "X Large"
+                },
+                {
+                    "value": "xx-large",
+                    "label": "XX Large"
+                },
+                {
+                    "value": "full-width",
+                    "label": "Full Width"
+                }
+            ],
+            "default": "large"
+        },
         {
             "type": "checkbox",
             "id": "display_title",
@@ -53,7 +85,7 @@
             "step": 2,
             "unit": "px",
             "label": "Padding bottom",
-            "default": 64
+            "default": 32
         },
         {
             "type": "header",
@@ -77,7 +109,7 @@
             "step": 2,
             "unit": "px",
             "label": "Padding bottom",
-            "default": 32
+            "default": 16
         }
     ]
 }

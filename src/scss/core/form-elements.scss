@@ -87,7 +87,6 @@ input[type='checkbox'] {
 label {
 	display: block;
 	white-space: nowrap;
-	text-transform: none;
 	&.checkbox {
 		display: flex;
 		gap: 1em;
@@ -103,6 +102,7 @@ label {
 			content: '*';
 			color: $color-failure;
 			margin-left: 0.25em;
+			font-size: 1.25em;
 		}
 	}
 }
@@ -131,21 +131,24 @@ input[type='search']::-webkit-search-results-decoration {
 ::placeholder {
 	font: 1em $font-base;
 	font-weight: $weight-regular;
-	color: $color-black;
+	color: $color-grey-dark;
+	text-transform: uppercase;
 	opacity: 0.5;
 }
 
 :-ms-input-placeholder {
 	font: 1em $font-base;
 	font-weight: $weight-regular;
-	color: $color-black;
+	color: $color-grey-dark;
+	text-transform: uppercase;
 	opacity: 0.5;
 }
 
 ::-ms-input-placeholder {
 	font: 1em $font-base;
 	font-weight: $weight-regular;
-	color: $color-black;
+	color: $color-grey-dark;
+	text-transform: uppercase;
 	opacity: 0.5;
 }
 
@@ -160,6 +163,9 @@ input[type='search']::-webkit-search-results-decoration {
 		gap: 0.25em;
 		&--split {
 			width: calc(50% - 0.5em);
+			@media (max-width: $w-s) {
+				width: 100%;
+			}
 		}
 		&--full {
 			width: 100%;

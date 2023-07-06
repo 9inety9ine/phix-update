@@ -1,0 +1,92 @@
+{% if object.show_conversions == false %}
+    <div class="section-size-guides__entry">
+        <div class="section-size-guides__entry__header">
+            <h3>{{ object.title }}</h3>
+        </div>
+        <table>
+            <tbody>
+                {% assign heading = object.heading_rows | split: ':' | first %}
+                <tr>
+                    <td class="heading"><span>{{ heading | strip }}</span></td>
+                    {% assign heading_rows = object.heading_rows | split: ':' | last %}
+                    {% assign heading_row = heading_rows | split: ',' %}
+                    {% for row in heading_row %}
+                        <td><span>{{ row | strip }}</span></td>
+                    {% endfor %}
+                </tr>
+                {% assign content_rows = object.content_rows | newline_to_br | strip_newlines | split: "<br />" %}
+                {% for row in content_rows %}
+                    <tr>
+                        {% assign content_row = row | split: ":" | first %}
+                        <td class="heading"><span>{{ content_row | strip }}</span></td>
+                        {% assign content_rows = row | split: ":" | last %}
+                        {% assign rows = content_rows | split: "," %}
+                        {% for row in rows %}
+                            <td><span>{{ row | strip }}</span></td>
+                        {% endfor %}
+                    </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+    {% else %}
+    <div class="section-size-guides__entry">
+        <div class="section-size-guides__entry__header">
+            <h3>{{ object.title }}</h3>
+            <div class="section-size-guides__entry__actions">
+                <button class="size-guide-toggle active" data-target="table-{{ forloop.index }}-inches"><span>Inches</span></button>
+                <button class="size-guide-toggle" data-target="table-{{ forloop.index }}-centimeters"><span>Centimeters</span></button>
+            </div>
+        </div>
+        <table class="table-{{ forloop.index }}-inches">
+            <tbody>
+                {% assign heading = object.heading_rows | split: ':' | first %}
+                <tr>
+                    <td class="heading"><span>{{ heading | strip }}</span></td>
+                    {% assign heading_rows = object.heading_rows | split: ':' | last %}
+                    {% assign heading_row = heading_rows | split: ',' %}
+                    {% for row in heading_row %}
+                        <td><span>{{ row | strip }}</span></td>
+                    {% endfor %}
+                </tr>
+                {% assign content_rows = object.content_rows | newline_to_br | strip_newlines | split: "<br />" %}
+                {% for row in content_rows %}
+                    <tr>
+                        {% assign content_row = row | split: ":" | first %}
+                        <td class="heading"></span>{{ content_row | strip }}<span></td>
+                        {% assign content_rows = row | split: ":" | last %}
+                        {% assign rows = content_rows | split: "," %}
+                        {% for row in rows %}
+                            <td></span>{{ row | strip }}<span></td>
+                        {% endfor %}
+                    </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+        <table class="table-{{ forloop.index }}-centimeters hidden">
+            <tbody>
+                {% assign heading = object.heading_rows | split: ':' | first %}
+                <tr>
+                    <td class="heading"><span>{{ heading | strip }}</span></td>
+                    {% assign heading_rows = object.heading_rows | split: ':' | last %}
+                    {% assign heading_row = heading_rows | split: ',' %}
+                    {% for row in heading_row %}
+                        <td><span>{{ row | strip }}</span></td>
+                    {% endfor %}
+                </tr>
+                {% assign content_rows = object.content_rows | newline_to_br | strip_newlines | split: "<br />" %}
+                {% for row in content_rows %}
+                    <tr>
+                        {% assign content_row = row | split: ":" | first %}
+                        <td class="heading"><span>{{ content_row | strip }}</span></td>
+                        {% assign content_rows = row | split: ":" | last %}
+                        {% assign rows = content_rows | split: "," %}
+                        {% for row in rows %}
+                            <td><span>{{ row | times: 2.54 | round: 1 }}</span></td>
+                        {% endfor %}
+                    </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+{% endif %}

@@ -1,1 +1,1 @@
-const searchToggle=document.querySelector(".menu-tools__link--search a");searchToggle&&searchToggle.addEventListener("click",e=>{e.preventDefault(),window.toggleDrawer("search","low")});
+const searchToggle=document.querySelector(".menu-tools__link--search a");searchToggle&&searchToggle.addEventListener("click",e=>{e.preventDefault(),document.querySelector("body").classList.contains("drawer-search-open")?window.toggleDrawer(!1,!1):window.toggleDrawer("search","low")});

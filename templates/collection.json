@@ -1,13 +1,29 @@
 {
-	"sections": {
-		"header": {
-			"type": "collection-header",
-			"settings": {}
-		},
-		"main": {
-			"type": "main-collection",
-			"settings": {}
-		}
-	},
-	"order": ["header", "main"]
+  "sections": {
+    "header": {
+      "type": "collection-header",
+      "settings": {
+        "title": "{{ collection.title }}",
+        "description": "",
+        "padding_top": 48,
+        "padding_bottom": 0,
+        "mobile_padding_top": 24,
+        "mobile_padding_bottom": 0
+      }
+    },
+    "main": {
+      "type": "main-collection",
+      "settings": {
+        "product_count": 24,
+        "padding_top": 48,
+        "padding_bottom": 64,
+        "mobile_padding_top": 0,
+        "mobile_padding_bottom": 32
+      }
+    }
+  },
+  "order": [
+    "header",
+    "main"
+  ]
 }

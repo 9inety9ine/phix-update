@@ -1,0 +1,118 @@
+{% assign section_id = section.id | replace: "_", "" | replace: "-", "" %}
+{% render "section-styles", section_id: section_id, section: section %}
+
+<link href="{{ "stockist-form.css" | asset_url }}" rel="stylesheet">
+
+<div class="wrap wrap--large wrap--{{section_id }}">
+
+    {% form 'contact', class: "form form--contact" %}
+        {% if form.posted_successfully? %}
+            <p>{{ 'contact_form.success_message' | t }}</p>
+        {% else %}
+            {{ form.errors | default_errors }}
+            <div class="form-row form-row--split">
+                <label for="ContactFormFirstName" class="required">{{ 'contact_form.first_name_label' | t }}</label>
+                <input type="text" id="ContactFormFirstName" name="contact[first_name]" placeholder="{{ 'contact_form.first_name_placeholder' | t }}" required="required">
+            </div>
+            <div class="form-row form-row--split">
+                <label for="ContactFormLastName" class="required">{{ 'contact_form.last_name_label' | t }}</label>
+                <input type="text" id="ContactFormLastName" name="contact[last_name]" placeholder="{{ 'contact_form.last_name_placeholder' | t }}" required="required">
+            </div>
+            <div class="form-row form-row--split">
+                <label for="ContactFormCompany" class="required">{{ 'contact_form.company_label' | t }}</label>
+                <input type="email" id="ContactFormCompany" name="contact[company]" placeholder="{{ 'contact_form.company_placeholder' | t }}" required="required">
+            </div>
+            <div class="form-row form-row--split">
+                <label for="ContactFormPosition" class="required">{{ 'contact_form.position_label' | t }}</label>
+                <input type="email" id="ContactFormPosition" name="contact[position]" placeholder="{{ 'contact_form.position_placeholder' | t }}" required="required">
+            </div>
+            <div class="form-row form-row--split">
+                <label for="ContactFormEmail" class="required">{{ 'contact_form.email_label' | t }}</label>
+                <input type="email" id="ContactFormEmail" name="contact[email]" placeholder="{{ 'contact_form.email_placeholder' | t }}" required="required">
+            </div>
+            <div class="form-row form-row--split">
+                <label for="ContactFormPhone" class="required">{{ 'contact_form.phone_label' | t }}</label>
+                <input type="tel" id="ContactFormPhone" name="contact[phone]" placeholder="{{ 'contact_form.phone_placeholder' | t }}" required="required">
+            </div>
+            <div class="form-row form-row--split">
+                <label for="ContactFormAnnualTurnover" class="required">{{ 'contact_form.annual_turnover_label' | t }}</label>
+                <input type="email" id="ContactFormAnnualTurnover" name="contact[annual_turnover]" placeholder="{{ 'contact_form.annual_turnover_placeholder' | t }}" required="required">
+            </div>
+            <div class="form-row form-row--split">
+                <label for="ContactFormEstSpend" class="required">{{ 'contact_form.estimated_spend_label' | t }}</label>
+                <input type="email" id="ContactFormEstSpend" name="contact[estimated_spend]" placeholder="{{ 'contact_form.estimated_spend_placeholder' | t }}" required="required">
+            </div>
+            <div class="form-row form-row--full">
+                <label for="ContactFormMessage" class="required">{{ 'contact_form.stockist_message_label' | t }}</label>
+                <textarea rows="10" id="ContactFormMessage" name="contact[body]" placeholder="{{ 'contact_form.stockist_message_placeholder' | t }}" required="required"></textarea>
+            </div>
+            <div class="form-row form-row--full form-row--actions">
+                <button type="submit" class="button" aria-label="{{ 'contact_form.submit_button' | t }}">{{ 'contact_form.submit_button' | t }}</button>
+            </div>
+        {% endif %}
+    {% endform %}
+
+</div>
+
+{% schema %}
+{
+    "name": "Stockist Form",
+    "tag": "section",
+    "class": "section-stockist-form",
+    "settings": [
+        {
+            "type": "header",
+            "content": "Desktop padding"
+        },
+        {
+            "type": "range",
+            "id": "padding_top",
+            "min": 0,
+            "max": 128,
+            "step": 2,
+            "unit": "px",
+            "label": "Padding top",
+            "default": 0
+        },
+        {
+            "type": "range",
+            "id": "padding_bottom",
+            "min": 0,
+            "max": 128,
+            "step": 2,
+            "unit": "px",
+            "label": "Padding bottom",
+            "default": 64
+        },
+        {
+            "type": "header",
+            "content": "Mobile padding"
+        },
+        {
+            "type": "range",
+            "id": "mobile_padding_top",
+            "min": 0,
+            "max": 128,
+            "step": 2,
+            "unit": "px",
+            "label": "Padding top",
+            "default": 0
+        },
+        {
+            "type": "range",
+            "id": "mobile_padding_bottom",
+            "min": 0,
+            "max": 128,
+            "step": 2,
+            "unit": "px",
+            "label": "Padding bottom",
+            "default": 32
+        }
+    ],
+    "presets": [
+        {
+            "name":"Stockist Form"
+        }
+    ]
+}
+{% endschema %}

@@ -1,50 +1,60 @@
 {
-	"sections": {
-		"main": {
-			"type": "main-product",
-			"blocks": {
-				"e332d2c2-7826-464c-86da-d12acaa568fc": {
-					"type": "country_text",
-					"settings": {
-						"condition": "equals",
-						"code": "GB",
-						"title": "Message for GB only"
-					}
-				},
-				"38d830eb-ddc1-4e03-bc37-e1d7b52aa066": {
-					"type": "continent_text",
-					"settings": {
-						"condition": "does_not_equal",
-						"code": "EU",
-						"title": "Message for anyone in an EU country"
-					}
-				},
-				"57323523-48ff-4aa5-816e-516404b2b84b": {
-					"type": "country_text",
-					"settings": {
-						"condition": "does_not_equal",
-						"code": "GB",
-						"title": "Message for anywhere besides GB"
-					}
-				}
-			},
-			"block_order": ["e332d2c2-7826-464c-86da-d12acaa568fc", "38d830eb-ddc1-4e03-bc37-e1d7b52aa066", "57323523-48ff-4aa5-816e-516404b2b84b"],
-			"settings": {
-				"padding_top": 32,
-				"padding_bottom": 64,
-				"mobile_padding_top": 0,
-				"mobile_padding_bottom": 32
-			}
-		},
-		"reqs": {
-			"type": "product-recommendations",
-			"settings": {
-				"padding_top": 64,
-				"padding_bottom": 64,
-				"mobile_padding_top": 32,
-				"mobile_padding_bottom": 32
-			}
-		}
-	},
-	"order": ["main", "reqs"]
+  "sections": {
+    "main": {
+      "type": "main-product",
+      "blocks": {
+        "e332d2c2-7826-464c-86da-d12acaa568fc": {
+          "type": "country_text",
+          "settings": {
+            "condition": "equals",
+            "code": "GB",
+            "title": "Message for GB only"
+          }
+        },
+        "38d830eb-ddc1-4e03-bc37-e1d7b52aa066": {
+          "type": "continent_text",
+          "settings": {
+            "condition": "does_not_equal",
+            "code": "EU",
+            "title": "Message for anyone in an EU country"
+          }
+        },
+        "57323523-48ff-4aa5-816e-516404b2b84b": {
+          "type": "country_text",
+          "settings": {
+            "condition": "does_not_equal",
+            "code": "GB",
+            "title": "Message for anywhere besides GB"
+          }
+        }
+      },
+      "block_order": [
+        "e332d2c2-7826-464c-86da-d12acaa568fc",
+        "38d830eb-ddc1-4e03-bc37-e1d7b52aa066",
+        "57323523-48ff-4aa5-816e-516404b2b84b"
+      ],
+      "settings": {
+        "delivery_title": "Delivery & Returns",
+        "delivery_text": "<p><strong>UK Delivery<\/strong><\/p><p>Complimentary next day DHL delivery when you spend £200.<\/p><p>Standard delivery - £3.95 (2-3 working days.<\/p><p>Next day delivery - £5.95.<\/p><p><strong>EU Delivery<\/strong><\/p><p>Complimentary Euro Express Delivery When You Spend €250.<\/p><p>All Orders Despatched via DHL Express, Starting From €13.00.<\/p><p>Delivery in 1-2 Working Days.<\/p><p><strong>Worldwide Delivery<\/strong><\/p><p>Complimentary Worldwide Express Delivery When You Spend $250 USD.<\/p><p>All Orders Despatched via DHL Express, Starting From $15.<\/p><p>Delivery in 1-3 Working Days.<\/p><p><strong>Returns<\/strong><\/p><p>You can return any order for a refund, or exchange within 28 days of receiving your order.<\/p><p>If you wish to exchange an item, you can return it to us and we will dispatch your exchange at no extra cost.<\/p><p>Please <a href=\"\/pages\/returns\" title=\"Returns\">click here<\/a> to read our full returns policy.<\/p>",
+        "padding_top": 32,
+        "padding_bottom": 64,
+        "mobile_padding_top": 0,
+        "mobile_padding_bottom": 32
+      }
+    },
+    "reqs": {
+      "type": "product-recommendations",
+      "settings": {
+        "title": "You may also like",
+        "padding_top": 0,
+        "padding_bottom": 64,
+        "mobile_padding_top": 0,
+        "mobile_padding_bottom": 32
+      }
+    }
+  },
+  "order": [
+    "main",
+    "reqs"
+  ]
 }

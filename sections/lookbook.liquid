@@ -1,0 +1,148 @@
+{% assign section_id = section.id | replace: "_", "" | replace: "-", "" %}
+{% render "section-styles", section_id: section_id, section: section %}
+
+<link href="{{ "lookbook.css" | asset_url }}" rel="stylesheet">
+
+<div class="wrap wrap--xx-large wrap--{{section_id }}">
+
+    <div class="section-lookbook__inner section-lookbook__inner--{{ section_id }}">
+
+        {% for block in section.blocks %}
+            <div class="section-lookbook__look{% unless request.design_mode %} preload{% endunless %}">
+                {% if block.settings.image != blank %}
+                    <div class="section-lookbook__look__image look-image">
+                        <img 
+                            {% if request.design_mode %}
+                            src="{{ block.settings.image.src | img_url: '800x1080' }}" 
+                            {% else %}
+                            src="{{ "preload.gif" | asset_url }}" 
+                            data-src="{{ block.settings.image.src | img_url: '800x1080' }}" 
+                            class="preload" 
+                            {% endif %}
+                            alt="{{ block.settings.image.alt }}" 
+                            width="800" 
+                            height="1080"
+                        >
+                    </div>
+                {% endif %}
+                <div class="section-lookbook__look__products look-products">
+                    {% for product in block.settings.products %}
+                        <div class="section-lookbook__look__product look-product">
+                            {% render "card-product-lookbook", product: product %}
+                        </div>
+                    {% endfor %}
+                </div>
+            </div>
+        {% endfor %}
+
+    </div>
+
+</div>
+
+<script>
+    const lookbook_{{ section_id }} = document.querySelector('.section-lookbook__inner--{{ section_id }}')
+    const looks_{{ section_id }} = lookbook_{{ section_id }}.querySelectorAll('.section-lookbook__look')
+    for (let look of looks_{{ section_id }}) {
+        const image = look.querySelector('.look-image')
+        image.addEventListener('click', () => {
+            if (look.classList.contains('open')) {
+                look.classList.remove('open');
+            } else {
+                for (let look of looks_{{ section_id }}) look.classList.remove('open')
+                look.classList.add('open');
+            }
+            setTimeout(function(){
+                const elementToScrollTo = window.pageYOffset + image.getBoundingClientRect().top;
+                const siteHeader = document.querySelector('.header-main');
+                const siteHeaderHeight = siteHeader.offsetHeight;
+                const scrollTarget = elementToScrollTo - siteHeaderHeight + 2;
+                window.scrollTo({
+                    top: scrollTarget,
+                    left: 0,
+                    behavior: 'smooth',
+                });
+            }, 150)
+        })
+    }
+</script>
+
+{% schema %}
+{
+    "name": "Lookbook",
+    "tag": "section",
+    "class": "section-lookbook",
+    "blocks": [
+        {
+            "type": "look",
+            "name": "Look",
+            "settings": [
+                {
+                    "type": "image_picker",
+                    "id": "image",
+                    "label": "Cover image"
+                },
+                {
+                    "type": "product_list",
+                    "id": "products",
+                    "label": "Products"
+                }
+            ]
+        }
+    ],
+    "settings": [
+        {
+            "type": "header",
+            "content": "Desktop padding"
+        },
+        {
+            "type": "range",
+            "id": "padding_top",
+            "min": 0,
+            "max": 128,
+            "step": 2,
+            "unit": "px",
+            "label": "Padding top",
+            "default": 64
+        },
+        {
+            "type": "range",
+            "id": "padding_bottom",
+            "min": 0,
+            "max": 128,
+            "step": 2,
+            "unit": "px",
+            "label": "Padding bottom",
+            "default": 64
+        },
+        {
+            "type": "header",
+            "content": "Mobile padding"
+        },
+        {
+            "type": "range",
+            "id": "mobile_padding_top",
+            "min": 0,
+            "max": 128,
+            "step": 2,
+            "unit": "px",
+            "label": "Padding top",
+            "default": 32
+        },
+        {
+            "type": "range",
+            "id": "mobile_padding_bottom",
+            "min": 0,
+            "max": 128,
+            "step": 2,
+            "unit": "px",
+            "label": "Padding bottom",
+            "default": 32
+        }
+    ],
+    "presets": [
+        {
+            "name": "Lookbook"
+        }
+    ]
+}
+{% endschema %}

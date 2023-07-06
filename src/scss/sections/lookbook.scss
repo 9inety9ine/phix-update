@@ -1,0 +1,55 @@
+@import '../abstracts/variables';
+
+.section-lookbook {
+	&__inner {
+		display: grid;
+		grid-template-columns: repeat(3, 1fr);
+		gap: 0.25em;
+		@media (max-width: $w-m) {
+			grid-template-columns: repeat(2, 1fr);
+		}
+		@media (max-width: $w-s) {
+			grid-template-columns: repeat(1, 1fr);
+		}
+	}
+	&__look {
+		@include preload;
+		&.open {
+			grid-column: 1 / 4;
+			display: grid;
+			grid-template-columns: 1fr 1fr 1fr;
+			grid-template-areas: 'image products products';
+			gap: 0.25em;
+			@media (max-width: $w-m) {
+				grid-column: 1 / 3;
+				grid-template-columns: 1fr;
+				grid-template-rows: auto auto;
+				grid-template-areas: 'image' 'products';
+			}
+			@media (max-width: $w-s) {
+				grid-column: auto;
+			}
+			.look-image {
+				grid-area: image;
+			}
+			.look-products {
+				display: grid;
+				grid-area: products;
+			}
+		}
+		&__image {
+			cursor: pointer;
+		}
+		&__products {
+			display: none;
+			grid-template-columns: repeat(4, 1fr);
+			gap: 0.25em;
+			@media (max-width: $w-xl) {
+				grid-template-columns: repeat(3, 1fr);
+			}
+			@media (max-width: $w-s) {
+				grid-template-columns: repeat(2, 1fr);
+			}
+		}
+	}
+}
