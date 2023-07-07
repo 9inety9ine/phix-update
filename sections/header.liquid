@@ -1,5 +1,19 @@
 {% assign section_id = section.id | replace: "_", "" | replace: "-", "" %}
 
+{% assign has_announcements = false %}
+{% for block in section.blocks %}
+    {% case block.type %}
+        {% when "global_announcement" %}
+            {% assign has_announcements = true %}
+        {% when "regional_announcement" %}
+            {% assign has_announcements = true %}
+    {% endcase %}
+{% endfor %}
+
+{% if has_announcements == true %}
+{% render "announcements", section: section %}
+{% endif %}
+
 <div class="wrap wrap--xx-large wrap--{{ section_id }}">
 
     <div class="header-main__inner">
@@ -33,6 +47,74 @@
     "tag": "header",
     "class": "header-main",
     "blocks": [
+        {
+            "type": "global_announcement",
+            "name": "Global Announcement",
+            "settings": [
+                {
+                    "type": "text",
+                    "id": "title",
+                    "label": "Announcement"
+                }
+            ]
+        },
+        {
+            "type": "regional_announcement",
+            "name": "Regional Announcement",
+            "settings": [
+                {
+                    "type": "header",
+                    "content": "Display condition"
+                },
+                {
+                    "type": "select",
+                    "id": "type",
+                    "label": "Region type",
+                    "options": [
+                        {
+                            "value": "country",
+                            "label": "Country"
+                        },
+                        {
+                            "value": "continent",
+                            "label": "Continent"
+                        }
+                    ],
+                    "default": "country"
+                },
+                {
+                    "type": "select",
+                    "id": "condition",
+                    "label": "Condition",
+                    "options": [
+                        {
+                            "value": "equals",
+                            "label": "Equals"
+                        },
+                        {
+                            "value": "does_not_equal",
+                            "label": "Does not equal"
+                        }
+                    ],
+                    "default": "equals"
+                },
+                {
+                    "type": "text",
+                    "id": "code",
+                    "label": "Country Code",
+                    "default": "GB"
+                },
+                {
+                    "type": "header",
+                    "content": "Content"
+                },
+                {
+                    "type": "text",
+                    "id": "title",
+                    "label": "Announcement"
+                }
+            ]
+        },
         {
             "type": "menu",
             "name": "Menu",

@@ -1,0 +1,30 @@
+<link href="{{ "announcements.css" | asset_url }}" rel="stylesheet">
+
+<div class="announcements">
+    <div class="wrap wrap--small">
+        <div class="swiper swiper-announcements">
+            <div class="swiper-wrapper">
+            {% for block in section.blocks %}
+            {% case block.type %}
+                {% when "global_announcement" %}
+                    <div class="swiper-slide swiper-slide-global">
+                        <div class="announcements__announcement">
+                            <span>{{ block.settings.title }}</span>
+                        </div>
+                    </div>
+                {% when "regional_announcement" %}
+                    <div class="swiper-slide swiper-slide-regional" data-region="{{ block.settings.type }}" data-condition="{{ block.settings.condition }}" data-code="{{ block.settings.code }}">
+                        <div class="announcements__announcement">
+                            <span>{{ block.settings.title }}</span>
+                        </div>
+                    </div>
+            {% endcase %}
+            {% endfor %}
+            </div>
+            <div class="announcements__button announcements__button--prev"></div>
+            <div class="announcements__button announcements__button--next"></div>
+        </div>
+    </div>
+</div>
+
+<script src="{{ "announcements.js" | asset_url }}" defer></script>
