@@ -5,7 +5,7 @@
 <link href="{{ "product-collection-grid.css" | asset_url }}" rel="stylesheet">
 
 <div class="wrap wrap--medium wrap--no-padding-bottom wrap--{{ section_id }}">
-    <form action="/search" method="get" role="search" class="section-search__form">
+    <form action="{{ routes.search_url }}" method="get" role="search" class="section-search__form">
         <label>{{ 'search.search_label' | t }}</label>
         <input type="search" name="q" value="{{ search.terms | escape }}" placeholder="{{ 'search.search_placeholder' | t }}">
         <button type="submit" class="button">{{ 'search.search_submit' | t }}</button>

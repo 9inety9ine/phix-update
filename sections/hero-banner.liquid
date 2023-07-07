@@ -1,8 +1,5 @@
 {% assign section_id = section.id | replace: "_", "" | replace: "-", "" %}
 
-{% if section.blocks.size > 1 %}
-<link href="{{ "swiper.css" | asset_url }}" rel="stylesheet">
-{% endif %}
 <link href="{{ "hero-banner.css" | asset_url }}" rel="stylesheet">
 
 <div class="wrap wrap--no-padding wrap--{{ section_id }}">
@@ -13,7 +10,7 @@
                 {% for block in section.blocks %}
                 <div 
                     class="section-hero-banner__slide swiper-slide" 
-                    style="background: url({{ block.settings.image.src | img_url: "master" }}) 50% 50% / cover;" 
+                    style="background: url({{ block.settings.image.src | img_url: "1600x" }}) 50% 50% / cover;" 
                     data-title="{{ block.settings.title }}"
                 >
                     <a href="{{ block.settings.url }}" aria-label="{{ block.settings.title }}">&nbsp;</a>
@@ -42,7 +39,6 @@
 </div>
 
 {% if section.blocks.size > 1 %}
-<script src="{{ "swiper.js" | asset_url }}"></script>
 <script defer>
 
     const swiper_{{ section_id }} = new Swiper('.swiper__{{ section_id }}', {

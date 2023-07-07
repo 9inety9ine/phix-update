@@ -3,7 +3,7 @@
 
 <div class="drawer-search">
     <predictive-search>
-        <form action="/search" method="get" role="search" id="searchbox" autocomplete="off">
+        <form action="{{ routes.search_url }}" method="get" role="search" id="searchbox" autocomplete="off">
             <div class="drawer-search__input">
                 <div class="wrap wrap--xx-large">
                     <label class="drawer-search__input__label" for="drawer-search-input">{{ "search.drawer.search_label" | t }}</label>

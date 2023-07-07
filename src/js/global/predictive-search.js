@@ -48,7 +48,7 @@ class PredictiveSearch extends HTMLElement {
 				if (predictiveSubmit) {
 					predictiveSubmit.addEventListener('click', function (e) {
 						let searchTerm = predictiveField.value;
-						let searchURL = '/search/?q=' + searchTerm + '&type=product';
+						let searchURL = window.Shopify.routes.root + 'search/?q=' + searchTerm + '&type=product';
 						window.location = searchURL;
 						e.preventDefault();
 					});

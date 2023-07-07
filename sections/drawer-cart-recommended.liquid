@@ -1,4 +1,4 @@
-<script src="{{ "swiper.js" | asset_url }}"></script>
+
 <script>
     const swiper_cart = new Swiper('.swiper-recommended', {
         speed: 1000,
@@ -12,35 +12,32 @@
     };
 </script>
 
+<link href="{{ "drawer-cart-recommended.css" | asset_url }}" rel="stylesheet">
 
-    <link href="{{ "swiper.css" | asset_url }}" rel="stylesheet">
-    <link href="{{ "drawer-cart-recommended.css" | asset_url }}" rel="stylesheet">
+<div class="drawer-cart-recommended__inner">
 
-    <div class="drawer-cart-recommended__inner">
-
-        <div class="drawer-cart-recommended__header">
-            <span>{{ "cart.drawer.related" | t }}</span>
-        </div>
-
-        <div class="drawer-cart-recommended__content">
-            <div class="swiper swiper-recommended">
-                <div class="swiper-wrapper">
-                    {% for product in recommendations.products %}
-                    <div class="swiper-slide">
-                        {% render "card-product-recommended", product: product %}
-                    </div>
-                    {% endfor %}
-                </div>
-            </div>
-        </div>
-
+    <div class="drawer-cart-recommended__header">
+        <span>{{ "cart.drawer.related" | t }}</span>
     </div>
 
+    <div class="drawer-cart-recommended__content">
+        <div class="swiper swiper-recommended">
+            <div class="swiper-wrapper">
+                {% for product in recommendations.products %}
+                <div class="swiper-slide">
+                    {% render "card-product-recommended", product: product %}
+                </div>
+                {% endfor %}
+            </div>
+        </div>
+    </div>
+
+</div>
 
 {% schema %}
 {
-"name": "Cart Recommendations",
-"tag": "div",
-"class": "drawer-cart-recommended hidden"
+    "name": "Cart Recommendations",
+    "tag": "div",
+    "class": "drawer-cart-recommended hidden"
 }
 {% endschema %}

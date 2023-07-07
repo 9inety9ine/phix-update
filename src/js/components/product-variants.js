@@ -37,10 +37,24 @@ const activateOptions = function () {
 
 const activateToggle = function () {
 	const toggleSelect = document.getElementById('toggle-options');
-	toggleSelect.addEventListener('click', e => {
-		e.preventDefault();
-		toggleSelect.parentNode.classList.toggle('open');
-	});
+	if (toggleSelect) {
+		toggleSelect.addEventListener('click', e => {
+			e.preventDefault();
+			toggleSelect.parentNode.classList.toggle('open');
+		});
+	}
+	const variantOutput = document.getElementById('product-variant-output');
+	if (variantOutput) {
+		variantOutput.addEventListener('mouseover', () => {
+			clearTimeout(window.toggleDelay);
+		});
+		variantOutput.addEventListener('mouseout', () => {
+			clearTimeout(window.toggleDelay);
+			window.toggleDelay = setTimeout(() => {
+				toggleSelect.parentNode.classList.remove('open');
+			}, 500);
+		});
+	}
 };
 
 if (productVariantSelect) {

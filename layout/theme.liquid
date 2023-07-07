@@ -10,8 +10,12 @@
     <!-- content for header -->
     {{ content_for_header }}
 
+    <link href="{{ "swiper.css" | asset_url }}" rel="stylesheet">
+    
     <!-- core css -->
     <link href="{{ "application.css" | asset_url }}" rel="stylesheet">
+
+    <script src="{{ "swiper.js" | asset_url }}"></script>
     
     {% if template == "index" %}
       <script src="https://ig.instant-tokens.com/users/37ff5468-5275-4de3-ad2f-39e52419df25/instagram/6587700211251565/token.js?userSecret=v5j4bj2441p702aa46rwrm"></script>

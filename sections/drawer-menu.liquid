@@ -6,11 +6,13 @@
             <button class="toggle-drawer" aria-label="Close Drawer">{% render "icon-close.svg" %}</button>
             {% for block in section.blocks %}
                 {% if block.type == "header-menu" %}
-                <ul>
-                    {% for link in block.settings.menu.links %}
-                    <li><a href="{{ link.url }}" aria-label="{{ link.title }}">{{ link.title }}</a></li>
-                    {% endfor %}
-                </ul>
+                <div class="swiper swiper-drawer-menu">
+                    <div class="swiper-wrapper">
+                        {% for link in block.settings.menu.links %}
+                        <div class="swiper-slide"><a href="{{ link.url }}" aria-label="{{ link.title }}">{{ link.title }}</a></div>
+                        {% endfor %}
+                    </div>
+                </div>
                 {% endif %}
             {% endfor %}
         </div>

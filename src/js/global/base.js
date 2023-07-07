@@ -52,6 +52,10 @@ if (drawerMask)
 	drawerMask.addEventListener('click', e => {
 		e.preventDefault();
 		window.toggleDrawer(false, false);
+		setTimeout(function () {
+			const mobileMenuItems = document.querySelectorAll('.menu-mobile__item');
+			if (mobileMenuItems) for (let item of mobileMenuItems) item.classList.remove('open');
+		}, 500);
 	});
 
 const drawerToggles = document.querySelectorAll('.toggle-drawer');
@@ -60,6 +64,10 @@ if (drawerToggles)
 		toggle.addEventListener('click', e => {
 			e.preventDefault();
 			window.toggleDrawer(false, false);
+			setTimeout(function () {
+				const mobileMenuItems = document.querySelectorAll('.menu-mobile__item');
+				if (mobileMenuItems) for (let item of mobileMenuItems) item.classList.remove('open');
+			}, 500);
 		});
 
 window.countCartItems = function () {

@@ -32,15 +32,10 @@
 				}
 			}
 		}
-		ul {
+		.swiper {
 			height: 3em;
 			width: 100%;
 			max-width: 100%;
-			display: flex;
-			overflow-x: hidden;
-			gap: 1.25em;
-			white-space: nowrap;
-			position: relative;
 			&::after {
 				content: '';
 				position: absolute;
@@ -52,10 +47,14 @@
 				background: linear-gradient(to right, rgba(255, 255, 255, 0), rgba(255, 255, 255, 1));
 				pointer-events: none;
 			}
-			li {
-				height: 100%;
+			.swiper-slide {
+				width: fit-content;
+				&:last-child {
+					padding-right: 3em;
+				}
 			}
 			a {
+				width: fit-content;
 				height: 100%;
 				display: flex;
 				align-items: center;
