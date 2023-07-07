@@ -1,0 +1,31 @@
+@import '../abstracts/variables';
+
+.section-contact {
+	position: relative;
+	&__inner {
+		display: grid;
+		grid-template-columns: 1fr 1fr 1fr;
+		gap: 5em;
+	}
+	&__form {
+		position: relative;
+	}
+	&__content {
+		border-left: 1px solid $color-grey-medium;
+		border-right: 1px solid $color-grey-medium;
+		padding: 0 5em;
+		display: grid;
+		grid-template-rows: auto;
+		gap: 3em;
+	}
+	&__accordions {
+		&__content {
+			display: grid;
+			grid-template-rows: auto;
+			gap: 3em;
+		}
+	}
+	&__actions {
+		padding-top: 0.5em;
+	}
+}

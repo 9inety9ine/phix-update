@@ -6,3 +6,4 @@ require('./global/cart-add');
 require('./global/predictive-search');
 require('./global/pagination');
 require('./global/geolocation');
+require('./global/localization');

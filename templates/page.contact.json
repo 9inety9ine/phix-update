@@ -1,9 +1,17 @@
 {
 	"sections": {
+		"header": {
+			"type": "page-header",
+			"settings": {}
+		},
+		"content": {
+			"type": "page-content",
+			"settings": {}
+		},
 		"form": {
-			"type": "contact-form",
+			"type": "contact",
 			"settings": {}
 		}
 	},
-	"order": ["form"]
+	"order": ["header", "content", "form"]
 }

@@ -3,7 +3,7 @@
 
 <link href="{{ "page-content.css" | asset_url }}" rel="stylesheet">
 
-<div class="wrap wrap--{{ section.settings.width }} wrap--{{section_id }}">
+<div class="wrap wrap--{{ section.settings.width }} wrap--{{section_id }}" style="text-align: {{ section.settings.alignment }};">
 
     {{ page.content }}
 
@@ -46,6 +46,26 @@
                 }
             ],
             "default": "large"
+        },
+        {
+            "type": "select",
+            "id": "alignment",
+            "label": "Text Alignment",
+            "options": [
+                {
+                    "value": "left",
+                    "label": "Left"
+                },
+                {
+                    "value": "center",
+                    "label": "Center"
+                },
+                {
+                    "value": "right",
+                    "label": "Right"
+                }
+            ],
+            "default": "left"
         },
         {
             "type": "header",

@@ -38,6 +38,26 @@
                 <div class="footer-main__aside__trustpilot">
                     <img src="{{ "trustpilot-footer.png" | asset_url }}" width="800" height="60" alt="Trust Score">
                 </div>
+                {% render "localization" %}
+            </div>
+        </div>
+
+        
+        <div class="footer-main__lower">
+            <div class="footer-main__socials">
+              <ul>
+                {% if section.settings.url_fb != blank %}<li><a href="{{ section.settings.url_fb }}" target="_blank" aria-label="{{ shop.name }} Facebook"><img src="{{ "icon-facebook.svg" | asset_url }}" alt="{{ shop.name }} Facebook"></a></li>{% endif %}
+                {% if section.settings.url_tw != blank %}<li><a href="{{ section.settings.url_tw }}" target="_blank" aria-label="{{ shop.name }} Twitter"><img src="{{ "icon-twitter.svg" | asset_url }}" alt="{{ shop.name }} Twitter"></a></li>{% endif %}
+                {% if section.settings.url_yt != blank %}<li><a href="{{ section.settings.url_yt }}" target="_blank" aria-label="{{ shop.name }} Youtube"><img src="{{ "icon-youtube.svg" | asset_url }}" alt="{{ shop.name }} Youtube"></a></li>{% endif %}
+                {% if section.settings.url_in != blank %}<li><a href="{{ section.settings.url_in }}" target="_blank" aria-label="{{ shop.name }} Instagram"><img src="{{ "icon-instagram.svg" | asset_url }}" alt="{{ shop.name }} Instagram"></a></li>{% endif %}
+                {% if section.settings.url_tt != blank %}<li><a href="{{ section.settings.url_tt }}" target="_blank" aria-label="{{ shop.name }} TikTok"><img src="{{ "icon-tiktok.svg" | asset_url }}" alt="{{ shop.name }} TikTok"></a></li>{% endif %}
+                {% if section.settings.url_pi != blank %}<li><a href="{{ section.settings.url_pi }}" target="_blank" aria-label="{{ shop.name }} Pinterest"><img src="{{ "icon-pinterest.svg" | asset_url }}" alt="{{ shop.name }} Pinterest"></a></li>{% endif %}
+                {% if section.settings.url_sn != blank %}<li><a href="{{ section.settings.url_sn }}" target="_blank" aria-label="{{ shop.name }} Snapchat"><img src="{{ "icon-snapchat.svg" | asset_url }}" alt="{{ shop.name }} Snapchat"></a></li>{% endif %}
+                {% if section.settings.url_li != blank %}<li><a href="{{ section.settings.url_li }}" target="_blank" aria-label="{{ shop.name }} Linkedin"><img src="{{ "icon-linkedin.svg" | asset_url }}" alt="{{ shop.name }} Linkedin"></a></li>{% endif %}
+              </ul>
+            </div>
+            <div class="footer-main__info">
+                <p>{{ section.settings.info_text }}</p>
             </div>
         </div>
 
@@ -85,6 +105,60 @@
             "id": "code",
             "label": "Klaviyo Code",
             "default": "<div class='klaviyo-form-TUWADC k1'></div>"
+        },
+        {
+            "type": "header",
+            "content": "Social Settings"
+        },
+        {
+            "type": "url",
+            "id": "url_fb",
+            "label": "Facebook"
+        },
+        {
+            "type": "url",
+            "id": "url_tw",
+            "label": "Twitter"
+        },
+        {
+            "type": "url",
+            "id": "url_yt",
+            "label": "Youtube"
+        },
+        {
+            "type": "url",
+            "id": "url_in",
+            "label": "Instagram"
+        },
+        {
+            "type": "url",
+            "id": "url_tt",
+            "label": "Tiktok"
+        },
+        {
+            "type": "url",
+            "id": "url_pi",
+            "label": "Pinterest"
+        },
+        {
+            "type": "url",
+            "id": "url_sn",
+            "label": "Snapchat"
+        },
+        {
+            "type": "url",
+            "id": "url_li",
+            "label": "LinkedIn"
+        },
+        {
+            "type": "header",
+            "content": "Company Info"
+        },
+        {
+            "type": "textarea",
+            "id": "info_text",
+            "label": "Text",
+            "default": "© 2023 Rock n Roller Limited trading as Phix Clothing"
         },
         {
             "type": "header",

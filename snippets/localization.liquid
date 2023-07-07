@@ -1,0 +1,20 @@
+{% if localization.available_countries.size > 1 %}
+<link href="{{ "localization.css" | asset_url }}" rel="stylesheet">
+<div class="localization{% if drawer == true %} drawer-form{% endif %}">
+    {% form 'localization' %}
+        <select name="country_code">
+        {% for country in localization.available_countries %}
+            {% if country.iso_code == localization.country.iso_code %}
+            <option selected="true" value="{{ country.iso_code }}">
+                {{ country.name }} ({{ country.currency.iso_code }} {{ country.currency.symbol }})
+            </option>
+            {% else %}
+            <option value="{{ country.iso_code }}">
+                {{ country.name }} ({{ country.currency.iso_code }} {{ country.currency.symbol }})
+            </option>
+            {% endif %}
+        {% endfor %}
+        </select>
+    {% endform %}
+</div>
+{% endif %}

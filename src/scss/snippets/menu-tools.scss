@@ -33,6 +33,18 @@
 				display: none;
 			}
 		}
+		&--flag {
+			display: flex;
+			align-items: center;
+			padding-right: 0.5em;
+			.img-icon {
+				display: block;
+			}
+			img {
+				width: 1.5em;
+				border-radius: 2px;
+			}
+		}
 		&--cart {
 			position: relative;
 			#cart-counter {
