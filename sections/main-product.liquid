@@ -102,9 +102,35 @@
                         {% render "product-accordions", product: product, section: section %}
                     </div>
 
-                    <div class="section-product__details__reviews">
-                        {% render "product-reviews" %}
+                    {% if product.metafields.product.complete_the_look.value != blank %}
+                    <div class="section-product__details__look">
+                        <div class="section-product__details__look__header">
+                            <h4>Complete the look</h4>
+                        </div>
+                        <div class="section-product__details__look__products">
+                        {% assign look_products = product.metafields.product.complete_the_look.value.look_products.value %}
+                        {% assign current_product = product.id %}
+                        {% for product in look_products %}
+                            {% unless product.id == current_product %}
+                            <a href="{{ product.url }}" aria-label="{{ product.title }}">
+                                <img 
+                                    {% if request.design_mode %}
+                                    src="{{ product.featured_image.src | img_url: '200x270', crop: "center" }}" 
+                                    {% else %}
+                                    src="{{ "preload.gif" | asset_url }}" 
+                                    data-src="{{ product.featured_image.src | img_url: '200x270', crop: "center" }}" 
+                                    class="preload" 
+                                    {% endif %}
+                                    alt="{{ product.title }}" 
+                                    width="200" 
+                                    height="270" 
+                                >
+                            </a>
+                            {% endunless %}
+                        {% endfor %}
+                        </div>
                     </div>
+                    {% endif %}
 
                 {% endform %}
 

@@ -1,0 +1,1 @@
+const accordionTitles=document.querySelectorAll(".accordion__title");if(accordionTitles)for(let o of accordionTitles)o.addEventListener("click",e=>{e.preventDefault(),o.parentNode.classList.toggle("open")});

@@ -23,6 +23,7 @@
             <button type="submit" class="button" aria-label="{{ 'customer.activate_account.accept_button' | t }}">{{ 'customer.activate_account.accept_button' | t }}</button>
             <button type="submit" name="decline" class="button" aria-label="{{ 'customer.activate_account.decline_button' | t }}">{{ 'customer.activate_account.decline_button' | t }}</button>
         </div>
+        <input type="hidden" name="return_to" value="/account">
 
     {% endform %}
     

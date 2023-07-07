@@ -3,7 +3,7 @@
 
 <link href="{{ "contact.css" | asset_url }}" rel="stylesheet">
 
-<div class="wrap wrap--xx-large wrap--{{section_id }}">
+<div class="wrap wrap--x-large wrap--{{section_id }}">
 
     <div class="section-contact__inner">
 
@@ -62,11 +62,6 @@
                         {{ section.settings.text_email }}
                     </div>
                 </div>
-            </div>
-        </div>
-
-        <div class="section-contact__accordions">
-            <div class="section-contact__accordions__content">
                 <div class="section-contact__address">
                     <div class="section-contact__header">
                         <h3>{{ section.settings.title_address }}</h3>
@@ -74,12 +69,18 @@
                     </div>
                 </div>
                 <div class="accordions">
+                    {% for block in section.blocks %}
                     <div class="accordion">
-                        Accordion
+                        <button class="accordion__title">
+                            <span class="label">{{ block.settings.title }}</span>
+                            <span class="open">{% render "icon-cross.svg" %}</span>
+                            <span class="close">{% render "icon-line.svg" %}</span>
+                        </button>
+                        <div class="accordion__content">
+                            {{ block.settings.text }}
+                        </div>
                     </div>
-                    <div class="accordion">
-                        Accordion
-                    </div>
+                    {% endfor %}
                 </div>
             </div>
         </div>
@@ -88,11 +89,31 @@
 
 </div>
 
+<script src="{{ "contact.js" | asset_url }}" defer></script>
+
 {% schema %}
 {
     "name": "Contact",
     "tag": "section",
     "class": "section-contact",
+    "blocks": [
+        {
+            "type": "accordion",
+            "name": "Accordion",
+            "settings": [
+                {
+                    "type": "text",
+                    "id": "title",
+                    "label": "Title"
+                },
+                {
+                    "type": "richtext",
+                    "id": "text",
+                    "label": "Text"
+                }
+            ]
+        }
+    ],
     "settings": [
         {
             "type": "header",

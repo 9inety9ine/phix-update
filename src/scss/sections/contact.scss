@@ -4,28 +4,96 @@
 	position: relative;
 	&__inner {
 		display: grid;
-		grid-template-columns: 1fr 1fr 1fr;
-		gap: 5em;
+		grid-template-columns: 1fr 1fr;
+		@media (max-width: $w-m) {
+			grid-template-columns: 1fr;
+			grid-template-rows: auto;
+			gap: 2em;
+		}
 	}
 	&__form {
 		position: relative;
+		padding-right: 5em;
+		@media (max-width: $w-xl) {
+			padding-right: 2em;
+		}
+		@media (max-width: $w-m) {
+			padding-right: 0;
+		}
 	}
 	&__content {
 		border-left: 1px solid $color-grey-medium;
-		border-right: 1px solid $color-grey-medium;
-		padding: 0 5em;
+		padding-left: 5em;
 		display: grid;
 		grid-template-rows: auto;
-		gap: 3em;
-	}
-	&__accordions {
-		&__content {
-			display: grid;
-			grid-template-rows: auto;
-			gap: 3em;
+		gap: 2em;
+		@media (max-width: $w-xl) {
+			padding-left: 2em;
+		}
+		@media (max-width: $w-m) {
+			padding-left: 0;
+			border-left: none;
 		}
 	}
 	&__actions {
 		padding-top: 0.5em;
+	}
+	&__email,
+	&__address {
+		p {
+			&:last-child {
+				margin-bottom: 0;
+			}
+		}
+	}
+	.accordion {
+		margin-bottom: 1em;
+		&:last-of-type {
+			margin-bottom: 0;
+		}
+		&__title {
+			display: flex;
+			height: fit-content;
+			min-height: fit-content;
+			align-items: center;
+			border-bottom: 1px solid $color-grey-medium;
+			width: 100%;
+			text-align: left;
+			justify-content: space-between;
+			padding-bottom: 1em;
+			svg {
+				width: 1.5em;
+				height: 1.5em;
+				fill: $color-black;
+			}
+			.label {
+				font-size: 1.5em;
+				font-weight: $weight-bold;
+				text-transform: uppercase;
+			}
+			.open {
+				display: block;
+			}
+			.close {
+				display: none;
+			}
+		}
+		&__content {
+			padding: 2em 0 1em 0;
+			display: none;
+		}
+		&.open {
+			.accordion__title {
+				.open {
+					display: none;
+				}
+				.close {
+					display: block;
+				}
+			}
+			.accordion__content {
+				display: block;
+			}
+		}
 	}
 }
