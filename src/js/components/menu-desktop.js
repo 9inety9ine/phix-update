@@ -20,22 +20,25 @@ if (menuItems && menuLinks && menuDevice)
 	for (let item of menuItems) {
 		const link = item.querySelector('.menu-desktop__link');
 		item.addEventListener('mouseover', () => {
-			clearTimeout(window.fadeDelay);
-			let current_item = item;
-			if (!link.classList.contains('active')) {
-				for (let link of menuLinks) link.classList.remove('active');
-			}
-			setMenuDevicePosition(link);
-			window.fadeDelay = setTimeout(function () {
-				for (let item of menuItems) {
-					if (item === current_item) continue;
-					item.classList.remove('open');
+			window.mainHoverDelay = setTimeout(() => {
+				clearTimeout(window.fadeDelay);
+				let current_item = item;
+				if (!link.classList.contains('active')) {
+					for (let link of menuLinks) link.classList.remove('active');
 				}
+				setMenuDevicePosition(link);
+				window.fadeDelay = setTimeout(function () {
+					for (let item of menuItems) {
+						if (item === current_item) continue;
+						item.classList.remove('open');
+					}
+				}, 250);
+				clearTimeout(window.hoverDelay);
 			}, 250);
-			clearTimeout(window.hoverDelay);
 		});
 		item.addEventListener('mouseout', () => {
 			clearTimeout(window.hoverDelay);
+			clearTimeout(window.mainHoverDelay);
 			window.hoverDelay = setTimeout(function () {
 				link.classList.remove('active');
 				item.classList.remove('open');

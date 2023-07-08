@@ -93,13 +93,6 @@ if (loadMore) {
 			});
 	};
 
-	if (loadMore) {
-		loadMore.addEventListener('click', function () {
-			currentPage++;
-			fetchResults();
-		});
-	}
-
 	if (currentPage > 1) {
 		let pageCount = 1;
 		let url = window.location.search;
@@ -134,4 +127,19 @@ if (loadMore) {
 			toggleButton();
 		});
 	}
+
+	window.setTimeout(() => {
+		var observer = new IntersectionObserver(
+			function (entries) {
+				if (entries[0].isIntersecting === true) {
+					if (totalPages > Number(currentPage)) {
+						currentPage++;
+						fetchResults();
+					}
+				}
+			},
+			{ threshold: [1] }
+		);
+		observer.observe(loadMore);
+	}, 1500);
 }

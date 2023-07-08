@@ -1,0 +1,70 @@
+{% assign section_id = section.id | replace: "_", "" | replace: "-", "" %}
+{% render "section-styles", section_id: section_id, section: section %}
+
+<link href="{{ "shop-instagram.css" | asset_url }}" rel="stylesheet">
+
+<div class="wrap wrap--xx-large wrap--no-padding-x-large wrap--{{section_id }}">
+
+    <div id="instafeed" class="section-shop-instagram__inner"></div>
+
+</div>
+<script src="https://ig.instant-tokens.com/users/37ff5468-5275-4de3-ad2f-39e52419df25/instagram/6587700211251565/token.js?userSecret=v5j4bj2441p702aa46rwrm"></script>
+<script src="{{ "shop-instagram.js" | asset_url }}" defer></script>
+
+{% schema %}
+{
+    "name": "Instagram Feed",
+    "tag": "section",
+    "class": "section-shop-instagram",
+    "settings": [
+        {
+            "type": "header",
+            "content": "Desktop padding"
+        },
+        {
+            "type": "range",
+            "id": "padding_top",
+            "min": 0,
+            "max": 128,
+            "step": 2,
+            "unit": "px",
+            "label": "Padding top",
+            "default": 48
+        },
+        {
+            "type": "range",
+            "id": "padding_bottom",
+            "min": 0,
+            "max": 128,
+            "step": 2,
+            "unit": "px",
+            "label": "Padding bottom",
+            "default": 48
+        },
+        {
+            "type": "header",
+            "content": "Mobile padding"
+        },
+        {
+            "type": "range",
+            "id": "mobile_padding_top",
+            "min": 0,
+            "max": 128,
+            "step": 2,
+            "unit": "px",
+            "label": "Padding top",
+            "default": 32
+        },
+        {
+            "type": "range",
+            "id": "mobile_padding_bottom",
+            "min": 0,
+            "max": 128,
+            "step": 2,
+            "unit": "px",
+            "label": "Padding bottom",
+            "default": 32
+        }
+    ]
+}
+{% endschema %}
