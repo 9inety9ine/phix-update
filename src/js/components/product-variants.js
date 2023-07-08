@@ -59,15 +59,15 @@ const activateToggle = function () {
 
 if (productVariantSelect) {
 	const productVariantOptions = productVariantSelect.querySelectorAll('option');
-	let variantSelect = `<div class="option-select"><button id="toggle-options"><span class="option-select-label" id="option-select-label">Select a size</span></button><div class="option-select__scroll"><ul>`;
+	let variantSelect = `<div class="option-select"><button id="toggle-options" aria-label="${label_select_size}"><span class="option-select-label" id="option-select-label">${label_select_size}</span></button><div class="option-select__scroll"><ul>`;
 	for (let option of productVariantOptions) {
 		let optionTitle = option.dataset.title;
 		let optionInventory = option.dataset.inventory;
 		let optionId = option.value;
 		if (optionInventory === 'Out of Stock') {
-			variantSelect += `<li data-id="${optionId}" data-title="${optionTitle}" data-inventory="${optionInventory}" class="disabled"><span class="option-title">${optionTitle}</span><span>${optionInventory}</span></li>`;
+			variantSelect += `<li data-id="${optionId}" data-title="${optionTitle}" data-inventory="${optionInventory}" aria-label="${optionTitle}" class="disabled"><span class="option-title">${optionTitle}</span><span>${optionInventory}</span></li>`;
 		} else {
-			variantSelect += `<li data-id="${optionId}" data-title="${optionTitle}" data-inventory="${optionInventory}"><span class="option-title">${optionTitle}</span><span>${optionInventory}</span></li>`;
+			variantSelect += `<li data-id="${optionId}" data-title="${optionTitle}" data-inventory="${optionInventory}" aria-label="${optionTitle}"><span class="option-title">${optionTitle}</span><span>${optionInventory}</span></li>`;
 		}
 	}
 	variantSelect += `</ul></div></div>`;

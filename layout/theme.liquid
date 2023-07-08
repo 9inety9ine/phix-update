@@ -15,6 +15,7 @@
     <!-- core css -->
     <link href="{{ "application.css" | asset_url }}" rel="stylesheet">
 
+    <script src="{{ "geolocation.js" | asset_url }}"></script>
     <script src="{{ "swiper.js" | asset_url }}"></script>
     
     {% if template == "index" %}
@@ -27,6 +28,7 @@
       const label_add_to_cart = "{{ 'products.product.add_to_cart' | t }}";
       const label_sold_out = "{{ 'products.product.sold_out' | t }}";
       const label_preorder = "{{ 'products.product.preorder' | t }}";
+      const label_select_size = "{{ 'products.product.select_size_dropdown' | t }}";
       {%- if request.page_type == "product" %}
       const variant_stock = [
         {%- for variant in product.variants -%}

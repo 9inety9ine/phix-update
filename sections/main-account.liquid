@@ -34,20 +34,24 @@
                             {% for line_item in order.line_items %}
                                 {% if forloop.first == true %}
                                 <a href="{{ order.customer_url }}">
-                                    <img src="{{ line_item.image.src | img_url: "180x180", crop: "center" }}">
+                                    {% if line_item.image != blank %}
+                                    <img src="{{ line_item.image.src | img_url: "150x205", crop: "center" }}" width="150" height="205">
+                                    {% else %}
+                                    <img src="{{ "order-preview.jpg" | asset_url }}" width="150" height="205">
+                                    {% endif %}
                                 </a>
                                 {% endif %}
                             {% endfor %}
                             </div>
                             <div class="orders__order-details">
-                                <h4 class="orders__order-name"><a href="{{ order.customer_url }}">Order: {{ order.name }}</a></h4>
+                                <h4 class="orders__order-name"><a href="{{ order.customer_url }}">{{ order.name }}</a></h4>
                                 <div class="orders__order-meta">
-                                    <p class="orders__order-date">{{ 'customer.orders.order_date' | t }} <span>{{ order.created_at | date: "%b %d, %Y" }}</span></p>
-                                    <p class="orders__order-summary">{{ 'customer.orders.order_summary' | t }} <span>{{ count }} {{ 'customer.orders.order_summary_items' | t }}</span></p>
-                                    <p class="orders__order-status">{{ 'customer.orders.order_status' | t }} <span>{{ order.financial_status | capitalize }}</span></p>
-                                    <p class="orders__order-total">{{ 'customer.orders.order_total' | t }} <span>{{ order.total_price | money }}</span></p>
+                                    <p class="orders__order-date"><strong>{{ 'customer.orders.order_date' | t }}</strong> <span>{{ order.created_at | date: "%b %d, %Y" }}</span></p>
+                                    <p class="orders__order-summary"><strong>{{ 'customer.orders.order_summary' | t }}</strong> {% if count == 1 %}<span>{{ count }} {{ 'customer.orders.order_summary_item' | t }}</span>{% else %}<span>{{ count }} {{ 'customer.orders.order_summary_items' | t }}</span>{% endif %}</p>
+                                    <p class="orders__order-status"><strong>{{ 'customer.orders.order_status' | t }}</strong> <span>{{ order.financial_status | capitalize }}</span></p>
+                                    <p class="orders__order-total"><strong>{{ 'customer.orders.order_total' | t }}</strong> <span>{{ order.total_price | money }}</span></p>
                                 </div>
-                                <p class="orders__order-link"><a href="{{ order.customer_url }}" class="underline underline--orange underline--heavy">{{ 'customer.orders.view_order' | t }}</a></p>
+                                {% comment %} <p class="orders__order-link"><a href="{{ order.customer_url }}" class="underline underline--orange underline--heavy">{{ 'customer.orders.view_order' | t }}</a></p> {% endcomment %}
                             </div>
                         </div>
                     </li>

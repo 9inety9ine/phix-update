@@ -1,0 +1,134 @@
+{% assign section_id = section.id | replace: "_", "" | replace: "-", "" %}
+{% render "section-styles", section_id: section_id, section: section %}
+
+<link href="{{ "films.css" | asset_url }}" rel="stylesheet">
+
+<div class="wrap wrap--{{ section.settings.width }} wrap--{{section_id }}">
+
+    <div class="section-films__inner">
+        {% for block in section.blocks %}
+            <div class="section-films__film">
+            {% if block.settings.title != blank %}
+                <h3>{{ block.settings.title }}</h3>
+            {% endif %}
+            {% if block.settings.film != blank %}
+                <div class="section-films__video">
+                    <iframe src="https://player.vimeo.com/video/{{ block.settings.film.id }}?h=731c66eba4&amp;title=0&amp;byline=0&amp;portrait=0&amp;app_id=58479&amp;player_id=0" frameborder="0" allow="autoplay; fullscreen" allowfullscreen=""></iframe>
+                </div>
+            {% endif %}
+            </div>
+        {% endfor %}
+    </div>
+
+</div>
+
+{% schema %}
+{
+    "name": "Films",
+    "tag": "section",
+    "class": "section-films",
+    "blocks": [
+        {
+            "type": "film",
+            "name": "Film",
+            "settings": [
+                {
+                    "type": "text",
+                    "id": "title",
+                    "label": "Title"
+                },
+                {
+                    "type": "video_url",
+                    "id": "film",
+                    "label": "Video",
+                    "accept": [
+                      "vimeo"
+                    ]
+                  }
+            ]
+        }
+    ],
+    "settings": [
+        {
+            "type": "select",
+            "id": "width",
+            "label": "Width",
+            "options": [
+                {
+                    "value": "small",
+                    "label": "Small"
+                },
+                {
+                    "value": "medium",
+                    "label": "Medium"
+                },
+                {
+                    "value": "large",
+                    "label": "Large"
+                },
+                {
+                    "value": "x-large",
+                    "label": "X Large"
+                },
+                {
+                    "value": "xx-large",
+                    "label": "XX Large"
+                },
+                {
+                    "value": "full-width",
+                    "label": "Full Width"
+                }
+            ],
+            "default": "x-large"
+        },
+        {
+            "type": "header",
+            "content": "Desktop padding"
+        },
+        {
+            "type": "range",
+            "id": "padding_top",
+            "min": 0,
+            "max": 128,
+            "step": 2,
+            "unit": "px",
+            "label": "Padding top",
+            "default": 64
+        },
+        {
+            "type": "range",
+            "id": "padding_bottom",
+            "min": 0,
+            "max": 128,
+            "step": 2,
+            "unit": "px",
+            "label": "Padding bottom",
+            "default": 64
+        },
+        {
+            "type": "header",
+            "content": "Mobile padding"
+        },
+        {
+            "type": "range",
+            "id": "mobile_padding_top",
+            "min": 0,
+            "max": 128,
+            "step": 2,
+            "unit": "px",
+            "label": "Padding top",
+            "default": 32
+        },
+        {
+            "type": "range",
+            "id": "mobile_padding_bottom",
+            "min": 0,
+            "max": 128,
+            "step": 2,
+            "unit": "px",
+            "label": "Padding bottom",
+            "default": 32
+        }
+    ]
+}
+{% endschema %}

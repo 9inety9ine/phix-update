@@ -1,205 +1,214 @@
 {
-  "general": {
-    "404": {
-      "title": "404: Page not found",
-      "subtext_html": "The page you were looking for does not exist."
-    },
-    "tools_menu": {
-      "search_label": "Search",
-      "account_label": "Account",
-      "cart_label": "Cart",
-      "wishlist_label": "Wishlist"
-    },
-    "breadcrumbs": {
-      "home_label": "Home"
-    }
-  },
-  "products": {
-    "product": {
-      "add_to_cart": "Add to cart",
-      "sold_out": "Sold out",
-      "preorder": "Preorder",
-      "quantity_label": "Quantity",
-      "description": "Description"
-    }
-  },
-  "collection": {
-    "no_products": "No matches.",
-    "load_more": "Load more products",
-    "drawer": {
-      "title": "Filter & Sort"
-    }
-  },
-  "filters": {
-    "title": "Filter & Sort",
-    "clear": "Clear All",
-    "close": "Close",
-    "apply": "Apply",
-    "price_from": "From:",
-    "price_to": "To:",
-    "sort": "Sort"
-  },
-  "search": {
-    "search_label": "Search",
-    "search_placeholder": "Enter your search term...",
-    "search_submit": "Search",
-    "search_clear": "Clear",
-    "no_results": "No results for",
-    "one_result": "result for",
-    "many_results": "results for",
-    "filters_title": "Filters",
-    "clear_filters": "Clear all",
-    "apply_label": "Apply",
-    "price_from": "From:",
-    "price_to": "To:",
-    "sort_label": "Sort by",
-    "drawer": {
-      "search_label": "Search",
-      "clear_results": "Clear All",
-      "no_products_found": "No products found for",
-      "no_collections_found": "No collections found for",
-      "search_placeholder": "Search...",
-      "show_all": "View all results",
-      "product_results_title": "Products",
-      "collection_results_title": "Collections",
-      "page_results_title": "Pages",
-      "no_pages_found": "No pages found for"
-    }
-  },
-  "cart": {
-    "title": "Your Cart",
-    "cart_empty": "Your cart is empty.",
-    "sub_total": "Sub-total",
-    "update_cart": "Update",
-    "checkout": "Checkout securely",
-    "remove_item": "Remove",
-    "drawer": {
-      "title": "Your Cart",
-      "checkout": "Checkout securely",
-      "related": "You may also like"
-    }
-  },
-  "contact_form": {
-    "name_label": "Name",
-    "name_placeholder": "Your name",
-    "first_name_label": "First name",
-    "first_name_placeholder": "Your first name",
-    "last_name_label": "Last name",
-    "last_name_placeholder": "Your last name",
-    "company_label": "Company",
-    "company_placeholder": "Your company",
-    "position_label": "Company position",
-    "position_placeholder": "Your position in the company",
-    "annual_turnover_label": "Annual turnover",
-    "annual_turnover_placeholder": "Your annual turnover",
-    "estimated_spend_label": "Estimated spend",
-    "estimated_spend_placeholder": "Your estimated spend on Phix per season",
-    "email_label": "Email address",
-    "email_placeholder": "Your email address",
-    "phone_label": "Phone number",
-    "phone_placeholder": "Your phone number",
-    "message_label": "Message",
-    "message_placeholder": "Your message",
-    "stockist_message_label": "Tell us more",
-    "stockist_message_placeholder": "Tell us more about your business and plans for stocking phix...",
-    "submit_button": "Submit",
-    "success_message": "Thank you for your contact."
-  },
-  "customer": {
-    "reset_password": {
-      "title": "Reset password",
-      "enter_password": "Password",
-      "confirm_password": "Confirm password",
-      "reset_button": "Reset password"
-    },
-    "activate_account": {
-      "title": "Activate Account",
-      "password_label": "Password",
-      "password_placeholder": "Enter your password",
-      "confirm_password_label": "Confirm password",
-      "confirm_password_placeholder": "Confirm your password",
-      "accept_button": "Activate Account",
-      "decline_button": "Decline"
-    },
-    "login": {
-      "title": "Login",
-      "login_button": "Sign in",
-      "email_label": "Email address",
-      "email_placeholder": "Your email address",
-      "password_label": "Password",
-      "password_placeholder": "Your password",
-      "forgot_password_link": "Forgot password?",
-      "create_account_link": "Create account"
-    },
-    "forgot_password": {
-      "title": "Reset password",
-      "submit_button": "Reset password",
-      "email_label": "Email address",
-      "email_placeholder": "Your email address",
-      "cancel_link": "Cancel"
-    },
-    "register": {
-      "title": "Create account",
-      "first_name_label": "First name",
-      "first_name_placeholder": "Your first name",
-      "last_name_label": "Last name",
-      "last_name_placeholder": "Your last name",
-      "email_label": "Email address",
-      "email_placeholder": "Your email address",
-      "password_label": "Password",
-      "password_placeholder": "Your password",
-      "confirm_password_label": "Confirm password",
-      "confirm_password_placeholder": "Confirm your password",
-      "register_button": "Create account",
-      "marketing_message_html": "Please tick here if you DO NOT want us to use your personal data to email you about our product launches, events, news, promotions, discount and offers. As a PHIX member we'd like to email you about our product launches, news, promotions and exclusive offers. You can opt-out at any time. For more information on how we use you personal data, please see our <a href='\/pages\/privacy-policy'>Privacy Policy.<\/a>",
-      "terms_and_conditions_html": "By submitting this form you agree to our <a href='\/pages\/terms-conditions'>Terms &amp; Conditions<\/a>."
-    },
-    "addresses": {
-      "addresses_title": "Your Addresses",
-      "new_address_title": "New address",
-      "edit_address_title": "Edit address",
-      "first_name": "First name",
-      "last_name": "Last name",
-      "company": "Company",
-      "address1": "Address 1",
-      "address2": "Address 2",
-      "country": "Country",
-      "province": "Province",
-      "city": "City",
-      "zip": "Postcode",
-      "phone": "Phone number",
-      "default": "Default",
-      "set_default": "Set as default address?",
-      "add_address_button": "Add address",
-      "add_new_address_button": "Add new address",
-      "update_address_button": "Update address",
-      "cancel_button": "Cancel",
-      "delete_button": "Delete",
-      "edit_button": "Edit",
-      "confirm_delete": "Are you sure you wish to delete this address?"
-    },
-    "menu": {
-      "orders": "Your orders",
-      "addresses": "Your addresses",
-      "logout": "Logout"
-    },
-    "orders": {
-      "orders_title": "Your orders",
-      "no_orders": "You haven't placed any orders yet.",
-      "order_date": "Date:",
-      "order_summary": "Summary:",
-      "order_summary_items": "items",
-      "order_status": "Status:",
-      "order_total": "Total:",
-      "view_order": "View Order",
-      "welcome_message": "Thank you for registering. We have sent an account confirmation email to {{ email }}."
-    },
-    "order": {
-      "billing_address": "Billing Address",
-      "shipping_address": "Shipping Address",
-      "payment_status": "Payment Status:",
-      "fulfillment_status": "Fulfillment Status:",
-      "order_items": "Order Items:"
-    }
-  }
+	"general": {
+		"404": {
+			"title": "404: Page not found",
+			"subtext_html": "The page you were looking for does not exist."
+		},
+		"tools_menu": {
+			"search_label": "Search",
+			"account_label": "Account",
+			"cart_label": "Cart",
+			"wishlist_label": "Wishlist"
+		},
+		"breadcrumbs": {
+			"home_label": "Home"
+		}
+	},
+	"products": {
+		"product": {
+			"add_to_cart": "Add to cart",
+			"sold_out": "Sold out",
+			"in_stock": "In stock",
+			"preorder": "Preorder",
+			"quantity_label": "Quantity",
+			"description": "Description",
+			"complete_the_look": "Complete the look",
+			"colour": "Colour:",
+			"size": "Size",
+			"select_size": "Please select a size",
+			"select_size_dropdown": "Select a size",
+			"size_guide": "Size Guide"
+		}
+	},
+	"collection": {
+		"no_products": "No matches.",
+		"load_more": "Load more products",
+		"drawer": {
+			"title": "Filter & Sort"
+		}
+	},
+	"filters": {
+		"title": "Filter & Sort",
+		"clear": "Clear All",
+		"close": "Close",
+		"apply": "Apply",
+		"price_from": "From:",
+		"price_to": "To:",
+		"sort": "Sort"
+	},
+	"search": {
+		"search_label": "Search",
+		"search_placeholder": "Enter your search term...",
+		"search_submit": "Search",
+		"search_clear": "Clear",
+		"no_results": "No results for",
+		"one_result": "result for",
+		"many_results": "results for",
+		"filters_title": "Filters",
+		"clear_filters": "Clear all",
+		"apply_label": "Apply",
+		"price_from": "From:",
+		"price_to": "To:",
+		"sort_label": "Sort by",
+		"drawer": {
+			"search_label": "Search",
+			"clear_results": "Clear All",
+			"no_products_found": "No products found for",
+			"no_collections_found": "No collections found for",
+			"search_placeholder": "Search...",
+			"show_all": "View all results",
+			"product_results_title": "Products",
+			"collection_results_title": "Collections",
+			"page_results_title": "Pages",
+			"no_pages_found": "No pages found for"
+		}
+	},
+	"cart": {
+		"title": "Your Cart",
+		"cart_empty": "Your cart is empty.",
+		"sub_total": "Sub-total",
+		"update_cart": "Update",
+		"checkout": "Checkout securely",
+		"remove_item": "Remove",
+		"drawer": {
+			"title": "Your Cart",
+			"checkout": "Checkout securely",
+			"related": "You may also like"
+		}
+	},
+	"contact_form": {
+		"name_label": "Name",
+		"name_placeholder": "Your name",
+		"first_name_label": "First name",
+		"first_name_placeholder": "Your first name",
+		"last_name_label": "Last name",
+		"last_name_placeholder": "Your last name",
+		"company_label": "Company",
+		"company_placeholder": "Your company",
+		"position_label": "Company position",
+		"position_placeholder": "Your position in the company",
+		"annual_turnover_label": "Annual turnover",
+		"annual_turnover_placeholder": "Your annual turnover",
+		"estimated_spend_label": "Estimated spend",
+		"estimated_spend_placeholder": "Your estimated spend on Phix per season",
+		"email_label": "Email address",
+		"email_placeholder": "Your email address",
+		"phone_label": "Phone number",
+		"phone_placeholder": "Your phone number",
+		"message_label": "Message",
+		"message_placeholder": "Your message",
+		"stockist_message_label": "Tell us more",
+		"stockist_message_placeholder": "Tell us more about your business and plans for stocking phix...",
+		"submit_button": "Submit",
+		"success_message": "Thank you for your contact."
+	},
+	"customer": {
+		"reset_password": {
+			"title": "Reset password",
+			"enter_password": "Password",
+			"confirm_password": "Confirm password",
+			"reset_button": "Reset password"
+		},
+		"activate_account": {
+			"title": "Activate Account",
+			"password_label": "Password",
+			"password_placeholder": "Enter your password",
+			"confirm_password_label": "Confirm password",
+			"confirm_password_placeholder": "Confirm your password",
+			"accept_button": "Activate Account",
+			"decline_button": "Decline"
+		},
+		"login": {
+			"title": "Login",
+			"login_button": "Sign in",
+			"email_label": "Email address",
+			"email_placeholder": "Your email address",
+			"password_label": "Password",
+			"password_placeholder": "Your password",
+			"forgot_password_link": "Forgot password?",
+			"create_account_link": "Create account"
+		},
+		"forgot_password": {
+			"title": "Reset password",
+			"submit_button": "Reset password",
+			"email_label": "Email address",
+			"email_placeholder": "Your email address",
+			"cancel_link": "Cancel"
+		},
+		"register": {
+			"title": "Create account",
+			"first_name_label": "First name",
+			"first_name_placeholder": "Your first name",
+			"last_name_label": "Last name",
+			"last_name_placeholder": "Your last name",
+			"email_label": "Email address",
+			"email_placeholder": "Your email address",
+			"password_label": "Password",
+			"password_placeholder": "Your password",
+			"confirm_password_label": "Confirm password",
+			"confirm_password_placeholder": "Confirm your password",
+			"register_button": "Create account",
+			"marketing_message_html": "Please tick here if you DO NOT want us to use your personal data to email you about our product launches, events, news, promotions, discount and offers. As a PHIX member we'd like to email you about our product launches, news, promotions and exclusive offers. You can opt-out at any time. For more information on how we use you personal data, please see our <a href='/pages/privacy-policy'>Privacy Policy.</a>",
+			"terms_and_conditions_html": "By submitting this form you agree to our <a href='/pages/terms-conditions'>Terms &amp; Conditions</a>."
+		},
+		"addresses": {
+			"addresses_title": "Your Addresses",
+			"new_address_title": "New address",
+			"edit_address_title": "Edit address",
+			"first_name": "First name",
+			"last_name": "Last name",
+			"company": "Company",
+			"address1": "Address 1",
+			"address2": "Address 2",
+			"country": "Country",
+			"province": "Province",
+			"city": "City",
+			"zip": "Postcode",
+			"phone": "Phone number",
+			"default": "Default",
+			"set_default": "Set as default address?",
+			"add_address_button": "Add address",
+			"add_new_address_button": "Add new address",
+			"update_address_button": "Update address",
+			"cancel_button": "Cancel",
+			"delete_button": "Delete",
+			"edit_button": "Edit",
+			"confirm_delete": "Are you sure you wish to delete this address?"
+		},
+		"menu": {
+			"orders": "Your orders",
+			"addresses": "Your addresses",
+			"logout": "Logout"
+		},
+		"orders": {
+			"orders_title": "Your orders",
+			"no_orders": "You haven't placed any orders yet.",
+			"order_date": "Date:",
+			"order_summary": "Summary:",
+			"order_summary_item": "item",
+			"order_summary_items": "items",
+			"order_status": "Status:",
+			"order_total": "Total:",
+			"view_order": "View Order",
+			"welcome_message": "Thank you for registering. We have sent an account confirmation email to {{ email }}."
+		},
+		"order": {
+			"billing_address": "Billing Address",
+			"shipping_address": "Shipping Address",
+			"payment_status": "Payment Status:",
+			"fulfillment_status": "Fulfillment Status:",
+			"order_items": "Order Items",
+			"order_name_label": "Order:"
+		}
+	}
 }

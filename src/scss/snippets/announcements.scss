@@ -8,6 +8,7 @@
 	color: $color-white;
 	.swiper-slide {
 		height: 3em;
+		background-color: $color-black;
 		&.hidden {
 			display: none;
 		}

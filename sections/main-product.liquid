@@ -26,7 +26,7 @@
                     <div class="section-product__details__availability">
                         <span class="alert">
                             <span class="marker"><span></span></span>
-                            <span class="label">In stock</span>
+                            <span class="label">{{ "products.product.in_stock" | t }}</span>
                         </span>
                     </div>
                     {% endif %}
@@ -38,7 +38,7 @@
                     {% assign product_colour = product.metafields.product.colour.value %}
                     {% if product_colour != blank %}
                     <div class="section-product__details__colour">
-                        <span>Colour: {{ product_colour }}</span>
+                        <span>{{ "products.product.colour" | t }} {{ product_colour }}</span>
                     </div>
                     {% endif %}
 
@@ -48,12 +48,12 @@
 
                     <div class="section-product__details__variants">
                         <div class="section-product__details__variants__name">
-                            <span class="variant-name">Size</span>
-                            <span class="variant-warning hidden">Please select a size</span>
+                            <span class="variant-name">{{ "products.product.size" | t }}</span>
+                            <span class="variant-warning hidden">{{ "products.product.select_size" | t }}</span>
                             {% assign has_size_guide = false %}
                             {% for object in shop.metaobjects['size_chart'].values %}
                                 {% if object.product_type == product.type %}
-                                    <button class="toggle-size-modal">Size Guide</button>
+                                    <button class="toggle-size-modal" aria-label="{{ "products.product.size_guide" | t }}">{{ "products.product.size_guide" | t }}</button>
                                     {% assign has_size_guide = true %}
                                 {% endif %}
                             {% endfor %}
@@ -65,9 +65,9 @@
 
                     <div class="section-product__details__actions">
                         {% if product.available %}
-                        <button type="submit" name="add" class="button button--add-to-cart button--highlight button--full-width button--tall"><span>{{ 'products.product.add_to_cart' | t }}</span></button>
+                        <button type="submit" name="add" class="button button--add-to-cart button--highlight button--full-width button--tall" aria-label="{{ 'products.product.add_to_cart' | t }}"><span>{{ 'products.product.add_to_cart' | t }}</span></button>
                         {% else %}
-                        <button type="submit" name="add" class="button button--add-to-cart button--full-width" disabled>{{ 'products.product.sold_out' | t }}</button>
+                        <button type="submit" name="add" class="button button--add-to-cart button--full-width" aria-label="{{ 'products.product.sold_out' | t }}" disabled>{{ 'products.product.sold_out' | t }}</button>
                         {% endif %}
                     </div>
 
@@ -105,7 +105,7 @@
                     {% if product.metafields.product.complete_the_look.value != blank %}
                     <div class="section-product__details__look">
                         <div class="section-product__details__look__header">
-                            <h4>Complete the look</h4>
+                            <h4>{{ "product.product.complete_the_look" | t }}</h4>
                         </div>
                         <div class="section-product__details__look__products">
                         {% assign look_products = product.metafields.product.complete_the_look.value.look_products.value %}
@@ -143,18 +143,7 @@
 </div>
 
 {% if has_size_guide == true %}
-<link href="{{ "size-guides.css" | asset_url }}" rel="stylesheet">
-<div class="section-product__modal">
-    <div class="section-product__modal__inner">
-        {% for object in shop.metaobjects['size_chart'].values %}
-            {% if object.product_type == product.type or object.product_type == "All" %}
-                {% render "size-guides", object: object %}
-            {% endif %}
-        {% endfor %}
-    </div>
-    <div class="section-product__modal__mask"></div>
-</div>
-<script src="{{ "size-guides.js" | asset_url }}" defer></script>
+    {% render "drawer-guides", object: object, current_product_type: product.type %}
 {% endif %}
 
 <script src="{{ "main-product.js" | asset_url }}"></script>

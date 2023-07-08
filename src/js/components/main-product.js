@@ -46,14 +46,35 @@ const modalToggle = document.querySelector('.toggle-size-modal');
 if (modalToggle)
 	modalToggle.addEventListener('click', e => {
 		e.preventDefault();
-		const docBody = document.querySelector('body');
-		docBody.classList.toggle('size-modal-open');
+		window.toggleDrawer('guides', false);
 	});
 
-const sizeModal = document.querySelector('.section-product__modal__mask');
-if (sizeModal)
-	sizeModal.addEventListener('click', e => {
-		e.preventDefault();
-		const docBody = document.querySelector('body');
-		docBody.classList.toggle('size-modal-open');
-	});
+const country_messages = document.querySelectorAll('.country-message');
+if (country_messages) {
+	if (client_country !== undefined) {
+		for (let message of country_messages) {
+			let target = message.dataset.code;
+			let condition = message.dataset.condition;
+			if (target === client_country && condition === 'equals') message.classList.remove('hidden');
+			if (target === client_country && condition === 'does_not_equal') message.classList.add('hidden');
+			if (target !== client_country && condition === 'does_not_equal') message.classList.remove('hidden');
+		}
+	} else {
+		for (let message of country_messages) message.classList.add('hidden');
+	}
+}
+
+const continent_messages = document.querySelectorAll('.continent-message');
+if (continent_messages) {
+	if (client_continent !== undefined) {
+		for (let message of continent_messages) {
+			let target = message.dataset.code;
+			let condition = message.dataset.condition;
+			if (target === client_continent && condition === 'equals') message.classList.remove('hidden');
+			if (target === client_continent && condition === 'does_not_equal') message.classList.add('hidden');
+			if (target !== client_continent && condition === 'does_not_equal') message.classList.remove('hidden');
+		}
+	} else {
+		for (let message of continent_messages) message.classList.add('hidden');
+	}
+}
