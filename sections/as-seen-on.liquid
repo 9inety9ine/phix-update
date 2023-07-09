@@ -1,0 +1,303 @@
+{% assign section_id = section.id | replace: "_", "" | replace: "-", "" %}
+{% render "section-styles", section_id: section_id, section: section %}
+
+<link href="{{ "as-seen-on.css" | asset_url }}" rel="stylesheet">
+
+<div class="wrap wrap--{{ section.settings.width }} wrap--{{ section_id }}">
+
+    <div class="section-as-seen-on__inner">
+
+        {% for block in section.blocks %}
+            {% case block.type %}
+                {% when "image" %}
+                <div class="section-as-seen-on__feature section-as-seen-on__feature--image">
+                    {% if block.settings.product != blank and block.settings.product.available %}
+                    <a href="{{ block.settings.product.url }}" aria-label="{{ block.settings.product.title }}">
+                    {% endif %}
+                        <div class="section-as-seen-on__feature__content">
+                            <div class="section-as-seen-on__feature__content__text">
+                                <h3>{{ block.settings.title }}</h3>
+                                <p>{{ block.settings.subtitle }}</p>
+                                {% if block.settings.handle != blank %}
+                                    <p class="social">
+                                        {% if block.settings.handle_icon == "instagram" %}
+                                        <img src="{{ "icon-instagram.png" | asset_url }}" width="48" height="48" alt="Instagram">
+                                        {% else %}
+                                        <img src="{{ "icon-tiktok.png" | asset_url }}" width="48" height="48" alt="TikTok">
+                                        {% endif %}
+                                        <span>@{{ block.settings.handle }}</span>
+                                    </p>
+                                {% endif %}
+                            </div>
+                        </div>
+                        {% if block.settings.image != blank %}
+                        <div class="section-as-seen-on__feature__image">
+                            <img 
+                                src="{{ block.settings.image.src | img_url: '768x' }}" 
+                                alt="{{ block.settings.image.alt }}" 
+                                width="{{ block.settings.image.width }}" 
+                                height="{{ block.settings.image.height }}"
+                            >
+                        </div>
+                        {% endif %}
+                    {% if block.settings.product != blank and block.settings.product.available %}
+                    </a>
+                    {% endif %}
+                </div>
+                {% when "video" %}
+                <div class="section-as-seen-on__feature section-as-seen-on__feature--video">
+                    {% if block.settings.product != blank and block.settings.product.available %}
+                    <a href="{{ block.settings.product.url }}" aria-label="{{ block.settings.product.title }}">
+                    {% endif %}
+                        <div class="section-as-seen-on__feature__content">
+                            <div class="section-as-seen-on__feature__content__text">
+                                <h3>{{ block.settings.title }}</h3>
+                                <p>{{ block.settings.subtitle }}</p>
+                                {% if block.settings.handle != blank %}
+                                    <p class="social">
+                                        {% if block.settings.handle_icon == "instagram" %}
+                                        <img src="{{ "icon-instagram.png" | asset_url }}" width="48" height="48" alt="Instagram">
+                                        {% else %}
+                                        <img src="{{ "icon-tiktok.png" | asset_url }}" width="48" height="48" alt="TikTok">
+                                        {% endif %}
+                                        <span>@{{ block.settings.handle }}</span>
+                                    </p>
+                                {% endif %}
+                            </div>
+                        </div>
+                        {% if block.settings.video != blank %}
+                        <div class="section-as-seen-on__feature__video">
+                            <video muted="" loop="" playsinline="" autoplay="" poster="">
+                                <source src="{{ block.settings.video.sources[1].url }}" type="video/mp4">
+                            </video>
+                        </div>
+                        {% endif %}
+                    {% if block.settings.product != blank and block.settings.product.available %}
+                    </a>
+                    {% endif %}
+                </div>
+            {% endcase %}
+        {% endfor %}
+
+    </div>
+
+</div>
+
+<script src="{{ "masonry.js" | asset_url }}"></script>
+<script defer>
+    window.setTimeout(() => {
+        const macyInstance = Macy({
+            container: ".section-as-seen-on__inner",
+            columns: 3,
+            margin: {
+                x: 12,
+                y: 12
+            },
+            breakAt: {
+                1024: 2
+            }
+        });
+        macyInstance.on(macyInstance.constants.EVENT_IMAGE_COMPLETE, function (ctx) {
+            document.querySelector('.section-as-seen-on__inner').classList.add('initialized');
+            const features = document.querySelectorAll('.section-as-seen-on__feature');
+            if (features) {
+                for (let feature of features) feature.classList.add('initialized')
+            }
+        });
+    }, 500);
+</script>
+
+{% schema %}
+{
+    "name": "As Seen On",
+    "tag": "section",
+    "class": "section-as-seen-on",
+    "blocks": [
+        {
+            "type": "image",
+            "name": "Image",
+            "settings": [
+                {
+                    "type": "text",
+                    "id": "title",
+                    "label": "Title"
+                },
+                {
+                    "type": "text",
+                    "id": "subtitle",
+                    "label": "Subtitle"
+                },
+                {
+                    "type": "text",
+                    "id": "handle",
+                    "label": "Handle",
+                    "info": "Optional"
+                },
+                {
+                    "type": "select",
+                    "id": "handle_icon",
+                    "label": "Handle Icon",
+                    "options": [
+                        {
+                            "value": "instagram",
+                            "label": "Instagram"
+                        },
+                        {
+                            "value": "tiktok",
+                            "label": "TikTok"
+                        }
+                    ],
+                    "default": "instagram"
+                },
+                {
+                    "type": "image_picker",
+                    "id": "image",
+                    "label": "Image"
+                },
+                {
+                    "type": "product",
+                    "id": "product",
+                    "label": "Product",
+                    "info": "Optional"
+                }
+            ]
+        },
+        {
+            "type": "video",
+            "name": "Video",
+            "settings": [
+                {
+                    "type": "text",
+                    "id": "title",
+                    "label": "Title"
+                },
+                {
+                    "type": "text",
+                    "id": "subtitle",
+                    "label": "Subtitle"
+                },
+                {
+                    "type": "text",
+                    "id": "handle",
+                    "label": "Handle",
+                    "info": "Optional"
+                },
+                {
+                    "type": "select",
+                    "id": "handle_icon",
+                    "label": "Handle Icon",
+                    "options": [
+                        {
+                            "value": "instagram",
+                            "label": "Instagram"
+                        },
+                        {
+                            "value": "tiktok",
+                            "label": "TikTok"
+                        }
+                    ],
+                    "default": "instagram"
+                },
+                {
+                    "type": "video",
+                    "id": "video",
+                    "label": "Video"
+                },
+                {
+                    "type": "product",
+                    "id": "product",
+                    "label": "Product",
+                    "info": "Optional"
+                }
+            ]
+        }
+    ],
+    "settings": [
+        {
+            "type": "select",
+            "id": "width",
+            "label": "Width",
+            "options": [
+                {
+                    "value": "small",
+                    "label": "Small"
+                },
+                {
+                    "value": "medium",
+                    "label": "Medium"
+                },
+                {
+                    "value": "large",
+                    "label": "Large"
+                },
+                {
+                    "value": "x-large",
+                    "label": "X Large"
+                },
+                {
+                    "value": "xx-large",
+                    "label": "XX Large"
+                },
+                {
+                    "value": "full-width",
+                    "label": "Full Width"
+                }
+            ],
+            "default": "xx-large"
+        },
+        {
+            "type": "header",
+            "content": "Desktop padding"
+        },
+        {
+            "type": "range",
+            "id": "padding_top",
+            "min": 0,
+            "max": 128,
+            "step": 2,
+            "unit": "px",
+            "label": "Padding top",
+            "default": 0
+        },
+        {
+            "type": "range",
+            "id": "padding_bottom",
+            "min": 0,
+            "max": 128,
+            "step": 2,
+            "unit": "px",
+            "label": "Padding bottom",
+            "default": 64
+        },
+        {
+            "type": "header",
+            "content": "Mobile padding"
+        },
+        {
+            "type": "range",
+            "id": "mobile_padding_top",
+            "min": 0,
+            "max": 128,
+            "step": 2,
+            "unit": "px",
+            "label": "Padding top",
+            "default": 0
+        },
+        {
+            "type": "range",
+            "id": "mobile_padding_bottom",
+            "min": 0,
+            "max": 128,
+            "step": 2,
+            "unit": "px",
+            "label": "Padding bottom",
+            "default": 32
+        }
+    ],
+    "presets":[
+        {
+            "name": "As Seen On"
+        }
+    ]
+}
+{% endschema %}
