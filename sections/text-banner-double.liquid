@@ -1,56 +1,64 @@
 {% assign section_id = section.id | replace: "_", "" | replace: "-", "" %}
 {% render "section-styles", section_id: section_id, section: section %}
 
-<link href="{{ "text-banner.css" | asset_url }}" rel="stylesheet">
+<link href="{{ "text-banner-double.css" | asset_url }}" rel="stylesheet">
 
 <div class="wrap wrap--{{ section.settings.width }} wrap--{{section_id }}">
 
-    <div class="section-text-banner__inner">
+    <div class="section-text-banner-double__inner">
 
-        {% for block in section.blocks %}
-            {% case block.type %}
-                {% when "image" %}
-                    {% if block.settings.image != blank %}
-                    <div class="section-text-banner__image">
-                        <img 
-                            {% if request.design_mode %}
-                            src="{{ block.settings.image.src | img_url: 'master' }}" 
-                            {% else %}
-                            src="{{ "preload.gif" | asset_url }}" 
-                            data-src="{{ block.settings.image.src | img_url: 'master' }}" 
-                            class="preload" 
+        <div class="section-text-banner-double__blockquote">
+            <p>{{ section.settings.blockquote }}</p>
+        </div>
+
+        <div class="section-text-banner-double__container">
+            <div class="section-text-banner-double__content">
+                {% for block in section.blocks %}
+                    {% case block.type %}
+                        {% when "image" %}
+                            {% if block.settings.image != blank %}
+                            <div class="section-text-banner-double__image">
+                                <img 
+                                    {% if request.design_mode %}
+                                    src="{{ block.settings.image.src | img_url: 'master' }}" 
+                                    {% else %}
+                                    src="{{ "preload.gif" | asset_url }}" 
+                                    data-src="{{ block.settings.image.src | img_url: 'master' }}" 
+                                    class="preload" 
+                                    {% endif %}
+                                    alt="{{ block.settings.title }}" 
+                                    width="{{ block.settings.image.width }}" 
+                                    height="{{ block.settings.image.height }}"
+                                >
+                            </div>
                             {% endif %}
-                            alt="{{ block.settings.title }}" 
-                            width="{{ block.settings.image.width }}" 
-                            height="{{ block.settings.image.height }}"
-                        >
-                    </div>
-                    {% endif %}
-                {% when "text" %}
-                    {% if block.settings.text != blank %}
-                    <div class="section-text-banner__text">
-                        <p>{{ block.settings.text | newline_to_br }}</p>
-                    </div>
-                    {% endif %}
-                {% when "title" %}
-                    {% if block.settings.title != blank %}
-                    <div class="section-text-banner__title">
-                        <h3>{{ block.settings.title }}</h3>
-                    </div>
-                    {% endif %}
-                {% when "button" %}
-                    {% if block.settings.url != blank or block.settings.url_2 != blank %}
-                    <div class="section-text-banner__button">
-                        {% if block.settings.url != blank %}
-                        <a href="{{ block.settings.url }}" class="button button--{{ block.settings.style }}">{{ block.settings.label }}</a>
-                        {% endif %}
-                        {% if block.settings.url_2 != blank %}
-                        <a href="{{ block.settings.url_2 }}" class="button button--{{ block.settings.style_2 }}">{{ block.settings.label_2 }}</a>
-                        {% endif %}
-                    </div>
-                    {% endif %}
-            {% endcase %}
-        {% endfor %}
+                        {% when "text" %}
+                            {% if block.settings.text != blank %}
+                            <div class="section-text-banner-double__text">
+                                <p>{{ block.settings.text | newline_to_br }}</p>
+                            </div>
+                            {% endif %}
+                        {% when "title" %}
+                            {% if block.settings.title != blank %}
+                            <div class="section-text-banner-double__title">
+                                <h3>{{ block.settings.title }}</h3>
+                            </div>
+                            {% endif %}
+                        {% when "button" %}
+                            {% if block.settings.url != blank or block.settings.url_2 != blank %}
+                            <div class="section-text-banner-double__button">
+                                {% if block.settings.url != blank %}
+                                <a href="{{ block.settings.url }}" class="button button--{{ block.settings.style }}">{{ block.settings.label }}</a>
+                                {% endif %}
+                                {% if block.settings.url_2 != blank %}
+                                <a href="{{ block.settings.url_2 }}" class="button button--{{ block.settings.style_2 }}">{{ block.settings.label_2 }}</a>
+                                {% endif %}
+                            </div>
+                            {% endif %}
+                    {% endcase %}
+                {% endfor %}
+            </div>
+        </div>
         
     </div>
 
@@ -58,9 +66,9 @@
 
 {% schema %}
 {
-    "name": "Text Banner",
+    "name": "Text Banner - Double",
     "tag": "section",
-    "class": "section-text-banner",
+    "class": "section-text-banner-double",
     "blocks": [
         {
             "type": "title",
@@ -194,6 +202,11 @@
             "default": "medium"
         },
         {
+            "type": "textarea",
+            "id": "blockquote",
+            "label": "Blockquote"
+        },
+        {
             "type": "header",
             "content": "Desktop padding"
         },
@@ -244,7 +257,7 @@
     ],
     "presets":[
         {
-            "name": "Text Banner"
+            "name": "Text Banner - Double"
         }
     ]
 }

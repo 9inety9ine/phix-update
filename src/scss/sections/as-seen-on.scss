@@ -4,14 +4,30 @@
 	&__inner {
 		&:not(.intialized) {
 			display: grid;
-			grid-template-columns: 1fr 1fr 1fr;
+			grid-template-columns: repeat(4, 1fr);
 			gap: 1em;
+			@media (max-width: $w-xl) {
+				grid-template-columns: repeat(3, 1fr);
+			}
+			@media (max-width: $w-m) {
+				grid-template-columns: repeat(2, 1fr);
+			}
+			@media (max-width: $w-s) {
+				grid-template-columns: 1fr;
+				grid-template-rows: auto;
+			}
+			.section-as-seen-on__feature {
+				opacity: 1 !important;
+			}
 		}
 	}
 	&__feature {
 		position: relative;
 		opacity: 0;
 		transition: opacity linear 0.25s;
+		@media (max-width: $w-s) {
+			opacity: 1 !important;
+		}
 		&.initialized {
 			opacity: 1;
 		}
@@ -83,6 +99,11 @@
 		&__video {
 			position: relative;
 			z-index: 1;
+			img,
+			video {
+				width: 100%;
+				height: auto;
+			}
 		}
 	}
 }
