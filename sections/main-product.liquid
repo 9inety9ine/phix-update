@@ -35,10 +35,15 @@
                         <h1>{{ product.title }}</h1>
                     </div>
 
-                    {% assign product_colour = product.metafields.product.colour.value %}
-                    {% if product_colour != blank %}
+                    {% assign product_colours = product.metafields.product.colours.value %}
+                    {% if product_colours != blank %}
                     <div class="section-product__details__colour">
-                        <span>{{ "products.product.colour" | t }} {{ product_colour }}</span>
+                        <span>{% if product_colours.size == 1 %}{{ "products.product.colour" | t }} {% else %}{{ "products.product.colours" | t }} {% endif %}
+                        {% for colour in product_colours %}
+                            {% unless forloop.first %} / {% endunless %}
+                            {{ colour }}
+                        {% endfor %}
+                        </span>
                     </div>
                     {% endif %}
 

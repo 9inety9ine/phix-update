@@ -24,6 +24,7 @@
 			"description": "Description",
 			"complete_the_look": "Complete the look",
 			"colour": "Colour:",
+			"colours": "Colours:",
 			"size": "Size",
 			"select_size": "Please select a size",
 			"select_size_dropdown": "Select a size",
@@ -82,7 +83,8 @@
 		"remove_item": "Remove",
 		"drawer": {
 			"title": "Your Cart",
-			"checkout": "Checkout securely",
+			"checkout": "Checkout Securely",
+			"continue": "Continue Shopping",
 			"related": "You may also like"
 		}
 	},

@@ -1,0 +1,19 @@
+<link href="{{ "cart-reminder.css" | asset_url }}" rel="stylesheet">
+
+<div class="cart-reminder">
+    <div class="wrap wrap--xx-large">
+        <div class="cart-reminder__header">
+            <h3>Pick up where you left off</h3>
+        </div>
+        <div class="cart-reminder__content">
+            CART PRODUCTS
+        </div>
+        <div class="cart-reminder__footer">
+            <div class="cart-reminder__footer__buttons">
+                {% form 'cart', cart %}
+                    <button name="checkout" class="button button--secondary">{{ 'cart.drawer.checkout' | t }}</button>
+                {% endform %}
+            </div>
+        </div>
+    </div>
+</div>
