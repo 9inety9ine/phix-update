@@ -1,54 +1,34 @@
 {% assign section_id = section.id | replace: "_", "" | replace: "-", "" %}
 {% render "section-styles", section_id: section_id, section: section %}
 
-<link href="{{ "films.css" | asset_url }}" rel="stylesheet">
+<link href="{{ "video.css" | asset_url }}" rel="stylesheet">
 
-<div class="wrap wrap--{{ section.settings.width }} wrap--{{section_id }}">
+<div class="wrap wrap--{{ section.settings.width }} wrap--{{ section_id }}">
 
-    <div class="section-films__inner">
-        {% for block in section.blocks %}
-            <div class="section-films__film">
-            {% if block.settings.title != blank %}
-                <h3>{{ block.settings.title }}</h3>
-            {% endif %}
-            {% if block.settings.film != blank %}
-                <div class="section-films__video">
-                    <iframe src="https://player.vimeo.com/video/{{ block.settings.film.id }}?h=731c66eba4&amp;title=0&amp;byline=0&amp;portrait=0&amp;app_id=58479&amp;player_id=0" frameborder="0" allow="autoplay; fullscreen" allowfullscreen=""></iframe>
-                </div>
-            {% endif %}
-            </div>
-        {% endfor %}
+    <div class="section-video__inner">
+        {% if section.settings.video != blank %}
+        <div class="section-video__source">
+            <iframe src="https://player.vimeo.com/video/{{ section.settings.video.id }}?h=731c66eba4&amp;title=0&amp;byline=0&amp;portrait=0&amp;app_id=58479&amp;player_id=0" frameborder="0" allow="autoplay; fullscreen" allowfullscreen=""></iframe>
+        </div>
+        {% endif %}
     </div>
 
 </div>
 
 {% schema %}
 {
-    "name": "Films",
+    "name": "Video",
     "tag": "section",
-    "class": "section-films",
-    "blocks": [
-        {
-            "type": "film",
-            "name": "Film",
-            "settings": [
-                {
-                    "type": "text",
-                    "id": "title",
-                    "label": "Title"
-                },
-                {
-                    "type": "video_url",
-                    "id": "film",
-                    "label": "Video",
-                    "accept": [
-                      "vimeo"
-                    ]
-                }
-            ]
-        }
-    ],
+    "class": "section-video",
     "settings": [
+        {
+            "type": "video_url",
+            "id": "video",
+            "label": "Video",
+            "accept": [
+                "vimeo"
+            ]
+        },
         {
             "type": "select",
             "id": "width",
@@ -72,14 +52,10 @@
                 },
                 {
                     "value": "xx-large",
-                    "label": "XX Large"
-                },
-                {
-                    "value": "full-width",
-                    "label": "Full Width"
+                    "label": "Full"
                 }
             ],
-            "default": "x-large"
+            "default": "medium"
         },
         {
             "type": "header",
@@ -128,6 +104,11 @@
             "unit": "px",
             "label": "Padding bottom",
             "default": 32
+        }
+    ],
+    "presets":[
+        {
+            "name": "Video"
         }
     ]
 }

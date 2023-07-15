@@ -5,7 +5,7 @@
 
 <div class="wrap wrap--{{ section.settings.width }} wrap--{{section_id }}">
 
-    <div class="section-text-banner-double__inner">
+    <div class="section-text-banner-double__inner {{ section.settings.layout }}">
 
         <div class="section-text-banner-double__blockquote">
             <p>{{ section.settings.blockquote }}</p>
@@ -199,12 +199,28 @@
                     "label": "Full"
                 }
             ],
-            "default": "medium"
+            "default": "x-large"
         },
         {
             "type": "textarea",
             "id": "blockquote",
             "label": "Blockquote"
+        },
+        {
+            "type": "select",
+            "id": "layout",
+            "label": "Blockquote position",
+            "options": [
+                {
+                    "value": "left",
+                    "label": "Left"
+                },
+                {
+                    "value": "right",
+                    "label": "Right"
+                }
+            ],
+            "default": "left"
         },
         {
             "type": "header",

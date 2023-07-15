@@ -1,0 +1,13 @@
+<link href="{{ "drawer-search-filters.css" | asset_url }}" rel="stylesheet">
+
+<div class="drawer drawer-search-filters" id="drawer-search-filters">
+    <div class="inner">
+        <div class="drawer__header drawer-search-filters__header">
+            <button class="toggle-drawer" aria-label="Close Drawer">{% render "icon-close.svg" %}</button>
+            <div class="drawer__header__text drawer-search-filters__header__text">{{ "filters.title" | t }}</div>
+        </div>
+        <div class="drawer__content drawer-search-filters__content">
+            {% render "filters-search", search-filters: search-filters %}
+        </div>
+    </div>
+</div>

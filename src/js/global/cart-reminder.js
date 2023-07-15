@@ -22,7 +22,7 @@ const getProductCards = async () => {
 	//console.log(productList);
 	let productCards = '';
 	for (let recent of productList) {
-		console.log(window.Shopify.routes.root + 'products/' + recent + '?view=product-card');
+		// console.log(window.Shopify.routes.root + 'products/' + recent + '?view=product-card');
 		let response = await fetch(window.Shopify.routes.root + 'products/' + recent + '?view=product-card');
 		let product = await response.text();
 		productCards += `${product}`;
@@ -40,6 +40,8 @@ window.showCartReminder = () => {
 			.then(cart => {
 				if (cart.item_count > 0) {
 					for (let item of cart.items) productList.push(item.handle);
+					const content = cartReminder.querySelector('.cart-reminder__content');
+					content.classList.add('product-count-' + cart.item_count);
 					getProductCards()
 						.then(productCards => {
 							const remindercontent = document.querySelector('.cart-reminder__content');
@@ -57,6 +59,7 @@ window.showCartReminder = () => {
 };
 
 window.addEventListener('DOMContentLoaded', () => {
+	// console.log(window.getCookie('show_reminder'));
 	const showReminder = window.getCookie('show_reminder');
 	if (showReminder && showReminder !== 'no') {
 		window.showCartReminder();
@@ -71,3 +74,11 @@ document.onkeydown = function (evt) {
 		console.log('cookie cleared');
 	}
 };
+
+const reminderClose = document.querySelector('.cart-reminder__close');
+if (reminderClose)
+	reminderClose.addEventListener('click', () => {
+		const reminderDrawer = document.querySelector('.cart-reminder');
+		reminderDrawer.classList.remove('show');
+		window.setCookie('show_reminder', 'no', 1);
+	});

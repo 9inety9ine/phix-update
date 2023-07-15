@@ -3,7 +3,7 @@
 
 <link href="{{ "lookbook.css" | asset_url }}" rel="stylesheet">
 
-<div class="wrap wrap--xx-large wrap--{{section_id }}">
+<div class="wrap wrap--{{ section.settings.width }} wrap--{{ section_id }}">
 
     <div class="section-lookbook__inner section-lookbook__inner--{{ section_id }}">
 
@@ -13,24 +13,26 @@
                     <div class="section-lookbook__look__image look-image">
                         <img 
                             {% if request.design_mode %}
-                            src="{{ block.settings.image.src | img_url: '800x1080' }}" 
+                            src="{{ block.settings.image.src | img_url: '1000x1200', crop: "center" }}" 
                             {% else %}
                             src="{{ "preload.gif" | asset_url }}" 
-                            data-src="{{ block.settings.image.src | img_url: '800x1080' }}" 
+                            data-src="{{ block.settings.image.src | img_url: '1000x1200', crop: "center" }}" 
                             class="preload" 
                             {% endif %}
                             alt="{{ block.settings.image.alt }}" 
-                            width="800" 
-                            height="1080"
+                            width="1000" 
+                            height="1200"
                         >
                     </div>
                 {% endif %}
                 <div class="section-lookbook__look__products look-products">
+                    <div class="section-lookbook__look__products__inner">
                     {% for product in block.settings.products %}
                         <div class="section-lookbook__look__product look-product">
                             {% render "card-product-lookbook", product: product %}
                         </div>
                     {% endfor %}
+                    </div>
                 </div>
             </div>
         {% endfor %}
@@ -90,6 +92,34 @@
         }
     ],
     "settings": [
+        {
+            "type": "select",
+            "id": "width",
+            "label": "Width",
+            "options": [
+                {
+                    "value": "small",
+                    "label": "Small"
+                },
+                {
+                    "value": "medium",
+                    "label": "Medium"
+                },
+                {
+                    "value": "large",
+                    "label": "Large"
+                },
+                {
+                    "value": "x-large",
+                    "label": "X Large"
+                },
+                {
+                    "value": "xx-large",
+                    "label": "Full"
+                }
+            ],
+            "default": "x-large"
+        },
         {
             "type": "header",
             "content": "Desktop padding"

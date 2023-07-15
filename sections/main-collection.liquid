@@ -37,7 +37,8 @@
                     <span>{{ collection.products_count }} {{ collection.products_count | pluralize: 'Item', 'Items' }}</span>
                 </div>
                 <div class="product-filters__view">
-                    View
+                    <button class="collection-view-toggle collection-view-toggle--multi active">{% render "icon-column-multi.svg" %}</button>
+                    <button class="collection-view-toggle collection-view-toggle--single">{% render "icon-column-single.svg" %}</button>
                 </div>
             </div>
         </div>

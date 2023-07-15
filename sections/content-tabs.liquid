@@ -1,36 +1,37 @@
 {% assign section_id = section.id | replace: "_", "" | replace: "-", "" %}
 {% render "section-styles", section_id: section_id, section: section %}
 
-<link href="{{ "films.css" | asset_url }}" rel="stylesheet">
+<link href="{{ "content-tabs.css" | asset_url }}" rel="stylesheet">
 
 <div class="wrap wrap--{{ section.settings.width }} wrap--{{section_id }}">
 
-    <div class="section-films__inner">
-        {% for block in section.blocks %}
-            <div class="section-films__film">
-            {% if block.settings.title != blank %}
-                <h3>{{ block.settings.title }}</h3>
-            {% endif %}
-            {% if block.settings.film != blank %}
-                <div class="section-films__video">
-                    <iframe src="https://player.vimeo.com/video/{{ block.settings.film.id }}?h=731c66eba4&amp;title=0&amp;byline=0&amp;portrait=0&amp;app_id=58479&amp;player_id=0" frameborder="0" allow="autoplay; fullscreen" allowfullscreen=""></iframe>
+    <div class="section-content-tabs__inner">
+        <div class="section-content-tabs__buttons">
+            {% for block in section.blocks %}
+                <button class="button{% unless forloop.first %} button--secondary{% endunless %}" data-target="tab-{{ section_id }}-{{ block.settings.title | handleize }}">{{ block.settings.title }}</button>
+            {% endfor %}
+        </div>
+        <div class="section-content-tabs__content">
+            {% for block in section.blocks %}
+                <div id="tab-{{ section_id }}-{{ block.settings.title | handleize }}" class="section-content-tabs__page{% if forloop.first %} active{% endif %}">
+                    <h3>{{ block.settings.title }}</h3>
+                    {{ block.settings.page.content }}
                 </div>
-            {% endif %}
-            </div>
-        {% endfor %}
+            {% endfor %}
+        </div>
     </div>
 
 </div>
 
 {% schema %}
 {
-    "name": "Films",
+    "name": "Content Tabs",
     "tag": "section",
-    "class": "section-films",
+    "class": "section-content-tabs",
     "blocks": [
         {
-            "type": "film",
-            "name": "Film",
+            "type": "tab",
+            "name": "Tab",
             "settings": [
                 {
                     "type": "text",
@@ -38,12 +39,9 @@
                     "label": "Title"
                 },
                 {
-                    "type": "video_url",
-                    "id": "film",
-                    "label": "Video",
-                    "accept": [
-                      "vimeo"
-                    ]
+                    "type": "page",
+                    "id": "page",
+                    "label": "Page"
                 }
             ]
         }
@@ -128,6 +126,11 @@
             "unit": "px",
             "label": "Padding bottom",
             "default": 32
+        }
+    ],
+    "presets": [
+        {
+            "name": "Content Tabs"
         }
     ]
 }

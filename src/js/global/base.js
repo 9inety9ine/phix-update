@@ -50,6 +50,7 @@ window.toggleDrawer = (drawer, level) => {
 const drawerMask = document.querySelector('.drawer-mask');
 if (drawerMask)
 	drawerMask.addEventListener('click', e => {
+		console.log('clicked');
 		e.preventDefault();
 		window.toggleDrawer(false, false);
 		setTimeout(function () {

@@ -1,0 +1,106 @@
+<link href="{{ "filters.css" | asset_url }}" rel="stylesheet">
+
+{%- assign filter_count = 0 -%}
+{%- assign has_range = false -%}
+
+{%- for filter in search.filters -%}
+    {%- if filter.type == "price_range" -%}
+        {%- if filter.min_value.value != nil or filter.max_value.value != nil -%}
+            {%- assign has_range = true -%}
+        {%- endif -%}
+    {%- else -%}
+        {%- for filter_value in filter.active_values -%}
+            {%- assign filter_count = filter_count | plus: 1 -%}
+        {%- endfor -%}
+    {%- endif -%}
+{%- endfor -%}
+
+<div class="filters">
+
+    {% unless search.products.size == 0 %}
+
+                <form class="filter-form" id="search-filter-form">
+                    <div class="filter-form__filters">
+                    {%- for filter in search.filters -%}
+                        {% if filter.values.size >= 2 or filter.type == "price_range" %}
+                        <div class="filter-group">
+                            <div class="filter-group-summary"><span>{{ filter.label }}</span></div>
+                            <div class="filter-group-display">
+                            {%- case filter.type -%}
+                                {%- when 'boolean' or 'list' -%}
+                                <ul class="filter-group-display__list">
+                                    {%- for filter_value in filter.values -%}
+                                    <li class="filter-group-display__list-item">
+                                        <label for="Filter-{{ filter.param_name }}-{{ forloop.index }}" class="{% if filter_value.count == 0 and filter_value.active == false %}disabled{% else %}filter-label{% endif %}">
+                                            <input type="checkbox"
+                                                data-filter="filter-{{ filter_value.value | handleize}}"
+                                                name="{{ filter_value.param_name }}"
+                                                value="{{ filter_value.value }}"
+                                                id="Filter-{{ filter.param_name }}-{{ forloop.index }}"
+                                                {% if filter_value.active -%}checked{%- endif %}
+                                                {% if filter_value.count == 0 and filter_value.active == false -%}disabled{%- endif %}
+                                            >
+                                            <span>{{ filter_value.label }} ({{filter_value.count}})</span>
+                                        </label>
+                                    </li>
+                                    {%- endfor -%}
+                                </ul>
+                                {%- when 'price_range' -%}
+                                <div class="filter-group-display__price-range">
+                                    <div class="filter-group-display__price-range-from">
+                                        <label for="Filter-{{ filter.min_value.param_name }}">
+                                            {{ "filters.price_from" | t }}
+                                            <span>
+                                                <input name="{{ filter.min_value.param_name }}"
+                                                    id="Filter-{{ filter.min_value.param_name }}"
+                                                    {% if filter.min_value.value -%}
+                                                    value="{{ filter.min_value.value | money_without_currency | replace: ',', '' }}"
+                                                    {%- endif %}
+                                                    type="number"
+                                                    placeholder="0"
+                                                    min="0"
+                                                    max="{{ filter.range_max | money_without_currency | replace: ',', '' }}"
+                                                >
+                                            </span>
+                                    </label>
+                                    </div>
+                                    <div class="filter-group-display__price-range-to">
+                                        <label for="Filter-{{ filter.max_value.param_name }}">
+                                            {{ "filters.price_to" | t }}
+                                            <span>
+                                                <input name="{{ filter.max_value.param_name }}"
+                                                    id="Filter-{{ filter.max_value.param_name }}"
+                                                    {% if filter.max_value.value -%}
+                                                    value="{{ filter.max_value.value | money_without_currency | replace: ',', '' }}"
+                                                    {%- endif %}
+                                                    type="number"
+                                                    placeholder="{{ filter.range_max | money_without_currency | replace: ',', '' }}"
+                                                    min="0"
+                                                    max="{{ filter.range_max | money_without_currency | replace: ',', '' }}"
+                                                >
+                                            </span>
+                                        </label>
+                                    </div>
+                                </div>
+                            {%- endcase -%}
+                            </div>
+                        </div>
+                        {% endif %}
+                    {%- endfor -%}
+                    </div>
+                    <div class="filter-form__sort">
+                        <label for="search-sort"><span>{{ "filters.sort" | t }}</span></label>
+                        <select name="sort_by" id="search-sort" aria-label="{{ 'search.sort' | t }}">
+                        {% for option in search.sort_options %}
+                            <option name="sort_by" value="{{ option.value }}"{% if option.value == search.sort_by %} selected{% endif %}>{{ option.name }}</option>
+                        {% endfor %}
+                        </select>
+                    </div>
+                    <div class="filter-form__actions">
+                        <button type="submit" class="button button--black button--full-width button-apply-filters" tabindex="1">{{ "filters.apply" | t }}</button>
+                    </div>
+                </form>
+
+        {% endunless %}
+    
+</div>

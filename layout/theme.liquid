@@ -87,7 +87,10 @@
     {% section "drawer-menu" %}
     
     {% if template == "collection" %}
-    {% render "drawer-collection" %}
+      {% render "drawer-collection" %}
+    {% endif %}
+    {% if template == "search" %}
+      {% render "drawer-search-filters" %}
     {% endif %}
     
     {% unless template == "cart" %}
@@ -95,8 +98,11 @@
     {% render "cart-reminder" %}
     {% endunless %}
 
+    <span class="menu-desktop-mask"></span>
+    <span class="drawer-mask"></span>
+
     <!-- core js -->
-    <script src="{{ 'application.js' | asset_url }}" defer></script>
+    <script src="{{ 'application.js' | asset_url }}"></script>
     
     {% if template contains "customers" %}
     <!-- country selector -->
@@ -104,9 +110,6 @@
     {% endif %}
 
     <script src="https://static.klaviyo.com/onsite/js/klaviyo.js?company_id=PYvQUW" defer async></script>
-
-    <span class="menu-desktop-mask"></span>
-    <span class="drawer-mask"></span>
 
   </body>
 </html>

@@ -1,0 +1,39 @@
+@import '../abstracts/variables';
+
+.section-content-tabs {
+	position: relative;
+	&__inner {
+		display: flex;
+		flex-direction: column;
+		gap: 2em;
+		@media (max-width: $w-m) {
+			gap: 1em;
+		}
+	}
+	&__buttons {
+		display: flex;
+		justify-content: center;
+		gap: 1em;
+		flex-wrap: wrap;
+		@media (max-width: $w-m) {
+			gap: 0.5em;
+			flex-direction: column;
+			align-items: center;
+		}
+		button {
+			@media (max-width: $w-m) {
+				width: 100%;
+			}
+		}
+	}
+	&__content {
+		border: 1px solid $color-grey-medium;
+		padding: 2em;
+	}
+	&__page {
+		display: none;
+		&.active {
+			display: block;
+		}
+	}
+}

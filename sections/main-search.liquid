@@ -3,6 +3,22 @@
 
 <link href="{{ "main-search.css" | asset_url }}" rel="stylesheet">
 <link href="{{ "product-collection-grid.css" | asset_url }}" rel="stylesheet">
+<link href="{{ "product-filters.css" | asset_url }}" rel="stylesheet">
+
+{%- assign filter_count = 0 -%}
+{%- assign has_range = false -%}
+
+{%- for filter in search.filters -%}
+    {%- if filter.type == "price_range" -%}
+        {%- if filter.min_value.value != nil or filter.max_value.value != nil -%}
+            {%- assign has_range = true -%}
+        {%- endif -%}
+    {%- else -%}
+        {%- for filter_value in filter.active_values -%}
+            {%- assign filter_count = filter_count | plus: 1 -%}
+        {%- endfor -%}
+    {%- endif -%}
+{%- endfor -%}
 
 <div class="wrap wrap--medium wrap--no-padding-bottom wrap--{{ section_id }}">
     <form action="{{ routes.search_url }}" method="get" role="search" class="section-search__form">
@@ -14,15 +30,38 @@
 
 <div class="wrap wrap--xx-large wrap--{{ section_id }} wrap--no-padding-s-mobile">
 
+    <div class="section-search__tray product-filters">
+        <div class="product-filters__inner">
+            <div class="product-filters__toggle">
+                <button class="toggle-search-drawer" aria-label="Filter &amp; Sort">{% render "icon-filter-sort.svg" %}<span>Filter &amp; Sort</span></button>
+            </div>
+            {%- if filter_count >= 1 or has_range == true -%}
+                <div class="product-filters__active">{%- assign filter_count = 0 -%}{%- for filter in search.filters -%}{%- if filter.type == "price_range" -%}{%- assign has_range = false -%}{%- if filter.min_value.value != nil or filter.max_value.value != nil -%}{%- assign has_range = true -%}<a class="product-filters__remove" href="{{ filter.url_to_remove }}"><span>{%- assign min_value = filter.min_value.value | default: 0 -%}{%- assign max_value = filter.max_value.value | default: filter.range_max -%}{{- min_value | money -}} - {{- max_value | money -}}</span>{% render "icon-close.svg" %}</a>{%- endif -%}{%- else -%}{%- for filter_value in filter.active_values -%}{%- assign filter_count = filter_count | plus: 1 -%}<a class="product-filters__remove filter-{{ filter_value.value | handleize}}" href="{{ filter_value.url_to_remove }}"><span>{{ filter_value.label }}</span>{% render "icon-close.svg" %}</a>{%- endfor -%}{%- endif- %}{%- endfor -%}</div>
+                {%- endif -%}
+            <div class="product-filters__count">
+                <div class="product-filters__count__value">
+                    <span id="product-count-range"></span>
+                    <span>{{ search.results_count }} {{ search.results_count | pluralize: 'Item', 'Items' }}</span>
+                </div>
+                <div class="product-filters__view">
+                    <button class="collection-view-toggle collection-view-toggle--multi active">{% render "icon-column-multi.svg" %}</button>
+                    <button class="collection-view-toggle collection-view-toggle--single">{% render "icon-column-single.svg" %}</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
     {% paginate search.results by 999 %}
     {% if search.performed %}
-        <ul class="products">
+        <ul id="products" class="products">
             {% for item in search.results %}
             {% if item.object_type == 'product' %}
                 {% assign available = false %}
                 {% if item.available or item.tags contains "preorder" %}{% assign available = true %}{% endif %}
                 {% if available == true %}
+                    {% unless item.handle contains "test" %}
                 <li class="products__product">{% render "card-product", product: item %}</p>
+                    {% endunless %}
                 {% endif %}
             {% endif %}
             {% else %}
@@ -38,6 +77,8 @@
     {% endpaginate %}
 
 </div>
+
+<script src="{{ "main-search.js" | asset_url }}" defer></script>
 
 {% schema %}
 {

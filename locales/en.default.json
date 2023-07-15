@@ -74,6 +74,20 @@
 			"no_pages_found": "No pages found for"
 		}
 	},
+	"accessibility": {
+		"view": "View",
+		"view_all": "View all",
+		"show": "Show",
+		"previous": "Previous",
+		"next": "Next",
+		"open": "Open",
+		"close": "Close",
+		"toggle": "Toggle",
+		"loading": "Loading...",
+		"load_more": "Load more",
+		"sort": "Sort",
+		"payment_options": "Payment Options"
+	},
 	"cart": {
 		"title": "Your Cart",
 		"cart_empty": "Your cart is empty.",
@@ -81,6 +95,7 @@
 		"update_cart": "Update",
 		"checkout": "Checkout securely",
 		"remove_item": "Remove",
+		"reminder": "Pick up where you left off",
 		"drawer": {
 			"title": "Your Cart",
 			"checkout": "Checkout Securely",
