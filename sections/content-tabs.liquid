@@ -8,13 +8,13 @@
     <div class="section-content-tabs__inner">
         <div class="section-content-tabs__buttons">
             {% for block in section.blocks %}
-                <button class="button{% unless forloop.first %} button--secondary{% endunless %}" data-target="tab-{{ section_id }}-{{ block.settings.title | handleize }}">{{ block.settings.title }}</button>
+                <button class="button--toggle button{% unless forloop.first %} button--secondary{% endunless %}" data-target="tab-{{ section_id }}-{{ block.settings.page.title | handleize }}">{{ block.settings.page.title }}</button>
             {% endfor %}
         </div>
         <div class="section-content-tabs__content">
             {% for block in section.blocks %}
-                <div id="tab-{{ section_id }}-{{ block.settings.title | handleize }}" class="section-content-tabs__page{% if forloop.first %} active{% endif %}">
-                    <h3>{{ block.settings.title }}</h3>
+                <div id="tab-{{ section_id }}-{{ block.settings.page.title | handleize }}" class="section-content-tabs__page{% if forloop.first %} active{% endif %}">
+                    <h3>{{ block.settings.page.title }}</h3>
                     {{ block.settings.page.content }}
                 </div>
             {% endfor %}
@@ -22,6 +22,8 @@
     </div>
 
 </div>
+
+<script src="{{ "content-tabs.js" | asset_url }}" defer></script>
 
 {% schema %}
 {
@@ -33,11 +35,6 @@
             "type": "tab",
             "name": "Tab",
             "settings": [
-                {
-                    "type": "text",
-                    "id": "title",
-                    "label": "Title"
-                },
                 {
                     "type": "page",
                     "id": "page",

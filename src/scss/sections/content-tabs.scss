@@ -3,32 +3,55 @@
 .section-content-tabs {
 	position: relative;
 	&__inner {
-		display: flex;
-		flex-direction: column;
-		gap: 2em;
+		display: grid;
+		grid-template-columns: auto 1fr;
+		gap: 5em;
+		@media (max-width: $w-l) {
+			gap: 3em;
+		}
 		@media (max-width: $w-m) {
-			gap: 1em;
+			grid-template-columns: 1fr;
+			grid-template-rows: auto;
+			gap: 2em;
 		}
 	}
 	&__buttons {
 		display: flex;
-		justify-content: center;
+		flex-direction: column;
 		gap: 1em;
-		flex-wrap: wrap;
 		@media (max-width: $w-m) {
 			gap: 0.5em;
-			flex-direction: column;
-			align-items: center;
 		}
 		button {
-			@media (max-width: $w-m) {
-				width: 100%;
-			}
+			width: 100%;
 		}
 	}
 	&__content {
-		border: 1px solid $color-grey-medium;
-		padding: 2em;
+		border-left: 1px solid $color-grey-medium;
+		padding-left: 5em;
+		@media (max-width: $w-l) {
+			padding-left: 3em;
+		}
+		@media (max-width: $w-m) {
+			padding-left: 0;
+			border-left: none;
+		}
+		ul,
+		ol {
+			margin: 0 0 1em 0;
+			padding: 0 0 0 2em;
+		}
+		ul {
+			list-style-type: disc;
+		}
+		ol {
+			list-style-type: decimal;
+		}
+		p {
+			&:last-child {
+				margin-bottom: 0;
+			}
+		}
 	}
 	&__page {
 		display: none;
