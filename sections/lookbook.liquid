@@ -11,6 +11,7 @@
             <div class="section-lookbook__look{% unless request.design_mode %} preload{% endunless %}">
                 {% if block.settings.image != blank %}
                     <div class="section-lookbook__look__image look-image">
+                        <span class="section-lookbook__look__marker"><span></span><span></span></span>
                         <img 
                             {% if request.design_mode %}
                             src="{{ block.settings.image.src | img_url: '1000x1200', crop: "center" }}" 

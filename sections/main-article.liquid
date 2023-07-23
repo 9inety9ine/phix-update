@@ -3,11 +3,34 @@
 
 <link href="{{ "main-article.css" | asset_url }}" rel="stylesheet">
 
-<div class="wrap wrap--xx-large wrap--{{section_id }}">
+<div class="wrap wrap--large wrap--{{ section_id }}">
 
-    <h1>{{ article.title }}</h1>
+    <div class="section-article__header">
+        <h1>{{ article.title }}</h1>
+        <p>{{ article.author }} &ndash; {{ article.created_at | date: "%d %B %Y" }}</p>
+    </div>
 
-    {{ article.content }}
+    <div class="section-article__content">
+        {{ article.content }}
+    </div>
+
+    <div class="section-article__footer">
+        {% if blog.next_article or blog.previous_article %}
+
+              {% if blog.previous_article %}
+                <span class="prev">
+                    &laquo; <a href="{{ blog.previous_article.url }}" aria-label="{{ 'blog.article.older_post' | t }}">{{ 'blog.article.older_post' | t }}</a>
+                </span>
+              {% endif %}
+              <span class="back"><a href="{{ blog.url }}" aria-label="{{ "blog.back" | t: title: blog.title }}">{{ "blog.back" | t: title: blog.title }}</a></span>
+              {% if blog.next_article %}
+                <span class="next">
+                    <a href="{{ blog.next_article.url }}" aria-label="{{ 'blog.article.newer_post' | t }}">{{ 'blog.article.newer_post' | t }}</a> &raquo;
+                </span>
+              {% endif %}
+
+          {% endif %}
+    </div>
     
 </div>
 

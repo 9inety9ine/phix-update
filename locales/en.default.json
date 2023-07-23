@@ -227,5 +227,13 @@
 			"order_items": "Order Items",
 			"order_name_label": "Order:"
 		}
+	},
+	"blog": {
+		"view_all": "View all {{ title }}",
+		"back": "Back to {{ title }}",
+		"article": {
+			"older_post": "Previous article",
+			"newer_post": "Next article"
+		}
 	}
 }

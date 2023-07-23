@@ -13,23 +13,23 @@
             "settings": {
               "label": "Shop",
               "url": "shopify:\/\/collections\/all",
-              "feature_1_label": "Feature 1",
-              "feature_1_url": "#",
+              "feature_1_label": "Shirting",
+              "feature_1_url": "shopify:\/\/collections\/shirting",
               "feature_1_image": "shopify:\/\/shop_images\/navy-pinstripe-wide-leg-flared-wool-trouser-3.progressive_8be01e11-c9fe-48bb-a7da-d6742785f678.jpg",
-              "feature_2_label": "Feature 2",
-              "feature_2_url": "#",
+              "feature_2_label": "Outerwear",
+              "feature_2_url": "shopify:\/\/collections\/outerwear",
               "feature_2_image": "shopify:\/\/shop_images\/GMB06894.jpg",
-              "feature_3_label": "Feature 3",
-              "feature_3_url": "#",
+              "feature_3_label": "Jeans & Trousers",
+              "feature_3_url": "shopify:\/\/collections\/trousers",
               "feature_3_image": "shopify:\/\/shop_images\/aso-Wang-LeopardSequinTwoPiece.jpg",
-              "feature_4_label": "Feature 4",
-              "feature_4_url": "#",
+              "feature_4_label": "Footwear",
+              "feature_4_url": "shopify:\/\/collections\/footwear",
               "feature_4_image": "shopify:\/\/shop_images\/GMB08558.jpg",
-              "feature_5_label": "Feature 5",
-              "feature_5_url": "#",
+              "feature_5_label": "Accessories",
+              "feature_5_url": "shopify:\/\/collections\/accessories",
               "feature_5_image": "shopify:\/\/shop_images\/DSC9247.jpg",
-              "feature_6_label": "Feature 6",
-              "feature_6_url": "#",
+              "feature_6_label": "Tailoring",
+              "feature_6_url": "shopify:\/\/collections\/tailoring",
               "feature_6_image": "shopify:\/\/shop_images\/QOA06957.jpg"
             }
           },
@@ -57,27 +57,69 @@
             "type": "menu",
             "settings": {
               "label": "The Brand",
-              "url": "#",
-              "feature_1_label": "Feature",
-              "feature_1_url": "#",
+              "url": "shopify:\/\/pages\/the-brand",
+              "feature_1_label": "Our Story",
+              "feature_1_url": "shopify:\/\/pages\/the-brand",
               "feature_1_image": "shopify:\/\/shop_images\/QOA08126.jpg",
-              "feature_2_label": "Feature",
-              "feature_2_url": "",
-              "feature_3_label": "Feature",
-              "feature_3_url": "",
-              "feature_4_label": "Feature",
-              "feature_4_url": "",
-              "feature_5_label": "Feature",
-              "feature_5_url": "",
-              "feature_6_label": "Feature",
-              "feature_6_url": ""
+              "feature_2_label": "As Seen On",
+              "feature_2_url": "shopify:\/\/pages\/as-seen-on",
+              "feature_2_image": "shopify:\/\/shop_images\/GMB06896.jpg",
+              "feature_3_label": "Lookbooks",
+              "feature_3_url": "https:\/\/www.phixclothing.com\/pages\/lookbooks?view=lookbooks",
+              "feature_3_image": "shopify:\/\/shop_images\/QOA06833.jpg",
+              "feature_4_label": "Blog",
+              "feature_4_url": "shopify:\/\/blogs\/news",
+              "feature_4_image": "shopify:\/\/shop_images\/DSC4246.jpg",
+              "feature_5_label": "Films",
+              "feature_5_url": "shopify:\/\/pages\/films",
+              "feature_5_image": "shopify:\/\/shop_images\/DSC8417.jpg",
+              "feature_6_label": "Shop Our Instagram",
+              "feature_6_url": "shopify:\/\/pages\/shopinstagram",
+              "feature_6_image": "shopify:\/\/shop_images\/DSC8888_152f377a-a1e7-4099-a9c7-6ef91f76f8cb.jpg"
+            }
+          },
+          "d97b120a-9e6a-4742-90bc-16e163c61112": {
+            "type": "global_announcement",
+            "settings": {
+              "title": "This is a global announcement"
+            }
+          },
+          "0a874304-6bc7-49ce-afc0-98a901c30b15": {
+            "type": "regional_announcement",
+            "settings": {
+              "type": "country",
+              "condition": "does_not_equal",
+              "code": "GB",
+              "title": "This is a non-GB announcement"
+            }
+          },
+          "3c6b8f9f-92d4-41b5-bc0d-6b22b5e1aace": {
+            "type": "regional_announcement",
+            "settings": {
+              "type": "continent",
+              "condition": "equals",
+              "code": "EU",
+              "title": "Europe only announcement"
+            }
+          },
+          "63beef23-fb13-499e-aa50-40f6a8c80270": {
+            "type": "regional_announcement",
+            "settings": {
+              "type": "country",
+              "condition": "equals",
+              "code": "GB",
+              "title": "Britain only announcement"
             }
           }
         },
         "block_order": [
           "2667c5d8-c10b-4850-a89e-64711d7c39f9",
           "8baad7ed-8127-4c35-bd1f-1196560948e8",
-          "dfe302af-f294-41bb-be2a-b255cdef9cf8"
+          "dfe302af-f294-41bb-be2a-b255cdef9cf8",
+          "d97b120a-9e6a-4742-90bc-16e163c61112",
+          "0a874304-6bc7-49ce-afc0-98a901c30b15",
+          "3c6b8f9f-92d4-41b5-bc0d-6b22b5e1aace",
+          "63beef23-fb13-499e-aa50-40f6a8c80270"
         ],
         "settings": {
           "menu": ""
@@ -124,6 +166,15 @@
         "settings": {
           "heading": "Get notified of exclusive first drops",
           "code": "<div class=\"klaviyo-form-TUWADC k1\"><\/div>",
+          "url_fb": "https:\/\/google.com",
+          "url_tw": "https:\/\/google.com",
+          "url_yt": "https:\/\/google.com",
+          "url_in": "https:\/\/google.com",
+          "url_tt": "https:\/\/google.com",
+          "url_pi": "https:\/\/google.com",
+          "url_sn": "https:\/\/google.com",
+          "url_li": "https:\/\/google.com",
+          "info_text": "© 2023 Rock n Roller Limited trading as Phix Clothing",
           "padding_top": 64,
           "padding_bottom": 64,
           "mobile_padding_top": 32,
@@ -150,6 +201,10 @@
           "f825b65d-249a-4ff1-9123-68d023683c8c",
           "63c33ed0-6f6e-41f3-a1ae-a92c6b3fbc9c"
         ],
+        "settings": {}
+      },
+      "drawer-cart-recommended": {
+        "type": "drawer-cart-recommended",
         "settings": {}
       }
     },

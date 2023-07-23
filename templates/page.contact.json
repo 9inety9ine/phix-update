@@ -1,17 +1,71 @@
 {
-	"sections": {
-		"header": {
-			"type": "page-header",
-			"settings": {}
-		},
-		"content": {
-			"type": "page-content",
-			"settings": {}
-		},
-		"form": {
-			"type": "contact",
-			"settings": {}
-		}
-	},
-	"order": ["header", "content", "form"]
+  "sections": {
+    "header": {
+      "type": "page-header",
+      "settings": {
+        "width": "large",
+        "alignment": "center",
+        "display_title": true,
+        "title": "{{ page.title }}",
+        "padding_top": 64,
+        "padding_bottom": 32,
+        "mobile_padding_top": 32,
+        "mobile_padding_bottom": 16
+      }
+    },
+    "content": {
+      "type": "page-content",
+      "settings": {
+        "width": "large",
+        "alignment": "center",
+        "padding_top": 0,
+        "padding_bottom": 64,
+        "mobile_padding_top": 0,
+        "mobile_padding_bottom": 32
+      }
+    },
+    "form": {
+      "type": "contact",
+      "blocks": {
+        "de03b7fa-36a8-43cb-99fb-128ca41a4526": {
+          "type": "accordion",
+          "settings": {
+            "title": "Press",
+            "text": "<p><a href=\"mailto:emily@phixclothing.com\" target=\"_blank\" title=\"mailto:emily@phixclothing.com\">emily@phixclothing.com<\/a><\/p>"
+          }
+        },
+        "97ac649f-0710-4338-b804-294add416ff5": {
+          "type": "accordion",
+          "settings": {
+            "title": "Investor",
+            "text": "<p><a href=\"mailto:investor@phixclothing.com\" target=\"_blank\" title=\"mailto:investor@phixclothing.com\">investor@phixclothing.com<\/a><\/p>"
+          }
+        }
+      },
+      "block_order": [
+        "de03b7fa-36a8-43cb-99fb-128ca41a4526",
+        "97ac649f-0710-4338-b804-294add416ff5"
+      ],
+      "settings": {
+        "title_form": "Write to us",
+        "title_chat": "Chat online",
+        "text_chat": "<p>Would you like personalised advice and guidance as you browse our products? Our phix advisors are available Monday to Friday from 9am to 5pm GMT (UK time).<\/p>",
+        "show_button": true,
+        "label_chat": "Open chat",
+        "title_email": "Email us",
+        "text_email": "<p>We aim to reply to all enquires within 24 hours (Mon - Fri)<\/p><p><a href=\"mailto:info@phixclothing.com\" target=\"_blank\" title=\"mailto:info@phixclothing.com\">info@phixclothing.com<\/a><\/p>",
+        "title_address": "Office address",
+        "text_address": "<p>ROCK N ROLLER LIMITED<br\/>T\/A PHIXCLOTHING.COM<br\/>CONAVON COURT<br\/>12 BLACKFRIARS STREET<br\/>SALFORD<br\/>M3 5BQ<br\/>UNITED KINGDOM<\/p>",
+        "padding_top": 0,
+        "padding_bottom": 64,
+        "mobile_padding_top": 0,
+        "mobile_padding_bottom": 32
+      }
+    }
+  },
+  "order": [
+    "header",
+    "content",
+    "form"
+  ]
 }

@@ -1,13 +1,32 @@
 {
-	"sections": {
-		"header": {
-			"type": "page-header",
-			"settings": {}
-		},
-		"main": {
-			"type": "page-content",
-			"settings": {}
-		}
-	},
-	"order": ["header", "main"]
+  "sections": {
+    "header": {
+      "type": "page-header",
+      "settings": {
+        "width": "large",
+        "alignment": "left",
+        "display_title": true,
+        "title": "{{ page.title }}",
+        "padding_top": 64,
+        "padding_bottom": 32,
+        "mobile_padding_top": 32,
+        "mobile_padding_bottom": 16
+      }
+    },
+    "main": {
+      "type": "page-content",
+      "settings": {
+        "width": "large",
+        "alignment": "left",
+        "padding_top": 0,
+        "padding_bottom": 64,
+        "mobile_padding_top": 0,
+        "mobile_padding_bottom": 32
+      }
+    }
+  },
+  "order": [
+    "header",
+    "main"
+  ]
 }

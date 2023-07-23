@@ -2,4 +2,54 @@
 
 .section-article {
 	position: relative;
+	text-align: center;
+	&__header {
+		h1 {
+			text-transform: none;
+		}
+	}
+	&__content {
+		text-transform: none;
+		img {
+			width: 100%;
+			margin: 0 auto;
+			padding: 0 5em;
+			margin: 2em 0;
+			@media (max-width: $w-m) {
+				padding: 0 3em;
+			}
+			@media (max-width: $w-s) {
+				padding: 0 2em;
+			}
+		}
+		ul,
+		ol {
+			font-size: 1.125em;
+			margin: 0 0 1em 0;
+			padding: 0 0 0 2em;
+		}
+		ul {
+			list-style-type: disc;
+		}
+		ol {
+			list-style-type: decimal;
+		}
+		p {
+			font-size: 1.125em;
+			text-align: center;
+		}
+	}
+	&__footer {
+		margin-top: 2em;
+		padding-top: 2em;
+		border-top: 1px solid $color-grey-medium;
+		display: grid;
+		grid-template-columns: 1fr auto 1fr;
+		.prev {
+			text-align: left;
+		}
+		.next {
+			text-align: right;
+		}
+	}
 }

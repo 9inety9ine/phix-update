@@ -3,7 +3,7 @@
 
 <link href="{{ "lookbooks.css" | asset_url }}" rel="stylesheet">
 
-<div class="wrap wrap--full-width wrap--no-padding wrap--{{section_id }}">
+<div class="wrap wrap--x-large wrap--{{ section_id }}">
 
     <div class="section-lookbooks__inner">
 
@@ -11,14 +11,6 @@
             <div class="section-lookbooks__lookbook {{ block.settings.color_scheme}}">
                 <div class="section-lookbooks__lookbook__content {{ block.settings.color_scheme}}">
                     <h3>{{ block.settings.title }}</h3>
-                    <div class="section-lookbooks__lookbook__actions">
-                        <a href="{{ block.settings.url }}" class="button button--outline-{{ block.settings.color_scheme}}">{{ block.settings.label }}</a>
-                    </div>
-                    {% if block.settings.date != blank %}
-                    <div class="section-lookbooks__lookbook__date {{ block.settings.color_scheme}}">
-                        <span>{{ block.settings.date }}</span>
-                    </div>
-                    {% endif %}
                 </div>
                 {% if block.settings.image != blank %}
                 <div class="section-lookbooks__lookbook__image">
@@ -82,20 +74,9 @@
                     "default": "Lookbook title"
                 },
                 {
-                    "type": "text",
-                    "id": "label",
-                    "label": "Button label",
-                    "default": "View lookbook"
-                },
-                {
                     "type": "url",
                     "id": "url",
                     "label": "Link"
-                },
-                {
-                    "type": "text",
-                    "id": "date",
-                    "label": "Date"
                 }
             ]
         }
@@ -123,7 +104,7 @@
             "step": 2,
             "unit": "px",
             "label": "Padding bottom",
-            "default": 0
+            "default": 64
         },
         {
             "type": "header",
@@ -147,7 +128,7 @@
             "step": 2,
             "unit": "px",
             "label": "Padding bottom",
-            "default": 0
+            "default": 32
         }
     ]
 }
