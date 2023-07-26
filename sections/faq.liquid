@@ -1,0 +1,167 @@
+{% assign section_id = section.id | replace: "_", "" | replace: "-", "" %}
+{% render "section-styles", section_id: section_id, section: section %}
+
+<link href="{{ "faq.css" | asset_url }}" rel="stylesheet">
+
+<div class="wrap wrap--{{ section.settings.width }} wrap--{{ section_id }}">
+
+    <div class="section-faq__inner">
+        {% for block in section.blocks %}
+            {% if block.type == "heading" %}
+                <div class="section-faq__title {% unless forloop.first %}sub{% endunless %}">
+                    <h3>{{ block.settings.section_title }}</h3>
+                </div>
+            {% endif %}
+            {% if block.type =="faq" %}
+                <div class="section-faq__list-item">
+                    <div class="section-faq__list-item--header">
+                        <h4><span>{{ block.settings.question }}</span>{% render "icon-cross.svg" %}</h4>
+                    </div>
+                    <div class="section-faq__list-item--content">
+                        {{ block.settings.answer }}
+                    </div>
+                </div>
+            {% endif %}
+        {% endfor %}
+    </div>
+
+</div>
+
+<script defer>
+    const faqSection_{{ section_id }} = document.querySelector('.wrap--{{ section_id }}');
+    const faqHeaders_{{ section_id }} = faqSection_{{ section_id }}.querySelectorAll('.section-faq__list-item--header');
+    if (faqHeaders_{{ section_id }}) {
+        for (let header of faqHeaders_{{ section_id }}) {
+            header.addEventListener('click', () => {
+                header.parentNode.classList.toggle('open');
+            });
+        }
+    }
+</script>
+
+{% schema %}
+{
+    "name": "FAQ",
+    "tag": "section",
+    "class": "section-faq",
+    "blocks": [
+        {
+            "type": "heading",
+            "name": "Section Title",
+            "settings": [
+                {
+                    "type": "text",
+                    "id": "section_title",
+                    "label": "Heading",
+                    "default": "FAQ section title"
+                }
+            ]
+        },
+        {
+            "type": "faq",
+            "name": "Question",
+            "settings": [
+                {
+                    "type": "text",
+                    "id": "question",
+                    "label": "Question",
+                    "default": "Ask a question"
+                },
+                {
+                    "type": "richtext",
+                    "id": "answer",
+                    "label": "Answer",
+                    "default": "<p>Answer it here...</p>"
+                }
+            ]
+        }
+    ],
+    "settings": [
+        {
+            "type": "select",
+            "id": "width",
+            "label": "Width",
+            "options": [
+                {
+                    "value": "small",
+                    "label": "Small"
+                },
+                {
+                    "value": "medium",
+                    "label": "Medium"
+                },
+                {
+                    "value": "large",
+                    "label": "Large"
+                },
+                {
+                    "value": "x-large",
+                    "label": "X Large"
+                },
+                {
+                    "value": "xx-large",
+                    "label": "XX Large"
+                },
+                {
+                    "value": "full-width",
+                    "label": "Full Width"
+                }
+            ],
+            "default": "x-large"
+        },
+        {
+            "type": "header",
+            "content": "Desktop padding"
+        },
+        {
+            "type": "range",
+            "id": "padding_top",
+            "min": 0,
+            "max": 128,
+            "step": 2,
+            "unit": "px",
+            "label": "Padding top",
+            "default": 64
+        },
+        {
+            "type": "range",
+            "id": "padding_bottom",
+            "min": 0,
+            "max": 128,
+            "step": 2,
+            "unit": "px",
+            "label": "Padding bottom",
+            "default": 64
+        },
+        {
+            "type": "header",
+            "content": "Mobile padding"
+        },
+        {
+            "type": "range",
+            "id": "mobile_padding_top",
+            "min": 0,
+            "max": 128,
+            "step": 2,
+            "unit": "px",
+            "label": "Padding top",
+            "default": 32
+        },
+        {
+            "type": "range",
+            "id": "mobile_padding_bottom",
+            "min": 0,
+            "max": 128,
+            "step": 2,
+            "unit": "px",
+            "label": "Padding bottom",
+            "default": 32
+        }
+    ],
+    "presets":[
+        {
+            "name": "FAQ"
+        }
+    ]
+}
+{% endschema %}

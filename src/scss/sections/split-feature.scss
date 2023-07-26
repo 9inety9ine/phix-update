@@ -1,0 +1,87 @@
+@import '../abstracts/variables';
+
+.section-split-feature {
+	position: relative;
+	&__inner {
+		display: grid;
+		grid-template-columns: 1fr 1fr;
+		gap: 1em;
+		@media (max-width: $w-m) {
+			grid-template-columns: 1fr;
+			grid-template-rows: auto;
+		}
+	}
+	&__image,
+	&__look {
+		@include preload;
+	}
+	&__image {
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		img {
+			max-height: 100%;
+			max-width: 100%;
+		}
+		.fit-image {
+			img {
+				width: 100%;
+				position: relative;
+				z-index: 1;
+			}
+		}
+	}
+	&__look {
+		cursor: pointer;
+		&.open {
+			.section-split-feature__look__products {
+				display: block;
+			}
+			.section-split-feature__look__marker {
+				svg {
+					transform: rotate(45deg);
+				}
+			}
+		}
+		&__products {
+			display: none;
+			width: 30em;
+			max-width: 50%;
+			height: 100%;
+			background-color: $color-white;
+			border: 1px solid $color-grey-dark;
+			border-right: none;
+			position: absolute;
+			left: 0;
+			top: 0;
+			z-index: 3;
+			padding: 1em;
+			overflow: hidden;
+			overflow-y: auto;
+			&--list {
+				display: grid;
+				grid-template-rows: auto;
+				gap: 1em;
+			}
+		}
+		&__marker {
+			width: 3em;
+			height: 3em;
+			position: absolute;
+			left: 50%;
+			top: 50%;
+			transform: translate(-50%, -50%);
+			z-index: 2;
+			display: flex;
+			align-items: center;
+			justify-content: center;
+			svg {
+				width: 3em;
+				height: 3em;
+				display: block;
+				line-height: 1;
+				fill: $color-white;
+			}
+		}
+	}
+}

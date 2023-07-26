@@ -1,0 +1,216 @@
+{% assign section_id = section.id | replace: "_", "" | replace: "-", "" %}
+{% render "section-styles", section_id: section_id, section: section %}
+
+<link href="{{ "split-feature.css" | asset_url }}" rel="stylesheet">
+
+<div class="wrap wrap--{{ section.settings.width }} wrap--{{ section_id }}">
+
+    <div class="section-split-feature__inner">
+
+        {% for block in section.blocks %}
+            {% case block.type %}
+                {% when "image" %}
+                    {% if block.settings.image != blank %}
+                    <div class="section-split-feature__image{% if block.settings.fit_image == true %} fit-image{% endif %}{% unless request.design_mode %} preload{% endunless %}">
+                        {% if block.settings.url != blank %}<a href="{{ block.settings.url }}">{% endif %}
+                        {% if block.settings.fit_image == true %}
+                        <img 
+                            {% if request.design_mode %}
+                            src="{{ block.settings.image.src | img_url: '1200x1200', crop: "center" }}" 
+                            {% else %}
+                            src="{{ "preload.gif" | asset_url }}" 
+                            data-src="{{ block.settings.image.src | img_url: '1200x1200', crop: "center" }}" 
+                            {% endif %}
+                            alt="{{ block.settings.title }}" 
+                            width="1200" 
+                            height="1200"
+                        >
+                        {% else %}
+                        <img 
+                            {% if request.design_mode %}
+                            src="{{ block.settings.image.src | img_url: 'master' }}" 
+                            {% else %}
+                            src="{{ "preload.gif" | asset_url }}" 
+                            data-src="{{ block.settings.image.src | img_url: 'master' }}" 
+                            {% endif %}
+                            alt="{{ block.settings.title }}" 
+                            width="{{ block.settings.image.width }}" 
+                            height="{{ block.settings.image.height }}"
+                        >
+                        {% endif %}
+                        {% if block.settings.url != blank %}</a>{% endif %}
+                    </div>
+                    {% endif %}
+                {% when "look" %}
+                    {% if block.settings.image != blank %}
+                    <div class="section-split-feature__look{% unless request.design_mode %} preload{% endunless %}">
+                        {% if block.settings.products != blank %}
+                            <div class="section-split-feature__look__products">
+                                <div class="section-split-feature__look__products--list">
+                                    {% for product in block.settings.products %}
+                                        {% render "card-product", product: product %}
+                                    {% endfor %}
+                                </div>
+                            </div>
+                            <div class="section-split-feature__look__marker">{% render "icon-cross.svg" %}</div>
+                        {% endif %}
+                        <img 
+                            {% if request.design_mode %}
+                            src="{{ block.settings.image.src | img_url: '1200x1200', crop: "center" }}" 
+                            {% else %}
+                            src="{{ "preload.gif" | asset_url }}" 
+                            data-src="{{ block.settings.image.src | img_url: '1200x1200', crop: "center" }}" 
+                            {% endif %}
+                            alt="{{ block.settings.title }}" 
+                            width="1200" 
+                            height="1200"
+                        >
+                    </div>
+                    {% endif %}
+            {% endcase %}
+        {% endfor %}
+        
+    </div>
+
+</div>
+
+<script defer>
+    const section_{{ section_id }} = document.querySelector('.wrap--{{ section_id }}');
+    const looks_{{ section_id }} = section_{{ section_id }}.querySelectorAll('.section-split-feature__look');
+    if (looks_{{ section_id }}) {
+        for (let look of looks_{{ section_id }}) {
+            look.addEventListener('click', e => {
+                e.preventDefault();
+                look.classList.toggle('open')
+            })
+        }
+    }
+</script>
+
+{% schema %}
+{
+    "name": "Split Feature",
+    "tag": "section",
+    "class": "section-split-feature",
+    "max_blocks": 2,
+    "blocks": [
+        {
+            "type": "image",
+            "name": "Image",
+            "settings": [
+                {
+                    "type": "image_picker",
+                    "id": "image",
+                    "label": "Image"
+                },
+                {
+                    "type": "url",
+                    "id": "url",
+                    "label": "Link"
+                },
+                {
+                    "type": "checkbox",
+                    "id": "fit_image",
+                    "label": "Fit Image",
+                    "default": true
+                }
+            ]
+        },
+        {
+            "type": "look",
+            "name": "Look",
+            "settings": [
+                {
+                    "type": "image_picker",
+                    "id": "image",
+                    "label": "Image"
+                },
+                {
+                    "type": "product_list",
+                    "id": "products",
+                    "label": "Products"
+                }
+            ]
+        }
+    ],
+    "settings": [
+        {
+            "type": "select",
+            "id": "width",
+            "label": "Width",
+            "options": [
+                {
+                    "value": "large",
+                    "label": "Large"
+                },
+                {
+                    "value": "x-large",
+                    "label": "X Large"
+                },
+                {
+                    "value": "xx-large",
+                    "label": "XX Large"
+                },
+                {
+                    "value": "full-width",
+                    "label": "Full Width"
+                }
+            ],
+            "default": "full-width"
+        },
+        {
+            "type": "header",
+            "content": "Desktop padding"
+        },
+        {
+            "type": "range",
+            "id": "padding_top",
+            "min": 0,
+            "max": 128,
+            "step": 2,
+            "unit": "px",
+            "label": "Padding top",
+            "default": 64
+        },
+        {
+            "type": "range",
+            "id": "padding_bottom",
+            "min": 0,
+            "max": 128,
+            "step": 2,
+            "unit": "px",
+            "label": "Padding bottom",
+            "default": 64
+        },
+        {
+            "type": "header",
+            "content": "Mobile padding"
+        },
+        {
+            "type": "range",
+            "id": "mobile_padding_top",
+            "min": 0,
+            "max": 128,
+            "step": 2,
+            "unit": "px",
+            "label": "Padding top",
+            "default": 32
+        },
+        {
+            "type": "range",
+            "id": "mobile_padding_bottom",
+            "min": 0,
+            "max": 128,
+            "step": 2,
+            "unit": "px",
+            "label": "Padding bottom",
+            "default": 32
+        }
+    ],
+    "presets":[
+        {
+            "name": "Split Feature"
+        }
+    ]
+}
+{% endschema %}
