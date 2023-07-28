@@ -25,7 +25,9 @@
                 {% endfor %}
             </div>
             <div class="drawer__localization">
-                {% render "localization", drawer: true %}
+                {% comment %} {% render "localization", drawer: true %} {% endcomment %}
+                {% assign currency_iso = localization.country.currency.iso_code %}
+                <a href="#" class="drawer-lang-select" aria-label="{{ "accessibility.localize" | t }}">{% render "localization-flags", currency_iso: currency_iso %}<span class="label">{{ localization.country.name }}</span></a>
             </div>
             <div class="drawer__footer drawer-menu__footer">
                 <p>Footer Content</p>

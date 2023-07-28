@@ -37,12 +37,23 @@
 			display: flex;
 			align-items: center;
 			padding-right: 0.5em;
+			@media (max-width: $w-l) {
+				display: none;
+			}
+			a {
+				width: fit-content;
+				text-decoration: none;
+				gap: 0.5em;
+			}
 			.img-icon {
 				display: block;
 			}
 			img {
-				width: 1.5em;
+				width: 1.75em;
 				border-radius: 2px;
+			}
+			.label {
+				display: none;
 			}
 		}
 		&--cart {

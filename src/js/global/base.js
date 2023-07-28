@@ -101,3 +101,11 @@ if (footerTitles)
 				title.parentNode.classList.toggle('open');
 			}
 		});
+
+const drawerLangSelect = document.querySelector('.drawer-lang-select');
+if (drawerLangSelect)
+	drawerLangSelect.addEventListener('click', e => {
+		e.preventDefault();
+		window.toggleDrawer(false, false);
+		mdApp_openAndRefreshModal();
+	});

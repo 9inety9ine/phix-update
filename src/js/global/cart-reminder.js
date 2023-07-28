@@ -59,7 +59,6 @@ window.showCartReminder = () => {
 };
 
 window.addEventListener('DOMContentLoaded', () => {
-	console.log(window.getCookie('show_reminder'));
 	const showReminder = window.getCookie('show_reminder');
 	if (!showReminder || showReminder === 'yes' || showReminder === null) {
 		window.showCartReminder();
