@@ -3,6 +3,8 @@
 <nav>
     <ul class="menu menu-desktop">
     {% for block in section.blocks %}
+        {% case block.type %}
+        {% when "menu" %}
         <li class="menu-desktop__item">
             <a href="{{ block.settings.url }}" class="menu-desktop__link">{{ block.settings.label }}</a>
             <div class="menu-desktop__mega-menu">
@@ -108,6 +110,7 @@
                 </div>
             </div>
         </li>
+        {% endcase %}
     {% endfor %}
     </ul>
     <span class="menu-desktop-device"></span>

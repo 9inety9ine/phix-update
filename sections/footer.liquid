@@ -43,6 +43,23 @@
 
         
         <div class="footer-main__lower">
+            <div class="footer-main__apps">
+                {% if section.settings.app_text != blank %}
+                <p>{{ section.settings.app_text }}</p>
+                {% endif %}
+                <div class="footer-main__apps__logos">
+                    {% if section.settings.app_url_apple != blank %}<a href="{{ section.settings.app_url_apple }}" aria-label="{{ "general.apps.apple" | t }}" target="_blank">{% endif %}
+                    {% if section.settings.app_image_apple != blank %}
+                        <img src="{{ section.settings.app_image_apple.src | img_url: "master" }}" width="{{ section.settings.app_image_apple.width }}" height="{{ section.settings.app_image_apple.height }}" alt="{{ "general.apps.apple" | t }}">
+                    {% endif %}
+                    {% if section.settings.app_url_apple != blank %}</a>{% endif %}
+                    {% if section.settings.app_url_android != blank %}<a href="{{ section.settings.app_url_android }}" aria-label="{{ "general.apps.android" | t }}" target="_blank">{% endif %}
+                    {% if section.settings.app_image_android != blank %}
+                        <img src="{{ section.settings.app_image_android.src | img_url: "master" }}" width="{{ section.settings.app_image_android.width }}" height="{{ section.settings.app_image_android.height }}" alt="{{ "general.apps.android" | t }}">
+                    {% endif %}
+                    {% if section.settings.app_url_android != blank %}</a>{% endif %}
+                </div>
+            </div>
             <div class="footer-main__socials">
               <ul>
                 {% if section.settings.url_fb != blank %}<li><a href="{{ section.settings.url_fb }}" target="_blank" aria-label="{{ shop.name }} Facebook"><img src="{{ "icon-facebook.svg" | asset_url }}" alt="{{ shop.name }} Facebook"></a></li>{% endif %}
@@ -158,6 +175,36 @@
             "id": "info_text",
             "label": "Text",
             "default": "© 2023 Rock n Roller Limited trading as Phix Clothing"
+        },
+        {
+            "type": "header",
+            "content": "App Info"
+        },
+        {
+            "type": "text",
+            "id": "app_text",
+            "label": "Text",
+            "default": "10% off first order with the Phix app"
+        },
+        {
+            "type": "image_picker",
+            "id": "app_image_apple",
+            "label": "Apple Image"
+        },
+        {
+            "type": "url",
+            "id": "app_url_apple",
+            "label": "Apple Link"
+        },
+        {
+            "type": "image_picker",
+            "id": "app_image_android",
+            "label": "Android Image"
+        },
+        {
+            "type": "url",
+            "id": "app_url_android",
+            "label": "Android Link"
         },
         {
             "type": "header",

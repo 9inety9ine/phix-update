@@ -121,14 +121,35 @@
 		display: flex;
 		flex-direction: column;
 		gap: 2em;
-		text-align: center;
+		text-align: left;
+		@media (max-width: $w-l) {
+			text-align: center;
+		}
+	}
+	&__apps {
+		&__logos {
+			display: flex;
+			gap: 1em;
+			@media (max-width: $w-l) {
+				justify-content: center;
+			}
+			a {
+				display: block;
+			}
+			img {
+				width: 10em;
+			}
+		}
 	}
 	&__socials {
 		ul {
 			display: flex;
 			gap: 2em;
 			width: 100%;
-			justify-content: center;
+			justify-content: flex-start;
+			@media (max-width: $w-l) {
+				justify-content: center;
+			}
 		}
 		img {
 			width: 1.5em;

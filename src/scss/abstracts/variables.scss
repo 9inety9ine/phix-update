@@ -1,9 +1,9 @@
 // font families
-$font-base: 'helvetica-web', 'HelveticaNeue-Light', 'Helvetica Neue Light', 'Helvetica Neue', Helvetica, Arial, 'Lucida Grande', sans-serif;
+$font-base: Helvetica, Arial, 'Lucida Grande', sans-serif;
 
 // font-weights
-$weight-regular: normal;
-$weight-bold: bold;
+$weight-regular: 400;
+$weight-bold: 700;
 
 // theme colours
 $color-white: var(--color-white);

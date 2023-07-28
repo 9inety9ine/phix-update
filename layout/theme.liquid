@@ -4,8 +4,31 @@
     
     {%- render 'meta-tags' %}
     {%- render 'meta-social' %}
-    {%- render "meta-favicon" %}
-    {%- render "meta-fonts" %}
+
+    {% if settings.favicon != blank -%}
+    <link rel="icon" type="image/png" href="{{ settings.favicon | img_url: "32x32", crop: "center" }}">
+    {%- endif %}
+    
+    <link rel="preconnect" href="https://cdn.shopify.com">
+    <link rel="preconnect" href="https://fast.a.klaviyo.com">
+    <link rel="preconnect" href="https://telemetrics.klaviyo.com">
+    <link rel="preconnect" href="https://stats.g.doubleclick.net">
+    <link rel="preconnect" href="https://www.google.com">
+    <link rel="preconnect" href="https://connect.facebook.net">
+    <link rel="preconnect" href="https://www.google-analytics.com">
+    <link rel="preconnect" href="https://www.facebook.com">
+    <link rel="preconnect" href="https://ajax.googleapis.com">
+
+    {%- assign body_font_bold = settings.font | font_modify: 'weight', 'bold' -%}
+    {%- assign body_font_italic = settings.font | font_modify: 'style', 'italic' -%}
+    {%- assign body_font_bold_italic = body_font_bold | font_modify: 'style', 'italic' %}
+
+    <style>
+      {{ settings.font | font_face: font_display: 'swap' }}
+      {{ body_font_bold | font_face: font_display: 'swap' }}
+      {{ body_font_italic | font_face: font_display: 'swap' }}
+      {{ body_font_bold_italic | font_face: font_display: 'swap' }}
+    </style>
     
     <!-- content for header -->
     {{ content_for_header }}
@@ -17,10 +40,6 @@
 
     <script src="{{ "geolocation.js" | asset_url }}"></script>
     <script src="{{ "swiper.js" | asset_url }}"></script>
-    
-    {% if template == "index" %}
-      <script src="https://ig.instant-tokens.com/users/37ff5468-5275-4de3-ad2f-39e52419df25/instagram/6587700211251565/token.js?userSecret=v5j4bj2441p702aa46rwrm"></script>
-    {% endif %}
 
     <!-- global variables -->
     <script>
