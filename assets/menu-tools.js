@@ -1,0 +1,1 @@
+const langSelectorLink=document.querySelector(".lang-select");langSelectorLink&&langSelectorLink.addEventListener("click",e=>{e.preventDefault(),mdApp_openAndRefreshModal()});

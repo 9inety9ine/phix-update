@@ -6,7 +6,7 @@
         {% case block.type %}
         {% when "menu" %}
         <li class="menu-desktop__item">
-            <a href="{{ block.settings.url }}" class="menu-desktop__link">{{ block.settings.label }}</a>
+            <a href="{{ block.settings.url }}" class="menu-desktop__link" aria-label="{{ block.settings.label }}">{{ block.settings.label }}</a>
             <div class="menu-desktop__mega-menu">
                 <div class="wrap wrap--xx-large">
                     <div class="menu-desktop__mega-menu__inner">

@@ -90,7 +90,8 @@
 		"loading": "Loading...",
 		"load_more": "Load more",
 		"sort": "Sort",
-		"payment_options": "Payment Options"
+		"payment_options": "Payment Options",
+		"localize": "Localize"
 	},
 	"cart": {
 		"title": "Your Cart",

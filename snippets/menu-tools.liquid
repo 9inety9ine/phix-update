@@ -5,7 +5,7 @@
         <li class="menu-tools__link menu-tools__link--flag">
             {% assign currency_iso = localization.country.currency.iso_code %}
             <!-- {{ currency_iso }}-->
-            {% render "localization-flags", currency_iso: currency_iso %}
+            <a href="#" class="lang-select" aria-label="{{ "accessibility.localize" | t }}">{% render "localization-flags", currency_iso: currency_iso %}</a>
         </li>
         <li class="menu-tools__link menu-tools__link--account">
             <a href="{{ routes.account_url }}" aria-label="{{ 'general.tools_menu.account_label' | t }}">
@@ -36,3 +36,5 @@
         {% endunless %}
     </ul>
 </nav>
+
+<script src="{{ "menu-tools.js" | asset_url }}" defer></script>
