@@ -2,7 +2,7 @@
 
 {% assign show_video = product.metafields.product.show_product_card_video.value %}
 
-<div class="card-product{% unless request.design_mode or show_video == "True" %} preload{% endunless %}">
+<div class="card-product{% unless request.design_mode %} preload{% endunless %}">
 
     <div class="card-product__media">
         <a href="{{ product.url | within: collection }}" aria-label="{{ product.title }}">
@@ -10,8 +10,12 @@
                 {% assign video_count = 0 %}
                 {% for media in product.media %}
                     {% if media.media_type == 'video' %}
-                    <video muted="" loop="" playsinline="" autoplay="" poster="">
+                    <video muted="" loop="" playsinline="" autoplay="" poster="{{ media.preview_image | img_url: '600x818', crop: "center" }}"{% unless request.design_mode %} data-src="{{ media.sources[1].url }}" class="preload"{% endunless %}>
+                        {% if request.design_mode %}
                         <source src="{{ media.sources[1].url }}" type="video/mp4">
+                        {% else %}
+                        <source src="" type="video/mp4">
+                        {% endif %}
                     </video>
                     {% assign video_count = video_count | plus: 1 %}
                     {% endif %}
@@ -20,15 +24,15 @@
             {% else %}
             <img 
                 {% if request.design_mode %}
-                src="{{ product.featured_image.src | img_url: '600x820', crop: "center" }}" 
+                src="{{ product.featured_image.src | img_url: '600x818', crop: "center" }}" 
                 {% else %}
                 src="{{ "preload.gif" | asset_url }}" 
-                data-src="{{ product.featured_image.src | img_url: '600x820', crop: "center" }}" 
+                data-src="{{ product.featured_image.src | img_url: '600x818', crop: "center" }}" 
                 class="preload" 
                 {% endif %}
                 alt="{{ product.title }}" 
                 width="600" 
-                height="820" 
+                height="818" 
             >
             {% endif %}
         </a>

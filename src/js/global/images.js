@@ -32,5 +32,40 @@ window.initializeImageLoad = function () {
 			});
 		}
 	}
+	let videosToLoad = document.querySelectorAll('video[data-src]');
+	if (videosToLoad) {
+		const loadVideos = video => {
+			const videoSRC = video.getAttribute('data-src');
+			if (videoSRC) {
+				const videoSource = video.querySelector('source');
+				videoSource.setAttribute('src', videoSRC);
+				video.load();
+				video.onloadstart = () => {
+					video.removeAttribute('data-src');
+					video.classList.remove('preload');
+					video.parentNode.classList.remove('preload');
+					video.parentNode.parentNode.classList.remove('preload');
+					video.parentNode.parentNode.parentNode.classList.remove('preload');
+				};
+			}
+		};
+		if ('IntersectionObserver' in window) {
+			const video_observer = new IntersectionObserver((items, video_observer) => {
+				items.forEach(item => {
+					if (item.isIntersecting) {
+						loadVideos(item.target);
+						video_observer.unobserve(item.target);
+					}
+				});
+			});
+			videosToLoad.forEach(video => {
+				video_observer.observe(video);
+			});
+		} else {
+			videosToLoad.forEach(video => {
+				loadImages(video);
+			});
+		}
+	}
 };
 window.initializeImageLoad();

@@ -2,7 +2,8 @@
 
 .product-media {
 	position: relative;
-	img {
+	img,
+	video {
 		@include preload;
 	}
 	.swiper,

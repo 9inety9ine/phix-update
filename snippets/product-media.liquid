@@ -26,8 +26,12 @@
                 {% if media.media_type == "video" %}
                 <div class="section-product__image swiper-slide">
                     <a href="{{ media.sources[1].url }}" data-fancybox="gallery" data-type="iframe" data-width="768" data-height="1048">
-                        <video muted="" loop="" playsinline="" autoplay="" poster="{{ media.preview_image | img_url: '768x1048', crop: "center" }}">
+                        <video muted="" loop="" playsinline="" autoplay="" poster="{{ media.preview_image | img_url: '768x1048', crop: "center" }}"{% unless request.design_mode %} data-src="{{ media.sources[1].url }}" class="preload"{% endunless %}>
+                            {% if request.design_mode %}
                             <source src="{{ media.sources[1].url }}" type="video/mp4">
+                            {% else %}
+                            <source src="" type="video/mp4">
+                            {% endif %}
                         </video>
                     </a>
                 </div>
