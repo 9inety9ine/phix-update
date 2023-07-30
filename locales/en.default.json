@@ -14,8 +14,8 @@
 			"home_label": "Home"
 		},
 		"apps": {
-			"android": "Download Phix on Google Play",
-			"apple": "Download Phix on the App Store"
+			"android": "Download on Play Store",
+			"apple": "Download on App Store"
 		}
 	},
 	"products": {

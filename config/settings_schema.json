@@ -118,5 +118,91 @@
 				"info": "This should be a commma separated list of no more than 10 keywords."
 			}
 		]
+	},
+	{
+		"name": "App Info",
+		"settings": [
+			{
+				"type": "text",
+				"id": "app_text",
+				"label": "Text",
+				"default": "10% off first order with the Phix app"
+			},
+			{
+				"type": "image_picker",
+				"id": "app_image_apple",
+				"label": "Apple Image"
+			},
+			{
+				"type": "image_picker",
+				"id": "app_icon_apple",
+				"label": "Apple Icon"
+			},
+			{
+				"type": "url",
+				"id": "app_url_apple",
+				"label": "Apple Link"
+			},
+			{
+				"type": "image_picker",
+				"id": "app_image_android",
+				"label": "Android Image"
+			},
+			{
+				"type": "image_picker",
+				"id": "app_icon_android",
+				"label": "Android Icon"
+			},
+			{
+				"type": "url",
+				"id": "app_url_android",
+				"label": "Android Link"
+			}
+		]
+	},
+	{
+		"name": "Socials",
+		"settings": [
+			{
+				"type": "url",
+				"id": "url_fb",
+				"label": "Facebook"
+			},
+			{
+				"type": "url",
+				"id": "url_tw",
+				"label": "Twitter"
+			},
+			{
+				"type": "url",
+				"id": "url_yt",
+				"label": "Youtube"
+			},
+			{
+				"type": "url",
+				"id": "url_in",
+				"label": "Instagram"
+			},
+			{
+				"type": "url",
+				"id": "url_tt",
+				"label": "Tiktok"
+			},
+			{
+				"type": "url",
+				"id": "url_pi",
+				"label": "Pinterest"
+			},
+			{
+				"type": "url",
+				"id": "url_sn",
+				"label": "Snapchat"
+			},
+			{
+				"type": "url",
+				"id": "url_li",
+				"label": "LinkedIn"
+			}
+		]
 	}
 ]

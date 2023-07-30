@@ -5,6 +5,9 @@
 	right: auto;
 	transition: left 0.25s linear;
 	background-color: $color-black;
+	height: 100vh;
+	max-height: 100vh;
+	overflow-y: auto;
 	&__header {
 		background-color: $color-white;
 		padding: 2em 0 2em 2em;

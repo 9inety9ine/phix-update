@@ -142,7 +142,8 @@
 		}
 	}
 	&__socials {
-		ul {
+		.menu-socials {
+			padding: 0;
 			display: flex;
 			gap: 2em;
 			width: 100%;
@@ -150,10 +151,10 @@
 			@media (max-width: $w-l) {
 				justify-content: center;
 			}
-		}
-		img {
-			width: 1.5em;
-			height: 1.5em;
+			img {
+				width: 1.5em;
+				height: 1.5em;
+			}
 		}
 	}
 }

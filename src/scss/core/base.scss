@@ -206,3 +206,9 @@ h6:empty {
 #fsb_container {
 	display: none !important;
 }
+.fancybox {
+	&__content {
+		background-color: #000 !important;
+		padding: 0 !important;
+	}
+}

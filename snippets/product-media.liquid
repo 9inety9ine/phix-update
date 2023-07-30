@@ -9,18 +9,29 @@
                 <a href="{{ image | img_url: 'master' }}" data-fancybox="gallery">
                     <img 
                         {% if request.design_mode %}
-                        src="{{ image.src | img_url: '768x1046', crop: "center" }}" 
+                        src="{{ image.src | img_url: '768x1048', crop: "center" }}" 
                         {% else %}
-                        data-src="{{ image.src | img_url: '768x1046', crop: "center" }}" 
+                        data-src="{{ image.src | img_url: '768x1048', crop: "center" }}" 
                         src="{{ 'preload.gif' | asset_url }}" 
                         class="preload" 
                         {% endif %}
                         alt="{{ product.title }}" 
-                        width="{{ image.width }}" 
-                        height="{{ image.height }}" 
+                        width="768" 
+                        height="1048" 
                     >
                 </a>
             </div>
+            {% endfor %}
+            {% for media in product.media %}
+                {% if media.media_type == "video" %}
+                <div class="section-product__image swiper-slide">
+                    <a href="{{ media.sources[1].url }}" data-fancybox="gallery" data-type="iframe" data-width="768" data-height="1048">
+                        <video muted="" loop="" playsinline="" autoplay="" poster="{{ media.preview_image | img_url: '768x1048', crop: "center" }}">
+                            <source src="{{ media.sources[1].url }}" type="video/mp4">
+                        </video>
+                    </a>
+                </div>
+                {% endif %}
             {% endfor %}
         </div>
     </div>

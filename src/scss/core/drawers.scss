@@ -15,8 +15,10 @@
 	}
 	&__localization {
 		background-color: $color-white;
-		padding: 0 2em 2em 2em;
+		padding: 0 2em;
 		a {
+			padding: 2em 0;
+			border-top: 1px dotted $color-grey-medium;
 			display: flex;
 			align-items: center;
 			gap: 0.75em;

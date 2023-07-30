@@ -50,9 +50,8 @@ window.showCartReminder = () => {
 						})
 						.finally(() => {
 							window.initializeImageLoad();
+							window.setCookie('show_reminder', 'no', 1);
 						});
-				} else {
-					console.log('cart empty');
 				}
 			});
 	}
@@ -63,14 +62,13 @@ window.addEventListener('DOMContentLoaded', () => {
 	if (!showReminder || showReminder === 'yes' || showReminder === null) {
 		window.showCartReminder();
 	}
-	window.setCookie('show_reminder', 'no', 1);
 });
 
 document.onkeydown = function (evt) {
 	evt = evt || window.event;
 	if (evt.keyCode == 27) {
 		window.setCookie('show_reminder', 'yes', 1);
-		console.log('cookie cleared');
+		console.log('cookie reset');
 	}
 };
 
@@ -79,5 +77,4 @@ if (reminderClose)
 	reminderClose.addEventListener('click', () => {
 		const reminderDrawer = document.querySelector('.cart-reminder');
 		reminderDrawer.classList.remove('show');
-		window.setCookie('show_reminder', 'no', 1);
 	});

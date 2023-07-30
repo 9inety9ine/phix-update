@@ -1,0 +1,37 @@
+<link href="{{ "menu-tools-mobile.css" | asset_url }}" rel="stylesheet">
+
+<nav>
+    <ul class="menu menu-tools-mobile">
+        <li class="menu-tools-mobile__link menu-tools-mobile__link--account">
+            <a href="{{ routes.account_url }}" aria-label="{{ 'general.tools_menu.account_label' | t }}">
+                {% render "icon-account.svg" %}
+                <span>{{ 'general.tools_menu.account_label' | t }}</span>
+            </a>
+        </li>
+        <li class="menu-tools-mobile__link menu-tools-mobile__link--wishlist">
+            <a href="{{ routes.root_url }}pages/wishlist" aria-label="{{ 'general.tools_menu.wishlist_label' | t }}">
+                {% render "icon-wishlist.svg" %}
+                <span>{{ 'general.tools_menu.wishlist_label' | t }}</span>
+            </a>
+        </li>
+    </ul>
+    <ul class="menu menu-tools-mobile--apps">
+        <li class="menu-tools-mobile__link menu-tools-mobile__link--android">
+            {% if settings.app_url_android != blank %}<a href="{{ settings.app_url_android }}" aria-label="{{ "general.apps.android" | t }}" target="_blank">{% endif %}
+                {% if settings.app_icon_android != blank %}
+                    <img src="{{ settings.app_icon_android.src | img_url: "master" }}" width="{{ settings.app_icon_android.width }}" height="{{ settings.app_icon_android.height }}" alt="{{ "general.apps.android" | t }}">
+                {% endif %}
+                <span>{{ "general.apps.android" | t }}</span>
+            {% if settings.app_url_android != blank %}</a>{% endif %}
+        </li>
+        <li class="menu-tools-mobile__link menu-tools-mobile__link--apple">
+            {% if settings.app_url_apple != blank %}<a href="{{ settings.app_url_apple }}" aria-label="{{ "general.apps.apple" | t }}" target="_blank">{% endif %}
+                {% if settings.app_icon_apple != blank %}
+                    <img src="{{ settings.app_icon_apple.src | img_url: "master" }}" width="{{ settings.app_icon_apple.width }}" height="{{ settings.app_icon_apple.height }}" alt="{{ "general.apps.apple" | t }}">
+                {% endif %}
+                <span>{{ "general.apps.apple" | t }}</span>
+            {% if settings.app_url_apple != blank %}</a>{% endif %}
+        </li>
+    </ul>
+    {% render "menu-socials" %}
+</nav>
