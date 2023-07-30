@@ -1,12 +1,16 @@
 <link href="{{ "card-product.css" | asset_url }}" rel="stylesheet">
 
 {% assign show_video = product.metafields.product.show_product_card_video.value %}
+{% assign has_video = false %}
+{% for media in product.media %}
+    {% if media.media_type == 'video' %}{% assign has_video = true %}{% endif %}
+{% endfor %}
 
 <div class="card-product{% unless request.design_mode %} preload{% endunless %}">
 
     <div class="card-product__media">
         <a href="{{ product.url | within: collection }}" aria-label="{{ product.title }}">
-            {% if show_video == 'True' %}
+            {% if show_video == 'True' and has_video == true %}
                 {% assign video_count = 0 %}
                 {% for media in product.media %}
                     {% if media.media_type == 'video' %}
