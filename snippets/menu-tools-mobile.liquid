@@ -9,7 +9,7 @@
             </a>
         </li>
         <li class="menu-tools-mobile__link menu-tools-mobile__link--wishlist">
-            <a href="{{ routes.root_url }}pages/wishlist" aria-label="{{ 'general.tools_menu.wishlist_label' | t }}">
+            <a href="{% if routes.root_url == "/" %}/pages/wishlist{% else %}{{ routes.root_url }}/pages/wishlist{% endif %}" aria-label="{{ 'general.tools_menu.wishlist_label' | t }}">
                 {% render "icon-wishlist.svg" %}
                 <span>{{ 'general.tools_menu.wishlist_label' | t }}</span>
             </a>

@@ -24,7 +24,7 @@
         </div>
 
         <div class="header-main__branding">
-            <a href="{{ routes.root_url }}" aria-label="{{ shop.name }}">
+            <a href="{% if routes.root_url == "/" %}{{ shop.url }}{% else %}{{ routes.root_url }}{% endif %}" aria-label="{{ shop.name }}">
                 {% if template == "index" %}
                     <h1 style="display:none;">{{ shop.name }}</h1>
                 {% endif %}

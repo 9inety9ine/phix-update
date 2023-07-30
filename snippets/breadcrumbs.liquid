@@ -5,7 +5,7 @@
 <nav class="breadcrumbs" aria-label="breadcrumbs">
     <ol class="breadcrumbs__list">
       <li class="breadcrumbs__item">
-        <a class="breadcrumbs__link" href="{{ routes.root_url }}">{{ 'general.breadcrumbs.home_label' | t }}</a>
+        <a class="breadcrumbs__link" href="{% if routes.root_url == "/" %}{{ shop.url }}{% else %}{{ routes.root_url }}{% endif %}">{{ 'general.breadcrumbs.home_label' | t }}</a>
       </li>
       {%- case t -%}
         {%- when 'page' -%}

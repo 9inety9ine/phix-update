@@ -6,7 +6,7 @@
     <div class="footer-main__inner">
 
         <div class="footer-main__branding">
-            <a href="{{ routes.root_url }}" aria-label="{{ shop.name }}">
+            <a href="{% if routes.root_url == "/" %}{{ shop.url }}{% else %}{{ routes.root_url }}{% endif %}" aria-label="{{ shop.name }}">
                 <img src="{{ "logo-phix-white.png" | asset_url }}" alt="{{ shop.name }}" width="432" height="125">
             </a>
         </div>
