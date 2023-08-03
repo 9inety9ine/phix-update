@@ -7,9 +7,12 @@ main {
 	width: 100%;
 	max-width: 100%;
 	margin: 0 auto;
-	padding: 0 2em;
+	padding: 0 4em;
+	@media (max-width: $w-xl) {
+		padding: 0 3em;
+	}
 	@media (max-width: $w-m) {
-		padding: 0 1.5em;
+		padding: 0 2em;
 	}
 	@media (max-width: $w-s) {
 		padding: 0 1em;

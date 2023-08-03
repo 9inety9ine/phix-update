@@ -9,14 +9,40 @@
 		@media (max-width: $w-l) {
 			gap: 1em;
 		}
+		@media (max-width: $w-m) {
+			grid-template-columns: 1fr;
+			grid-template-rows: auto;
+			gap: 0.25em;
+		}
 	}
 	&__product {
 		@include preload;
 		a {
 			display: block;
+			position: relative;
+			overflow: hidden;
+			height: 0;
+			padding-bottom: 135%;
+			&:hover {
+				img {
+					transform: translate(-50%, -50%) scale(1.035);
+				}
+				.section-product-grid__product__label {
+					background-color: $color-white;
+					color: $color-black;
+				}
+			}
 		}
 		img {
-			position: relative;
+			position: absolute;
+			left: 50%;
+			top: 50%;
+			transform: translate(-50%, -50%) scale(1);
+			z-index: 1;
+			width: 100%;
+			height: 100%;
+			object-fit: cover;
+			transition: transform linear 0.25s;
 			z-index: 1;
 		}
 		&__label {
@@ -32,6 +58,7 @@
 			font-weight: $weight-bold;
 			width: max-content;
 			max-width: 90%;
+			transition: all 0.25s linear;
 		}
 	}
 }
