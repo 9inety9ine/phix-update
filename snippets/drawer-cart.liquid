@@ -15,7 +15,7 @@
         <div class="drawer__footer drawer-cart__footer hidden">
             <div class="cart-totals" id="cart-totals"></div>
             {% form 'cart', cart %}
-            <button name="checkout" class="button button--full-width button--tall">{{ 'cart.drawer.checkout' | t }}</button>
+            <button name="checkout" class="button button--full-width button--tall button--highlight">{{ 'cart.drawer.checkout' | t }}</button>
             {% endform %}
             {% render "payment-icons" %}
         </div>
