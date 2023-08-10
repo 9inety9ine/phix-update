@@ -92,7 +92,10 @@
                         <label for="collection-sort"><span>{{ "filters.sort" | t }}</span></label>
                         <select name="sort_by" id="collection-sort" aria-label="{{ 'collection.sort' | t }}">
                         {% for option in collection.sort_options %}
+                            {% assign option_name = option.name | handleize %}
+                            {% unless option_name == "best-selling" %}
                             <option name="sort_by" value="{{ option.value }}"{% if option.value == collection.sort_by %} selected{% endif %}>{{ option.name }}</option>
+                            {% endunless %}
                         {% endfor %}
                         </select>
                     </div>
