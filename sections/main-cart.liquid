@@ -71,7 +71,7 @@
                         </div>
                     {% endif %}
                     <div class="cart-item__wishlist">
-                        <button>{% render "icon-wishlist.svg" %}<span>Move to wishlist</span></button>
+                        <button data-id="{{ item.product.id }}" data-product="{{ item.id }}" class="add-to-wishlist{% if customer %} active{% endif %}"{% unless customer %} title="{{ 'cart.wishlist_notice' | t }}"{% endunless %}>{% render "icon-wishlist.svg" %}<span>{{ 'cart.wishlist_add' | t }}</span></button>
                     </div>
                 </div>
             </div>

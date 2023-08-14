@@ -57,6 +57,18 @@
       {%- endif %}
     </script>
 
+    {% if customer.id != null %}
+      {%- capture message %}{{ customer.id }}:{{ "now" | date: "%Y-%m-%d" }}{% endcapture -%}
+      {%- assign secret_key = 'xRozxsY7d6jvUco60SWKzF6Q2c6KLTHb' -%}
+      {%- assign customer_api_token = message | hmac_sha256: secret_key -%}
+      <script>
+        const cake = { 
+            customer_id: {{ customer.id | json }},
+            customer_api_token: "{{ customer_api_token }}"
+        };
+      </script>
+    {% endif %}
+
     <!-- global colours -->
     <style>
       :root {

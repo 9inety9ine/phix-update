@@ -65,6 +65,10 @@
 			button {
 				display: flex;
 				gap: 0.5em;
+				opacity: 0.35;
+				&.active {
+					opacity: 1;
+				}
 				span {
 					text-decoration: underline;
 				}

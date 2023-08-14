@@ -37,6 +37,7 @@ window.updateCartDrawer = function () {
 			window.initCartDrawerRemove();
 			window.initializeImageLoad();
 			window.countCartItems();
+			window.initAddToWishlist();
 		})
 		.catch(function (err) {
 			console.error(err);
@@ -142,4 +143,58 @@ window.cart_drawer_recommendations = function () {
 		}
 	}
 	waitForFound();
+};
+
+window.initAddToWishlist = function () {
+	const addToWishlistButtons = document.querySelectorAll('.add-to-wishlist');
+	if (addToWishlistButtons) {
+		for (let button of addToWishlistButtons) {
+			if (button.classList.contains('initialized')) continue;
+			button.addEventListener('click', e => {
+				e.preventDefault();
+				if (button.classList.contains('active')) {
+					const thisProduct = button.dataset.id;
+					fetch('https://wishlist.hydratedelephant.com/wishlist', {
+						method: 'POST',
+						headers: {
+							'Content-type': 'application/json',
+							'X-Customer-Security-Token': cake.customer_api_token,
+						},
+						body: JSON.stringify({
+							customer_id: cake.customer_id,
+							store_name: Shopify.shop.replace('.myshopify.com', ''),
+							product_id: thisProduct,
+						}),
+					})
+						.then(response => response.json())
+						.then(data => {
+							//console.log(data);
+							if (data.action === 'added') {
+								let current_id = button.dataset.product;
+								let current_val = 0;
+								let data = { updates: {} };
+								data.updates[current_id] = current_val;
+								fetch(window.Shopify.routes.root + 'cart/update.js', {
+									method: 'POST',
+									headers: {
+										'Content-type': 'application/json',
+									},
+									body: JSON.stringify(data),
+								})
+									.then(response => response.json())
+									.then(function () {
+										window.updateCartDrawer();
+									})
+									.catch(err => {
+										console.log(err);
+									});
+							}
+						});
+				} else {
+					console.log('not active');
+				}
+			});
+			button.classList.add('initialized');
+		}
+	}
 };
