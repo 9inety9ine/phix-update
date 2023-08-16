@@ -1,0 +1,23 @@
+@import '../abstracts/variables';
+
+.section-meet-content {
+	&__inner {
+		border-top: 1px solid $color-black;
+	}
+	ul,
+	ol {
+		margin: 0 0 1em 0;
+		padding: 0 0 0 2em;
+	}
+	ul {
+		list-style-type: disc;
+	}
+	ol {
+		list-style-type: decimal;
+	}
+	p {
+		&:last-child {
+			margin-bottom: 0;
+		}
+	}
+}

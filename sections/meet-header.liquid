@@ -1,0 +1,190 @@
+{% assign section_id = section.id | replace: "_", "" | replace: "-", "" %}
+{% render "section-styles", section_id: section_id, section: section %}
+
+<link href="{{ "meet-header.css" | asset_url }}" rel="stylesheet">
+
+<div class="wrap wrap--x-large wrap--{{ section_id }}">
+
+    <div class="section-meet-header__inner">
+        <div class="section-meet-header__image{% unless request.design_mode %} preload{% endunless %}">
+            <img 
+                {% if request.design_mode %}
+                src="{{ section.settings.image.src | img_url: 'master' }}" 
+                {% else %}
+                src="{{ "preload.gif" | asset_url }}" 
+                data-src="{{ section.settings.image.src | img_url: 'master' }}" 
+                {% endif %}
+                alt="{{ section.settings.image.alt }}" 
+                width="{{ section.settings.image.width }}" 
+                height="{{ section.settings.image.height }}" 
+            >
+            <p><small>{{ section.settings.caption }}</small></p>
+        </div>
+        <div class="section-meet-header__content">
+            <div class="section-meet-header__content__inner">
+                <h1>{{ section.settings.title }}</h1>
+                <h3>{{ section.settings.blockquote }}</h3>
+                <p>{{ section.settings.intro }}</p>
+                <p><small>{{ section.settings.social_title }}</small></p>
+                <ul class="section-meet-header__content__socials">
+                    {% if section.settings.url_fb != blank %}<li><a href="{{ section.settings.url_fb }}" target="_blank" aria-label="Facebook"><img src="{{ "icon-facebook-dark.svg" | asset_url }}" alt="Facebook"></a></li>{% endif %}
+                    {% if section.settings.url_tw != blank %}<li><a href="{{ section.settings.url_tw }}" target="_blank" aria-label="Twitter"><img src="{{ "icon-twitter-dark.svg" | asset_url }}" alt="Twitter"></a></li>{% endif %}
+                    {% if section.settings.url_yt != blank %}<li><a href="{{ section.settings.url_yt }}" target="_blank" aria-label="Youtube"><img src="{{ "icon-youtube-dark.svg" | asset_url }}" alt="Youtube"></a></li>{% endif %}
+                    {% if section.settings.url_in != blank %}<li><a href="{{ section.settings.url_in }}" target="_blank" aria-label="Instagram"><img src="{{ "icon-instagram-dark.svg" | asset_url }}" alt="Instagram"></a></li>{% endif %}
+                    {% if section.settings.url_tt != blank %}<li><a href="{{ section.settings.url_tt }}" target="_blank" aria-label="TikTok"><img src="{{ "icon-tiktok-dark.svg" | asset_url }}" alt="TikTok"></a></li>{% endif %}
+                    {% if section.settings.url_pi != blank %}<li><a href="{{ section.settings.url_pi }}" target="_blank" aria-label="Pinterest"><img src="{{ "icon-pinterest-dark.svg" | asset_url }}" alt="Pinterest"></a></li>{% endif %}
+                    {% if section.settings.url_sn != blank %}<li><a href="{{ section.settings.url_sn }}" target="_blank" aria-label="Snapchat"><img src="{{ "icon-snapchat-dark.svg" | asset_url }}" alt="Snapchat"></a></li>{% endif %}
+                    {% if section.settings.url_li != blank %}<li><a href="{{ section.settings.url_li }}" target="_blank" aria-label="Linkedin"><img src="{{ "icon-linkedin-dark.svg" | asset_url }}" alt="Linkedin"></a></li>{% endif %}
+                </ul>
+            </div>
+        </div>
+    </div>
+
+</div>
+
+{% schema %}
+{
+    "name": "Meet Header",
+    "tag": "section",
+    "class": "section-meet-header",
+    "settings": [
+        {
+            "type": "image_picker",
+            "id": "image",
+            "label": "Image"
+        },
+        {
+            "type": "text",
+            "id": "caption",
+            "label": "Caption",
+            "default": "In this photo: Joe Soap wears Clothing"
+        },
+        {
+            "type": "header",
+            "content": "Content"
+        },
+        {
+            "type": "text",
+            "id": "title",
+            "label": "Title",
+            "default": "Phix meets: Joe Soap"
+        },
+        {
+            "type": "textarea",
+            "id": "blockquote",
+            "label": "Blockquote",
+            "default": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi mauris magna, dignissim at eros non, consectetur congue metus."
+        },
+        {
+            "type": "textarea",
+            "id": "intro",
+            "label": "Intro",
+            "default": "Nullam diam enim, laoreet vel ornare at, dictum id augue. Nam posuere dolor id magna condimentum vestibulum. Aenean semper libero ut ligula pellentesque imperdiet. Nulla rutrum suscipit dapibus."
+        },
+        {
+            "type": "header",
+            "content": "Socials"
+        },
+        {
+            "type": "text",
+            "id": "social_title",
+            "label": "Heading",
+            "default": "Follow Joe Soap"
+        },
+        {
+            "type": "url",
+            "id": "url_fb",
+            "label": "Facebook"
+        },
+        {
+            "type": "url",
+            "id": "url_tw",
+            "label": "Twitter"
+        },
+        {
+            "type": "url",
+            "id": "url_yt",
+            "label": "Youtube"
+        },
+        {
+            "type": "url",
+            "id": "url_in",
+            "label": "Instagram"
+        },
+        {
+            "type": "url",
+            "id": "url_tt",
+            "label": "Tiktok"
+        },
+        {
+            "type": "url",
+            "id": "url_pi",
+            "label": "Pinterest"
+        },
+        {
+            "type": "url",
+            "id": "url_sn",
+            "label": "Snapchat"
+        },
+        {
+            "type": "url",
+            "id": "url_li",
+            "label": "LinkedIn"
+        },
+        {
+            "type": "header",
+            "content": "Desktop padding"
+        },
+        {
+            "type": "range",
+            "id": "padding_top",
+            "min": 0,
+            "max": 128,
+            "step": 2,
+            "unit": "px",
+            "label": "Padding top",
+            "default": 64
+        },
+        {
+            "type": "range",
+            "id": "padding_bottom",
+            "min": 0,
+            "max": 128,
+            "step": 2,
+            "unit": "px",
+            "label": "Padding bottom",
+            "default": 0
+        },
+        {
+            "type": "header",
+            "content": "Mobile padding"
+        },
+        {
+            "type": "range",
+            "id": "mobile_padding_top",
+            "min": 0,
+            "max": 128,
+            "step": 2,
+            "unit": "px",
+            "label": "Padding top",
+            "default": 32
+        },
+        {
+            "type": "range",
+            "id": "mobile_padding_bottom",
+            "min": 0,
+            "max": 128,
+            "step": 2,
+            "unit": "px",
+            "label": "Padding bottom",
+            "default": 0
+        }
+    ],
+    "presets":[
+        {
+            "name": "Meet Header"
+        }
+    ],
+    "templates": ["page"]
+}
+{% endschema %}

@@ -1,0 +1,67 @@
+@import '../abstracts/variables';
+
+.section-meet-header {
+	&__inner {
+		display: grid;
+		grid-template-columns: 1fr 1fr;
+		gap: 1em;
+		@media (max-width: $w-l) {
+			grid-template-columns: 1fr;
+			grid-template-rows: auto;
+			gap: 2.66666666667em;
+		}
+	}
+	&__image {
+		@include preload;
+		text-align: center;
+		p {
+			opacity: 0.5;
+			margin: 0.75em 0 0 0;
+		}
+	}
+	&__content {
+		text-align: center;
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		@media (max-width: $w-l) {
+			border-top: 1px solid $color-black;
+			padding-top: 2.66666666667em;
+		}
+		&__inner {
+			display: flex;
+			flex-direction: column;
+			gap: 1.5em;
+			padding: 0 5em;
+			h1 {
+				margin: 0;
+				font-size: 1em;
+				font-weight: $weight-regular;
+			}
+			p,
+			h3 {
+				margin: 0;
+			}
+			h3 {
+				&::before {
+					content: '\2018';
+				}
+				&::after {
+					content: '\2019';
+				}
+			}
+		}
+		&__socials {
+			padding: 0;
+			display: flex;
+			gap: 1.5em;
+			width: 100%;
+			justify-content: center;
+			flex-wrap: wrap;
+			img {
+				width: 1.5em;
+				height: 1.5em;
+			}
+		}
+	}
+}
