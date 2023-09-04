@@ -2,4 +2,9 @@
 
 .section-wishlist {
 	position: relative;
+	.card-product {
+		&__wishlist {
+			display: flex;
+		}
+	}
 }

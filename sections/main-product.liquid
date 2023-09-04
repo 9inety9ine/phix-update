@@ -51,6 +51,8 @@
                         {% render "product-price", product: product %}
                     </div>
 
+                    <div id="esc-oos-form"></div>
+
                     <div class="section-product__details__variants">
                         <div class="section-product__details__variants__name">
                             <span class="variant-name">{{ "products.product.size" | t }}</span>
@@ -138,6 +140,8 @@
                     {% endif %}
 
                 {% endform %}
+
+                {% render "sc-back-in-stock", product: product %}
 
             </div>
             

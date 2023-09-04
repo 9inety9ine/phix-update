@@ -103,6 +103,7 @@
 		"reminder": "Pick up where you left off",
 		"wishlist_add": "Move to wishlist",
 		"wishlist_notice": "Please login to use wishlist",
+		"wishlist_remove": "Remove from wishlist",
 		"drawer": {
 			"title": "Your Cart",
 			"checkout": "Checkout Securely",

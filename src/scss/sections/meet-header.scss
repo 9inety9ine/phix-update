@@ -41,8 +41,14 @@
 			p,
 			h3 {
 				margin: 0;
+				&.intro {
+					font: 1.5em serif;
+					text-transform: none;
+				}
 			}
 			h3 {
+				font: 3em serif;
+				text-transform: none;
 				&::before {
 					content: '\2018';
 				}

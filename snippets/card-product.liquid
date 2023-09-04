@@ -48,6 +48,9 @@
         <div class="card-product__price">
             {% render "product-price", product: product %}
         </div>
+        <div class="card-product__wishlist">
+            <button data-id="{{ product.id }}" data-product="{{ product.id }}" class="add-to-wishlist remove active">{% render "icon-wishlist.svg" %}<span>{{ 'cart.wishlist_remove' | t }}</span></button>
+        </div>
     </div>
 
 </div>

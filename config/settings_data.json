@@ -15,7 +15,7 @@
     "app_url_apple": "https:\/\/www.apple.com\/uk\/app-store\/",
     "app_image_android": "shopify:\/\/shop_images\/app-android.jpg",
     "app_icon_android": "shopify:\/\/shop_images\/playstore-small.png",
-    "app_url_android": "",
+    "app_url_android": "https:\/\/play.google.com\/store\/apps",
     "url_fb": "https:\/\/google.co.uk",
     "url_tw": "https:\/\/google.co.uk",
     "url_yt": "https:\/\/google.co.uk",
@@ -93,9 +93,8 @@
               "feature_5_label": "Films",
               "feature_5_url": "shopify:\/\/pages\/films",
               "feature_5_image": "shopify:\/\/shop_images\/DSC8417.jpg",
-              "feature_6_label": "Shop Our Instagram",
-              "feature_6_url": "shopify:\/\/pages\/shopinstagram",
-              "feature_6_image": "shopify:\/\/shop_images\/DSC8888_152f377a-a1e7-4099-a9c7-6ef91f76f8cb.jpg"
+              "feature_6_label": "",
+              "feature_6_url": ""
             }
           },
           "d97b120a-9e6a-4742-90bc-16e163c61112": {
@@ -225,26 +224,22 @@
         "disabled": false,
         "settings": {
           "test_mode": false,
+          "modal_closeButton": false,
           "option_currency_type": "none",
           "option_language": true,
-          "option_language_force_default": false,
-          "option_language_force_showRecommendation": false,
-          "show_flag_header_icon": false,
           "title": "Are you in the right place?",
           "text": "Please select your shipping country.",
           "helper_text": "<p>Buy from the country of your choice. Remember that we can only ship your order to addresses located in the chosen country.<\/p>",
           "cta_text": "Shop now",
-          "modal_closeButton": false,
-          "modal_btn_align": "right",
           "style_corners": "square",
           "style_dropdown": "outlined",
+          "title_font_size": 20,
+          "text_font_size": 14,
           "style_colors_background": "#fff",
           "style_colors_closeButton": "#5C5F62",
           "style_colors_cta_text": "#fff",
           "style_colors_cta_button": "#000",
-          "style_colors_text": "#000",
-          "title_font_size": 20,
-          "text_font_size": 14
+          "style_colors_text": "#000"
         }
       },
       "5858961087409699889": {

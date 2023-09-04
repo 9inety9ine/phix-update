@@ -1,6 +1,11 @@
 const productVariantOutput = document.getElementById('product-variant-output');
 const productVariantSelect = document.getElementById('product-variant-select');
 
+const triggerChange = el => {
+	const changeEvent = new Event('change');
+	el.dispatchEvent(changeEvent);
+};
+
 const activateOptions = function () {
 	const options = productVariantOutput.querySelectorAll('li');
 	for (let option of options)
@@ -8,22 +13,36 @@ const activateOptions = function () {
 			const selectedId = option.dataset.id;
 			const optionTitle = option.dataset.title;
 			const optionInventory = option.dataset.inventory;
-			if (optionInventory === 'Out of Stock') return;
+			// if (optionInventory === 'Out of Stock') return;
 			const optionSelectLabel = document.getElementById('option-select-label');
 			const productVariantOptions = productVariantSelect.querySelectorAll('option');
 			for (let variantOption of productVariantOptions) {
 				if (variantOption.value === selectedId) {
 					productVariantSelect.value = selectedId;
+					const hiddenSelectOptions = productVariantSelect.querySelectorAll('option');
+					for (const option of hiddenSelectOptions) {
+						if (option.value == selectedId) option.selected = true;
+					}
+					triggerChange(productVariantSelect);
 					optionSelectLabel.textContent = optionTitle;
 					let newURL = window.location.protocol + '//' + window.location.host + window.location.pathname + '?variant=' + selectedId;
 					window.history.replaceState({ path: newURL }, '', newURL);
 					const toggleSelect = document.getElementById('toggle-options');
 					const addToCartButton = document.querySelector('.button--add-to-cart');
 					const addToCartButtonLabel = addToCartButton.querySelector('span');
-					if (optionInventory === 'Preorder') {
+					console.log(optionInventory);
+					if (optionInventory === 'Out of Stock') {
+						addToCartButtonLabel.textContent = label_sold_out;
+						addToCartButton.disabled = true;
+						optionSelectLabel.classList.add('oos');
+					} else if (optionInventory === 'Preorder') {
 						addToCartButtonLabel.textContent = label_preorder;
+						addToCartButton.disabled = false;
+						optionSelectLabel.classList.remove('oos');
 					} else {
 						addToCartButtonLabel.textContent = label_add_to_cart;
+						addToCartButton.disabled = false;
+						optionSelectLabel.classList.remove('oos');
 					}
 					toggleSelect.parentNode.classList.remove('open');
 					if (!option.classList.contains('active')) {
@@ -85,10 +104,28 @@ const getCurrentVariant = function () {
 		const optionSelectLabel = document.getElementById('option-select-label');
 		for (let option of productVariantOptions) {
 			if (option.value === activeVariant) {
+				const optionInventory = option.dataset.inventory;
+				const addToCartButton = document.querySelector('.button--add-to-cart');
+				const addToCartButtonLabel = addToCartButton.querySelector('span');
 				productVariantSelect.value = activeVariant;
 				optionSelectLabel.textContent = option.dataset.title;
+				option.selected = true;
+				if (optionInventory === 'Out of Stock') {
+					addToCartButtonLabel.textContent = label_sold_out;
+					addToCartButton.disabled = true;
+					optionSelectLabel.classList.add('oos');
+				} else if (optionInventory === 'Preorder') {
+					addToCartButtonLabel.textContent = label_preorder;
+					addToCartButton.disabled = false;
+					optionSelectLabel.classList.remove('oos');
+				} else {
+					addToCartButtonLabel.textContent = label_add_to_cart;
+					addToCartButton.disabled = false;
+					optionSelectLabel.classList.remove('oos');
+				}
 			}
 		}
+		triggerChange(productVariantSelect);
 	}
 };
 getCurrentVariant();

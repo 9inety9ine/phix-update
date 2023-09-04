@@ -214,6 +214,79 @@
 				}
 			}
 		}
+		#esc-out-of-stock-inputs {
+			border-radius: 0;
+			border: 1px solid $color-grey-dark;
+			color: $color-black;
+			line-height: inherit;
+			margin: 0 0 2em 0;
+			padding: 2em;
+			box-shadow: $drop;
+			.esc-out-of-stock-title {
+				color: $color-black;
+				text-align: left;
+			}
+			.esc-btn {
+				appearance: none;
+				background-color: $color-black;
+				border: $border-black;
+				color: $color-white;
+				font: 1em $font-base;
+				font-weight: $weight-bold;
+				display: flex;
+				width: 30%;
+				min-width: 3em;
+				height: 3em !important;
+				min-height: 3em !important;
+				text-decoration: none;
+				height: fit-content;
+				align-items: center;
+				justify-content: center;
+				padding: 0 3em;
+				cursor: pointer;
+				outline: none;
+				box-shadow: none;
+				white-space: nowrap;
+				text-transform: uppercase;
+				border-radius: 0;
+				letter-spacing: 1px;
+				&:hover,
+				&:focus {
+					outline: none;
+					background-color: $color-black;
+					border-color: $color-black;
+					text-decoration: none;
+				}
+			}
+			.esc-input {
+				border-radius: 0;
+				border-color: $color-black;
+				height: 3em !important;
+			}
+			.vue-tel-input {
+				height: 3em;
+			}
+			.esc-notification {
+				width: 100%;
+				margin-top: 1em;
+				&:empty {
+					display: none;
+				}
+			}
+			.esc-email-container {
+				display: flex;
+				flex-wrap: wrap;
+				margin-top: 1em;
+				margin-bottom: 0;
+				input {
+					width: 69%;
+					padding-left: 1em;
+				}
+				button {
+					width: 30%;
+				}
+			}
+		}
 	}
 	&__modal {
 		display: none;

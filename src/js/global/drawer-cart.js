@@ -168,7 +168,7 @@ window.initAddToWishlist = function () {
 					})
 						.then(response => response.json())
 						.then(data => {
-							//console.log(data);
+							// console.log(data);
 							if (data.action === 'added') {
 								let current_id = button.dataset.product;
 								let current_val = 0;
@@ -188,13 +188,18 @@ window.initAddToWishlist = function () {
 									.catch(err => {
 										console.log(err);
 									});
+							} else {
+								if (button.classList.contains('remove')) {
+									//button.parentNode.parentNode.parentNode.style.display = 'none';
+								}
 							}
 						});
 				} else {
-					console.log('not active');
+					window.location = window.Shopify.routes.root + 'account/login/';
 				}
 			});
 			button.classList.add('initialized');
 		}
 	}
 };
+window.initAddToWishlist();
