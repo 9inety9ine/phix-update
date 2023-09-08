@@ -50,6 +50,9 @@
 		}
 	}
 	.swiper-pagination-bullets {
+		@media (min-width: 769px) {
+			display: none;
+		}
 		@media (max-width: $w-m) {
 			position: absolute;
 			left: 50% !important;

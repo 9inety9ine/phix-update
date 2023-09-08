@@ -22,7 +22,7 @@
                 {% assign available = false %}
                 {% if product.available or product.tags contains "preorder" %}{% assign available = true %}{% endif %}
                 {% if available == true %}
-                <div class="product-slide">{% render "card-product", product: product %}</div>
+                <div class="product-slide">{% render "card-product-slider", product: product %}</div>
                 {% endif %}
             {% endfor %}
             </div>
@@ -62,7 +62,7 @@
                     {% assign available = false %}
                     {% if product.available or product.tags contains "preorder" %}{% assign available = true %}{% endif %}
                     {% if available == true %}
-                    <div class="product-slide">{% render "card-product", product: product %}</div>
+                    <div class="product-slide">{% render "card-product-slider", product: product %}</div>
                     {% endif %}
                 {% endfor %}
                 </div>
