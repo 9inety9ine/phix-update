@@ -85,7 +85,10 @@ if (loadMore) {
 					collectionContainer.innerHTML = '<p>Nothing here...</p>';
 				}
 				collectionContainer.innerHTML += productCards;
-				window.initializeImageLoad();
+				window.initProductCardSliders();
+				setTimeout(() => {
+					window.initializeImageLoad();
+				}, 500);
 				toggleButton();
 			})
 			.finally(function () {
@@ -123,7 +126,10 @@ if (loadMore) {
 		}
 
 		fetchProducts().then(() => {
-			window.initializeImageLoad();
+			window.initProductCardSliders();
+			setTimeout(() => {
+				window.initializeImageLoad();
+			}, 500);
 			toggleButton();
 		});
 	}

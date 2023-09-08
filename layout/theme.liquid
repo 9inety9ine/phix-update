@@ -132,6 +132,27 @@
     <span class="menu-desktop-mask"></span>
     <span class="drawer-mask"></span>
 
+    <script>
+        window.initProductCardSliders = () => {
+          const myCustomSlider = document.querySelectorAll('.swiper-product-card');
+          if (myCustomSlider) {
+            for (i = 0; i < myCustomSlider.length; i++) {
+              myCustomSlider[i].classList.add('swiper-' + i);
+              var slider = new Swiper('.swiper-' + i, {
+                loop: true,
+                spaceBetween: 0,
+                slidesPerView: 1,
+                allowTouchMove: true,
+                navigation: {
+                  nextEl: '.product-card-nav--next',
+                  prevEl: '.product-card-nav--prev',
+                },
+              });
+            }
+          }
+        }
+    </script>
+
     <!-- core js -->
     <script src="{{ 'application.js' | asset_url }}"></script>
     

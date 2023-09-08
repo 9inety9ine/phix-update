@@ -37,3 +37,8 @@ if (toggleMulti)
 		window.setCookie('collection_view', 'multi', 7);
 		window.chooseLayout();
 	});
+
+window.initProductCardSliders();
+setTimeout(() => {
+	window.initializeImageLoad();
+}, 500);

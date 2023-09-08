@@ -9,7 +9,53 @@
 <div class="card-product{% unless request.design_mode %} preload{% endunless %}">
 
     <div class="card-product__media">
-        <a href="{{ product.url | within: collection }}" aria-label="{{ product.title }}">
+
+        <div class="swiper swiper-product-card">
+            <div class="swiper-wrapper">
+                {% if show_video == 'True' and has_video == true %}
+                    <div class="swiper-slide swiper-slide__video">
+                        <a href="{{ product.url | within: collection }}" aria-label="{{ product.title }}">&nbsp;</a>
+                    {% assign video_count = 0 %}
+                    {% for media in product.media %}
+                        {% if media.media_type == 'video' %}
+                        <video muted loop playsinline autoplay poster="{{ media.preview_image | img_url: '600x818', crop: "center" }}"{% unless request.design_mode %} data-src="{{ media.sources[1].url }}" class="preload"{% endunless %}>
+                            {% if request.design_mode %}
+                            <source src="{{ media.sources[1].url }}" type="video/mp4">
+                            {% else %}
+                            <source src="" type="video/mp4">
+                            {% endif %}
+                        </video>
+                        {% assign video_count = video_count | plus: 1 %}
+                        {% endif %}
+                        {% if video_count == 1 %}{% break %}{% endif %}
+                    {% endfor %}
+                    </div>
+                {% endif %}
+                {% for image in product.images limit: 5 %}
+                    <div class="swiper-slide swiper-slide__image">
+                        <a href="{{ product.url | within: collection }}" aria-label="{{ product.title }}">
+                            <img 
+                                {% if request.design_mode %}
+                                src="{{ image.src | img_url: '600x818', crop: "center" }}" 
+                                {% else %}
+                                src="{{ "preload.gif" | asset_url }}" 
+                                data-src="{{ image.src | img_url: '600x818', crop: "center" }}" 
+                                class="preload" 
+                                {% endif %}
+                                alt="{{ product.title }}" 
+                                width="600" 
+                                height="818" 
+                            >
+                        </a>
+                    </div>
+                {% endfor %}
+            </div>
+            <div class="product-card-nav product-card-nav--prev"></div>
+            <div class="product-card-nav product-card-nav--next"></div>
+        </div>
+
+
+        {% comment %} <a href="{{ product.url | within: collection }}" aria-label="{{ product.title }}">
             {% if show_video == 'True' and has_video == true %}
                 {% assign video_count = 0 %}
                 {% for media in product.media %}
@@ -39,7 +85,7 @@
                 height="818" 
             >
             {% endif %}
-        </a>
+        </a> {% endcomment %}
     </div>
     <div class="card-product__details">
         <div class="card-product__title">

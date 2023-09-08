@@ -65,3 +65,6 @@ if (toggleMulti)
 		window.setCookie('search_view', 'multi', 7);
 		window.chooseLayout();
 	});
+
+window.initializeImageLoad();
+window.initProductCardSliders();

@@ -11,6 +11,9 @@ window.initializeImageLoad = function () {
 					image.parentNode.classList.remove('preload');
 					image.parentNode.parentNode.classList.remove('preload');
 					image.parentNode.parentNode.parentNode.classList.remove('preload');
+					image.parentNode.parentNode.parentNode.parentNode.classList.remove('preload');
+					image.parentNode.parentNode.parentNode.parentNode.parentNode.classList.remove('preload');
+					image.parentNode.parentNode.parentNode.parentNode.parentNode.parentNode.classList.remove('preload');
 				};
 			}
 		};

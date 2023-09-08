@@ -1,6 +1,8 @@
 @import '../abstracts/variables';
 
 .products {
+	width: 100%;
+	max-width: 100%;
 	display: grid;
 	grid-template-columns: repeat(4, 1fr);
 	gap: 2em 1em;
@@ -25,5 +27,8 @@
 				padding: 0 1em;
 			}
 		}
+	}
+	&__product {
+		overflow: hidden;
 	}
 }
