@@ -1,6 +1,6 @@
 <link href="{{ "cart-reminder.css" | asset_url }}" rel="stylesheet">
 
-<div class="cart-reminder" id="cart-reminder">
+<div class="cart-reminder" id="cart-reminder"{% if request.design_mode %} style="display:none !important;"{% endif %}>
     <button class="cart-reminder__close" aria-label="{{ "accessibility.close" | t }}">{% render "icon-close.svg" %}</button>
     <div class="wrap wrap--xx-large">
         <div class="cart-reminder__header">
