@@ -22,6 +22,7 @@ window.initAddToCart = function () {
 							})
 							.finally(function () {
 								window.toggleDrawer('cart', false);
+								window.setCookie('cart_reminder', 'active', 1);
 							})
 							.catch(function (error) {
 								console.log(error);

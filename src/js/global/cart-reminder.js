@@ -31,43 +31,49 @@ const getProductCards = async () => {
 };
 
 window.showCartReminder = () => {
-	const cartReminder = document.querySelector('.cart-reminder');
-	if (cartReminder) {
+	const cartReminder = document.getElementById('cart-reminder');
+	const cartReminderContent = document.getElementById('cart-reminder-content');
+	if (cartReminder && cartReminderContent) {
 		fetch(window.Shopify.routes.root + 'cart.js')
 			.then(response => {
 				return response.json();
 			})
 			.then(cart => {
-				if (cart.item_count > 0) {
-					for (let item of cart.items) productList.push(item.handle);
-					const content = cartReminder.querySelector('.cart-reminder__content');
-					content.classList.add('product-count-' + cart.item_count);
-					getProductCards()
-						.then(productCards => {
-							const remindercontent = document.querySelector('.cart-reminder__content');
-							remindercontent.innerHTML = productCards;
-							cartReminder.classList.add('show');
-						})
-						.finally(() => {
-							window.initializeImageLoad();
-							window.setCookie('show_reminder', 'no', 1);
-						});
+				const cartReminderCookie = window.getCookie('cart_reminder');
+				console.log(cartReminderCookie);
+				const cartItemCount = cart.item_count;
+				if (cartItemCount > 0) {
+					if (cartReminderCookie === null || cartReminderCookie !== 'active') {
+						for (let item of cart.items) productList.push(item.handle);
+						const content = document.querySelector('.cart-reminder__content');
+						console.log(content);
+						content.classList.add('product-count-' + cartItemCount);
+						getProductCards()
+							.then(productCards => {
+								const cartReminderContent = document.querySelector('.cart-reminder__content');
+								cartReminderContent.innerHTML = productCards;
+								cartReminder.classList.add('show');
+							})
+							.finally(() => {
+								window.initializeImageLoad();
+								window.setCookie('cart_reminder', 'active', 1);
+							});
+					} else {
+						return;
+					}
+				} else {
+					window.setCookie('cart_reminder', 'active', 1);
 				}
 			});
 	}
 };
 
-// window.addEventListener('DOMContentLoaded', () => {
-// 	const showReminder = window.getCookie('show_reminder');
-// 	if (!showReminder || showReminder === 'yes' || showReminder === null) {
-// 		window.showCartReminder();
-// 	}
-// });
+window.addEventListener('DOMContentLoaded', window.showCartReminder);
 
 document.onkeydown = function (evt) {
 	evt = evt || window.event;
 	if (evt.keyCode == 27) {
-		window.setCookie('show_reminder', 'yes', 1);
+		window.setCookie('cart_reminder', 'inactive', 1);
 		console.log('cookie reset');
 	}
 };
@@ -77,4 +83,5 @@ if (reminderClose)
 	reminderClose.addEventListener('click', () => {
 		const reminderDrawer = document.querySelector('.cart-reminder');
 		reminderDrawer.classList.remove('show');
+		window.setCookie('cart_reminder', 'active', 1);
 	});

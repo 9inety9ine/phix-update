@@ -131,7 +131,7 @@ window.cart_drawer_recommendations = function () {
 				detectSlider();
 			}, 100);
 		} else {
-			console.log('found');
+			// console.log('found');
 			window.setTimeout(function () {
 				const swiper_cart = new Swiper('.swiper-recommended', {
 					speed: 1000,
