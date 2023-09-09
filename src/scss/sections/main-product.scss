@@ -3,11 +3,11 @@
 .section-product {
 	&__product {
 		display: grid;
-		grid-template-columns: 1fr 50em;
-		gap: 5em;
+		grid-template-columns: 1fr 45em;
+		gap: 3em;
 		@media (max-width: $w-xl) {
-			grid-template-columns: 1fr 40em;
-			gap: 3em;
+			grid-template-columns: 1fr 35em;
+			gap: 2em;
 		}
 		@media (max-width: $w-m) {
 			display: flex;
@@ -25,16 +25,12 @@
 	&__details {
 		width: 100%;
 		max-width: 100%;
-		padding-right: 3em;
 		padding-top: 2em;
 		padding-bottom: 2em;
 		height: fit-content;
 		align-self: flex-start;
 		position: relative;
 		top: 0;
-		@media (max-width: $w-l) {
-			padding-right: 1em;
-		}
 		@media (max-width: $w-m) {
 			padding-left: 2em;
 			padding-right: 2em;
@@ -161,12 +157,30 @@
 		}
 		&__actions {
 			margin-bottom: 1em;
+			.preorder-description {
+				text-align: center;
+				padding-top: 1em;
+			}
 		}
 		&__klarna {
 			margin-top: 2em;
 			klarna-placement {
 				display: block;
 				margin-bottom: 2em;
+				*::part(osm-container) {
+					padding: 12px;
+					border-color: $color-grey-medium;
+				}
+				*::part(osm-badge-container) {
+					padding-left: 5px;
+				}
+				*::part(osm-message),
+				*::part(osm-legal),
+				*::part(osm-cta) {
+					font-family: $font-base;
+					font-size: 12px;
+					margin: 0;
+				}
 			}
 		}
 		&__messages {

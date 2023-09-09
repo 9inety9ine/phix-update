@@ -61,6 +61,11 @@
 				height: 2em;
 				fill: $color-black;
 			}
+			span {
+				@media (max-width: $w-m) {
+					font-size: 1.08333333333em;
+				}
+			}
 		}
 	}
 	&__active {
@@ -115,6 +120,11 @@
 		align-items: center;
 		@media (max-width: $w-l) {
 			grid-area: count;
+		}
+		span {
+			@media (max-width: $w-m) {
+				font-size: 1.08333333333em;
+			}
 		}
 	}
 }
