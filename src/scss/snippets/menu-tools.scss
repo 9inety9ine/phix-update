@@ -18,6 +18,10 @@
 		svg {
 			width: 1.66666666667em;
 			height: 1.66666666667em;
+			@media (max-width: $w-m) {
+				width: 2em;
+				height: 2em;
+			}
 			path,
 			circle {
 				fill: none;

@@ -13,17 +13,10 @@
             </a>
         </li>
         <li class="menu-tools__link menu-tools__link--wishlist">
-            {% if customer %}
             <a href="{% if routes.root_url == "/" %}/pages/wishlist{% else %}{{ routes.root_url }}/pages/wishlist{% endif %}?view=wishlist" aria-label="{{ 'general.tools_menu.wishlist_label' | t }}">
                 <span>{{ 'general.tools_menu.wishlist_label' | t }}</span>
                 {% render "icon-wishlist.svg" %}
             </a>
-            {% else %}
-            <a href="{{ routes.account_login_url }}" aria-label="{{ 'general.tools_menu.wishlist_label' | t }}">
-                <span>{{ 'general.tools_menu.wishlist_label' | t }}</span>
-                {% render "icon-wishlist.svg" %}
-            </a>
-            {% endif %}
         </li>
         <li class="menu-tools__link menu-tools__link--search">
             <a href="{{ routes.search_url }}" aria-label="{{ 'general.tools_menu.search_label' | t }}">
