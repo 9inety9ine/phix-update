@@ -92,6 +92,12 @@
 
     }
     flickity_{{section_id}}();
+    {% if request.design_mode %}
+    document.addEventListener('shopify:section:load', function(event) {
+        flickity_{{section_id}}();
+        window.initializeImageLoad();
+    });
+    {% endif %}
 </script>
 
 {% schema %}
