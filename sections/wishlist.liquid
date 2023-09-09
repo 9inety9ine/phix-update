@@ -8,7 +8,7 @@
 
 <div class="wrap wrap--xx-large wrap--{{ section_id }}">
 
-    <div class="section-wishlist__inner">
+    <div class="section-wishlist__inner{% unless customer %} logged-out{% endunless %}">
         {% if wishlistItems != empty %}
             <ul class="products" id="products">
             {% for product in customer.metafields.cake.wishlist_items.value %}
@@ -20,8 +20,12 @@
             {% endfor %}
             </ul>
         {% else %}
-            <p>No whishlist items...</p>
+            <p>{{ section.settings.title }}</p>
         {% endif %}
+        {% unless customer %}
+            <p><strong>{{ section.settings.title }}</strong>{% if section.settings.text != blank %}<br>{{ section.settings.text }}{% endif %}</p>
+            <p><a href="{{ routes.account_login_url }}" class="button">{{ "customer.login.login_button" | t }}</a></p>
+        {% endunless %}
     </div>
 
 </div>
@@ -32,6 +36,18 @@
     "tag": "section",
     "class": "section-wishlist",
     "settings": [
+        {
+            "type": "text",
+            "id": "title",
+            "label": "Title",
+            "default": "You have no saved items."
+        },
+        {
+            "type": "text",
+            "id": "text",
+            "label": "message",
+            "default": "Sign in to sync your wishlist across all your devices."
+        }, 
         {
             "type": "header",
             "content": "Desktop padding"
