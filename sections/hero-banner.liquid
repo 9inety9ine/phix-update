@@ -2,19 +2,34 @@
 
 <link href="{{ "hero-banner.css" | asset_url }}" rel="stylesheet">
 
+<style>
+    {% assign block_counter = 1 %}
+    {% for block in section.blocks %}
+        {% assign block_counter = block_counter | plus: 1 %}
+        .section-hero-banner__inner__{{ section_id }} .section-hero-banner__slide--{{ block_counter }} {
+            background: url({{ block.settings.image.src | img_url: "1920x" }}) 50% 50% / cover;
+        }
+        {% if block.settings.image_mobile != blank %}
+            @media (max-width:768px) {
+                .section-hero-banner__inner__{{ section_id }} .section-hero-banner__slide--{{ block_counter }} {
+                    background: url({{ block.settings.image_mobile.src | img_url: "900x" }}) 50% 50% / cover;
+                }
+            }
+        {% endif %}
+    {% endfor %}
+</style>
+
 <div class="wrap wrap--no-padding wrap--{{ section_id }}">
 
-    <div class="section-hero-banner__inner{% if section.blocks.size > 1 %} has-slides{% endif %}">
+    <div class="section-hero-banner__inner section-hero-banner__inner__{{ section_id }}{% if section.blocks.size > 1 %} has-slides{% endif %}">
         <div class="swiper swiper__{{ section_id }}">
             <div class="swiper-wrapper">
+                {% assign block_count = 1 %}
                 {% for block in section.blocks %}
-                <div 
-                    class="section-hero-banner__slide swiper-slide" 
-                    style="background: url({{ block.settings.image.src | img_url: "1600x" }}) 50% 50% / cover;" 
-                    data-title="{{ block.settings.title }}"
-                >
+                <div class="section-hero-banner__slide section-hero-banner__slide--{{ block_count }} swiper-slide" data-title="{{ block.settings.title }}">
                     <a href="{{ block.settings.url }}" aria-label="{{ block.settings.title }}">&nbsp;</a>
                 </div>
+                {% assign block_count = block_count | plus: 1 %}
                 {% endfor %}
             </div>
         </div>
@@ -40,60 +55,67 @@
 
 {% if section.blocks.size > 1 %}
 <script defer>
+    const initHeroBanner_{{ section_id }} = function() {
+        const swiper_{{ section_id }} = new Swiper('.swiper__{{ section_id }}', {
+            speed: 1000,
+            spaceBetween: 0,
+            loop: true,
+            slidesPerView: 1,
+            effect: 'fade',
+            autoplay: {
+                delay: 5000,
+                disableOnInteraction: false,
+            },
+            pagination: {
+                el: ".swiper__controls__pagination__count",
+                type: "fraction",
+            },
+            navigation: {
+                nextEl: '.swiper__controls__button--next',
+                prevEl: '.swiper__controls__button--prev',
+            },
+            init: false,
+        });
 
-    const swiper_{{ section_id }} = new Swiper('.swiper__{{ section_id }}', {
-        speed: 1000,
-        spaceBetween: 0,
-        loop: true,
-        slidesPerView: 1,
-        effect: 'fade',
-        autoplay: {
-            delay: 5000,
-            disableOnInteraction: false,
-        },
-        pagination: {
-            el: ".swiper__controls__pagination__count",
-            type: "fraction",
-        },
-        navigation: {
-            nextEl: '.swiper__controls__button--next',
-            prevEl: '.swiper__controls__button--prev',
-        },
-        init: false,
-    });
+        const swiperElement_{{ section_id }} = document.querySelector('.swiper__{{ section_id }}');
+        const slideTitleElement_{{ section_id }} = document.querySelector('.slide-title');
+        const wrapperElement_{{ section_id }} = document.querySelector('.wrap--{{ section_id }}')
 
-    const swiperElement_{{ section_id }} = document.querySelector('.swiper__{{ section_id }}');
-    const slideTitleElement_{{ section_id }} = document.querySelector('.slide-title');
-    const wrapperElement_{{ section_id }} = document.querySelector('.wrap--{{ section_id }}')
-
-    const getActiveSlideTitle_{{ section_id }} = () => {
-        const activeSlide = swiperElement_{{ section_id }}.querySelector('.swiper-slide-active');
-        const slideTitle = activeSlide.dataset.title;
-        slideTitleElement_{{ section_id }}.innerHTML = slideTitle;
-    }
-
-    swiper_{{ section_id }}.on('init', function () {
-        getActiveSlideTitle_{{ section_id }}()
-    });
-    swiper_{{ section_id }}.init();
-
-    swiper_{{ section_id }}.on('slideChangeTransitionStart', function () {
-        getActiveSlideTitle_{{ section_id }}()
-    });
-
-    const playPauseButton_{{ section_id }} = wrapperElement_{{ section_id }}.querySelector('.swiper__controls__button--play-pause');
-    playPauseButton_{{ section_id }}.addEventListener('click', e => {
-        e.preventDefault();
-        if (playPauseButton_{{ section_id }}.classList.contains('pause-slider')) {
-            swiper_{{ section_id }}.autoplay.stop();
-            playPauseButton_{{ section_id }}.classList.remove('pause-slider');
-            playPauseButton_{{ section_id }}.classList.add('play-slider');
-        } else {
-            swiper_{{ section_id }}.autoplay.start();
-            playPauseButton_{{ section_id }}.classList.add('pause-slider');
-            playPauseButton_{{ section_id }}.classList.remove('play-slider');
+        const getActiveSlideTitle_{{ section_id }} = () => {
+            const activeSlide = swiperElement_{{ section_id }}.querySelector('.swiper-slide-active');
+            const slideTitle = activeSlide.dataset.title;
+            slideTitleElement_{{ section_id }}.innerHTML = slideTitle;
         }
+
+        swiper_{{ section_id }}.on('init', function () {
+            getActiveSlideTitle_{{ section_id }}()
+        });
+        swiper_{{ section_id }}.init();
+
+        swiper_{{ section_id }}.on('slideChangeTransitionStart', function () {
+            getActiveSlideTitle_{{ section_id }}()
+        });
+
+        const playPauseButton_{{ section_id }} = wrapperElement_{{ section_id }}.querySelector('.swiper__controls__button--play-pause');
+        playPauseButton_{{ section_id }}.addEventListener('click', e => {
+            e.preventDefault();
+            if (playPauseButton_{{ section_id }}.classList.contains('pause-slider')) {
+                swiper_{{ section_id }}.autoplay.stop();
+                playPauseButton_{{ section_id }}.classList.remove('pause-slider');
+                playPauseButton_{{ section_id }}.classList.add('play-slider');
+            } else {
+                swiper_{{ section_id }}.autoplay.start();
+                playPauseButton_{{ section_id }}.classList.add('pause-slider');
+                playPauseButton_{{ section_id }}.classList.remove('play-slider');
+            }
+        });
+    }
+    initHeroBanner_{{ section_id }}();
+    {% if request.design_mode %}
+    document.addEventListener('shopify:section:load', function(event) {
+        initHeroBanner_{{ section_id }}();
     });
+    {% endif %}
     
 </script>
 {% endif %}
@@ -121,7 +143,14 @@
                 {
                     "type": "image_picker",
                     "id": "image",
-                    "label": "Image"
+                    "label": "Image - Desktop",
+                    "info": "Min width: 1920px."
+                },
+                {
+                    "type": "image_picker",
+                    "id": "image_mobile",
+                    "label": "Image - Mobile",
+                    "info": "Optional. Min width: 768px."
                 }
             ]
         }
