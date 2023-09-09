@@ -30,8 +30,10 @@
 					{% else %}
 					<ul>
 					{% for collection in predictive_search.resources.collections limit: 5 %}
-						{% unless collection.products_count == 0 or collection.handle == "discount-code-collection" or collection.handle contains "test" %}
-						<li><a href="{{ collection.url }}">{{ collection.title }}</a></li>
+						{% unless collection.products_count == 0 %}
+							{% if collection.handle == "trousers" or collection.handle == "footwear" or collection.handle == "shirting" or collection.handle == "outerwear" or collection.handle == "tailoring" or collection.handle == "sale" or collection.handle == "accessories" %}
+								<li><a href="{{ collection.url }}">{{ collection.title }}</a></li>
+							{% endif %}
 						{% endunless %}
 					{% endfor %}
 					</ul>
