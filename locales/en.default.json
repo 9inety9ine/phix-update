@@ -98,7 +98,7 @@
 		"cart_empty": "Your cart is empty.",
 		"sub_total": "Sub-total",
 		"update_cart": "Update",
-		"checkout": "Checkout securely",
+		"checkout": "Checkout",
 		"remove_item": "Remove",
 		"reminder": "Pick up where you left off",
 		"wishlist_add": "Move to wishlist",
@@ -106,7 +106,7 @@
 		"wishlist_remove": "Remove from wishlist",
 		"drawer": {
 			"title": "Your Cart",
-			"checkout": "Checkout Securely",
+			"checkout": "Checkout",
 			"continue": "Continue Shopping",
 			"related": "You may also like"
 		}

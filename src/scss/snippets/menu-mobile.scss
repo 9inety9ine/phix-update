@@ -7,9 +7,6 @@
 		text-decoration: none;
 		justify-content: space-between;
 		align-items: center;
-		span {
-			font-size: 1.16666666667em;
-		}
 		&:hover,
 		&:focus {
 			text-decoration: none;
@@ -74,9 +71,6 @@
 		.menu-child {
 			&__title {
 				font-weight: $weight-bold;
-				span {
-					font-size: 1.16666666667em;
-				}
 			}
 			li {
 				display: flex;
@@ -91,9 +85,6 @@
 				text-decoration: none;
 				justify-content: space-between;
 				align-items: center;
-				span {
-					font-size: 1.16666666667em;
-				}
 				&:hover,
 				&:focus {
 					text-decoration: none;
