@@ -3,15 +3,10 @@
 .section-product {
 	&__product {
 		display: grid;
-		grid-template-columns: 1fr 42.5%;
-		gap: 10em;
-		@media (max-width: $w-xxl) {
-			gap: 5em;
-		}
+		grid-template-columns: 1fr 50em;
+		gap: 5em;
 		@media (max-width: $w-xl) {
-			gap: 4em;
-		}
-		@media (max-width: $w-l) {
+			grid-template-columns: 1fr 40em;
 			gap: 3em;
 		}
 		@media (max-width: $w-m) {
@@ -30,16 +25,13 @@
 	&__details {
 		width: 100%;
 		max-width: 100%;
-		padding-right: 10em;
+		padding-right: 3em;
 		padding-top: 2em;
 		padding-bottom: 2em;
 		height: fit-content;
 		align-self: flex-start;
 		position: relative;
 		top: 0;
-		@media (max-width: $w-xl) {
-			padding-right: 5em;
-		}
 		@media (max-width: $w-l) {
 			padding-right: 1em;
 		}
