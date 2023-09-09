@@ -24,24 +24,27 @@ if (announcementSlider) {
 		if (client_country !== undefined && client_continent !== undefined) {
 			for (let announcement of regionalAnnouncements) {
 				const region = announcement.dataset.region;
-				const condition = announcement.dataset.condition;
-				const code = announcement.dataset.code;
+				const code = announcement.dataset.code.replaceAll(' ', '').split(',');
+				console.log(region);
+				let match = false;
 				if (region === 'country') {
-					if (client_country === code) {
-						if (condition !== 'equals') announcement.remove();
-					} else {
-						if (condition !== 'does_not_equal') announcement.remove();
-					}
-				} else {
-					if (client_continent === code) {
-						if (condition !== 'equals') announcement.remove();
-					} else {
-						if (condition !== 'does_not_equal') announcement.remove();
+					for (let i = 0; i < code.length; i++) {
+						if (client_country === code[i]) {
+							match = true;
+							continue;
+						}
 					}
 				}
+				if (region === 'continent') {
+					for (let i = 0; i < code.length; i++) {
+						if (client_continent === code[i]) {
+							match = true;
+							continue;
+						}
+					}
+				}
+				if (match === false) announcement.remove();
 			}
-		} else {
-			for (let announcement of regionalAnnouncements) announcement.remove();
 		}
 		swiper_announcements.init();
 	}

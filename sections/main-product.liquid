@@ -81,13 +81,17 @@
                     <div class="section-product__details__messages">
                         {% for block in section.blocks %}
                             {% case block.type %}
-                                {% when "country_text" %}
-                                <div class="country-message hidden" data-code="{{ block.settings.code }}" data-condition="{{ block.settings.condition }}">
-                                    {{ block.settings.title }}
+                                {% when "global_announcement" %}
+                                <div class="product-message product-message-global show">
+                                    {% if block.settings.url != blank %}<a href="{{ block.settings.url }}" aria-label="{{ block.settings.title }}">{% endif %}
+                                    <span>{{ block.settings.title }}</span>
+                                    {% if block.settings.url != blank %}</a>{% endif %}
                                 </div>
-                                {% when "continent_text" %}
-                                <div class="continent-message hidden" data-code="{{ block.settings.code }}" data-condition="{{ block.settings.condition }}">
-                                    {{ block.settings.title }}
+                                {% when "regional_announcement" %}
+                                <div class="product-message product-message-regional" data-region="{{ block.settings.type }}" data-code="{{ block.settings.code }}">
+                                    {% if block.settings.url != blank %}<a href="{{ block.settings.url }}" aria-label="{{ block.settings.title }}">{% endif %}
+                                    <span>{{ block.settings.title }}</span>
+                                    {% if block.settings.url != blank %}</a>{% endif %}
                                 </div>
                             {% endcase %}
                         {% endfor %}
@@ -164,49 +168,19 @@
     "class": "section-product",
     "blocks": [
         {
-            "type": "country_text",
-            "name": "Country Message",
+            "type": "global_announcement",
+            "name": "Global Announcement",
             "settings": [
                 {
-                    "type": "header",
-                    "content": "Display condition"
-                },
-                {
-                    "type": "select",
-                    "id": "condition",
-                    "label": "Show if country code",
-                    "options": [
-                        {
-                            "value": "equals",
-                            "label": "Equals"
-                        },
-                        {
-                            "value": "does_not_equal",
-                            "label": "Does not equal"
-                        }
-                    ],
-                    "default": "equals"
-                },
-                {
                     "type": "text",
-                    "id": "code",
-                    "label": "Country Code",
-                    "default": "GB"
-                },
-                {
-                    "type": "header",
-                    "content": "Content"
-                },
-                {
-                    "type": "textarea",
                     "id": "title",
-                    "label": "Message"
+                    "label": "Announcement"
                 }
             ]
         },
         {
-            "type": "continent_text",
-            "name": "Continent Message",
+            "type": "regional_announcement",
+            "name": "Regional Announcement",
             "settings": [
                 {
                     "type": "header",
@@ -214,34 +188,35 @@
                 },
                 {
                     "type": "select",
-                    "id": "condition",
-                    "label": "Show if continent code",
+                    "id": "type",
+                    "label": "Region type",
                     "options": [
                         {
-                            "value": "equals",
-                            "label": "Equals"
+                            "value": "country",
+                            "label": "Country"
                         },
                         {
-                            "value": "does_not_equal",
-                            "label": "Does not equal"
+                            "value": "continent",
+                            "label": "Continent"
                         }
                     ],
-                    "default": "equals"
+                    "default": "country"
                 },
                 {
                     "type": "text",
                     "id": "code",
-                    "label": "Continent Code",
-                    "default": "EU"
+                    "label": "Codes",
+                    "default": "GB",
+                    "info": "For multiple entries use a comma seperated list. Full list of country codes: https://www.nationsonline.org/oneworld/country_code_list.htm"
                 },
                 {
                     "type": "header",
                     "content": "Content"
                 },
                 {
-                    "type": "textarea",
+                    "type": "text",
                     "id": "title",
-                    "label": "Message"
+                    "label": "Announcement"
                 }
             ]
         }

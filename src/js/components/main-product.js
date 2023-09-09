@@ -49,32 +49,63 @@ if (modalToggle)
 		window.toggleDrawer('guides', false);
 	});
 
-const country_messages = document.querySelectorAll('.country-message');
-if (country_messages) {
-	if (client_country !== undefined) {
-		for (let message of country_messages) {
-			let target = message.dataset.code;
-			let condition = message.dataset.condition;
-			if (target === client_country && condition === 'equals') message.classList.remove('hidden');
-			if (target === client_country && condition === 'does_not_equal') message.classList.add('hidden');
-			if (target !== client_country && condition === 'does_not_equal') message.classList.remove('hidden');
-		}
-	} else {
-		for (let message of country_messages) message.classList.add('hidden');
-	}
-}
+// const country_messages = document.querySelectorAll('.country-message');
+// if (country_messages) {
+// 	if (client_country !== undefined) {
+// 		for (let message of country_messages) {
+// 			let target = message.dataset.code;
+// 			let condition = message.dataset.condition;
+// 			if (target === client_country && condition === 'equals') message.classList.remove('hidden');
+// 			if (target === client_country && condition === 'does_not_equal') message.classList.add('hidden');
+// 			if (target !== client_country && condition === 'does_not_equal') message.classList.remove('hidden');
+// 		}
+// 	} else {
+// 		for (let message of country_messages) message.classList.add('hidden');
+// 	}
+// }
 
-const continent_messages = document.querySelectorAll('.continent-message');
-if (continent_messages) {
-	if (client_continent !== undefined) {
-		for (let message of continent_messages) {
-			let target = message.dataset.code;
-			let condition = message.dataset.condition;
-			if (target === client_continent && condition === 'equals') message.classList.remove('hidden');
-			if (target === client_continent && condition === 'does_not_equal') message.classList.add('hidden');
-			if (target !== client_continent && condition === 'does_not_equal') message.classList.remove('hidden');
+// const continent_messages = document.querySelectorAll('.continent-message');
+// if (continent_messages) {
+// 	if (client_continent !== undefined) {
+// 		for (let message of continent_messages) {
+// 			let target = message.dataset.code;
+// 			let condition = message.dataset.condition;
+// 			if (target === client_continent && condition === 'equals') message.classList.remove('hidden');
+// 			if (target === client_continent && condition === 'does_not_equal') message.classList.add('hidden');
+// 			if (target !== client_continent && condition === 'does_not_equal') message.classList.remove('hidden');
+// 		}
+// 	} else {
+// 		for (let message of continent_messages) message.classList.add('hidden');
+// 	}
+// }
+
+const productMessages = document.querySelectorAll('.product-message-regional');
+if (productMessages) {
+	if (client_country !== undefined && client_continent !== undefined) {
+		for (let message of productMessages) {
+			const region = message.dataset.region;
+			const code = message.dataset.code.replaceAll(' ', '').split(',');
+			let match = false;
+			if (region === 'country') {
+				for (let i = 0; i < code.length; i++) {
+					if (client_country === code[i]) {
+						match = true;
+						continue;
+					}
+				}
+			}
+			if (region === 'continent') {
+				for (let i = 0; i < code.length; i++) {
+					if (client_continent === code[i]) {
+						match = true;
+						continue;
+					}
+				}
+			}
+			if (match === false) message.remove();
 		}
+		for (let message of productMessages) message.classList.add('show');
 	} else {
-		for (let message of continent_messages) message.classList.add('hidden');
+		for (let message of productMessages) message.remove();
 	}
 }

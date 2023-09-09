@@ -154,13 +154,13 @@
 			display: flex;
 			flex-direction: column;
 			gap: 0.25em;
-			.country-message,
-			.continent-message {
+			.product-message {
+				display: none;
 				text-align: center;
 				font-weight: $weight-bold;
 				font-size: 0.91666666666em;
-				&.hidden {
-					display: none;
+				&.show {
+					display: block;
 				}
 			}
 		}
