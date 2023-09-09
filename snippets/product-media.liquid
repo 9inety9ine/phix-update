@@ -39,6 +39,8 @@
             {% endfor %}
         </div>
     </div>
+    <div class="product-media-nav product-media-nav--prev"></div>
+    <div class="product-media-nav product-media-nav--next"></div>
     <div class="media-pagination"></div>
 </div>
 
@@ -55,6 +57,10 @@
         pagination: {
             el: '.media-pagination',
             type: 'bullets',
+        },
+        navigation: {
+          nextEl: '.product-media-nav--next',
+          prevEl: '.product-media-nav--prev',
         },
         init: false,
     });

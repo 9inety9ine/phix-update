@@ -78,4 +78,31 @@
 			}
 		}
 	}
+
+	.product-media-nav {
+		@media (min-width: 769px) {
+			display: none;
+		}
+		@media (max-width: $w-m) {
+			position: absolute;
+			left: 0;
+			top: 50%;
+			transform: translateY(-50%);
+			width: 3em;
+			height: 4em;
+			z-index: 3;
+			background: url(icon-product-slider-prev.svg) no-repeat 50% 50% / cover;
+			cursor: pointer;
+			opacity: 0;
+			transition: opacity 0.15s linear;
+			@media (max-width: $w-m) {
+				opacity: 1;
+			}
+			&--next {
+				left: auto;
+				right: 0;
+				background: url(icon-product-slider-next.svg) no-repeat 50% 50% / cover;
+			}
+		}
+	}
 }
