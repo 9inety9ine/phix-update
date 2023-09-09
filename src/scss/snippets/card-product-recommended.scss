@@ -4,7 +4,7 @@
 	@include preload;
 	display: grid;
 	grid-template-columns: 7.5em 1fr;
-	background-color: $color-grey-light;
+	// background-color: $color-grey-light;
 	&__media {
 		img {
 			width: 100%;

@@ -90,11 +90,21 @@
 				border: none;
 			}
 		}
+		.money {
+			@media (max-width: $w-m) {
+				font-size: 1.08333333333em;
+			}
+		}
 	}
 	&__title {
 		h4 {
 			font-size: 1em;
 			margin-bottom: 0;
+		}
+		span {
+			@media (max-width: $w-m) {
+				font-size: 1.08333333333em;
+			}
 		}
 	}
 	&__wishlist {
