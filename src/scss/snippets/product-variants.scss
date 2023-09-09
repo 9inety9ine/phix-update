@@ -25,8 +25,15 @@
 			cursor: pointer;
 			background: url(icon-drop.svg) no-repeat calc(100% - 0.75em) 50% / 1.25em;
 			justify-content: flex-start;
+			@media (max-width: $w-m) {
+				height: 3.5em;
+				min-height: 3.5em;
+			}
 			span {
 				font-weight: $weight-bold;
+				@media (max-width: $w-m) {
+					font-size: 1.08333333333em;
+				}
 			}
 		}
 		&__scroll {
@@ -62,6 +69,11 @@
 					}
 					&:hover {
 						background-color: $color-grey-light;
+					}
+					span {
+						@media (max-width: $w-m) {
+							font-size: 1.08333333333em;
+						}
 					}
 				}
 			}

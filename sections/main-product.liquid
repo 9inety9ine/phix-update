@@ -60,7 +60,7 @@
                             {% assign has_size_guide = false %}
                             {% for object in shop.metaobjects['size_chart'].values %}
                                 {% if object.product_type == product.type %}
-                                    <button class="toggle-size-modal" aria-label="{{ "products.product.size_guide" | t }}">{{ "products.product.size_guide" | t }}</button>
+                                    <button class="toggle-size-modal" aria-label="{{ "products.product.size_guide" | t }}"><span>{{ "products.product.size_guide" | t }}</span></button>
                                     {% assign has_size_guide = true %}
                                 {% endif %}
                             {% endfor %}

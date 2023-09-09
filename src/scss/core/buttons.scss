@@ -69,6 +69,10 @@
 	&--tall {
 		height: 3.5em;
 		min-height: 3.5em;
+		@media (max-width: $w-m) {
+			height: 4em;
+			min-height: 4em;
+		}
 	}
 	&--highlight {
 		background-color: $color-success;
