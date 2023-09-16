@@ -39,6 +39,11 @@
                 window.flickity_product_slider_recommendations();
             }, 250)
         })
+        {% if request.design_mode %}
+            document.addEventListener('shopify:section:load', function(event) {
+                window.flickity_product_slider_recommendations();
+            });
+        {% endif %}
     </script>
 
 {% else %}
