@@ -9,8 +9,8 @@
 		min-height: 62.5em;
 		display: flex;
 		@media (max-width: $w-s) {
-			height: 50vh;
-			min-height: 50em;
+			height: 45vh;
+			min-height: 45em;
 		}
 		&.has-slides {
 			margin-bottom: 3em;

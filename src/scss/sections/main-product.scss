@@ -159,10 +159,8 @@
 				display: flex;
 				gap: 0.75em;
 				align-items: center;
-			}
-			.money {
-				font-size: 1.16666666667em;
 				font-weight: $weight-bold;
+				font-size: 1.16666666667em;
 				@media (max-width: $w-m) {
 					font-size: 1.25em;
 				}
