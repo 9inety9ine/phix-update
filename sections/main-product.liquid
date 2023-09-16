@@ -5,6 +5,21 @@
 
 {% assign current_variant = product.selected_or_first_available_variant %}
 
+{% if customer %}
+{% assign wishlistItems = customer.metafields.cake.wishlist_items.value %}
+{% assign productInWishlist = false %}
+{% assign productId = product.id %}
+{% if wishlistItems != empty %}
+    {% for product in customer.metafields.cake.wishlist_items.value %}
+        {% if product.id == productId %}
+            {% assign productInWishlist = true %}
+        {% endif %}
+    {% endfor %}
+{% endif %}
+{% endif %}
+
+<!-- {{ productInWishlist }} -->
+
 <div class="wrap wrap--xx-large wrap--{{ section_id }} wrap--no-padding-mobile">
 
     {% render "breadcrumbs" %}
@@ -28,11 +43,17 @@
                             <span class="marker"><span></span></span>
                             <span class="label">{{ "products.product.in_stock" | t }}</span>
                         </span>
+                        <span class="wishlist-message">To use the wishlist please login or create an account.</span>
+                        <span class="added-message">Product added to wishlist</span>
+                        <span class="remove-message">Product removed from wishlist</span>
                     </div>
                     {% endif %}
                 
                     <div class="section-product__details__title">
                         <h1>{{ product.title }}</h1>
+                        <button type="button" data-id="{{ product.id }}" data-product="{{ product.id }}" class="add-product-to-wishlist{% if customer %} active{% endif %}{% if productInWishlist == true %} added{% endif %}">
+                            {% render "icon-wishlist.svg" %}
+                        </button>
                     </div>
 
                     {% assign product_colours = product.metafields.product.colours.value %}

@@ -109,3 +109,55 @@ if (productMessages) {
 		for (let message of productMessages) message.remove();
 	}
 }
+
+window.initProductAddToWishlist = function () {
+	const addToWishlistButton = document.querySelector('.add-product-to-wishlist');
+	if (addToWishlistButton) {
+		addToWishlistButton.addEventListener('click', e => {
+			e.preventDefault();
+			const parent = addToWishlistButton.parentNode.parentNode.parentNode;
+			const message = parent.querySelector('.wishlist-message');
+			const added = parent.querySelector('.added-message');
+			const removed = parent.querySelector('.remove-message');
+			if (addToWishlistButton.classList.contains('active')) {
+				const thisProduct = addToWishlistButton.dataset.id;
+				fetch('https://wishlist.hydratedelephant.com/wishlist', {
+					method: 'POST',
+					headers: {
+						'Content-type': 'application/json',
+						'X-Customer-Security-Token': cake.customer_api_token,
+					},
+					body: JSON.stringify({
+						customer_id: cake.customer_id,
+						store_name: Shopify.shop.replace('.myshopify.com', ''),
+						product_id: thisProduct,
+					}),
+				})
+					.then(response => response.json())
+					.then(data => {
+						// console.log(data);
+						if (data.action === 'added') {
+							addToWishlistButton.classList.add('added');
+							added.classList.add('active');
+							setTimeout(() => {
+								added.classList.remove('active');
+							}, 2500);
+						} else {
+							addToWishlistButton.classList.remove('added');
+							removed.classList.add('active');
+							setTimeout(() => {
+								removed.classList.remove('active');
+							}, 2500);
+						}
+					});
+			} else {
+				// window.location = window.Shopify.routes.root + 'account/login/';
+				message.classList.add('active');
+				setTimeout(() => {
+					message.classList.remove('active');
+				}, 2500);
+			}
+		});
+	}
+};
+window.initProductAddToWishlist();
