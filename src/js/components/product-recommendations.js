@@ -1,5 +1,5 @@
 window.flickity_product_slider_recommendations = function () {
-	let tickerSpeed = 0.75;
+	let tickerSpeed = 1.25;
 
 	if (window.innerWidth <= 768) {
 		tickerSpeed = 1.5;
@@ -43,8 +43,8 @@ window.flickity_product_slider_recommendations = function () {
 
 	flickity.x = 0;
 
-	slideshowEl.addEventListener('mouseenter', pause, false);
-	slideshowEl.addEventListener('focusin', pause, false);
+	// slideshowEl.addEventListener('mouseenter', pause, false);
+	// slideshowEl.addEventListener('focusin', pause, false);
 	slideshowEl.addEventListener('mouseleave', play, false);
 	slideshowEl.addEventListener('focusout', play, false);
 
