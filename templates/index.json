@@ -8,7 +8,8 @@
           "settings": {
             "title": "AW23 Collection",
             "url": "shopify:\/\/collections\/clothing",
-            "image": "shopify:\/\/shop_images\/Phix_AW23_Collection.jpg"
+            "image": "shopify:\/\/shop_images\/Phix_AW23_Collection.jpg",
+            "image_mobile": "shopify:\/\/shop_images\/DSC9265_f13a6a53-56a6-4e5e-b5e1-670fa2e18ab6.jpg"
           }
         },
         "e87cc0b2-7dde-4934-8d89-7a2629aecc19": {
@@ -30,25 +31,23 @@
       "type": "featured-items",
       "settings": {
         "title": "Featured Items",
-        "subtitle": "Discover the latest arrivals",
+        "subtitle": "",
         "products": [
-          "60s-paisley-velvet-polo-shirt",
-          "black-60s-multi-paisley-print-viscose-shirt",
-          "black-carnaby-cotton-o-ring-polo-shirt",
-          "black-chiffon-ruffle-collar-shirt",
           "black-embellished-sequin-jacket",
-          "black-lace-fringe-shirt",
-          "black-lace-paisley-70s-collar-shirt",
-          "black-leopard-low-trainers",
-          "black-satin-ruffle-cape",
           "black-semi-sheer-chiffon-scarf-tie-collar-shirt-1",
+          "short-sleeve-sequin-chiffon-shirt",
           "black-western-polo",
-          "black-wool-gold-button-flare-trouser"
+          "chiffon-sequin-button-down-shirt",
+          "high-waisted-pin-tuck-slim-fit-flare-leather-trousers",
+          "black-carnaby-cotton-o-ring-polo-shirt",
+          "orange-arch-art-deco-geometric-viscose-shirt",
+          "black-satin-pointed-collar-shirt",
+          "black-sequin-flares"
         ],
         "padding_top": 72,
         "padding_bottom": 48,
         "mobile_padding_top": 32,
-        "mobile_padding_bottom": 32
+        "mobile_padding_bottom": 24
       }
     },
     "b9dd76db-f4a5-45a1-a8b7-7c2f30ca9e63": {
@@ -58,20 +57,20 @@
           "type": "feature",
           "settings": {
             "color": "white",
-            "title": "Collection Title",
-            "image": "shopify:\/\/shop_images\/GMB07052.jpg",
-            "label": "Explore the collection",
-            "url": "#"
+            "title": "aw23 lookbook",
+            "image": "shopify:\/\/shop_images\/QOA05455.jpg",
+            "label": "Explore the page",
+            "url": "shopify:\/\/pages\/phix-aw23-studio-looks"
           }
         },
         "b8a209fe-f650-4451-a638-437b52df2c04": {
           "type": "feature",
           "settings": {
             "color": "white",
-            "title": "Collection Title",
-            "image": "shopify:\/\/shop_images\/DSC9275.jpg",
+            "title": "western drop",
+            "image": "shopify:\/\/shop_images\/BO4A9624.jpg",
             "label": "Explore the collection",
-            "url": "#"
+            "url": "shopify:\/\/blogs\/news\/desert-dressing-introducing-our-western-capsule-collection"
           }
         }
       },
@@ -92,19 +91,19 @@
         "18b56736-57d5-4473-a224-4d7eca249dc9": {
           "type": "product",
           "settings": {
-            "product": "60s-geometric-purple-long-sleeve-shirt"
+            "product": "black-carnaby-cotton-o-ring-polo-shirt"
           }
         },
         "ebf6e2b6-ad07-4742-9f9c-4d15be6776f8": {
           "type": "product",
           "settings": {
-            "product": "pink-circle-shirt"
+            "product": "orange-60s-spherical-print-velvet-shirt"
           }
         },
         "1e7acad6-7208-40e8-8a10-fbd459c848af": {
           "type": "product",
           "settings": {
-            "product": "beige-wool-gold-button-flare-trouser"
+            "product": "black-embellished-sequin-jacket"
           }
         }
       },
@@ -123,26 +122,45 @@
     "9b12f941-ba38-4054-8856-f9702b0a08f7": {
       "type": "featured-items",
       "settings": {
-        "title": "Featured Items",
+        "title": "aw23",
         "subtitle": "Discover the latest arrivals",
         "products": [
-          "60s-geometric-purple-long-sleeve-shirt",
-          "60s-geometric-green-cuban-shirt",
-          "pink-circle-shirt",
-          "70s-mint-ripple-shirt",
-          "black-cotton-v-neck-polo-shirt",
-          "white-cotton-v-neck-polo",
-          "blue-chevron-shirt",
-          "beige-wool-gold-button-crop-shawl-blazer",
-          "beige-wool-gold-button-flare-trouser",
-          "black-70s-front-pocket-denim-flare-jeans",
-          "aw21-black-70s-geometric-shirt",
-          "black-polo-white-trim"
+          "orange-60s-spherical-print-velvet-shirt",
+          "60s-paisley-velvet-polo-shirt",
+          "sequin-pinstripe-wool-flared-trousers",
+          "black-snake-effect-suede-studded-leather-jacket",
+          "black-lace-wave-shirt",
+          "aw23-terry-black-70s-button-polo",
+          "pink-velvet-60s-geometric-shirt",
+          "sequin-pinstripe-wool-single-breasted-blazer",
+          "black-lace-gold-peacock-shirt",
+          "short-sleeve-sequin-chiffon-shirt"
         ],
         "padding_top": 48,
         "padding_bottom": 48,
-        "mobile_padding_top": 32,
+        "mobile_padding_top": 24,
         "mobile_padding_bottom": 32
+      }
+    },
+    "e7a50a91-60f7-4542-a954-bb8a55a40214": {
+      "type": "text-banner",
+      "blocks": {
+        "db6a9b54-beb6-4faf-af91-dd85027efd5a": {
+          "type": "title",
+          "settings": {
+            "title": "@phixclothing"
+          }
+        }
+      },
+      "block_order": [
+        "db6a9b54-beb6-4faf-af91-dd85027efd5a"
+      ],
+      "settings": {
+        "width": "x-large",
+        "padding_top": 64,
+        "padding_bottom": 12,
+        "mobile_padding_top": 32,
+        "mobile_padding_bottom": 10
       }
     },
     "c85bacfa-90b0-4cd0-a8b3-bf9e789e8736": {
@@ -153,6 +171,31 @@
         "mobile_padding_top": 32,
         "mobile_padding_bottom": 0
       }
+    },
+    "b533f398-81be-4fc1-8eb4-863fffac9078": {
+      "type": "featured-items",
+      "disabled": true,
+      "settings": {
+        "title": "Featured",
+        "subtitle": "",
+        "products": [
+          "aw21-black-70s-geometric-shirt",
+          "black-60s-multi-paisley-print-viscose-shirt",
+          "beige-wool-gold-button-flare-trouser",
+          "beige-wool-gold-button-crop-shawl-blazer",
+          "white-cotton-v-neck-polo",
+          "black-cotton-v-neck-polo-shirt",
+          "70s-mint-ripple-shirt",
+          "60s-paisley-velvet-polo-shirt",
+          "pink-circle-shirt",
+          "60s-geometric-green-cuban-shirt",
+          "60s-geometric-purple-long-sleeve-shirt"
+        ],
+        "padding_top": 48,
+        "padding_bottom": 48,
+        "mobile_padding_top": 32,
+        "mobile_padding_bottom": 32
+      }
     }
   },
   "order": [
@@ -161,6 +204,8 @@
     "b9dd76db-f4a5-45a1-a8b7-7c2f30ca9e63",
     "0db5b478-1e34-42e0-a362-0dbaac672d17",
     "9b12f941-ba38-4054-8856-f9702b0a08f7",
-    "c85bacfa-90b0-4cd0-a8b3-bf9e789e8736"
+    "e7a50a91-60f7-4542-a954-bb8a55a40214",
+    "c85bacfa-90b0-4cd0-a8b3-bf9e789e8736",
+    "b533f398-81be-4fc1-8eb4-863fffac9078"
   ]
 }

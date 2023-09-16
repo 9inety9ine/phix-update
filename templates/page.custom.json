@@ -1,9 +1,20 @@
 {
-	"sections": {
-		"header": {
-			"type": "page-header",
-			"settings": {}
-		}
-	},
-	"order": ["header"]
+  "sections": {
+    "header": {
+      "type": "page-header",
+      "settings": {
+        "width": "large",
+        "alignment": "center",
+        "display_title": true,
+        "title": "{{ page.title }}",
+        "padding_top": 64,
+        "padding_bottom": 24,
+        "mobile_padding_top": 32,
+        "mobile_padding_bottom": 12
+      }
+    }
+  },
+  "order": [
+    "header"
+  ]
 }

@@ -7,7 +7,6 @@
 
     <div class="section-meet-header__inner">
         <div class="section-meet-header__image{% unless request.design_mode %} preload{% endunless %}">
-            {% if section.settings.image != blank %}
             <img 
                 {% if request.design_mode %}
                 src="{{ section.settings.image.src | img_url: 'master' }}" 
@@ -19,26 +18,14 @@
                 width="{{ section.settings.image.width }}" 
                 height="{{ section.settings.image.height }}" 
             >
-            {% endif %}
-            {% if section.settings.caption != blank %}
             <p><small>{{ section.settings.caption }}</small></p>
-            {% endif %}
         </div>
         <div class="section-meet-header__content">
             <div class="section-meet-header__content__inner">
-                {% if section.settings.title != blank %}
                 <h1>{{ section.settings.title }}</h1>
-                {% endif %}
-                {% if section.settings.blockquote != blank %}
                 <h3>{{ section.settings.blockquote }}</h3>
-                {% endif %}
-                {% if section.settings.intro != blank %}
                 <p class="intro">{{ section.settings.intro }}</p>
-                {% endif %}
-                {% if section.settings.social_title != blank %}
                 <p><small>{{ section.settings.social_title }}</small></p>
-                {% endif %}
-                {% if section.settings.title != blank %}
                 <ul class="section-meet-header__content__socials">
                     {% if section.settings.url_fb != blank %}<li><a href="{{ section.settings.url_fb }}" target="_blank" aria-label="Facebook"><img src="{{ "icon-facebook-dark.svg" | asset_url }}" alt="Facebook"></a></li>{% endif %}
                     {% if section.settings.url_tw != blank %}<li><a href="{{ section.settings.url_tw }}" target="_blank" aria-label="Twitter"><img src="{{ "icon-twitter-dark.svg" | asset_url }}" alt="Twitter"></a></li>{% endif %}
