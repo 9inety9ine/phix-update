@@ -195,7 +195,13 @@ window.initAddToWishlist = function () {
 							}
 						});
 				} else {
-					window.location = window.Shopify.routes.root + 'account/login/';
+					// window.location = window.Shopify.routes.root + 'account/login/';
+					const parent = button.parentNode;
+					const message = parent.querySelector('.wishlist-message');
+					message.classList.add('active');
+					setTimeout(() => {
+						message.classList.remove('active');
+					}, 2500);
 				}
 			});
 			button.classList.add('initialized');
