@@ -68,6 +68,7 @@
 		p,
 		ul,
 		ol {
+			letter-spacing: 1px;
 			@media (max-width: $w-m) {
 				font-size: 1.08333333333em;
 			}
