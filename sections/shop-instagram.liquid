@@ -5,6 +5,15 @@
 
 <div class="wrap wrap--xx-large wrap--no-padding-x-large wrap--{{ section_id }}">
 
+    <div class="section-shop-instagram__header">
+        {% if section.settings.title != blank %}
+        <h3>{{ section.settings.title }}</h3>
+        {% endif %}
+        {% if section.settings.subtitle != blank %}
+        <p>{{ section.settings.subtitle }}</p>
+        {% endif %}
+    </div>
+
     <div id="instafeed" class="section-shop-instagram__inner"></div>
 
 </div>
@@ -17,6 +26,18 @@
     "tag": "section",
     "class": "section-shop-instagram",
     "settings": [
+        {
+            "type": "text",
+            "id": "title",
+            "label": "Title",
+            "default": "The latest from Instagram"
+        },
+        {
+            "type": "text",
+            "id": "subtitle",
+            "label": "Subtitle",
+            "default": "Follow us @phixclothing"
+        },
         {
             "type": "header",
             "content": "Desktop padding"
