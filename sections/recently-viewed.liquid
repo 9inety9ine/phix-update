@@ -1,0 +1,91 @@
+{% assign section_id = section.id | replace: "_", "" | replace: "-", "" %}
+{% render "section-styles", section_id: section_id, section: section %}
+
+<link href="{{ "recently-viewed.css" | asset_url }}" rel="stylesheet">
+
+<div class="wrap wrap--xx-large wrap--{{ section_id }}">
+
+    <div class="section-recently-viewed__inner">
+
+        {% if section.settings.title != blank %}
+        <div class="section-recently-viewed__header">
+            <h3>{{ section.settings.title }}</h3>
+            <button type="button" class="button button--plain" aria-label="{{ "accessibility.clear" | t }} {{ section.settings.title }}">{{ "accessibility.clear" | t }}</button>
+        </div>
+        {% endif %}
+
+        <div class="section-recently-viewed__products">
+            <ul class="recent-products"></ul>
+        </div>
+
+    </div>
+
+</div>
+<script>
+    const localProductHandle = "{{ product.handle }}";
+</script>
+<script src="{{ "recently-viewed.js" | asset_url }}" defer></script>
+
+{% schema %}
+{
+    "name": "Recently Viewed",
+    "tag": "section",
+    "class": "section-recently-viewed",
+    "settings": [
+        {
+            "type": "text",
+            "id": "title",
+            "label": "Title",
+            "default": "Recently Viewed"
+        },
+        {
+            "type": "header",
+            "content": "Desktop padding"
+        },
+        {
+            "type": "range",
+            "id": "padding_top",
+            "min": 0,
+            "max": 128,
+            "step": 2,
+            "unit": "px",
+            "label": "Padding top",
+            "default": 0
+        },
+        {
+            "type": "range",
+            "id": "padding_bottom",
+            "min": 0,
+            "max": 128,
+            "step": 2,
+            "unit": "px",
+            "label": "Padding bottom",
+            "default": 64
+        },
+        {
+            "type": "header",
+            "content": "Mobile padding"
+        },
+        {
+            "type": "range",
+            "id": "mobile_padding_top",
+            "min": 0,
+            "max": 128,
+            "step": 2,
+            "unit": "px",
+            "label": "Padding top",
+            "default": 0
+        },
+        {
+            "type": "range",
+            "id": "mobile_padding_bottom",
+            "min": 0,
+            "max": 128,
+            "step": 2,
+            "unit": "px",
+            "label": "Padding bottom",
+            "default": 32
+        }
+    ]
+}
+{% endschema %}

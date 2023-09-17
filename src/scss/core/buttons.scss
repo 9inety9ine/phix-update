@@ -86,4 +86,18 @@
 			font-size: 1.25em;
 		}
 	}
+	&--plain {
+		background-color: transparent;
+		border: none;
+		text-decoration: underline;
+		color: $color-black;
+		padding: 0;
+		height: fit-content;
+		min-height: fit-content;
+		&:hover,
+		&:focus {
+			background-color: transparent;
+			border: none;
+		}
+	}
 }

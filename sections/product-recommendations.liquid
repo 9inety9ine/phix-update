@@ -83,7 +83,7 @@
     {% unless recommendations.performed %}
     <script defer>
             const relatedProductsContainer = document.querySelector('.section-product-recommendations');
-            fetch(window.Shopify.routes.root + "recommendations/products?product_id={{ product.id }}&section_id=product-recommendations&intent=related")
+            fetch(window.Shopify.routes.root + "recommendations/products?product_id={{ product.id }}&section_id=product-recommendations&intent=related&limit=10")
             .then(response => response.text())
             .then((text) => {
                 const relatedProductsMarkup = document.createElement('div');
