@@ -155,6 +155,7 @@
       "block_order": [
         "db6a9b54-beb6-4faf-af91-dd85027efd5a"
       ],
+      "disabled": true,
       "settings": {
         "width": "x-large",
         "padding_top": 64,
