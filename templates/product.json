@@ -1,57 +1,71 @@
 {
-	"sections": {
-		"main": {
-			"type": "main-product",
-			"blocks": {
-				"8d604279-69dd-40bd-a61b-6cc755447b6e": {
-					"type": "global_announcement",
-					"settings": {
-						"title": "Global Announcement"
-					}
-				},
-				"1b5ed9ab-589e-4ebb-b22c-1b40272838e4": {
-					"type": "regional_announcement",
-					"settings": {
-						"type": "country",
-						"code": "GB",
-						"title": "GB Announcement"
-					}
-				},
-				"4e17b63e-5b34-4e1d-8f2c-ac4d821d695a": {
-					"type": "regional_announcement",
-					"settings": {
-						"type": "country",
-						"code": "FR, IE",
-						"title": "French or Irish Announcement"
-					}
-				}
-			},
-			"block_order": ["8d604279-69dd-40bd-a61b-6cc755447b6e", "1b5ed9ab-589e-4ebb-b22c-1b40272838e4", "4e17b63e-5b34-4e1d-8f2c-ac4d821d695a"],
-			"settings": {
-				"care_title": "Details & Care",
-				"care_text": "",
-				"delivery_title": "Delivery & Returns",
-				"delivery_text": "<p><strong>UK Delivery</strong></p><p>Complimentary next day DHL delivery when you spend £200.</p><p>Standard delivery - £3.95 (2-3 working days.</p><p>Next day delivery - £5.95.</p><p><strong>EU Delivery</strong></p><p>Complimentary Euro Express Delivery When You Spend €250.</p><p>All Orders Despatched via DHL Express, Starting From €13.00.</p><p>Delivery in 1-2 Working Days.</p><p><strong>Worldwide Delivery</strong></p><p>Complimentary Worldwide Express Delivery When You Spend $250 USD.</p><p>All Orders Despatched via DHL Express, Starting From $15.</p><p>Delivery in 1-3 Working Days.</p><p><strong>Returns</strong></p><p>You can return any order for a refund, or exchange within 28 days of receiving your order.</p><p>If you wish to exchange an item, you can return it to us and we will dispatch your exchange at no extra cost.</p><p>Please <a href=\"/pages/returns\" title=\"Returns\">click here</a> to read our full returns policy.</p>",
-				"padding_top": 32,
-				"padding_bottom": 64,
-				"mobile_padding_top": 0,
-				"mobile_padding_bottom": 32
-			}
-		},
-		"recent": {
-			"type": "recently-viewed",
-			"settings": {}
-		},
-		"reqs": {
-			"type": "product-recommendations",
-			"settings": {
-				"title": "You may also like",
-				"padding_top": 0,
-				"padding_bottom": 96,
-				"mobile_padding_top": 0,
-				"mobile_padding_bottom": 48
-			}
-		}
-	},
-	"order": ["main", "recent", "reqs"]
+  "sections": {
+    "main": {
+      "type": "main-product",
+      "blocks": {
+        "8d604279-69dd-40bd-a61b-6cc755447b6e": {
+          "type": "global_announcement",
+          "settings": {
+            "title": "Global Announcement"
+          }
+        },
+        "1b5ed9ab-589e-4ebb-b22c-1b40272838e4": {
+          "type": "regional_announcement",
+          "settings": {
+            "type": "country",
+            "code": "GB",
+            "title": "GB Announcement"
+          }
+        },
+        "4e17b63e-5b34-4e1d-8f2c-ac4d821d695a": {
+          "type": "regional_announcement",
+          "settings": {
+            "type": "country",
+            "code": "FR, IE",
+            "title": "French or Irish Announcement"
+          }
+        }
+      },
+      "block_order": [
+        "8d604279-69dd-40bd-a61b-6cc755447b6e",
+        "1b5ed9ab-589e-4ebb-b22c-1b40272838e4",
+        "4e17b63e-5b34-4e1d-8f2c-ac4d821d695a"
+      ],
+      "settings": {
+        "care_title": "Details & Care",
+        "care_text": "",
+        "delivery_title": "Delivery & Returns",
+        "delivery_text": "<p><strong>UK Delivery<\/strong><\/p><p>Complimentary next day DHL delivery when you spend £200.<\/p><p>Standard delivery - £3.95 (2-3 working days.<\/p><p>Next day delivery - £5.95.<\/p><p><strong>EU Delivery<\/strong><\/p><p>Complimentary Euro Express Delivery When You Spend €250.<\/p><p>All Orders Despatched via DHL Express, Starting From €13.00.<\/p><p>Delivery in 1-2 Working Days.<\/p><p><strong>Worldwide Delivery<\/strong><\/p><p>Complimentary Worldwide Express Delivery When You Spend $250 USD.<\/p><p>All Orders Despatched via DHL Express, Starting From $15.<\/p><p>Delivery in 1-3 Working Days.<\/p><p><strong>Returns<\/strong><\/p><p>You can return any order for a refund, or exchange within 28 days of receiving your order.<\/p><p>If you wish to exchange an item, you can return it to us and we will dispatch your exchange at no extra cost.<\/p><p>Please <a href=\"\/pages\/returns\" title=\"Returns\">click here<\/a> to read our full returns policy.<\/p>",
+        "padding_top": 32,
+        "padding_bottom": 64,
+        "mobile_padding_top": 0,
+        "mobile_padding_bottom": 32
+      }
+    },
+    "recent": {
+      "type": "recently-viewed",
+      "settings": {
+        "title": "Recently Viewed",
+        "padding_top": 0,
+        "padding_bottom": 0,
+        "mobile_padding_top": 0,
+        "mobile_padding_bottom": 0
+      }
+    },
+    "reqs": {
+      "type": "product-recommendations",
+      "settings": {
+        "title": "You may also like",
+        "padding_top": 0,
+        "padding_bottom": 96,
+        "mobile_padding_top": 0,
+        "mobile_padding_bottom": 48
+      }
+    }
+  },
+  "order": [
+    "main",
+    "recent",
+    "reqs"
+  ]
 }
