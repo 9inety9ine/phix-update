@@ -1,6 +1,6 @@
 const initRecentSlider = () => {
 	const recentSwiper = new Swiper('.swiper-recent', {
-		loop: true,
+		loop: false,
 		spaceBetween: 12,
 		slidesPerView: 2,
 		allowTouchMove: true,
@@ -74,12 +74,15 @@ const getRecentProductCards = async () => {
 window.addEventListener('DOMContentLoaded', () => {
 	const recentProductcontainer = document.querySelector('.recent-products');
 	if (recentProductcontainer) {
+		recentProductcontainer.innerHTML = '';
+		let productsExist = false;
 		getRecentProductCards()
 			.then(productList => {
 				if (productList.length == 0) {
 					document.querySelector('.section-recently-viewed').classList.add('hidden');
 				} else {
 					recentProductcontainer.innerHTML = productList;
+					productsExist = true;
 				}
 			})
 			.then(() => {
@@ -87,10 +90,10 @@ window.addEventListener('DOMContentLoaded', () => {
 				window.initializeImageLoad();
 			})
 			.finally(() => {
-				document.querySelector('.section-recently-viewed').classList.remove('hidden');
+				if (productsExist) document.querySelector('.section-recently-viewed').classList.remove('hidden');
+				addToLocalItems('recent_phix_products', localProductHandle, 12);
 			});
 	}
-	addToLocalItems('recent_phix_products', localProductHandle, 12);
 });
 
 const clearRecentButton = document.querySelector('.clear-recent');
