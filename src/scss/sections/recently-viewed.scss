@@ -2,12 +2,15 @@
 
 .section-recently-viewed {
 	position: relative;
+	&.hidden {
+		display: none;
+	}
 	&__inner {
 		display: flex;
 		flex-direction: column;
-		gap: 1.5em;
+		gap: 3em;
 		@media (max-width: $w-m) {
-			gap: 1em;
+			gap: 2em;
 		}
 	}
 	&__header {
@@ -19,18 +22,33 @@
 		}
 	}
 	&__products {
-		ul {
-			width: 100%;
-			display: grid;
-			grid-template-columns: repeat(6, 1fr);
-			gap: 1em;
-			@media (max-width: $w-m) {
-				grid-template-columns: repeat(3, 1fr);
-			}
+		padding: 0 2.5em;
+		position: relative;
+		.card-product__media {
+			margin-bottom: 0.5em;
 		}
-		li {
-			width: 100%;
-			overflow: hidden;
+		.recent-nav {
+			position: absolute;
+			left: 0;
+			top: 50%;
+			transform: translateY(-50%);
+			width: 2.5em;
+			height: 4em;
+			z-index: 3;
+			background: url(icon-product-recent-prev.svg) no-repeat 50% 50% / 2.5em;
+			cursor: pointer;
+			transition: opacity 0.15s linear;
+			&--next {
+				left: auto;
+				right: 0;
+				background: url(icon-product-recent-next.svg) no-repeat 50% 50% / 2.5em;
+			}
+			&.swiper-button-disabled {
+				opacity: 0.25;
+			}
+			&.swiper-button-lock {
+				display: block;
+			}
 		}
 	}
 }

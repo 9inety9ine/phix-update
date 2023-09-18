@@ -42,15 +42,15 @@
         </a>
     </div>
     <div class="card-product__details">
-        <div class="card-product__title">
+        {% comment %} <div class="card-product__title">
             <h4><a href="{{ product.url | within: collection }}" aria-label="{{ product.title }}">{{ product.title }}</a></h4>
-        </div>
+        </div> {% endcomment %}
         <div class="card-product__price">
             {% render "product-price", product: product %}
         </div>
-        <div class="card-product__wishlist">
+        {% comment %} <div class="card-product__wishlist">
             <button data-id="{{ product.id }}" data-product="{{ product.id }}" class="add-to-wishlist remove active">{% render "icon-wishlist.svg" %}<span>{{ 'cart.wishlist_remove' | t }}</span></button>
-        </div>
+        </div> {% endcomment %}
     </div>
 
 </div>

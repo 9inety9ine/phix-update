@@ -10,12 +10,16 @@
         {% if section.settings.title != blank %}
         <div class="section-recently-viewed__header">
             <h3>{{ section.settings.title }}</h3>
-            <button type="button" class="button button--plain" aria-label="{{ "accessibility.clear" | t }} {{ section.settings.title }}">{{ "accessibility.clear" | t }}</button>
+            <button type="button" class="button button--plain clear-recent" aria-label="{{ "accessibility.clear" | t }} {{ section.settings.title }}">{{ "accessibility.clear" | t }}</button>
         </div>
         {% endif %}
 
         <div class="section-recently-viewed__products">
-            <ul class="recent-products"></ul>
+            <div class="swiper swiper-recent">
+                <div class="recent-products swiper-wrapper"></div>
+            </div>
+            <div class="recent-nav recent-nav--prev"></div>
+            <div class="recent-nav recent-nav--next"></div>
         </div>
 
     </div>
@@ -30,7 +34,7 @@
 {
     "name": "Recently Viewed",
     "tag": "section",
-    "class": "section-recently-viewed",
+    "class": "section-recently-viewed hidden",
     "settings": [
         {
             "type": "text",
