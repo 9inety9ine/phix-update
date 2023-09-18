@@ -8,6 +8,9 @@
   
     <div class="section-cart__header{% unless cart.item_count > 0 %} cart-empty{% endunless%}">
         <h1>{{ 'cart.title' | t }}</h1>
+        <div class="section-cart__preorder-warning">
+            <p class="preorder-warning">{{ "cart.preorder" | t }}</p>
+        </div>
     </div>
 
     <div class="section-cart__inner{% unless cart.item_count > 0 %} cart-empty{% endunless%}">
@@ -63,6 +66,13 @@
                         <span class="price">{{ item.product.price | money }}</span>
                     {% endif %}
                     </div>
+                    {% for property in item.properties %}
+                        {% if property.first == "Preorder Note" %}
+                            <div class="cart-item__note">
+                                <span>{{ property.last }}</span>
+                            </div>
+                        {% endif %}
+                    {% endfor %}
                     {% if item.discounts != blank %}
                         <div class="cart-item__discount">
                         {% for discount in item.discounts %}

@@ -1,6 +1,37 @@
+window.checkPreorderDrawer = () => {
+	let hasPreorder = false;
+	fetch(window.Shopify.routes.root + 'cart.js')
+		.then(response => {
+			return response.json();
+		})
+		.then(cart => {
+			for (const item of cart.items) {
+				if (item.properties) {
+					let obj = item.properties;
+					let objItems = Object.entries(obj);
+					for (const entry of objItems) {
+						// console.log(entry[0]);
+						if (entry[0] == 'Preorder Note') {
+							hasPreorder = true;
+						}
+					}
+				}
+			}
+		})
+		.finally(() => {
+			const cartDrawerContent = document.querySelector('.drawer-cart__content');
+			if (hasPreorder === true) {
+				cartDrawerContent.querySelector('.preorder-warning').classList.add('active');
+			} else {
+				cartDrawerContent.querySelector('.preorder-warning').classList.remove('active');
+			}
+		});
+};
+
 window.updateCartDrawer = function () {
 	const cartDrawerContent = document.querySelector('.drawer-cart__content');
 	cartDrawerContent.classList.add('content-loading');
+	cartDrawerContent.querySelector('.preorder-warning').classList.remove('active');
 	const cartFooter = document.querySelector('.drawer-cart__footer');
 	cartFooter.classList.add('hidden');
 	const drawerExtras = document.querySelector('.drawer-cart-recommended');
@@ -38,6 +69,7 @@ window.updateCartDrawer = function () {
 			window.initializeImageLoad();
 			window.countCartItems();
 			window.initAddToWishlist();
+			window.checkPreorderDrawer();
 		})
 		.catch(function (err) {
 			console.error(err);
@@ -72,6 +104,8 @@ window.initCartDrawerRemove = function () {
 				})
 					.then(response => response.json())
 					.then(function () {
+						const cartDrawerContent = document.querySelector('.drawer-cart__content');
+						cartDrawerContent.querySelector('.preorder-warning').classList.remove('active');
 						window.updateCartDrawer();
 					})
 					.catch(err => {

@@ -83,3 +83,13 @@
 #product-variant-select {
 	display: none;
 }
+
+.preorder-message {
+	display: block;
+	text-align: center;
+	font-size: 0.875em;
+	padding-top: 1em;
+	&.hidden {
+		display: none;
+	}
+}

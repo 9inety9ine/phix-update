@@ -2,6 +2,8 @@
 
 <div id="product-variant-output"></div>
 
+<span class="preorder-message hidden">This size is available for pre-order, to be despatched on <span class="date"></span></span>
+
 {% for option in product.options_with_values %}
     <span class="variant-name-{% increment %}" style="display:none;">{{ option.name }}</span>
 {% endfor %}
@@ -21,12 +23,13 @@
         {% endif %}
         {% if variant_stock_count >= 1 and variant_stock_count <= 5 %}{% assign variant_output = variant_stock_count | append: " available" %}{% endif %}
         {% if variant_stock_count > 5 %}{% assign variant_output = "In stock" %}{% endif %}
-
+        
         <option 
             value="{{ variant.id }}" 
             data-inventory="{{ variant_output }}" 
             data-price="{{ variant.price }}" 
             data-title="{{ variant.title }}" 
+            {% if variant.metafields.preorder.shipping_date != blank %}data-date="{{ variant.metafields.preorder.shipping_date | date: "%d %B" }}" {% endif %}
             {% unless product.available %} disabled="disabled"{% endunless %}
         >
             {{ variant.title }}

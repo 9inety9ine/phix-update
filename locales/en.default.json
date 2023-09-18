@@ -108,6 +108,7 @@
 		"wishlist_add": "Move to wishlist",
 		"wishlist_notice": "Please login to use wishlist",
 		"wishlist_remove": "Remove from wishlist",
+		"preorder": "Your cart contains preorder items. This order will be despatched when all items are available.",
 		"drawer": {
 			"title": "Your Cart",
 			"checkout": "Checkout",
