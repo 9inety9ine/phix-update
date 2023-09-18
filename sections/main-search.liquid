@@ -33,7 +33,7 @@
     <div class="section-search__tray product-filters">
         <div class="product-filters__inner">
             <div class="product-filters__toggle">
-                <button class="toggle-search-drawer" aria-label="Filter &amp; Sort">{% render "icon-filter-sort.svg" %}<span>Filter &amp; Sort</span></button>
+                <button class="toggle-search-drawer" aria-label="{{ "filters.title" | t }}">{% render "icon-filter-sort.svg" %}<span>{{ "filters.title" | t }}</span></button>
             </div>
             {%- if filter_count >= 1 or has_range == true -%}
                 <div class="product-filters__active">{%- assign filter_count = 0 -%}{%- for filter in search.filters -%}{%- if filter.type == "price_range" -%}{%- assign has_range = false -%}{%- if filter.min_value.value != nil or filter.max_value.value != nil -%}{%- assign has_range = true -%}<a class="product-filters__remove" href="{{ filter.url_to_remove }}"><span>{%- assign min_value = filter.min_value.value | default: 0 -%}{%- assign max_value = filter.max_value.value | default: filter.range_max -%}{{- min_value | money -}} - {{- max_value | money -}}</span>{% render "icon-close.svg" %}</a>{%- endif -%}{%- else -%}{%- for filter_value in filter.active_values -%}{%- assign filter_count = filter_count | plus: 1 -%}<a class="product-filters__remove filter-{{ filter_value.value | handleize}}" href="{{ filter_value.url_to_remove }}"><span>{{ filter_value.label }}</span>{% render "icon-close.svg" %}</a>{%- endfor -%}{%- endif- %}{%- endfor -%}</div>

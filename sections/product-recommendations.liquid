@@ -1,8 +1,9 @@
 {% assign section_id = section.id | replace: "_", "" | replace: "-", "" %}
 {% assign related_products = product.metafields.product.related_products.value | sort: "title" %}
-{% render "section-styles", section_id: section_id, section: section %}
 
 {% if related_products != blank %}
+
+    {% render "section-styles", section_id: section_id, section: section %}
 
     <link href="{{ "flickity.css" | asset_url }}" rel="stylesheet">
     <link href="{{ "product-recommendations.css" | asset_url }}" rel="stylesheet">
@@ -47,6 +48,8 @@
     </script>
 
 {% else %}
+
+    {% render "section-styles", section_id: section_id, section: section %}
 
     <link href="{{ "flickity.css" | asset_url }}" rel="stylesheet">
     <link href="{{ "product-recommendations.css" | asset_url }}" rel="stylesheet">
