@@ -4,6 +4,9 @@
 	&__header {
 		text-align: center;
 		margin-bottom: 3em;
+		@media (max-width: $w-l) {
+			margin-bottom: 2em;
+		}
 		&.cart-empty {
 			text-align: center;
 		}
@@ -34,6 +37,7 @@
 		}
 		@media (max-width: $w-m) {
 			margin: 0;
+			width: 100%;
 			max-width: 100%;
 		}
 		&__actions {

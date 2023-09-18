@@ -100,7 +100,7 @@
             <!--[/cart-total]-->
             <div class="cart-totals__actions">
                 {% form 'cart', cart %}
-                    <button type="submit" name="checkout" class="button button--highlight" aria-label="{{ 'cart.checkout' | t }}">{{ 'cart.checkout' | t }}</button>
+                    <button type="submit" name="checkout" class="button button--highlight button--tall" aria-label="{{ 'cart.checkout' | t }}">{{ 'cart.checkout' | t }}</button>
                     <button type="submit" name="update" class="button button--secondary" aria-label="{{ 'cart.update_cart' | t }}" style="display: none;">{{ 'cart.update_cart' | t }}</button>
                 {% endform %}
             </div>
@@ -114,6 +114,8 @@
     </div>
     
 </div>
+
+<script src="{{ "main-cart.js" | asset_url }}" defer></script>
 
 {% schema %}
 {

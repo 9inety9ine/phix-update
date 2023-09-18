@@ -1,0 +1,1 @@
+const checkPreorder=()=>{let c=!1;fetch(window.Shopify.routes.root+"cart.js").then(e=>e.json()).then(e=>{for(const o of e.items)if(o.properties){var r=o.properties;for(const t of Object.entries(r))"Preorder Note"==t[0]&&(c=!0)}}).finally(()=>{var e=document.querySelector(".preorder-warning");!0===c?e.classList.add("active"):e.classList.remove("active")})};checkPreorder();
