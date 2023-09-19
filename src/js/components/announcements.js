@@ -25,7 +25,7 @@ if (announcementSlider) {
 			for (let announcement of regionalAnnouncements) {
 				const region = announcement.dataset.region;
 				const code = announcement.dataset.code.replaceAll(' ', '').split(',');
-				console.log(region);
+				// console.log(region);
 				let match = false;
 				if (region === 'country') {
 					for (let i = 0; i < code.length; i++) {

@@ -160,7 +160,7 @@ window.cart_drawer_recommendations = function () {
 	detectSlider();
 	function waitForFound() {
 		if (sliderFound === false) {
-			console.log('not found');
+			// console.log('not found');
 			setTimeout(function () {
 				detectSlider();
 			}, 100);

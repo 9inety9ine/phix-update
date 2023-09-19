@@ -16,13 +16,13 @@ window.getCookie = function (cname) {
 	return value;
 };
 
+const cookieStatus = window.getCookie('cart_reminder');
+
 const productList = [];
 
 const getProductCards = async () => {
-	//console.log(productList);
 	let productCards = '';
 	for (let recent of productList) {
-		// console.log(window.Shopify.routes.root + 'products/' + recent + '?view=product-card');
 		let response = await fetch(window.Shopify.routes.root + 'products/' + recent + '?view=product-card');
 		let product = await response.text();
 		productCards += `${product}`;
@@ -39,37 +39,32 @@ window.showCartReminder = () => {
 				return response.json();
 			})
 			.then(cart => {
-				const cartReminderCookie = window.getCookie('cart_reminder');
-				// console.log(cartReminderCookie);
 				const cartItemCount = cart.item_count;
 				if (cartItemCount > 0) {
-					if (cartReminderCookie === null || cartReminderCookie !== 'active') {
-						for (let item of cart.items) productList.push(item.handle);
-						cartReminderContent.classList.add('product-count-' + cartItemCount);
-						getProductCards()
-							.then(productCards => {
-								cartReminderContent.innerHTML = productCards;
-								cartReminder.classList.add('show');
-							})
-							.finally(() => {
-								window.initializeImageLoad();
-								window.setCookie('cart_reminder', 'active', 1);
-							});
-					} else {
-						return;
-					}
+					for (let item of cart.items) productList.push(item.handle);
+					cartReminderContent.classList.add('product-count-' + cartItemCount);
+					getProductCards()
+						.then(productCards => {
+							cartReminderContent.innerHTML = productCards;
+							cartReminder.classList.add('show');
+						})
+						.finally(() => {
+							window.initializeImageLoad();
+							window.setCookie('cart_reminder', 'active', 1);
+						});
 				}
 			});
 	}
 };
 
-window.addEventListener('DOMContentLoaded', window.showCartReminder);
+if (cookieStatus === null) {
+	window.addEventListener('DOMContentLoaded', window.showCartReminder);
+}
 
 document.onkeydown = function (evt) {
 	evt = evt || window.event;
 	if (evt.keyCode == 27) {
-		window.setCookie('cart_reminder', 'inactive', 1);
-		// console.log('cookie reset');
+		window.setCookie('cart_reminder', 'active', 0);
 	}
 };
 

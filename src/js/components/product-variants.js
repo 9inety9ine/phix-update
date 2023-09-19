@@ -50,7 +50,7 @@ const activateOptions = function () {
 					const toggleSelect = document.getElementById('toggle-options');
 					const addToCartButton = document.querySelector('.button--add-to-cart');
 					const addToCartButtonLabel = addToCartButton.querySelector('span');
-					console.log(optionInventory);
+					// console.log(optionInventory);
 					if (optionInventory === 'Out of Stock') {
 						addToCartButtonLabel.textContent = label_sold_out;
 						addToCartButton.disabled = true;
