@@ -17,10 +17,10 @@
 		}
 		svg {
 			width: 1.66666666667em;
-			height: 1.66666666667em;
+			height: auto;
 			@media (max-width: $w-m) {
 				width: 2em;
-				height: 2em;
+				height: auto;
 			}
 			path,
 			circle {
