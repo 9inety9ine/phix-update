@@ -2,7 +2,7 @@ window.setCookie = function (cname, cvalue, exdays) {
 	let cookie = `${cname}=${cvalue};`;
 	if (typeof exdays == 'number') {
 		const d = new Date();
-		d.setTime(d.getTime() + exdays * 24 * 60 * 60 * 1000);
+		d.setTime(d.getTime() + exdays * 12 * 60 * 60 * 1000);
 		cookie += `expires=${d.toUTCString()};`;
 	}
 	document.cookie = `${cookie}path=/`;
