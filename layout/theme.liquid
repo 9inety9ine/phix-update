@@ -48,6 +48,8 @@
       const label_sold_out = "{{ 'products.product.sold_out' | t }}";
       const label_preorder = "{{ 'products.product.preorder' | t }}";
       const label_select_size = "{{ 'products.product.select_size_dropdown' | t }}";
+      const message_preorder = "{{ settings.preorder_text }}";
+      const property_preorder = "{{ settings.preorder_property }}";
       {%- if request.page_type == "product" %}
       const variant_stock = [
         {%- for variant in product.variants -%}

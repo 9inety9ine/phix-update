@@ -11,7 +11,8 @@ const addElement = date => {
 	newInput.setAttribute('type', 'hidden');
 	newInput.setAttribute('id', 'preorder-note');
 	newInput.setAttribute('name', 'properties[Preorder Note]');
-	newInput.setAttribute('value', 'This is a pre-order item to be despatched on ' + date + '.');
+	const preorderProperty = property_preorder.replace(/\[date\]/g, `${date}`);
+	newInput.setAttribute('value', preorderProperty);
 	const targetEl = document.querySelector('.section-product__details__variants');
 	targetEl.insertBefore(newInput, productVariantOutput.nextSibling);
 };
@@ -61,7 +62,8 @@ const activateOptions = function () {
 						addToCartButton.disabled = false;
 						optionSelectLabel.classList.remove('oos');
 						if (optionDate !== undefined) {
-							preorderMessageDate.textContent = optionDate;
+							const preorderContent = message_preorder.replace(/\[date\]/g, `${optionDate}`);
+							preorderMessageDate.textContent = preorderContent;
 							preorderMessage.classList.remove('hidden');
 							addElement(optionDate);
 						}
@@ -153,19 +155,23 @@ const getCurrentVariant = function () {
 					addToCartButton.disabled = true;
 					optionSelectLabel.classList.add('oos');
 					preorderMessage.classList.add('hidden');
+					removeElement('preorder-note');
 				} else if (optionInventory === 'Preorder') {
 					addToCartButtonLabel.textContent = label_preorder;
 					addToCartButton.disabled = false;
 					optionSelectLabel.classList.remove('oos');
 					if (optionDate !== undefined) {
-						preorderMessageDate.textContent = optionDate;
+						const preorderContent = message_preorder.replace(/\[date\]/g, `${optionDate}`);
+						preorderMessageDate.textContent = preorderContent;
 						preorderMessage.classList.remove('hidden');
+						addElement(optionDate);
 					}
 				} else {
 					addToCartButtonLabel.textContent = label_add_to_cart;
 					addToCartButton.disabled = false;
 					optionSelectLabel.classList.remove('oos');
 					preorderMessage.classList.add('hidden');
+					removeElement('preorder-note');
 				}
 			}
 		}

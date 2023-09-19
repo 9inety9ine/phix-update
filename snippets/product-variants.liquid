@@ -2,7 +2,7 @@
 
 <div id="product-variant-output"></div>
 
-<span class="preorder-message hidden">This size is available for pre-order, to be despatched on <span class="date"></span></span>
+<span class="preorder-message hidden"><span class="date" id="preorder-date-message"></span></span>
 
 {% for option in product.options_with_values %}
     <span class="variant-name-{% increment %}" style="display:none;">{{ option.name }}</span>
