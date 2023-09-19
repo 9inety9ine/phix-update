@@ -41,16 +41,18 @@
             {% endif %}
         </a>
     </div>
-    <div class="card-product__details">
-        {% comment %} <div class="card-product__title">
+    {% comment %}
+        <div class="card-product__details">
+        <div class="card-product__title">
             <h4><a href="{{ product.url | within: collection }}" aria-label="{{ product.title }}">{{ product.title }}</a></h4>
-        </div> {% endcomment %}
+        </div>
         <div class="card-product__price">
             {% render "product-price", product: product %}
         </div>
-        {% comment %} <div class="card-product__wishlist">
+        <div class="card-product__wishlist">
             <button data-id="{{ product.id }}" data-product="{{ product.id }}" class="add-to-wishlist remove active">{% render "icon-wishlist.svg" %}<span>{{ 'cart.wishlist_remove' | t }}</span></button>
-        </div> {% endcomment %}
+        </div>
     </div>
+{% endcomment %}
 
 </div>
