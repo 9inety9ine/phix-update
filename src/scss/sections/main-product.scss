@@ -109,6 +109,7 @@
 			h1 {
 				font-size: 1.16666666667em;
 				margin: 0;
+				padding-top: 0.1em;
 				@media (max-width: $w-m) {
 					font-size: 1.25em;
 				}
@@ -117,8 +118,13 @@
 				display: flex;
 				gap: 0.5em;
 				opacity: 0.35;
-				height: fit-content;
-				min-height: fit-content;
+				width: 2em;
+				min-width: 2em;
+				height: 1.75em;
+				min-height: 1.75em;
+				justify-content: center;
+				align-items: center;
+				padding-bottom: 0.25em;
 				&.active {
 					opacity: 1;
 				}
@@ -131,8 +137,8 @@
 					}
 				}
 				svg {
-					width: 1.25em;
-					height: 1.25em;
+					width: 1.5em;
+					height: auto;
 					path,
 					circle {
 						fill: none;
@@ -220,18 +226,19 @@
 				display: block;
 				margin-bottom: 2em;
 				*::part(osm-container) {
-					padding: 12px;
-					border-color: $color-grey-medium;
+					padding: 12px !important;
+					border-color: $color-grey-medium !important;
 				}
 				*::part(osm-badge-container) {
-					padding-left: 5px;
+					padding-left: 5px !important;
 				}
 				*::part(osm-message),
 				*::part(osm-legal),
 				*::part(osm-cta) {
-					font-family: $font-base;
-					font-size: 12px;
-					margin: 0;
+					text-transform: none !important;
+					font-family: $font-base !important;
+					margin: 0 !important;
+					font-size: 0.85em !important;
 				}
 			}
 		}

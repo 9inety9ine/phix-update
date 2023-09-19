@@ -92,19 +92,35 @@ const activateToggle = function () {
 			toggleSelect.parentNode.classList.toggle('open');
 		});
 	}
-	const variantOutput = document.getElementById('product-variant-output');
-	if (variantOutput) {
-		variantOutput.addEventListener('mouseover', () => {
-			clearTimeout(window.toggleDelay);
-		});
-		variantOutput.addEventListener('mouseout', () => {
-			clearTimeout(window.toggleDelay);
-			window.toggleDelay = setTimeout(() => {
-				toggleSelect.parentNode.classList.remove('open');
-			}, 500);
-		});
-	}
+	// const variantOutput = document.getElementById('product-variant-output');
+	// if (variantOutput) {
+	// 	variantOutput.addEventListener('mouseover', () => {
+	// 		clearTimeout(window.toggleDelay);
+	// 	});
+	// 	variantOutput.addEventListener('mouseout', () => {
+	// 		clearTimeout(window.toggleDelay);
+	// 		window.toggleDelay = setTimeout(() => {
+	// 			toggleSelect.parentNode.classList.remove('open');
+	// 		}, 1500);
+	// 	});
+	// }
 };
+
+document.addEventListener('click', e => {
+	const flyoutEl = document.getElementById('product-variant-output');
+	const toggleSelect = document.getElementById('toggle-options');
+	let targetEl = e.target; // clicked element
+	do {
+		if (targetEl == flyoutEl) {
+			// This is a click inside, does nothing, just return.
+			return;
+		}
+		// Go up the DOM
+		targetEl = targetEl.parentNode;
+	} while (targetEl);
+	// This is a click outside.
+	toggleSelect.parentNode.classList.remove('open');
+});
 
 if (productVariantSelect) {
 	const productVariantOptions = productVariantSelect.querySelectorAll('option');

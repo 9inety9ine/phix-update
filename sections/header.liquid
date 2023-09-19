@@ -55,6 +55,32 @@
                     "type": "text",
                     "id": "title",
                     "label": "Announcement"
+                },
+                {
+                    "type": "header",
+                    "content": "Exclusions"
+                },
+                {
+                    "type": "select",
+                    "id": "type",
+                    "label": "Region type",
+                    "options": [
+                        {
+                            "value": "country",
+                            "label": "Country"
+                        },
+                        {
+                            "value": "continent",
+                            "label": "Continent"
+                        }
+                    ],
+                    "default": "country"
+                },
+                {
+                    "type": "text",
+                    "id": "code",
+                    "label": "Codes",
+                    "info": "For multiple entries use a comma seperated list. Full list of country codes: https://www.nationsonline.org/oneworld/country_code_list.htm"
                 }
             ]
         },

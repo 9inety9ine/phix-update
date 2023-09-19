@@ -12,8 +12,7 @@
                         src="{{ image.src | img_url: '768x1048', crop: "center" }}" 
                         {% else %}
                         data-src="{{ image.src | img_url: '768x1048', crop: "center" }}" 
-                        src="{{ 'preload.gif' | asset_url }}" 
-                        class="preload" 
+                        src="{{ 'placeholder-large.jpg' | asset_url }}" 
                         {% endif %}
                         alt="{{ product.title }}" 
                         width="768" 
@@ -52,7 +51,7 @@
     const swiper_product_media = new Swiper('.swiper-product-media', {
         speed: 250,
         spaceBetween: 0,
-        loop: false,
+        loop: true,
         slidesPerView: 1,
         pagination: {
             el: '.media-pagination',

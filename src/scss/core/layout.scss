@@ -2,7 +2,10 @@ main {
 	background-color: $color-white;
 	width: 100%;
 	max-width: 100%;
-	min-height: 25vh;
+	min-height: 50em;
+	@media (max-width: $w-m) {
+		min-height: 40em;
+	}
 }
 .wrap {
 	width: 100%;

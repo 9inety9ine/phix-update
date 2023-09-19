@@ -110,6 +110,38 @@ if (productMessages) {
 	}
 }
 
+const globalProductAnnouncements = document.querySelectorAll('.product-message-global');
+if (globalProductAnnouncements) {
+	if (client_country !== undefined && client_continent !== undefined) {
+		for (let announcement of globalProductAnnouncements) {
+			const region = announcement.dataset.region;
+			const code = announcement.dataset.code;
+			let match = false;
+			if (region && code) {
+				const codeArray = code.replaceAll(' ', '').split(',');
+				if (region === 'country') {
+					for (let i = 0; i < codeArray.length; i++) {
+						if (client_country === codeArray[i]) {
+							match = true;
+							continue;
+						}
+					}
+				}
+				if (region === 'continent') {
+					for (let i = 0; i < codeArray.length; i++) {
+						if (client_continent === codeArray[i]) {
+							match = true;
+							continue;
+						}
+					}
+				}
+			}
+			if (match === true) announcement.remove();
+		}
+		for (let announcement of globalProductAnnouncements) announcement.classList.add('show');
+	}
+}
+
 window.initProductAddToWishlist = function () {
 	const addToWishlistButton = document.querySelector('.add-product-to-wishlist');
 	if (addToWishlistButton) {

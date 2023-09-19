@@ -6,7 +6,7 @@
     {% if media.media_type == 'video' %}{% assign has_video = true %}{% endif %}
 {% endfor %}
 
-<div class="card-product{% unless request.design_mode %} preload{% endunless %}">
+<div class="card-product">
 
     <div class="card-product__media">
 
@@ -38,9 +38,8 @@
                                 {% if request.design_mode %}
                                 src="{{ image.src | img_url: '600x818', crop: "center" }}" 
                                 {% else %}
-                                src="{{ "preload.gif" | asset_url }}" 
+                                src="{{ "placeholder-medium.jpg" | asset_url }}" 
                                 data-src="{{ image.src | img_url: '600x818', crop: "center" }}" 
-                                class="preload" 
                                 {% endif %}
                                 alt="{{ product.title }}" 
                                 width="600" 

@@ -46,6 +46,36 @@ if (announcementSlider) {
 				if (match === false) announcement.remove();
 			}
 		}
-		swiper_announcements.init();
 	}
+	const globalAnnouncements = document.querySelectorAll('.swiper-slide-global');
+	if (globalAnnouncements) {
+		if (client_country !== undefined && client_continent !== undefined) {
+			for (let announcement of globalAnnouncements) {
+				const region = announcement.dataset.region;
+				const code = announcement.dataset.code;
+				let match = false;
+				if (region && code) {
+					const codeArray = code.replaceAll(' ', '').split(',');
+					if (region === 'country') {
+						for (let i = 0; i < codeArray.length; i++) {
+							if (client_country === codeArray[i]) {
+								match = true;
+								continue;
+							}
+						}
+					}
+					if (region === 'continent') {
+						for (let i = 0; i < codeArray.length; i++) {
+							if (client_continent === codeArray[i]) {
+								match = true;
+								continue;
+							}
+						}
+					}
+				}
+				if (match === true) announcement.remove();
+			}
+		}
+	}
+	swiper_announcements.init();
 }

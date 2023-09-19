@@ -7,7 +7,7 @@
             {% for block in section.blocks %}
             {% case block.type %}
                 {% when "global_announcement" %}
-                    <div class="swiper-slide swiper-slide-global">
+                    <div class="swiper-slide swiper-slide-global"{% if block.settings.code != blank %} data-region="{{ block.settings.type }}" data-code="{{ block.settings.code }}{% endif %}">
                         <div class="announcements__announcement">
                             {% if block.settings.url != blank %}<a href="{{ block.settings.url }}" aria-label="{{ block.settings.title }}">{% endif %}
                             <span>{{ block.settings.title }}</span>
