@@ -5,13 +5,13 @@ if (drawerMenuToggle)
 	});
 
 const swiper_drawer_menu = new Swiper('.swiper-drawer-menu', {
-	speed: 750,
+	speed: 1000,
 	spaceBetween: 24,
 	loop: true,
 	slidesPerView: 'auto',
 	init: false,
 	autoplay: {
-		delay: 3000,
+		delay: 1500,
 		disableOnInteraction: false,
 	},
 });
