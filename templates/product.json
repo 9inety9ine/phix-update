@@ -42,16 +42,6 @@
         "mobile_padding_bottom": 32
       }
     },
-    "recent": {
-      "type": "recently-viewed",
-      "settings": {
-        "title": "Recently Viewed",
-        "padding_top": 0,
-        "padding_bottom": 0,
-        "mobile_padding_top": 0,
-        "mobile_padding_bottom": 0
-      }
-    },
     "reqs": {
       "type": "product-recommendations",
       "settings": {
@@ -61,11 +51,21 @@
         "mobile_padding_top": 0,
         "mobile_padding_bottom": 48
       }
+    },
+    "recent": {
+      "type": "recently-viewed",
+      "settings": {
+        "title": "Recently Viewed",
+        "padding_top": 0,
+        "padding_bottom": 64,
+        "mobile_padding_top": 0,
+        "mobile_padding_bottom": 32
+      }
     }
   },
   "order": [
     "main",
-    "recent",
-    "reqs"
+    "reqs",
+    "recent"
   ]
 }
