@@ -4,6 +4,10 @@
     <ul class="menu menu-desktop">
     {% for block in section.blocks %}
         {% case block.type %}
+        {% when "link"%}
+        <li class="menu-desktop__item">
+            <a href="{{ block.settings.url }}" class="menu-desktop__link basic" aria-label="{{ block.settings.title }}">{{ block.settings.title }}</a>
+        </li>
         {% when "menu" %}
         <li class="menu-desktop__item">
             <a href="{{ block.settings.url }}" class="menu-desktop__link" aria-label="{{ block.settings.label }}">{{ block.settings.label }}</a>
