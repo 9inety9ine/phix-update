@@ -68,10 +68,12 @@ document.onkeydown = function (evt) {
 	}
 };
 
-const reminderClose = document.querySelector('.cart-reminder__close');
-if (reminderClose)
-	reminderClose.addEventListener('click', () => {
-		const reminderDrawer = document.querySelector('.cart-reminder');
-		reminderDrawer.classList.remove('show');
-		window.setCookie('cart_reminder', 'active', 1);
-	});
+window.addEventListener('DOMContentLoaded', () => {
+	const reminderClose = document.querySelector('.cart-reminder__close');
+	if (reminderClose)
+		reminderClose.addEventListener('click', () => {
+			const reminderDrawer = document.querySelector('.cart-reminder');
+			reminderDrawer.classList.remove('show');
+			window.setCookie('cart_reminder', 'active', 1);
+		});
+});

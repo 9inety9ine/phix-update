@@ -71,4 +71,4 @@ window.initializeImageLoad = function () {
 		}
 	}
 };
-window.initializeImageLoad();
+window.addEventListener('DOMContentLoaded', window.initializeImageLoad);

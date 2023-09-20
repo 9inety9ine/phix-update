@@ -15,6 +15,9 @@
 		h3 {
 			font-size: 3em;
 			margin-bottom: 0;
+			@media (max-width: $w-m) {
+				font-size: 2em;
+			}
 		}
 		p {
 			margin: 0;

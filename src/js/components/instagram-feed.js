@@ -1,4 +1,4 @@
-window.addEventListener('DOMContentLoaded', function () {
+window.addEventListener('DOMContentLoaded', () => {
 	const instaFeed = document.getElementById('instafeed');
 	if (instaFeed) {
 		const token = InstagramToken;

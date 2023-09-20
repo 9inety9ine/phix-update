@@ -37,4 +37,4 @@ window.initAddToCart = function () {
 				});
 		}
 };
-window.initAddToCart();
+window.addEventListener('DOMContentLoaded', window.initAddToCart);
