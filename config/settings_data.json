@@ -4,6 +4,9 @@
     "color_grey_medium": "#e5e5e5",
     "color_grey_dark": "#959595",
     "color_success": "#6ec581",
+    "preorder_cart_message": "Your cart contains preorder items. This order will be dispatched when all items are available.",
+    "preorder_text": "This size is available for pre-order, to be dispatched on [date].",
+    "preorder_property": "This is a pre-order item to be dispatched on [date].",
     "favicon": "shopify:\/\/shop_images\/logo-phix.png",
     "share_image": "shopify:\/\/shop_images\/social-preview.jpg",
     "shop_name": "Phix Clothing",
@@ -108,7 +111,9 @@
           "d97b120a-9e6a-4742-90bc-16e163c61112": {
             "type": "global_announcement",
             "settings": {
-              "title": "This is a global announcement"
+              "title": "This is a global announcement",
+              "type": "continent",
+              "code": ""
             }
           },
           "3c6b8f9f-92d4-41b5-bc0d-6b22b5e1aace": {
@@ -181,9 +186,9 @@
           "heading": "Get notified of exclusive first drops",
           "code": "<div class=\"klaviyo-form-TUWADC k1\"><\/div>",
           "info_text": "© 2023 Rock n Roller Limited trading as Phix Clothing",
-          "padding_top": 64,
+          "padding_top": 48,
           "padding_bottom": 64,
-          "mobile_padding_top": 32,
+          "mobile_padding_top": 24,
           "mobile_padding_bottom": 32
         }
       },

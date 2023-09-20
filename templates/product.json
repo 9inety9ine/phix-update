@@ -6,7 +6,9 @@
         "8d604279-69dd-40bd-a61b-6cc755447b6e": {
           "type": "global_announcement",
           "settings": {
-            "title": "Global Announcement"
+            "title": "Global Announcement",
+            "type": "country",
+            "code": ""
           }
         },
         "1b5ed9ab-589e-4ebb-b22c-1b40272838e4": {
