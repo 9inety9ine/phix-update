@@ -23,16 +23,18 @@
 			margin: 0;
 		}
 	}
-	&__products {
-		&:not(.is-draggable) {
-			display: flex;
-			overflow-x: hidden;
-		}
-		.product-slide {
-			width: 30em;
-			min-width: 30em;
-			min-height: 45em;
-			margin-right: 1em;
+	.swiper {
+		&:not(.swiper-initialized) {
+			display: none;
 		}
 	}
+	// &__products {
+
+	// 	.product-slide {
+	// 		width: 30em;
+	// 		min-width: 30em;
+	// 		min-height: 45em;
+	// 		margin-right: 1em;
+	// 	}
+	// }
 }

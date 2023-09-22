@@ -10,6 +10,22 @@
 
     <div class="card-product__media">
         <a href="{{ product.url | within: collection }}" aria-label="{{ product.title }}">
+            <img 
+                {% if request.design_mode %}
+                src="{{ product.featured_image.src | img_url: '400x545', crop: "center" }}" 
+                {% else %}
+                src="{{ "placeholder-medium.jpg" | asset_url }}" 
+                data-src="{{ product.featured_image.src | img_url: '400x545', crop: "center" }}" 
+                {% endif %}
+                alt="{{ product.title }}" 
+                width="400" 
+                height="545" 
+            >
+        </a>
+    </div>
+
+    {% comment %} <div class="card-product__media">
+        <a href="{{ product.url | within: collection }}" aria-label="{{ product.title }}">
             {% if show_video == 'True' and has_video == true %}
                 {% assign video_count = 0 %}
                 {% for media in product.media %}
@@ -39,7 +55,8 @@
             >
             {% endif %}
         </a>
-    </div>
+    </div> {% endcomment %}
+
     <div class="card-product__details">
         <div class="card-product__title">
             <h4><a href="{{ product.url | within: collection }}" aria-label="{{ product.title }}">{{ product.title }}</a></h4>

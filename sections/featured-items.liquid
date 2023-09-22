@@ -18,20 +18,73 @@
         </div>
 
         <div class="section-featured-items__products product-slider-{{ section_id }}">
-            {% for product in section.settings.products %}
-                {% assign available = false %}
-                {% if product.available or product.tags contains "preorder" %}{% assign available = true %}{% endif %}
-                {% if available == true %}
-                <div class="product-slide">{% render "card-product-slider", product: product %}</div>
-                {% endif %}
-            {% endfor %}
+            <div class="swiper">
+                <div class="swiper-wrapper">
+                {% for product in section.settings.products %}
+                    {% assign available = false %}
+                    {% if product.available or product.tags contains "preorder" %}{% assign available = true %}{% endif %}
+                    {% if available == true %}
+                    <div class="swiper-slide product-slide">{% render "card-product-slider", product: product %}</div>
+                    {% endif %}
+                {% endfor %}
+                </div>
+            </div>
         </div>
         
     </div>
 
 </div>
 
-<script src="{{ "flickity.js" | asset_url }}"></script>
+<script>
+    const initProductslider_{{ section_id }} = () => {
+        const sliderWrapper = document.querySelector('.wrap--{{ section_id }}');
+        const sliderContainer = sliderWrapper.querySelector('.swiper')
+        const swiperWrapper = sliderWrapper.querySelector('.swiper-wrapper');
+        const swiper = new Swiper(sliderContainer, {
+            speed: 1500,
+            spaceBetween: 12,
+            slidesPerView: 1.5,
+            init: false,
+            loop: true,
+            centeredSlides: true,
+            autoplay: {
+                delay: 1500,
+                disableOnInteraction: false,
+            },
+            breakpoints: {
+                768: {
+                    slidesPerView: 2.5,
+                    spaceBetween: 12
+                },
+                1024: {
+                    slidesPerView: 3.5,
+                    spaceBetween: 12
+                },
+                1440: {
+                    slidesPerView: 4.5,
+                    spaceBetween: 12
+                },
+                1441: {
+                    slidesPerView: 6.5,
+                    spaceBetween: 12
+                }
+            }
+        });
+        swiper.init();
+    }
+    window.addEventListener('DOMContentLoaded', () => {
+        window.initializeImageLoad();
+        initProductslider_{{ section_id }}();
+    })
+    {% if request.design_mode %}
+    document.addEventListener('shopify:section:load', function(event) {
+        window.initializeImageLoad();
+        initProductslider_{{ section_id }}();
+    });
+    {% endif %}
+</script>
+
+{% comment %} <script src="{{ "flickity.js" | asset_url }}"></script>
 <script defer>
     const flickity_{{ section_id }} = function() {
         
@@ -98,7 +151,7 @@
         window.initializeImageLoad();
     });
     {% endif %}
-</script>
+</script> {% endcomment %}
 
 {% schema %}
 {
