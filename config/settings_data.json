@@ -38,26 +38,34 @@
               "url": "shopify:\/\/collections\/all",
               "feature_1_label": "Shirting",
               "feature_1_url": "shopify:\/\/collections\/shirting",
-              "feature_1_image": "shopify:\/\/shop_images\/shirting-new_f39dc72c-87bd-4793-bf62-3ca7263a8187.jpg",
+              "feature_1_image": "shopify:\/\/shop_images\/banner_look_1-min.jpg",
               "feature_2_label": "Outerwear",
               "feature_2_url": "shopify:\/\/collections\/outerwear",
-              "feature_2_image": "shopify:\/\/shop_images\/outerwear-new_d8d07f5c-fbec-4935-a592-8ff5f524f9de.jpg",
+              "feature_2_image": "shopify:\/\/shop_images\/banner_look_2-min.jpg",
               "feature_3_label": "Jeans & Trousers",
               "feature_3_url": "shopify:\/\/collections\/trousers",
-              "feature_3_image": "shopify:\/\/shop_images\/jeans-and-trousers-new.jpg",
+              "feature_3_image": "shopify:\/\/shop_images\/banner_look_3-min.jpg",
               "feature_4_label": "Footwear",
               "feature_4_url": "shopify:\/\/collections\/footwear",
-              "feature_4_image": "shopify:\/\/shop_images\/footwear-new.jpg",
+              "feature_4_image": "shopify:\/\/shop_images\/test_boot_1-min.png",
               "feature_5_label": "Accessories",
               "feature_5_url": "shopify:\/\/collections\/accessories",
-              "feature_5_image": "shopify:\/\/shop_images\/QOA06066.jpg",
+              "feature_5_image": "shopify:\/\/shop_images\/banner_look_5-min.jpg",
               "feature_6_label": "Tailoring",
               "feature_6_url": "shopify:\/\/collections\/tailoring",
-              "feature_6_image": "shopify:\/\/shop_images\/mobile-new-min.jpg"
+              "feature_6_image": "shopify:\/\/shop_images\/banner_look_6-min.jpg"
+            }
+          },
+          "0af1bf32-77a9-43de-a2ec-dec68e03610c": {
+            "type": "link",
+            "settings": {
+              "title": "Just Arrived",
+              "url": "shopify:\/\/collections\/just-arrived"
             }
           },
           "8baad7ed-8127-4c35-bd1f-1196560948e8": {
             "type": "menu",
+            "disabled": true,
             "settings": {
               "label": "JUST ARRIVED",
               "url": "shopify:\/\/collections\/just-arrived",
@@ -82,19 +90,19 @@
               "url": "shopify:\/\/pages\/the-brand",
               "feature_1_label": "Our Story",
               "feature_1_url": "shopify:\/\/pages\/the-brand",
-              "feature_1_image": "shopify:\/\/shop_images\/the-brand-small-new-2.jpg",
+              "feature_1_image": "shopify:\/\/shop_images\/banner_2_look_1-min.jpg",
               "feature_2_label": "As Seen On",
               "feature_2_url": "shopify:\/\/pages\/as-seen-on",
-              "feature_2_image": "shopify:\/\/shop_images\/aso-alex-kapranos-siera-cuban.jpg",
+              "feature_2_image": "shopify:\/\/shop_images\/banner_2_look_2-min.jpg",
               "feature_3_label": "Lookbooks",
               "feature_3_url": "https:\/\/www.phixclothing.com\/pages\/lookbooks?view=lookbooks",
-              "feature_3_image": "shopify:\/\/shop_images\/QOA04579.jpg",
-              "feature_4_label": "Blog",
-              "feature_4_url": "shopify:\/\/blogs\/news",
-              "feature_4_image": "shopify:\/\/shop_images\/QOA06066.jpg",
-              "feature_5_label": "Films",
-              "feature_5_url": "shopify:\/\/pages\/films",
-              "feature_5_image": "shopify:\/\/shop_images\/QOA01482.jpg",
+              "feature_3_image": "shopify:\/\/shop_images\/QOA06236.jpg",
+              "feature_4_label": "FILMS",
+              "feature_4_url": "shopify:\/\/pages\/films",
+              "feature_4_image": "shopify:\/\/shop_images\/banner_2_look_5-min.jpg",
+              "feature_5_label": "BLOG",
+              "feature_5_url": "shopify:\/\/blogs\/news",
+              "feature_5_image": "shopify:\/\/shop_images\/banner_2_look_4-min.jpg",
               "feature_6_label": "",
               "feature_6_url": ""
             }
@@ -134,6 +142,7 @@
         },
         "block_order": [
           "2667c5d8-c10b-4850-a89e-64711d7c39f9",
+          "0af1bf32-77a9-43de-a2ec-dec68e03610c",
           "8baad7ed-8127-4c35-bd1f-1196560948e8",
           "dfe302af-f294-41bb-be2a-b255cdef9cf8",
           "63beef23-fb13-499e-aa50-40f6a8c80270",
