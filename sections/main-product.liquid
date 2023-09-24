@@ -166,7 +166,9 @@
 
                 {% endform %}
 
+                {% unless product.tags contains "hideNBIS" %}
                 {% render "sc-back-in-stock", product: product %}
+                {% endunless %}
 
             </div>
             

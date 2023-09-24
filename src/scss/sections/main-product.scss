@@ -117,7 +117,7 @@
 			button {
 				display: flex;
 				gap: 0.5em;
-				opacity: 0.35;
+				opacity: 1;
 				width: 2em;
 				min-width: 2em;
 				height: 1.75em;
@@ -225,16 +225,16 @@
 			klarna-placement {
 				display: block;
 				margin-bottom: 2em;
-				*::part(osm-container) {
+				&::part(osm-container) {
 					padding: 12px !important;
 					border-color: $color-grey-medium !important;
 				}
-				*::part(osm-badge-container) {
+				&::part(osm-badge-container) {
 					padding-left: 5px !important;
 				}
-				*::part(osm-message),
-				*::part(osm-legal),
-				*::part(osm-cta) {
+				&::part(osm-message),
+				&::part(osm-legal),
+				&::part(osm-cta) {
 					text-transform: none !important;
 					font-family: $font-base !important;
 					margin: 0 !important;
@@ -317,6 +317,15 @@
 			.esc-out-of-stock-title {
 				color: $color-black;
 				text-align: left;
+			}
+			.esc-out-of-stock-subtitle {
+				span {
+					font-size: 0.83333333333em;
+				}
+			}
+			.esc-sms-select-country-title {
+				margin-bottom: 4px;
+				font-size: 0.83333333333em;
 			}
 			.esc-btn {
 				appearance: none;

@@ -4,6 +4,8 @@ const productVariantSelect = document.getElementById('product-variant-select');
 const triggerChange = el => {
 	const changeEvent = new Event('change');
 	el.dispatchEvent(changeEvent);
+	const oosForm = document.getElementById('esc-oos-form');
+	oosForm.removeAttribute('style');
 };
 
 const addElement = date => {
@@ -192,6 +194,9 @@ const getCurrentVariant = function () {
 			}
 		}
 		triggerChange(productVariantSelect);
+	} else {
+		const oosForm = document.getElementById('esc-oos-form');
+		oosForm.style.display = 'none';
 	}
 };
 getCurrentVariant();
