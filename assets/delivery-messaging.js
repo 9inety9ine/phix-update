@@ -1,0 +1,1 @@
+const deliveryMessaging=document.querySelector(".section-delivery-messaging");deliveryMessaging&&(console.log(client_continent,client_country),void 0!==client_country&&void 0!==client_continent&&("US"===client_country||"EU"===client_continent&&"GB"!==client_country?deliveryMessaging.classList.remove("hidden"):deliveryMessaging.classList.add("hidden")));

@@ -1,0 +1,125 @@
+{% assign section_id = section.id | replace: "_", "" | replace: "-", "" %}
+{% render "section-styles", section_id: section_id, section: section %}
+
+<link href="{{ "delivery-messaging.css" | asset_url }}" rel="stylesheet">
+
+<div class="wrap wrap--full-width wrap--no-padding">
+
+    <div class="section-delivery-messaging__inner">
+        {% for block in section.blocks %}
+        <div class="section-delivery-messaging__item">
+            <div class="section-delivery-messaging__item__content">
+                {% if block.settings.image != blank %}
+                <div class="section-delivery-messaging__item__icon">
+                    <img src="{{ block.settings.image.src | img_url: "150x150", crop: "center" }}" width="150" height="150" alt="{{ block.settings.title }}">
+                </div>
+                {% endif %}
+                <div class="section-delivery-messaging__item__title">
+                    <span>{{ block.settings.title }}</span>
+                </div>
+                <div class="section-delivery-messaging__item__text">
+                    <p>{{ block.settings.text }}</p>
+                </div>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+
+</div>
+
+
+<script src="{{ "delivery-messaging.js" | asset_url }}" defer></script>
+
+{% if request.design_mode and section.settings.preview == true %}
+<script>
+    document.querySelector('.section-delivery-messaging').classList.remove('hidden');
+</script>
+{% endif %}
+
+{% schema %}
+{
+    "name": "Delivery Messaging",
+    "tag": "section",
+    "class": "section-delivery-messaging hidden",
+    "blocks": [
+        {
+            "type": "message",
+            "name": "Message",
+            "limit": 3,
+            "settings": [
+                {
+                    "type": "image_picker",
+                    "id": "image",
+                    "label": "Icon"
+                },
+                {
+                    "type": "text",
+                    "id": "title",
+                    "label": "Title"
+                },
+                {
+                    "type": "textarea",
+                    "id": "text",
+                    "label": "Text"
+                }
+            ]
+        }
+    ],
+    "settings": [
+        {
+            "type": "checkbox",
+            "id": "preview",
+            "label": "Preview",
+            "default": false
+        },
+        {
+            "type": "header",
+            "content": "Desktop padding"
+        },
+        {
+            "type": "range",
+            "id": "padding_top",
+            "min": 0,
+            "max": 128,
+            "step": 2,
+            "unit": "px",
+            "label": "Padding top",
+            "default": 0
+        },
+        {
+            "type": "range",
+            "id": "padding_bottom",
+            "min": 0,
+            "max": 128,
+            "step": 2,
+            "unit": "px",
+            "label": "Padding bottom",
+            "default": 64
+        },
+        {
+            "type": "header",
+            "content": "Mobile padding"
+        },
+        {
+            "type": "range",
+            "id": "mobile_padding_top",
+            "min": 0,
+            "max": 128,
+            "step": 2,
+            "unit": "px",
+            "label": "Padding top",
+            "default": 0
+        },
+        {
+            "type": "range",
+            "id": "mobile_padding_bottom",
+            "min": 0,
+            "max": 128,
+            "step": 2,
+            "unit": "px",
+            "label": "Padding bottom",
+            "default": 32
+        }
+    ]
+}
+{% endschema %}
