@@ -50,6 +50,7 @@
 		}
 	}
 	.media-pagination {
+		display: none !important;
 		@media (min-width: 769px) {
 			display: none;
 		}
@@ -91,7 +92,7 @@
 			width: 3em;
 			height: 4em;
 			z-index: 3;
-			background: url(icon-product-slider-prev.svg) no-repeat 50% 50% / cover;
+			background: url(icon-card-prev.svg) no-repeat 50% 50% / cover;
 			cursor: pointer;
 			opacity: 0;
 			transition: opacity 0.15s linear;
@@ -101,7 +102,7 @@
 			&--next {
 				left: auto;
 				right: 0;
-				background: url(icon-product-slider-next.svg) no-repeat 50% 50% / cover;
+				background: url(icon-card-next.svg) no-repeat 50% 50% / cover;
 			}
 		}
 	}
