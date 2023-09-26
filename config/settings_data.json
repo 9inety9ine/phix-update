@@ -233,6 +233,47 @@
       "drawer-cart-recommended": {
         "type": "drawer-cart-recommended",
         "settings": {}
+      },
+      "delivery-messaging": {
+        "type": "delivery-messaging",
+        "blocks": {
+          "9917429a-bc43-4846-ba16-ab141c098f72": {
+            "type": "message",
+            "settings": {
+              "image": "shopify:\/\/shop_images\/deliveryicon.png",
+              "title": "Free Euro Delivery",
+              "text": "All orders sent DHL express. Complimentary euro delivery when you spend €250+"
+            }
+          },
+          "1a0d0b1b-4142-4683-b036-465659d1f2da": {
+            "type": "message",
+            "settings": {
+              "image": "shopify:\/\/shop_images\/euroicon_7386dcdb-9bc4-4a42-be40-46f97040600a.png",
+              "title": "No Brexit Duties & Delivery Charges",
+              "text": "Prices include tax. We pay all customs & duty charges for our European customers."
+            }
+          },
+          "4f64cdcc-36f9-433c-af39-395c852b5f9a": {
+            "type": "message",
+            "settings": {
+              "image": "shopify:\/\/shop_images\/christmasretuurns.png",
+              "title": "Express Delivery",
+              "text": "Fast delivery via DHL express. All European orders delivered within 2 working days."
+            }
+          }
+        },
+        "block_order": [
+          "9917429a-bc43-4846-ba16-ab141c098f72",
+          "1a0d0b1b-4142-4683-b036-465659d1f2da",
+          "4f64cdcc-36f9-433c-af39-395c852b5f9a"
+        ],
+        "settings": {
+          "preview": false,
+          "padding_top": 0,
+          "padding_bottom": 64,
+          "mobile_padding_top": 0,
+          "mobile_padding_bottom": 32
+        }
       }
     },
     "content_for_index": [],
