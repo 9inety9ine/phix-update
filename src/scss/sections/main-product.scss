@@ -214,14 +214,14 @@
 			}
 		}
 		&__actions {
-			margin-bottom: 1em;
+			margin-bottom: 1.25em;
 			.preorder-description {
 				text-align: center;
 				padding-top: 1em;
 			}
 		}
 		&__klarna {
-			margin-top: 2em;
+			margin-top: 1.5em;
 			klarna-placement {
 				display: block;
 				margin-bottom: 2em;
@@ -245,7 +245,7 @@
 		&__messages {
 			display: flex;
 			flex-direction: column;
-			gap: 0.25em;
+			gap: 0.5em;
 			.product-message {
 				display: none;
 				text-align: center;
