@@ -79,36 +79,84 @@ if (modalToggle)
 // 	}
 // }
 
-const productMessages = document.querySelectorAll('.product-message-regional');
-if (productMessages) {
-	if (client_country !== undefined && client_continent !== undefined) {
-		for (let message of productMessages) {
-			const region = message.dataset.region;
-			const code = message.dataset.code.replaceAll(' ', '').split(',');
-			let match = false;
-			if (region === 'country') {
-				for (let i = 0; i < code.length; i++) {
-					if (client_country === code[i]) {
+// const productMessages = document.querySelectorAll('.product-message-regional');
+// if (productMessages) {
+// 	if (client_country !== undefined && client_continent !== undefined) {
+// 		for (let message of productMessages) {
+// 			const region = message.dataset.region;
+// 			const code = message.dataset.code.replaceAll(' ', '').split(',');
+// 			let match = false;
+// 			if (region === 'country') {
+// 				for (let i = 0; i < code.length; i++) {
+// 					if (client_country === code[i]) {
+// 						match = true;
+// 						continue;
+// 					}
+// 				}
+// 			}
+// 			if (region === 'continent') {
+// 				for (let i = 0; i < code.length; i++) {
+// 					if (client_continent === code[i]) {
+// 						match = true;
+// 						continue;
+// 					}
+// 				}
+// 			}
+// 			if (match === false) message.remove();
+// 		}
+// 		for (let message of productMessages) message.classList.add('show');
+// 	} else {
+// 		for (let message of productMessages) message.remove();
+// 	}
+// }
+
+window.addEventListener('DOMContentLoaded', () => {
+	const continentProductMessages = document.querySelectorAll('.product-message-continent');
+	if (continentProductMessages) {
+		if (client_country !== undefined && client_continent !== undefined) {
+			for (let message of continentProductMessages) {
+				const continent = message.dataset.continent;
+				const countries = message.dataset.countries;
+				let match = false;
+				if (countries === 'EMPTY') {
+					if (client_continent === continent) {
 						match = true;
-						continue;
+					}
+				} else {
+					const countriesArray = countries.replaceAll(' ', '').split(',');
+					if (client_continent === continent) {
+						match = true;
+					}
+					for (let i = 0; i < countriesArray.length; i++) {
+						if (client_country === countriesArray[i]) {
+							match = false;
+						}
 					}
 				}
+				if (match === false) message.remove();
 			}
-			if (region === 'continent') {
-				for (let i = 0; i < code.length; i++) {
-					if (client_continent === code[i]) {
-						match = true;
-						continue;
-					}
-				}
-			}
-			if (match === false) message.remove();
+			for (let message of continentProductMessages) message.classList.add('show');
 		}
-		for (let message of productMessages) message.classList.add('show');
-	} else {
-		for (let message of productMessages) message.remove();
 	}
-}
+	const countryProductMessages = document.querySelectorAll('.product-message-country');
+	if (countryProductMessages) {
+		if (client_country !== undefined && client_continent !== undefined) {
+			for (let message of countryProductMessages) {
+				const countries = message.dataset.countries;
+				let match = false;
+				const countriesArray = countries.replaceAll(' ', '').split(',');
+				console.log(countriesArray);
+				for (let i = 0; i < countriesArray.length; i++) {
+					if (client_country === countriesArray[i]) {
+						match = true;
+					}
+				}
+				if (match === false) message.remove();
+			}
+			for (let message of countryProductMessages) message.classList.add('show');
+		}
+	}
+});
 
 const globalProductAnnouncements = document.querySelectorAll('.product-message-global');
 if (globalProductAnnouncements) {

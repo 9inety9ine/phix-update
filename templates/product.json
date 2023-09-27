@@ -2,37 +2,6 @@
   "sections": {
     "main": {
       "type": "main-product",
-      "blocks": {
-        "8d604279-69dd-40bd-a61b-6cc755447b6e": {
-          "type": "global_announcement",
-          "settings": {
-            "title": "Global Announcement",
-            "type": "country",
-            "code": ""
-          }
-        },
-        "1b5ed9ab-589e-4ebb-b22c-1b40272838e4": {
-          "type": "regional_announcement",
-          "settings": {
-            "type": "country",
-            "code": "GB",
-            "title": "GB Announcement"
-          }
-        },
-        "4e17b63e-5b34-4e1d-8f2c-ac4d821d695a": {
-          "type": "regional_announcement",
-          "settings": {
-            "type": "country",
-            "code": "FR, IE",
-            "title": "French or Irish Announcement"
-          }
-        }
-      },
-      "block_order": [
-        "8d604279-69dd-40bd-a61b-6cc755447b6e",
-        "1b5ed9ab-589e-4ebb-b22c-1b40272838e4",
-        "4e17b63e-5b34-4e1d-8f2c-ac4d821d695a"
-      ],
       "settings": {
         "care_title": "Details & Care",
         "care_text": "",

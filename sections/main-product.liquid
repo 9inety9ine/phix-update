@@ -104,15 +104,15 @@
                             {% case block.type %}
                                 {% when "global_announcement" %}
                                 <div class="product-message product-message-global"{% if block.settings.code != blank %} data-region="{{ block.settings.type }}" data-code="{{ block.settings.code }}{% endif %}">
-                                    {% if block.settings.url != blank %}<a href="{{ block.settings.url }}" aria-label="{{ block.settings.title }}">{% endif %}
                                     <span>{{ block.settings.title }}</span>
-                                    {% if block.settings.url != blank %}</a>{% endif %}
                                 </div>
-                                {% when "regional_announcement" %}
-                                <div class="product-message product-message-regional" data-region="{{ block.settings.type }}" data-code="{{ block.settings.code }}">
-                                    {% if block.settings.url != blank %}<a href="{{ block.settings.url }}" aria-label="{{ block.settings.title }}">{% endif %}
+                                {% when "continent_announcement" %}
+                                <div class="product-message product-message-continent" data-continent="{{ block.settings.continent_code }}" data-countries="{% if block.settings.country_codes != blank %}{{ block.settings.country_codes }}{% else %}EMPTY{% endif %}">
                                     <span>{{ block.settings.title }}</span>
-                                    {% if block.settings.url != blank %}</a>{% endif %}
+                                </div>
+                                {% when "country_announcement" %}
+                                <div class="product-message product-message-country" data-countries="{% if block.settings.country_codes != blank %}{{ block.settings.country_codes }}{% else %}EMPTY{% endif %}">
+                                    <span>{{ block.settings.title }}</span>
                                 </div>
                             {% endcase %}
                         {% endfor %}
@@ -228,36 +228,30 @@
             ]
         },
         {
-            "type": "regional_announcement",
-            "name": "Regional Announcement",
+            "type": "country_announcement",
+            "name": "Country Announcement",
             "settings": [
                 {
-                    "type": "header",
-                    "content": "Display condition"
+                    "type": "text",
+                    "id": "title",
+                    "label": "Announcement"
                 },
                 {
-                    "type": "select",
-                    "id": "type",
-                    "label": "Region type",
-                    "options": [
-                        {
-                            "value": "country",
-                            "label": "Country"
-                        },
-                        {
-                            "value": "continent",
-                            "label": "Continent"
-                        }
-                    ],
-                    "default": "country"
+                    "type": "header",
+                    "content": "Countries"
                 },
                 {
                     "type": "text",
-                    "id": "code",
+                    "id": "country_codes",
                     "label": "Codes",
-                    "default": "GB",
                     "info": "For multiple entries use a comma seperated list. Full list of country codes: https://www.nationsonline.org/oneworld/country_code_list.htm"
-                },
+                }
+            ]
+        },
+        {
+            "type": "continent_announcement",
+            "name": "Continent Announcement",
+            "settings": [
                 {
                     "type": "header",
                     "content": "Content"
@@ -266,6 +260,56 @@
                     "type": "text",
                     "id": "title",
                     "label": "Announcement"
+                },
+                {
+                    "type": "header",
+                    "content": "Continent"
+                },
+                {
+                    "type": "select",
+                    "id": "continent_code",
+                    "label": "Continent",
+                    "options": [
+                        {
+                            "value": "AF",
+                            "label": "Africa"
+                        },
+                        {
+                            "value": "AS",
+                            "label": "Asia"
+                        },
+                        {
+                            "value": "EU",
+                            "label": "Europe"
+                        },
+                        {
+                            "value": "NA",
+                            "label": "North America"
+                        },
+                        {
+                            "value": "SA",
+                            "label": "South America"
+                        },
+                        {
+                            "value": "OC",
+                            "label": "Oceania"
+                        },
+                        {
+                            "value": "AN",
+                            "label": "Antarctica"
+                        }
+                    ],
+                    "default": "EU"
+                },
+                {
+                    "type": "header",
+                    "content": "Excluded Countries"
+                },
+                {
+                    "type": "text",
+                    "id": "country_codes",
+                    "label": "Codes",
+                    "info": "For multiple entries use a comma seperated list. Full list of country codes: https://www.nationsonline.org/oneworld/country_code_list.htm"
                 }
             ]
         }
