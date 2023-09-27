@@ -9,7 +9,7 @@ if (announcementSlider) {
 		crossFade: true,
 		effect: 'fade',
 		autoplay: {
-			delay: 5000,
+			delay: 2500,
 			disableOnInteraction: false,
 		},
 	});
