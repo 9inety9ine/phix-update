@@ -13,6 +13,7 @@
     "short_description": "Premium British Menswear",
     "long_description": "The Exclusive Phix Spring Summer 2023 Collection now available. Premium Customer Service Guarantee. Worldwide delivery.",
     "keywords": "Menswear, Premium, British, Fashion, Worldwide, Summer, Exclusive, Official",
+    "app_text": "EXCLUSIVE ACCESS TO NEW DROPS VIA THE PHIX APP",
     "app_image_apple": "shopify:\/\/shop_images\/app-apple.jpg",
     "app_icon_apple": "shopify:\/\/shop_images\/appstore-small.png",
     "app_url_apple": "https:\/\/www.apple.com\/uk\/app-store\/",
@@ -35,7 +36,7 @@
             "type": "menu",
             "settings": {
               "label": "Shop",
-              "url": "shopify:\/\/collections\/all",
+              "url": "shopify:\/\/collections\/clothing",
               "feature_1_label": "Shirting",
               "feature_1_url": "shopify:\/\/collections\/shirting",
               "feature_1_image": "shopify:\/\/shop_images\/banner_look_1-min.jpg",
@@ -111,14 +112,15 @@
             "type": "regional_announcement",
             "settings": {
               "type": "country",
-              "code": "GB, IE",
-              "title": "Britain or Ireland announcement"
+              "code": "GB",
+              "title": "FREE DELIVERY ON ORDERS OVER £200"
             }
           },
           "d97b120a-9e6a-4742-90bc-16e163c61112": {
             "type": "global_announcement",
+            "disabled": true,
             "settings": {
-              "title": "This is a global announcement",
+              "title": "FREE DELIVERY ON ORDERS OVER $250",
               "type": "continent",
               "code": ""
             }
@@ -128,15 +130,31 @@
             "settings": {
               "type": "continent",
               "code": "EU",
-              "title": "Europe only announcement"
+              "title": "FREE DELIVERY ON ORDERS OVER €250"
             }
           },
           "1a5ab2ce-dd32-4a39-963c-613cda7316db": {
             "type": "regional_announcement",
             "settings": {
               "type": "country",
-              "code": "US, ES",
-              "title": "US or Spain Announcement"
+              "code": "US",
+              "title": "FREE DELIVERY ON ORDERS OVER $250"
+            }
+          },
+          "97cabdb6-fa02-4413-bfc3-c92e3820bccb": {
+            "type": "regional_announcement",
+            "settings": {
+              "type": "continent",
+              "code": "EU",
+              "title": "NO ADDITIONAL DUTIES AND TAXES TO EUROPE"
+            }
+          },
+          "d3ad7831-71f0-40fa-acfc-c39209929f8c": {
+            "type": "global_announcement",
+            "settings": {
+              "title": "30 DAY RETURN & EXCHANGES ON ALL ORDERS",
+              "type": "country",
+              "code": ""
             }
           }
         },
@@ -148,7 +166,9 @@
           "63beef23-fb13-499e-aa50-40f6a8c80270",
           "d97b120a-9e6a-4742-90bc-16e163c61112",
           "3c6b8f9f-92d4-41b5-bc0d-6b22b5e1aace",
-          "1a5ab2ce-dd32-4a39-963c-613cda7316db"
+          "1a5ab2ce-dd32-4a39-963c-613cda7316db",
+          "97cabdb6-fa02-4413-bfc3-c92e3820bccb",
+          "d3ad7831-71f0-40fa-acfc-c39209929f8c"
         ],
         "settings": {}
       },

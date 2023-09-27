@@ -2,6 +2,144 @@
   "sections": {
     "main": {
       "type": "main-product",
+      "blocks": {
+        "78501896-326b-425a-b20d-1f72329162a2": {
+          "type": "continent_announcement",
+          "settings": {
+            "title": "Price includes duties and taxes",
+            "continent_code": "EU",
+            "country_codes": "GB"
+          }
+        },
+        "30e08d29-bbd6-4f7e-94f5-f0dee5f54b4f": {
+          "type": "continent_announcement",
+          "settings": {
+            "title": "Free euro shipping when you spend €250",
+            "continent_code": "EU",
+            "country_codes": "GB"
+          }
+        },
+        "2f0f6a89-a254-4c04-8263-c0e30bdccc2c": {
+          "type": "continent_announcement",
+          "settings": {
+            "title": "FREE SHIPPING WHEN YOU SPEND $250 USD",
+            "continent_code": "NA",
+            "country_codes": ""
+          }
+        },
+        "389c6516-5afe-4876-a3e0-9a89a41e23f6": {
+          "type": "continent_announcement",
+          "settings": {
+            "title": "FREE SHIPPING WHEN YOU SPEND $250 USD",
+            "continent_code": "AF",
+            "country_codes": ""
+          }
+        },
+        "62356055-fdfc-4c98-875b-be73c161a722": {
+          "type": "continent_announcement",
+          "settings": {
+            "title": "FREE SHIPPING WHEN YOU SPEND $250 USD",
+            "continent_code": "AS",
+            "country_codes": ""
+          }
+        },
+        "32bdf5c0-ff56-4c5f-aef0-25817fbfbb69": {
+          "type": "continent_announcement",
+          "settings": {
+            "title": "FREE SHIPPING WHEN YOU SPEND $250 USD",
+            "continent_code": "SA",
+            "country_codes": ""
+          }
+        },
+        "f720f0fd-5603-421c-afda-d3f8c0a71e9a": {
+          "type": "continent_announcement",
+          "settings": {
+            "title": "FREE SHIPPING WHEN YOU SPEND $250 USD",
+            "continent_code": "OC",
+            "country_codes": ""
+          }
+        },
+        "fedd1841-3563-4d40-a5e3-5082fe34707b": {
+          "type": "continent_announcement",
+          "settings": {
+            "title": "FREE SHIPPING WHEN YOU SPEND $250 USD",
+            "continent_code": "AN",
+            "country_codes": ""
+          }
+        },
+        "36aee98a-9c2d-4438-ae16-40ce157eedb3": {
+          "type": "continent_announcement",
+          "settings": {
+            "title": "ALL ORDERS SHIPPED EXPRESS BY DHL.",
+            "continent_code": "AF",
+            "country_codes": ""
+          }
+        },
+        "a11ef0d8-f3ff-4a22-b088-b91c8dcfe1d7": {
+          "type": "continent_announcement",
+          "settings": {
+            "title": "ALL ORDERS SHIPPED EXPRESS BY DHL.",
+            "continent_code": "AS",
+            "country_codes": ""
+          }
+        },
+        "2a554813-546a-40df-ba03-5d2a0a826858": {
+          "type": "continent_announcement",
+          "settings": {
+            "title": "ALL ORDERS SHIPPED EXPRESS BY DHL.",
+            "continent_code": "NA",
+            "country_codes": "US"
+          }
+        },
+        "b109029a-1fce-4482-a7cd-d802eb8fd1c4": {
+          "type": "country_announcement",
+          "settings": {
+            "title": "EXPRESS DHL DELIVERY IN 2 TO 3 BUSINESS DAYS ACROSS AMERICA",
+            "country_codes": "US"
+          }
+        },
+        "51cca63c-ecc7-40e1-8f00-9e7279e89158": {
+          "type": "continent_announcement",
+          "settings": {
+            "title": "ALL ORDERS SHIPPED EXPRESS BY DHL.",
+            "continent_code": "SA",
+            "country_codes": ""
+          }
+        },
+        "434190ce-2449-4113-9f3a-b0db1b1dca82": {
+          "type": "continent_announcement",
+          "settings": {
+            "title": "ALL ORDERS SHIPPED EXPRESS BY DHL.",
+            "continent_code": "OC",
+            "country_codes": ""
+          }
+        },
+        "d5a8efa7-bd84-4028-8b9d-b3572efa0f71": {
+          "type": "continent_announcement",
+          "settings": {
+            "title": "ALL ORDERS SHIPPED EXPRESS BY DHL.",
+            "continent_code": "AN",
+            "country_codes": ""
+          }
+        }
+      },
+      "block_order": [
+        "78501896-326b-425a-b20d-1f72329162a2",
+        "30e08d29-bbd6-4f7e-94f5-f0dee5f54b4f",
+        "2f0f6a89-a254-4c04-8263-c0e30bdccc2c",
+        "389c6516-5afe-4876-a3e0-9a89a41e23f6",
+        "62356055-fdfc-4c98-875b-be73c161a722",
+        "32bdf5c0-ff56-4c5f-aef0-25817fbfbb69",
+        "f720f0fd-5603-421c-afda-d3f8c0a71e9a",
+        "fedd1841-3563-4d40-a5e3-5082fe34707b",
+        "36aee98a-9c2d-4438-ae16-40ce157eedb3",
+        "a11ef0d8-f3ff-4a22-b088-b91c8dcfe1d7",
+        "2a554813-546a-40df-ba03-5d2a0a826858",
+        "b109029a-1fce-4482-a7cd-d802eb8fd1c4",
+        "51cca63c-ecc7-40e1-8f00-9e7279e89158",
+        "434190ce-2449-4113-9f3a-b0db1b1dca82",
+        "d5a8efa7-bd84-4028-8b9d-b3572efa0f71"
+      ],
       "settings": {
         "care_title": "Details & Care",
         "care_text": "",
