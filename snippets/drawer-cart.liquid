@@ -18,7 +18,7 @@
             {% form 'cart', cart %}
             <button name="checkout" class="button button--full-width button--tall button--highlight">{{ 'cart.drawer.checkout' | t }}</button>
             {% endform %}
-            {% render "payment-icons" %}
+            {% comment %} {% render "payment-icons" %} {% endcomment %}
         </div>
     </div>
 </div>
