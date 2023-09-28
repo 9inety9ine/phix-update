@@ -130,6 +130,15 @@
                         <!-- end Placement -->
                     </div>
 
+                    <script>
+                        if (client_country !== null && client_continent !== null) {
+                            const klarnaWrapper = document.querySelector('klarna-placement');
+                            if (klarnaWrapper) {
+                                if (client_country !== "GB") klarnaWrapper.style.display = "none";
+                            }
+                        }
+                    </script>
+
                     <div class="section-product__details__accordions">
                         {% render "product-accordions", product: product, section: section %}
                     </div>

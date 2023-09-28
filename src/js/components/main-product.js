@@ -145,7 +145,7 @@ window.addEventListener('DOMContentLoaded', () => {
 				const countries = message.dataset.countries;
 				let match = false;
 				const countriesArray = countries.replaceAll(' ', '').split(',');
-				console.log(countriesArray);
+				// console.log(countriesArray);
 				for (let i = 0; i < countriesArray.length; i++) {
 					if (client_country === countriesArray[i]) {
 						match = true;
