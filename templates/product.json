@@ -70,7 +70,7 @@
         "36aee98a-9c2d-4438-ae16-40ce157eedb3": {
           "type": "continent_announcement",
           "settings": {
-            "title": "ALL ORDERS SHIPPED EXPRESS BY DHL.",
+            "title": "ALL ORDERS ARE SHIPPED EXPRESS BY DHL.",
             "continent_code": "AF",
             "country_codes": ""
           }
@@ -78,7 +78,7 @@
         "a11ef0d8-f3ff-4a22-b088-b91c8dcfe1d7": {
           "type": "continent_announcement",
           "settings": {
-            "title": "ALL ORDERS SHIPPED EXPRESS BY DHL.",
+            "title": "ALL ORDERS ARE SHIPPED EXPRESS BY DHL.",
             "continent_code": "AS",
             "country_codes": ""
           }
@@ -86,7 +86,7 @@
         "2a554813-546a-40df-ba03-5d2a0a826858": {
           "type": "continent_announcement",
           "settings": {
-            "title": "ALL ORDERS SHIPPED EXPRESS BY DHL.",
+            "title": "ALL ORDERS ARE SHIPPED EXPRESS BY DHL.",
             "continent_code": "NA",
             "country_codes": "US"
           }
@@ -101,7 +101,7 @@
         "51cca63c-ecc7-40e1-8f00-9e7279e89158": {
           "type": "continent_announcement",
           "settings": {
-            "title": "ALL ORDERS SHIPPED EXPRESS BY DHL.",
+            "title": "ALL ORDERS ARE SHIPPED EXPRESS BY DHL.",
             "continent_code": "SA",
             "country_codes": ""
           }
@@ -109,7 +109,7 @@
         "434190ce-2449-4113-9f3a-b0db1b1dca82": {
           "type": "continent_announcement",
           "settings": {
-            "title": "ALL ORDERS SHIPPED EXPRESS BY DHL.",
+            "title": "ALL ORDERS ARE SHIPPED EXPRESS BY DHL.",
             "continent_code": "OC",
             "country_codes": ""
           }
@@ -117,9 +117,16 @@
         "d5a8efa7-bd84-4028-8b9d-b3572efa0f71": {
           "type": "continent_announcement",
           "settings": {
-            "title": "ALL ORDERS SHIPPED EXPRESS BY DHL.",
+            "title": "ALL ORDERS ARE SHIPPED EXPRESS BY DHL.",
             "continent_code": "AN",
             "country_codes": ""
+          }
+        },
+        "3d071bfd-3779-4168-9492-5362b368c2b2": {
+          "type": "country_announcement",
+          "settings": {
+            "title": "FREE NEXT DAY DELIVERY WHEN YOU SPEND £200",
+            "country_codes": "GB"
           }
         }
       },
@@ -138,7 +145,8 @@
         "b109029a-1fce-4482-a7cd-d802eb8fd1c4",
         "51cca63c-ecc7-40e1-8f00-9e7279e89158",
         "434190ce-2449-4113-9f3a-b0db1b1dca82",
-        "d5a8efa7-bd84-4028-8b9d-b3572efa0f71"
+        "d5a8efa7-bd84-4028-8b9d-b3572efa0f71",
+        "3d071bfd-3779-4168-9492-5362b368c2b2"
       ],
       "settings": {
         "care_title": "Details & Care",

@@ -128,8 +128,8 @@
           "3c6b8f9f-92d4-41b5-bc0d-6b22b5e1aace": {
             "type": "regional_announcement",
             "settings": {
-              "type": "continent",
-              "code": "EU",
+              "type": "country",
+              "code": "AX,AL,AD,AT,BY,BE,BA,BG,HR,CZ,DK,EE,FO,FI,FR,DE,GI,GR,GG,VA,HU,IS,IE,IM,IT,JE,LV,LI,LT,LU,MT,MD,MC,ME,NL,MK,NO,PL,PT,RO,RU,SM,RS,SK,SI,ES,SJ,SE,CH,UA",
               "title": "FREE DELIVERY ON ORDERS OVER €250"
             }
           },
@@ -144,9 +144,9 @@
           "97cabdb6-fa02-4413-bfc3-c92e3820bccb": {
             "type": "regional_announcement",
             "settings": {
-              "type": "continent",
-              "code": "EU",
-              "title": "NO ADDITIONAL DUTIES AND TAXES TO EUROPE"
+              "type": "country",
+              "code": "AX,AL,AD,AT,BY,BE,BA,BG,HR,CZ,DK,EE,FO,FI,FR,DE,GI,GR,GG,VA,HU,IS,IE,IM,IT,JE,LV,LI,LT,LU,MT,MD,MC,ME,NL,MK,NO,PL,PT,RO,RU,SM,RS,SK,SI,ES,SJ,SE,CH,UA",
+              "title": "NO EXTRA FEES. WE PAY ALL DUTIES AND TAXES"
             }
           },
           "d3ad7831-71f0-40fa-acfc-c39209929f8c": {
@@ -155,6 +155,14 @@
               "title": "30 DAY RETURN & EXCHANGES ON ALL ORDERS",
               "type": "country",
               "code": ""
+            }
+          },
+          "f460aa45-4825-4a9d-bf55-eaf15be5c011": {
+            "type": "regional_announcement",
+            "settings": {
+              "type": "country",
+              "code": "DZ,AO,BJ,BW,IO,BF,BI,CV,CM,CF,TD,KM,CG,CD,CI,DJ,EG,GQ,ER,SZ,ET,TF,GA,GM,GH,GN,GW,KE,LS,LR,LY,MG,MW,ML,MR,MU,YT,MA,MZ,NA,NE,NG,RE,RW,SH,ST,SN,SC,SL,SO,ZA,SS,SD,TZ,TG,TN,UG,EH,ZM,AL,AG,AR,AW,BS,BB,BZ,BM,BO,BQ,BV,BR,CA,KY,CL,CO,CR,CU,CW,DM,DO,EC,SV,FK,GF,GL,GD,GP,GT,GY,HT,HN,JM,MQ,MX,MS,NI,PA,PY,PE,PR,BL,KN,LC,MF,PM,VC,SX,GS,SR,TT,TC,UY,VE,VG,VI,AS,AU,CX,CC,CK,FJ,PF,GU,HM,KI,MH,FM,NR,NC,NZ,NU,NF,MP,PW,PG,PN,WS,SB,TK,TO,TV,UM,VU,WF,AF,AM,AZ,BH,BD,BT,BN,KH,CN,CY,GE,HK,IN,ID,IR,IQ,IL,JP,JO,KZ,KP,KR,KW,KG,LA,LB,MO,MY,MV,MN,MM,NP,OM,PK,PS,PH,QA,SA,SG,LK,SY,TW,TJ,TH,TL,TR,TM,AE,UZ,VN,YE",
+              "title": "FREE DELIVERY ON ORDERS OVER $250"
             }
           }
         },
@@ -168,7 +176,8 @@
           "3c6b8f9f-92d4-41b5-bc0d-6b22b5e1aace",
           "1a5ab2ce-dd32-4a39-963c-613cda7316db",
           "97cabdb6-fa02-4413-bfc3-c92e3820bccb",
-          "d3ad7831-71f0-40fa-acfc-c39209929f8c"
+          "d3ad7831-71f0-40fa-acfc-c39209929f8c",
+          "f460aa45-4825-4a9d-bf55-eaf15be5c011"
         ],
         "settings": {}
       },

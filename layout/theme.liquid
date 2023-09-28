@@ -1,6 +1,7 @@
 <!doctype html>
 <html lang="{{ shop.locale }}">
   <head>
+	{% include "pandectes-rules" %}
     
     {%- render 'meta-tags' %}
     {%- render 'meta-social' %}
@@ -88,7 +89,9 @@
     {% render "globale-js" %}
     {% render "zopim" %}
 
-  </head>
+  
+  {% include "trackify_x" %}
+</head>
 
   <body class="template-{{ template | handleize }}">
 
