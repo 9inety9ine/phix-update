@@ -19,7 +19,7 @@ class PredictiveSearch extends HTMLElement {
 		this.getSearchResults(searchTerm);
 	}
 	getSearchResults(searchTerm) {
-		fetch(`/search/suggest?q=${searchTerm}&resources[type]=product,collection,page&resources[limit]=10&resources[limit_scope]=each&section_id=predictive-search`)
+		fetch(window.Shopify.routes.root + `search/suggest?q=${searchTerm}&resources[type]=product,collection,page&resources[limit]=10&resources[limit_scope]=each&section_id=predictive-search`)
 			.then(response => {
 				if (!response.ok) {
 					let error = new Error(response.status);
