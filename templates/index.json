@@ -5,16 +5,27 @@
       "blocks": {
         "5c763331-2f09-4770-9c48-353994d7e0c3": {
           "type": "slide",
+          "disabled": true,
           "settings": {
             "title": "AW23 Collection",
             "url": "shopify:\/\/collections\/clothing",
-            "image": "shopify:\/\/shop_images\/aw23-desktop.jpg",
-            "image_mobile": "shopify:\/\/shop_images\/aw23-mobile.jpg"
+            "image": "shopify:\/\/shop_images\/splash-desktop-couple-min.jpg",
+            "image_mobile": "shopify:\/\/shop_images\/splash-mobile-couple-min.jpg"
+          }
+        },
+        "d52b8f04-8d78-4430-8755-4cea30ce179d": {
+          "type": "slide",
+          "settings": {
+            "title": "DROP 4",
+            "url": "shopify:\/\/collections\/just-arrived",
+            "image": "shopify:\/\/shop_images\/splash-desktop-drop4-min.jpg",
+            "image_mobile": "shopify:\/\/shop_images\/splash-mobile-drop4-min.jpg"
           }
         }
       },
       "block_order": [
-        "5c763331-2f09-4770-9c48-353994d7e0c3"
+        "5c763331-2f09-4770-9c48-353994d7e0c3",
+        "d52b8f04-8d78-4430-8755-4cea30ce179d"
       ],
       "settings": {}
     },
