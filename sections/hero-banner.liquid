@@ -12,12 +12,12 @@
                 <div class="section-hero-banner__slide section-hero-banner__slide--{{ block_count }} swiper-slide" data-title="{{ block.settings.title }}">
                     <style>
                         .section-hero-banner__inner__{{ section_id }} .section-hero-banner__slide--{{ block_count }} {
-                            background: url({{ block.settings.image.src | img_url: "1920x" }}) 50% 50% / cover;
+                            background: #fff url({{ block.settings.image.src | img_url: "1920x" }}) 50% 50% / cover;
                         }
                         {% if block.settings.image_mobile != blank %}
                             @media (max-width:768px) {
                                 .section-hero-banner__inner__{{ section_id }} .section-hero-banner__slide--{{ block_count }} {
-                                    background: url({{ block.settings.image_mobile.src | img_url: "900x" }}) 50% 50% / cover;
+                                    background: #fff url({{ block.settings.image_mobile.src | img_url: "900x" }}) 50% 50% / cover;
                                 }
                             }
                         {% endif %}
