@@ -91,6 +91,8 @@
 
   
   {% include "trackify_x" %}
+
+  {% include "globale-js.liquid" %}
 </head>
 
   <body class="template-{{ template | handleize }}">
@@ -171,5 +173,6 @@
 
     {% comment %} {% render 'preorder-now' %} {% endcomment %}
 
-  </body>
+  {% include 'adroll' %}
+</body>
 </html>
