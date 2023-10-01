@@ -85,7 +85,7 @@
 
 <script src="{{ "masonry.js" | asset_url }}"></script>
 <script defer>
-    window.setTimeout(() => {
+    const initMasonry = () => {
         const macyInstance = Macy({
             container: ".section-as-seen-on__inner",
             columns: 4,
@@ -98,30 +98,14 @@
                 1025: 2
             }
         });
-        macyInstance.on(macyInstance.constants.EVENT_IMAGE_COMPLETE, function (ctx) {
-            document.querySelector('.section-as-seen-on__inner').classList.add('initialized');
-            const features = document.querySelectorAll('.section-as-seen-on__feature');
-            if (features) {
-                for (let feature of features) feature.classList.add('initialized')
-            }
-        });
-        window.addEventListener('resize', () => {
-            if (window.innerWidth <= 480) {
-                macyInstance.remove();
-                document.querySelector('.section-as-seen-on__inner').classList.remove('initialized');
-                const features = document.querySelectorAll('.section-as-seen-on__feature');
-                if (features) {
-                    for (let feature of features) feature.classList.remove('initialized')
-                }
-            } else {
-                macyInstance.reInit();
-                const features = document.querySelectorAll('.section-as-seen-on__feature');
-                if (features) {
-                    for (let feature of features) feature.classList.add('initialized')
-                }
-            }
-        })
-    }, 500);
+    };
+    window.addEventListener('DOMContentLoaded', () => {
+        if (window.innerWidth >= 480) {
+            window.setTimeout(()=> {
+                initMasonry();
+            }, 250)
+        }
+    });
 </script>
 
 {% schema %}
