@@ -24,39 +24,6 @@
         </a>
     </div>
 
-    {% comment %} <div class="card-product__media">
-        <a href="{{ product.url | within: collection }}" aria-label="{{ product.title }}">
-            {% if show_video == 'True' and has_video == true %}
-                {% assign video_count = 0 %}
-                {% for media in product.media %}
-                    {% if media.media_type == 'video' %}
-                    <video muted="" loop="" playsinline="" autoplay="" poster="{{ media.preview_image | img_url: '600x818', crop: "center" }}"{% unless request.design_mode %} data-src="{{ media.sources[1].url }}" class="preload"{% endunless %}>
-                        {% if request.design_mode %}
-                        <source src="{{ media.sources[1].url }}" type="video/mp4">
-                        {% else %}
-                        <source src="" type="video/mp4">
-                        {% endif %}
-                    </video>
-                    {% assign video_count = video_count | plus: 1 %}
-                    {% endif %}
-                    {% if video_count == 1 %}{% break %}{% endif %}
-                {% endfor %}
-            {% else %}
-            <img 
-                {% if request.design_mode %}
-                src="{{ product.featured_image.src | img_url: '600x818', crop: "center" }}" 
-                {% else %}
-                src="{{ "placeholder-medium.jpg" | asset_url }}" 
-                data-src="{{ product.featured_image.src | img_url: '600x818', crop: "center" }}" 
-                {% endif %}
-                alt="{{ product.title }}" 
-                width="600" 
-                height="818" 
-            >
-            {% endif %}
-        </a>
-    </div> {% endcomment %}
-
     <div class="card-product__details">
         <div class="card-product__title">
             <h4><a href="{{ product.url | within: collection }}" aria-label="{{ product.title }}">{{ product.title }}</a></h4>

@@ -63,8 +63,11 @@
 			}
 		}
 		.card-product {
-			max-width: 20em;
+			max-width: 16em;
 			text-align: center;
+			@media (max-width: $w-m) {
+				max-width: 14em;
+			}
 			.price {
 				justify-content: center;
 			}

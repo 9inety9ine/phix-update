@@ -35,15 +35,16 @@
         "subtitle": "",
         "products": [
           "black-embellished-sequin-jacket",
-          "black-semi-sheer-chiffon-scarf-tie-collar-shirt-1",
           "short-sleeve-sequin-chiffon-shirt",
-          "black-western-polo",
+          "green-carnaby-cotton-o-ring-polo-shirt",
           "chiffon-sequin-button-down-shirt",
           "high-waisted-pin-tuck-slim-fit-flare-leather-trousers",
           "black-carnaby-cotton-o-ring-polo-shirt",
           "orange-arch-art-deco-geometric-viscose-shirt",
           "black-satin-pointed-collar-shirt",
-          "black-sequin-flares"
+          "black-sequin-flares",
+          "aw23-sequin-biker-jacket",
+          "velvet-stripe-tie-neck-shirt"
         ],
         "padding_top": 72,
         "padding_bottom": 48,
@@ -123,19 +124,19 @@
     "9b12f941-ba38-4054-8856-f9702b0a08f7": {
       "type": "featured-items",
       "settings": {
-        "title": "aw23",
+        "title": "aw23 drop 4",
         "subtitle": "Discover the latest arrivals",
         "products": [
-          "orange-60s-spherical-print-velvet-shirt",
-          "60s-paisley-velvet-polo-shirt",
-          "sequin-pinstripe-wool-flared-trousers",
-          "black-snake-effect-suede-studded-leather-jacket",
-          "black-lace-wave-shirt",
-          "aw23-terry-black-70s-button-polo",
-          "pink-velvet-60s-geometric-shirt",
-          "sequin-pinstripe-wool-single-breasted-blazer",
-          "black-lace-gold-peacock-shirt",
-          "short-sleeve-sequin-chiffon-shirt"
+          "paisley-psychedelic-velvet-shirt",
+          "green-carnaby-cotton-o-ring-polo-shirt",
+          "silver-chain-pearl-necklace",
+          "red-chiffon-sequin-button-down-shirt",
+          "aw23-sequin-biker-jacket",
+          "black-velvet-bolan-star-blazer",
+          "milano-pearl-necklace",
+          "high-waisted-wide-leg-leather-trousers",
+          "red-chiffon-ruffle-collar-shirt",
+          "black-sequin-neck-scarf"
         ],
         "padding_top": 48,
         "padding_bottom": 48,
