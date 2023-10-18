@@ -86,11 +86,20 @@
 		.price {
 			display: flex;
 			gap: 0.5em;
+			align-items: flex-start;
 			ins {
 				border: none;
 			}
 			.saving {
+				// display: none;
 				padding-left: 0.5em;
+				span {
+					@media (max-width: $w-m) {
+						font-size: 1.08333333333em;
+						position: relative;
+						top: -1px;
+					}
+				}
 			}
 		}
 		.money {

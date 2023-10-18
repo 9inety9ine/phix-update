@@ -2,11 +2,17 @@
 <div class="price" itemprop="offers" itemscope itemtype="https://schema.org/Offer">
     <del>{{ product.compare_at_price | money }}</del>
     <ins itemprop="price" content="{{ product.price | money_without_currency }}">{{ product.price | money }}</ins>
-    {% assign current_price = product.price | money_without_currency %}
-    {% assign compare_price = product.compare_at_price | money_without_currency %}
-    {% assign percentage_value = current_price | divided_by: compare_price | times: 100 %}
-    {% assign savings = 100 | minus: percentage_value | round %}
-    <span class="saving">{{ savings }}% {{ "products.product.saving" | t }}</span>
+    {% assign current_price = product.price | money_without_currency | replace: ",", "" | replace: ".", "" %}
+    {% assign current = current_price | times: 100.00 %}
+    {% assign compare_price = product.compare_at_price_max | money_without_currency | replace: ",", "" | replace: ".", "" %}
+    {% assign compare = compare_price | times: 100.00 %}
+    {% assign percentage = current | divided_by: compare | times: 100 | round %}
+    {% assign saving = 100 | minus: percentage %}
+    <!-- Current: {{ current_price }} {{ current }}-->
+    <!-- Compare: {{ compare_price }} {{ compare }}-->
+    <!-- Saving: {{ saving }} -->
+
+    <span class="saving"><span>{{ saving }}% {{ "products.product.saving" | t }}<span></span>
 </div>
 {% else %}
 <div class="price" itemprop="offers" itemscope itemtype="https://schema.org/Offer">
