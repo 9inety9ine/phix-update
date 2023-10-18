@@ -14,7 +14,7 @@
 
         {% assign variant_stock_count = variant.inventory_quantity %}
 
-        {% if variant_stock_count == 0 %}
+        {% if variant_stock_count <= 0 %}
             {% if product.tags contains "preorder" or product.tags contains "Preorder" or product.tags contains "PREORDER" %}
             {% assign variant_output = "Preorder" %}
         {% else %}
