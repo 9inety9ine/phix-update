@@ -113,7 +113,8 @@
           window.KlarnaThemeGlobals.documentCopy = document.cloneNode(true);
       {%endcase%}
     </script>
-    <script src="https://eu-library.klarnaservices.com/lib.js" data-client-id="1d10b0e6-8eab-5948-beff-a4af483f6384"></script>
+    {% comment %} <script src="https://eu-library.klarnaservices.com/lib.js" data-client-id="1d10b0e6-8eab-5948-beff-a4af483f6384"></script> {% endcomment %}
+    <script async="" src="https://js.klarna.com/web-sdk/v1/klarna.js" data-client-id="1d10b0e6-8eab-5948-beff-a4af483f6384"></script>
 
     {% section "header" %}
     {% section "drawer-menu" %}

@@ -94,18 +94,6 @@ const activateToggle = function () {
 			toggleSelect.parentNode.classList.toggle('open');
 		});
 	}
-	// const variantOutput = document.getElementById('product-variant-output');
-	// if (variantOutput) {
-	// 	variantOutput.addEventListener('mouseover', () => {
-	// 		clearTimeout(window.toggleDelay);
-	// 	});
-	// 	variantOutput.addEventListener('mouseout', () => {
-	// 		clearTimeout(window.toggleDelay);
-	// 		window.toggleDelay = setTimeout(() => {
-	// 			toggleSelect.parentNode.classList.remove('open');
-	// 		}, 1500);
-	// 	});
-	// }
 };
 
 document.addEventListener('click', e => {
