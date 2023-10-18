@@ -89,6 +89,9 @@
 			ins {
 				border: none;
 			}
+			.saving {
+				padding-left: 0.5em;
+			}
 		}
 		.money {
 			@media (max-width: $w-m) {

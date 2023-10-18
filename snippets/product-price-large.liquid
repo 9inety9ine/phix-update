@@ -6,7 +6,7 @@
     {% assign compare_price = product.compare_at_price | money_without_currency %}
     {% assign percentage_value = current_price | divided_by: compare_price | times: 100 %}
     {% assign savings = 100 | minus: percentage_value | round %}
-    <span class="saving">{{ savings }}% {{ "products.product.saving" | t }}</span>
+    <span class="saving">({{ savings }}% {{ "products.product.saving" | t }})</span>
 </div>
 {% else %}
 <div class="price" itemprop="offers" itemscope itemtype="https://schema.org/Offer">
