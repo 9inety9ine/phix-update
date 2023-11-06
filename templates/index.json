@@ -168,6 +168,7 @@
     },
     "c85bacfa-90b0-4cd0-a8b3-bf9e789e8736": {
       "type": "instagram-feed",
+      "disabled": true,
       "settings": {
         "title": "The latest from Instagram",
         "subtitle": "Follow us @phixclothing",

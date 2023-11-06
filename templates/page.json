@@ -2,6 +2,7 @@
   "sections": {
     "header": {
       "type": "page-header",
+      "disabled": true,
       "settings": {
         "width": "large",
         "alignment": "left",
@@ -11,6 +12,29 @@
         "padding_bottom": 32,
         "mobile_padding_top": 32,
         "mobile_padding_bottom": 16
+      }
+    },
+    "c16be712-b6d9-4fc6-ba68-a9af097fa7dc": {
+      "type": "meet-header",
+      "settings": {
+        "image": "shopify:\/\/shop_images\/CREDIT__phichentedelavega.png",
+        "caption": "In this photo: Joe Soap wears Clothing",
+        "title": "Phix meets: Joe Soap",
+        "blockquote": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi mauris magna, dignissim at eros non, consectetur congue metus.",
+        "intro": "Nullam diam enim, laoreet vel ornare at, dictum id augue. Nam posuere dolor id magna condimentum vestibulum. Aenean semper libero ut ligula pellentesque imperdiet. Nulla rutrum suscipit dapibus.",
+        "social_title": "Follow Joe Soap",
+        "url_fb": "",
+        "url_tw": "",
+        "url_yt": "",
+        "url_in": "",
+        "url_tt": "",
+        "url_pi": "",
+        "url_sn": "",
+        "url_li": "",
+        "padding_top": 64,
+        "padding_bottom": 0,
+        "mobile_padding_top": 32,
+        "mobile_padding_bottom": 0
       }
     },
     "main": {
@@ -27,6 +51,7 @@
   },
   "order": [
     "header",
+    "c16be712-b6d9-4fc6-ba68-a9af097fa7dc",
     "main"
   ]
 }
