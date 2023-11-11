@@ -12,17 +12,31 @@
             <div class="section-product-grid__product{% unless request.design_mode %} preload{% endunless %}">
                 <a href="{{ product.url | within: collection }}" aria-label="{{ product.title }}">
                     <div class="section-product-grid__product__label">{{ product.title }}</div>
-                    <img 
-                        {% if request.design_mode %}
-                        src="{{ product.featured_image.src | img_url: '900x1228', crop: "center" }}" 
-                        {% else %}
-                        src="{{ "preload.gif" | asset_url }}" 
-                        data-src="{{ product.featured_image.src | img_url: '900x1228', crop: "center" }}" 
-                        {% endif %}
-                        alt="{{ product.title }}" 
-                        width="900" 
-                        height="1228" 
-                    >
+                    {% if block.settings.image != blank %}
+                        <img 
+                            {% if request.design_mode %}
+                            src="{{ block.settings.image.src | img_url: '900x1228', crop: "center" }}" 
+                            {% else %}
+                            src="{{ "preload.gif" | asset_url }}" 
+                            data-src="{{ block.settings.image.src | img_url: '900x1228', crop: "center" }}" 
+                            {% endif %}
+                            alt="{{ product.title }}" 
+                            width="900" 
+                            height="1228" 
+                        >
+                    {% else  %}
+                        <img 
+                            {% if request.design_mode %}
+                            src="{{ product.featured_image.src | img_url: '900x1228', crop: "center" }}" 
+                            {% else %}
+                            src="{{ "preload.gif" | asset_url }}" 
+                            data-src="{{ product.featured_image.src | img_url: '900x1228', crop: "center" }}" 
+                            {% endif %}
+                            alt="{{ product.title }}" 
+                            width="900" 
+                            height="1228" 
+                        >
+                    {% endif %}
                 </a>
             </div>
         {% endfor %}
@@ -46,6 +60,12 @@
                     "type": "product",
                     "id": "product",
                     "label": "Product"
+                },
+                {
+                    "type": "image_picker",
+                    "id": "image",
+                    "label": "Cover Image",
+                    "info": "Optional"
                 }
             ]
         }
