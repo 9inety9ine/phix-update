@@ -1,0 +1,10 @@
+<div class="product-badges product-badges--{{ settings.badge_position }}">
+    {% for tag in product.tags %}
+        {% if tag contains "badge_" %}
+            {% assign badge = tag | replace: "badge_", "" %}
+            <div class="product-badges__badge product-badges__badge--{{ badge | handleize }}">
+                <span>{{ badge }}</span>
+            </div>
+        {% endif %}
+    {% endfor %}
+</div>

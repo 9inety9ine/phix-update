@@ -10,6 +10,8 @@
 
     <div class="card-product__media">
 
+        {% render "product-badges", product: product %}
+
         <div class="swiper swiper-product-card">
             <div class="swiper-wrapper">
                 {% if show_video == 'True' and has_video == true %}
