@@ -59,14 +59,14 @@
 				flex-direction: row-reverse;
 			}
 			&__badge {
-				background-color: $color-white;
+				background-color: $color-black;
 				padding: 0.25em 0.75em;
-				box-shadow: 0 0 2px rgba(0, 0, 0, 0.1);
+				// box-shadow: 0 0 2px rgba(0, 0, 0, 0.1);
 				@media (max-width: $w-m) {
 					padding: 0.16666666666em 0.5em;
 				}
 				span {
-					color: $color-black;
+					color: $color-white;
 					font-size: 0.83333333333em;
 					font-weight: $weight-bold;
 				}
