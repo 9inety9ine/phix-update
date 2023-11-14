@@ -318,7 +318,6 @@
           "style_colors_background": "#fbfbfb",
           "style_colors_border": "#000",
           "style_colors_text": "#000",
-          "option_flags": true,
           "option_currency_type": "iso",
           "option_modal_language": true,
           "title": "Select Your Region",
